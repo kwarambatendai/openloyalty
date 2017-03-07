@@ -13,8 +13,6 @@ backend:
 frontend:
   container_name: open_loyalty_frontend
   build: ./frontend
-  volumes:
-    - ./frontend:/var/www
   ports:
     - "8182:3000"
     - "8183:3001"

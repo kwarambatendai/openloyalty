@@ -1,14 +1,7 @@
 <?php
-/*
- * This file is part of the "OpenLoyalty" package.
- *
- * (c) Divante Sp. z o. o.
- *
- * Author: Cezary Olejarczyk
- * Date: 31.01.17 08:51
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+/**
+ * Copyright © 2017 Divante, Inc. All rights reserved.
+ * See LICENSE for license details.
  */
 
 namespace OpenLoyalty\Bundle\EmailSettingsBundle\DependencyInjection;

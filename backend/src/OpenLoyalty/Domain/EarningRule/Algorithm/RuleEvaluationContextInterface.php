@@ -1,5 +1,10 @@
 <?php
 /**
+ * Copyright © 2017 Divante, Inc. All rights reserved.
+ * See LICENSE for license details.
+ */
+
+/**
  * Created by PhpStorm.
  * User: tjurczak
  * Date: 14.02.17

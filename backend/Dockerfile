@@ -42,4 +42,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer
 
-CMD composer install --no-scripts && bin/console assets:install --symlink && chown -R www-data:www-data /var/www/ol/backend/var && chown -R www-data:www-data /var/www/ol/backend/app/uploads && apache2-foreground
+CMD composer install && bin/console assets:install --symlink && chown -R www-data:www-data /var/www/ol/backend/var && chown -R www-data:www-data /var/www/ol/backend/app/uploads && apache2-foreground
