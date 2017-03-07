@@ -1,0 +1,9 @@
+OpenLoyalty\Domain\Segment\Model\Criteria\TransactionCount:
+  type: entity
+  fields:
+    min:
+      type: integer
+      column: min_count
+    max:
+      type: integer
+      column: max_count

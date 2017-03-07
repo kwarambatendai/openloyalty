@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Pos\Pos:
+  exlusion_policy: ALL
+  properties:
+    posId:
+      expose: true
+      inline: true

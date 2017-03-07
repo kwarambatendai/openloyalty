@@ -1,0 +1,56 @@
+<section class="login admin text-center">
+    <form class="login-form" novalidate>
+        <div class="row">
+            <div class="small-12 large-4 small-centered columns">
+                <div class="logo text-center">
+                    <div ng-bind-html="RootCtrl.logo"></div>
+                </div>
+                <div class="form-box text-left">
+                    <h1>{{"login.heading"|translate}}</h1>
+                    <div class="alert callout" ng-show="showError">
+                        <p>{{ errorMsg | translate }}</p>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-label"><i class="fi flaticon-user-shape" aria-hidden="true"></i></span>
+                        <input class="input-group-field"
+                               type="text"
+                               name="username"
+                               placeholder="{{ 'login.username' | translate }}"
+                               ng-model="_username"
+                               required
+                        />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-label"><i class="fi flaticon-locked-padlock"
+                                                           aria-hidden="true"></i></span>
+                        <input class="input-group-field"
+                               type="password"
+                               name="password"
+                               ng-model="_password"
+                               placeholder="{{ 'login.password' | translate }}"
+                               required
+                        />
+                    </div>
+                    <div class="row">
+                        <div class="columns small-12">
+                            <label style="margin-bottom: 1rem;">
+                                <checkbox ng-model="rememberMe" type="checkbox"></checkbox>
+                                <span>{{ "login.remember_me" | translate }}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="expanded button button-septenary-colorized square login-button"
+                            ng-click="SellerLoginCtrl.submit()">
+                        <b>{{ "login.log_in"|translate }}</b>
+                    </button>
+                    <div class="forgot text-center">
+                        <a href="#" ui-sref="forgot-password-request-seller">{{ "login.forgot"|translate }}</a>
+                    </div>
+                </div>
+                <p class="text-center">
+                    <small class="whisper">{{ "login.copyrights" | translate }}</small>
+                </p>
+            </div>
+        </div>
+    </form>
+</section>

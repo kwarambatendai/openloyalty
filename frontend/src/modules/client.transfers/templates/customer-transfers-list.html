@@ -1,0 +1,101 @@
+<div class="client-section" ng-init="CustomerPointsTransferCtrl.getData(); CustomerPointsTransferCtrl.getStatus()">
+    <div class="row">
+        <div class="columns small-12">
+            <header class="ol-main-header">
+                <h1>{{ 'customer_transfer.heading' | translate }}</h1>
+            </header>
+            <div class="client-list box" style="margin-left:0;margin-right:0">
+                <div class="box-title">
+                    <h1 class="text-left">{{ "customer_status.title" | translate }}</h1>
+                </div>
+                <div class="box-content" style="color: black; padding-bottom: 20px;">
+
+                    <table class="table default">
+                        <tbody>
+                        <tr>
+                            <td style="width: 270px;max-width: 50%;"><b>{{ 'customer_status.active_points' | translate }}:</b></td>
+                            <td>{{ status.points }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ 'customer_status.used_points' | translate }}:</b></td>
+                            <td>{{ status.usedPoints }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ 'customer_status.expired_points' | translate }}:</b></td>
+                            <td>{{ status.expiredPoints }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ 'customer_status.transactions_amount' | translate }}:</b></td>
+                            <td style="text-transform: uppercase">{{ status.transactionsAmount+status.currency }}</td>
+                        </tr>
+                        <tr ng-show="status.level">
+                            <td><b>{{ 'customer_status.current_discount' | translate }}:</b></td>
+                            <td>{{ status.level }}</td>
+                        </tr>
+                        <tr ng-show="status.nextLevel">
+                            <td><b>{{ 'customer_status.next_level_discount' | translate }}:</b></td>
+                            <td>{{ status.nextLevel }}</td>
+                        </tr>
+                        <tr ng-show="status.pointsToNextLevel">
+                            <td><b>{{ 'customer_status.points_to_next_level2' | translate }}:</b></td>
+                            <td>{{ status.pointsToNextLevel }}</td>
+                        </tr>
+                        <tr ng-show="status.transactionsAmountToNextLevelWithoutDeliveryCosts">
+                            <td><b>{{ 'customer_status.transactions_amount_to_next_level_without_delivery_costs' | translate }}:</b></td>
+                            <td style="text-transform: uppercase">{{ status.transactionsAmountToNextLevelWithoutDeliveryCosts+status.currency }}</td>
+                        </tr>
+                        <tr ng-show="status.transactionsAmountToNextLevel">
+                            <td><b>{{ 'customer_status.transactions_amount_to_next_level' | translate }}:</b></td>
+                            <td style="text-transform: uppercase">{{ status.transactionsAmountToNextLevel+status.currency }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="client-list box" style="margin-left:0;margin-right:0">
+                <div class="box-title">
+                    <h1 class="text-left"><i class="fa fa-exchange" aria-hidden="true"></i>{{ "customer_transfer.list" |
+                        translate }}</h1>
+                    <div class="action-buttons">
+
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table ng-table="CustomerPointsTransferCtrl.tableParams" class="default"
+                           template-pagination="templatePagination.html">
+                        <tr ng-repeat="row in $data">
+                            <td data-title="'customer_transfer.state'|translate" sortable="'state'">
+                                <span ng-bind="row.state"></span>
+                            </td>
+                            <td data-title="'customer_transfer.type'|translate" sortable="'type'">
+                                <span ng-bind="row.type"></span>
+                            </td>
+                            <td data-title="'customer_transfer.value'|translate">
+                                <span ng-bind="row.value"></span>
+                            </td>
+                            <td data-title="'customer_transfer.created_at'|translate" sortable="'createdAt'">
+                                <span ng-bind="row.createdAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                            <td data-title="'customer_transfer.expire_at'|translate" ng-show="row.expireAt">
+                                <span ng-bind="row.expireAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                            <td data-title="'customer_transfer.comment'|translate">
+                                <span ng-show="row.comment">
+                                    {{ row.comment || '---' }}
+                                </span>
+                                <span ng-show="row.type == 'adding' && row.transactionId">
+                                    Get for transaction #{{ row.transactionDocumentNumber }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr ng-if="!$data.length">
+                            <td colspan="6" class="text-center">
+                                {{ "customer_transfer.empty_transfers" | translate }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

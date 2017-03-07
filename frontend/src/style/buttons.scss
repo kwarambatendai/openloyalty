@@ -1,0 +1,64 @@
+.button {
+  border:0;
+  outline:none;
+  font-size: 13px;
+  &.medium {
+    padding:13.5px 20px!important;
+  }
+}
+
+.button-primary {
+  @include custom_button($septenary);
+  //@include custom_button($primary);
+}
+.button-default {
+  @include custom_button($default-button);
+}
+.button-line-primary {
+  @include custom_line_button($primary);
+}
+.button-secondary {
+  @include custom_button($septenary);
+  //@include custom_button($secondary);
+}
+.button-line-secondary {
+  @include custom_line_button($secondary);
+}
+.button-tertiary {
+  @include custom_button($septenary);
+  //@include custom_button($tertiary);
+}
+.button-quaternary {
+  @include custom_button($default-button)
+  //@include custom_button($quaternary);
+  //text-shadow:none!important;
+}
+.button-quaternary-colorized {
+  @include custom_button_colorized($quaternary);
+  color:$dark!important;
+  text-shadow:none!important;
+}
+.button-quinary {
+  @include custom_button($septenary);
+  //@include custom_button($quinary);
+}
+.button-septenary {
+  @include custom_button($septenary);
+}
+.button-septenary-colorized {
+  @include custom_button_colorized($septenary);
+}
+
+
+.button.tiny {
+  font-weight:700!important;
+  margin: 2px !important;
+}
+
+.box {
+  .action-buttons {
+    button {
+      margin-top:8px!important;
+    }
+  }
+}

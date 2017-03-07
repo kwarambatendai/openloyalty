@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Customer\LevelId:
+  exlusion_policy: ALL
+  properties:
+    levelId:
+      expose: true
+      serialized_name: levelId

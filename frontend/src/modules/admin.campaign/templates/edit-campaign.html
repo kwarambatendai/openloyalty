@@ -1,0 +1,312 @@
+<box-loader loading="CampaignCtrl.loaderStates.campaignDetails" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="CampaignCtrl.getCampaignData()">
+    <h1>{{ "campaign.edit_heading" | translate }}</h1>
+</div>
+
+<div style="clear:both;"></div>
+
+
+<form novalidate ng-submit="CampaignCtrl.editCampaign(editableFields)">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "campaign.type_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.type" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.reward.errors">
+                            <selectize config="CampaignCtrl.rewardConfig"
+                                       options="CampaignCtrl.reward"
+                                       ng-model="editableFields.reward"></selectize>
+                            <span class="prompt">{{ "campaign.type_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>{{ "campaign.basic_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.name.errors">
+                            <input type="text" ng-model="editableFields.name" required>
+                            <span class="prompt">{{ "campaign.name_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.short_description" | translate }} </label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.shortDescription.errors">
+                            <input type="text" ng-model="editableFields.shortDescription"/>
+                            <span class="prompt">{{ "campaign.short_description_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.active.errors">
+                            <selectize config="CampaignCtrl.activeConfig"
+                                       options="CampaignCtrl.active"
+                                       ng-model="editableFields.active">
+                            </selectize>
+                            <span class="prompt">{{ "campaign.active_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.cost_in_points" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.costInPoints.errors">
+                            <input type="number" ng-model="editableFields.costInPoints" required>
+                            <span class="prompt">{{ "campaign.cost_in_points_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.conditions_description" | translate }} </label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.conditionsDescription.errors">
+                            <input type="text" ng-model="editableFields.conditionsDescription"/>
+                            <span class="prompt">{{ "campaign.coditions_description_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>Target</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.target_type" | translate }} </label>
+                        </div>
+                        <div class="medium-10 small-9 columns">
+                            <selectize config="CampaignCtrl.targetConfig" options="CampaignCtrl.target"
+                                       ng-model="editableFields.target"></selectize>
+                            <span class="prompt">{{ "campaign.target_type_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="editableFields.target=='level'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.levels" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.levels.errors">
+                            <selectize config="CampaignCtrl.levelsConfig"
+                                       options="CampaignCtrl.levels"
+                                       ng-model="editableFields.levels">
+                            </selectize>
+                            <span class="prompt">{{ "campaign.levels_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="editableFields.target=='segment'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.segments" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.segments.errors">
+                            <selectize config="CampaignCtrl.segmentsConfig"
+                                       options="CampaignCtrl.segments"
+                                       ng-model="editableFields.segments">
+                            </selectize>
+                            <span class="prompt">{{ "campaign.segments_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>{{ "campaign.limit_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.unlimited" | translate }} </label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.unlimited.errors">
+                            <checkbox ng-model="editableFields.unlimited"></checkbox>
+                            <span class="prompt">{{ "campaign.unlimited_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.singleCoupon" | translate }} </label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.singleCoupon.errors">
+                            <checkbox ng-model="editableFields.singleCoupon"></checkbox>
+                            <span class="prompt">{{ "campaign.singleCoupon_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="!editableFields.unlimited">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.limit" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.limit.errors">
+                            <input type="number" ng-model="editableFields.limit"/>
+                            <span class="prompt">{{ "campaign.limit_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="!editableFields.unlimited">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.limit_per_user" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.limitPerUser.errors">
+                            <input type="number" ng-model="editableFields.limitPerUser"/>
+                            <span class="prompt">{{ "campaign.limit_per_user_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>{{ "campaign.coupons_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.coupons" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.coupons.errors">
+                            <selectize config="CampaignCtrl.couponsConfig" options="CampaignCtrl.egCoupon"
+                                       ng-model="editableFields.coupons"></selectize>
+                            <span class="prompt">{{ "campaign.coupons_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.coupons_upload" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns">
+                            <div ng-model="editableFields.couponsCsv" csv-upload></div>
+                            <span class="prompt">{{ "campaign.coupons_upload_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.usage_instruction" | translate }} </label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.usageInstruction.errors">
+                            <input type="text" ng-model="editableFields.usageInstruction"/>
+                            <span class="prompt">{{ "campaign.usage_instruction_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>{{ "campaign.visibility" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.all_time_visible" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.campaignVisibility.allTimeVisible.errors">
+                            <checkbox ng-model="editableFields.campaignVisibility.allTimeVisible"></checkbox>
+                            <span class="prompt">{{ "campaign.all_time_visible_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="!editableFields.campaignVisibility.allTimeVisible">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.visible_from" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.campaignVisibility.visibleFrom.errors">
+                            <input type="text"
+                                   ng-model="editableFields.campaignVisibility.visibleFrom"
+                                   datepicker
+                                   ng-disabled="editableFields.campaignVisibility.allTimeVisible"
+                            />
+                            <span class="prompt">{{ "campaign.visible_from_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="!editableFields.campaignVisibility.allTimeVisible">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.visible_to" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.campaignVisibility.visibleTo.errors">
+                            <input type="text"
+                                   ng-model="editableFields.campaignVisibility.visibleTo"
+                                   required
+                                   datepicker
+                                   ng-disabled="editableFields.campaignVisibility.allTimeVisible"
+                            />
+                            <span class="prompt">{{ "campaign.visible_to_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>{{ "campaign.activity" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.all_time_active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.campaignActivity.allTimeActive.errors">
+                            <checkbox ng-model="editableFields.campaignActivity.allTimeActive"></checkbox>
+                            <span class="prompt">{{ "campaign.all_time_active_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="!editableFields.campaignActivity.allTimeActive">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.active_from" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.campaignActivity.activeFrom.errors">
+                            <input type="text"
+                                   ng-model="editableFields.campaignActivity.activeFrom"
+                                   datepicker
+                                   ng-disabled="editableFields.campaignActivity.allTimeActive"/>
+                            <span class="prompt">{{ "campaign.active_from_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="!editableFields.campaignActivity.allTimeActive">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.active_to" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.campaignActivity.activeTo.errors">
+                            <input type="text"
+                                   ng-model="editableFields.campaignActivity.activeTo"
+                                   datepicker
+                                   ng-disabled="editableFields.campaignActivity.allTimeActive"/>
+                            <span class="prompt">{{ "campaign.active_to_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>{{ "campaign.photo" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "campaign.photo" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="fileValidate.file.errors">
+                            <div ng-show="!campaignFilePath">
+                                <input type="file" file-model="$parent.$parent.campaignFile" style="padding:9px">
+                            </div>
+                            <div ng-show="campaignFilePath" class="campainFileWrapper">
+                                <img ng-src="{{CampaignCtrl.generatePhotoRoute()}}" style="display: inline-block;"/>
+                                <button class="button button-septenary-colorized text-uppercase"
+                                        style="margin-bottom:0; padding:0.95em; vertical-align: top; display: inline-block;"
+                                        type="button"
+                                        ng-click="CampaignCtrl.deletePhoto()">
+                                    {{ "global.remove" | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                    {{ "global.save" | translate }}
+                </button>
+                <button type="button" ui-sref="admin.campaign-list" class="button button-default float-left"
+                        href="#">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

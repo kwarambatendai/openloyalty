@@ -1,0 +1,16 @@
+OpenLoyalty\Domain\Campaign\Model\CampaignPhoto:
+  type: embeddable
+  fields:
+    path:
+      type: string
+      column: path
+      nullable: true
+    originalName:
+      type: string
+      column: original_name
+      nullable: true
+    mime:
+      type: string
+      column: mime
+      nullable: true
+

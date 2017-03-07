@@ -1,0 +1,99 @@
+<box-loader loading="PosCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="PosCtrl.getData()">
+    <h1>{{ "pos.heading" | translate }}</h1>
+    <div class="action-buttons">
+        <button class="medium button button-septenary-colorized" ui-sref="admin.add-pos">
+            {{ "pos.add" | translate }}
+        </button>
+    </div>
+</div>
+<div style="clear:both;"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "pos.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="PosCtrl.loaderStates.posList"></box-loader>
+        <table ng-table="PosCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'pos.name'|translate" sortable="'name'">
+                    <span ng-bind="row.name"></span>
+                </td>
+                <td data-title="'pos.description'|translate" sortable="'description'">
+                    <span ng-bind="row.description"></span>
+                </td>
+                <td data-title="'pos.identifier'|translate" sortable="'identifier'">
+                    <span ng-bind="row.identifier"></span>
+                </td>
+                <td data-title="'pos.localization'|translate" sortable="'location.city'">
+                    {{ row.location ? row.location.city : '' }}
+                    <button class="button button-primary tiny pull-right"
+                            ng-click="posList[$index].showModal=true">Show more
+                    </button>
+                </td>
+
+                <td data-title="'pos.transactions_amount'|translate" sortable="'transactionsAmount'">
+                    <span style="text-transform: uppercase" ng-bind="row.transactionsAmount+row.currency"></span>
+                </td>
+                <td data-title="'pos.transactions_count'|translate" sortable="'transactionsCount'">
+                    <span ng-bind="row.transactionsCount"></span>
+                </td>
+                <td data-title="'pos.actions'|translate">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.edit-pos({posId: row.posId})">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<modal ng-repeat="pos in posList"
+       show='posList[$index].showModal'
+       modalId="{{pos.posId}}"
+       modal-title="'pos.localization' | translate"
+       size="'tiny'"
+>
+    <table class="simple">
+        <tbody>
+        <tr>
+            <td><b>{{ "pos.city" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.city"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "pos.state" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.province"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "pos.street_name" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.street"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "pos.building_name" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.address1"></span></td>
+        </tr>
+        <tr ng-if="pos.location.address2">
+            <td><b>{{ "pos.unit_name" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.address2"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "pos.postal_code" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.postal"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "pos.country" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.country"></span></td>
+        </tr>
+        <tr ng-if="pos.location.geoPoint">
+            <td><b>{{ "pos.lat" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.geoPoint.lat"></span></td>
+        </tr>
+        <tr ng-if="pos.location.geoPoint">
+            <td><b>{{ "pos.long" | translate }}:</b></td>
+            <td><span ng-bind="pos.location.geoPoint.long"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</modal>

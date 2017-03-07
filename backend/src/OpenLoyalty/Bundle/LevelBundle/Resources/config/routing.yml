@@ -1,0 +1,3 @@
+level:
+    resource: '@OpenLoyaltyLevelBundle/Controller/Api/LevelController.php'
+    type: annotation

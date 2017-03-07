@@ -1,0 +1,312 @@
+<div class="client-section" ng-init="CustomerProfileCtrl.getData()">
+    <div class="row">
+        <div class="columns small-12">
+            <header class="ol-main-header">
+                <h1>{{ 'customer_status.my_profile_edit' | translate }}</h1>
+            </header>
+        </div>
+    </div>
+    <div class="row column medium-12 small-12 medium-centered customer-tabs" style="margin-top: 20px;">
+        <ul class="tabs text-center" data-tabs id="example-tabs">
+            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">
+                {{ "customer_profile.data.basic"|translate }}</a></li>
+            <li class="tabs-title"><a href="#panel2">{{ "customer_profile.data.change_password"|translate }}</a></li>
+        </ul>
+        <div class="tabs-content" data-tabs-content="example-tabs">
+            <div class="tabs-panel is-active" id="panel1">
+                <form novalidate ng-submit="CustomerProfileCtrl.editCustomer(editableFields)">
+                    <div class="box-content">
+                        <div class="row">
+                            <div class="columns medium-12">
+                                <fieldset class="fieldset p-t-10">
+                                    <!--<legend>{{ "customer.basic_info" | translate }}</legend>-->
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.name" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.firstName.errors">
+                                            <input type="text" ng-model="editableFields.firstName" required>
+                                            <span class="prompt">{{ "customer_profile.first_name_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.surname" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.lastName.errors">
+                                            <input type="text" ng-model="editableFields.lastName" required>
+                                            <span class="prompt">{{ "customer_profile.last_name_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.gender" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns" form-validation="validate.gender.errors">
+                                            <input type="radio" ng-model="editableFields.gender" value="male" id="male">
+                                            <label for="male">{{ "customer_profile.male" | translate }}</label>
+                                            <input type="radio" ng-model="editableFields.gender" value="female"
+                                                   id="female">
+                                            <label for="female">{{ "customer_profile.female" | translate }}</label>
+                                            <span class="prompt">{{ "customer_profile.gender_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.birth_date" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.birthDate.errors">
+                                            <input type="text" ng-model="editableFields.birthDate" datepicker required
+                                                   no-time="true">
+                                            <span class="prompt">{{ "customer_profile.birth_date_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.email" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns" form-validation="validate.email.errors">
+                                            <input type="email" ng-model="editableFields.email" required>
+                                            <span class="prompt">{{ "customer_profile.email_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.phone" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns" form-validation="validate.phone.errors">
+                                            <input type="phone" ng-model="editableFields.phone">
+                                            <span class="prompt">{{ "customer_profile.phone_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.add_company" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns">
+                                            <checkbox ng-model="showCompany"></checkbox>
+                                            <span class="prompt">{{ "customer_profile.show_company_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showCompany">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.company_name" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.company.name.errors">
+                                            <input type="text" ng-model="editableFields.company.name">
+                                            <span class="prompt">{{ "customer_profile.company_name_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showCompany">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.nip" | translate }}<span class="required"> *</span>
+                                            </label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.company.nip.errors">
+                                            <input type="text" ng-model="editableFields.company.nip">
+                                            <span class="prompt">{{ "customer_profile.company_nip_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.add_address" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns">
+                                            <checkbox ng-model="showAddress"></checkbox>
+                                            <span class="prompt">{{ "customer_profile.show_address_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showAddress">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.street" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.address.street.errors">
+                                            <input type="text" ng-model="editableFields.address.street">
+                                            <span class="prompt">{{ "customer_profile.address_street_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showAddress">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.building_name" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.address.address1.errors">
+                                            <input type="text" ng-model="editableFields.address.address1">
+                                            <span class="prompt">{{ "customer_profile.address_address1_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showAddress">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.flat_name" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.address.address2.errors">
+                                            <input type="text" ng-model="editableFields.address.address2">
+                                            <span class="prompt">{{ "customer_profile.address_address2_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showAddress">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.postal" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.address.postal.errors">
+                                            <input type="text" ng-model="editableFields.address.postal">
+                                            <span class="prompt">{{ "customer_profile.postal_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showAddress">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.city" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.address.city.errors">
+                                            <input type="text" ng-model="editableFields.address.city">
+                                            <span class="prompt">{{ "customer_profile.address_city_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showAddress">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.state" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.address.province.errors">
+                                            <input type="text" ng-model="editableFields.address.province">
+                                            <span class="prompt">{{ "customer_profile.address_province_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showAddress">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.country" | translate }}<span
+                                                    class="required">*</span></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.address.country.errors">
+                                            <selectize
+                                                    config="CustomerProfileCtrl.countryConfig"
+                                                    options="CustomerProfileCtrl.country"
+                                                    style="border-radius:0"
+                                                    ng-model="editableFields.address.country">
+                                            </selectize>
+                                            <span class="prompt">{{ "customer_profile.address_country_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="columns medium-12">
+                                <fieldset class="fieldset">
+                                    <legend>{{ "customer_profile.agreements" | translate }}</legend>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.agreement1" | translate }}<span
+                                                    class="required">*</span></label></label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.agreement1.errors">
+                                            <checkbox ng-model="editableFields.agreement1"></checkbox>
+                                            <span class="prompt">{{ "customer_profile.agreement1_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.agreement2" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.agreement2.errors">
+                                            <checkbox ng-model="editableFields.agreement2"></checkbox>
+                                            <span class="prompt">{{ "customer_profile.agreement2_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="medium-2 small-3 columns">
+                                            <label>{{ "customer_profile.agreement3" | translate }}</label>
+                                        </div>
+                                        <div class="medium-10 small-9 columns"
+                                             form-validation="validate.agreement3.errors">
+                                            <checkbox ng-model="editableFields.agreement3"></checkbox>
+                                            <span class="prompt">{{ "customer_profile.agreement3_prompt" | translate }}</span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="columns small-12">
+                                <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                                    {{ "customer_global.save" | translate }}
+                                </button>
+                                <button type="button" ui-sref="customer.panel.profile-show"
+                                        class="button button-default float-left">
+                                    {{ "customer_global.cancel" | translate }}
+                                </button>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tabs-panel" id="panel2">
+                <form novalidate ng-submit="CustomerProfileCtrl.changePassword(password)">
+                    <fieldset class="fieldset p-t-10">
+                        <div class="row">
+                            <div class="small-4 columns">
+                                <label>{{ "customer_profile.change_password.current" | translate }} <span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="small-8 columns" form-validation="validate.currentPassword.errors">
+                                <input type="password" ng-model="password.currentPassword" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-4 columns">
+                                <label>{{ "customer_profile.change_password.new_first" | translate }} <span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="small-8 columns" form-validation="validate.plainPassword.errors">
+                                <input type="password" ng-model="password.plainPassword" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-4 columns">
+                                <label>{{ "customer_profile.change_password.new_second" | translate }} <span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="small-8 columns" form-validation="validate.plainPassword2.errors">
+                                <input type="password" ng-model="password.plainPassword2" required>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="columns small-12">
+                                <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                                    {{ "customer_global.save" | translate }}
+                                </button>
+                                <button type="button" ui-sref="admin.customers-list"
+                                        class="button button-default float-left">
+                                    {{ "customer_global.cancel" | translate }}
+                                </button>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

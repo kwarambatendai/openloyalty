@@ -1,0 +1,55 @@
+<div class="pos-section" ng-init="CampaignCtrl.getData()">
+
+    <h1>{{ "seller.dashboard.title.campaign_list" | translate }}</h1>
+
+    <div class="row">
+        <div class="client-list box">
+            <div class="box-title">
+                <h1 class="text-left">{{ "campaign.list" | translate }}</h1>
+            </div>
+            <div class="box-content">
+                <table ng-table="CampaignCtrl.tableParams" class="default"
+                       template-pagination="templatePagination.html">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'campaign.name'|translate" sortable="'name'">
+                            <span ng-bind="row.name"></span>
+                        </td>
+                        <td data-title="'campaign.active'|translate">
+                            <span ng-show="row.campaignActivity.allTimeActive">All time</span>
+                            <span ng-show="!row.campaignActivity.allTimeActive">
+                            From: {{row.campaignActivity.activeFrom|date : 'yyyy-MM-dd HH:mm'}}<br/>
+                            To: {{row.campaignActivity.activeTo|date : 'yyyy-MM-dd HH:mm'}}
+                        </span>
+                        </td>
+                        <td data-title="'campaign.cost_in_points'|translate" sortable="'costInPoints'">
+                            <span ng-bind="row.costInPoints"></span>
+                        </td>
+                        <td data-title="'campaign.limit'|translate" sortable="'limit'">
+                            <span ng-bind="row.limit"></span>
+                        </td>
+                        <td data-title="'campaign.limit_per_user'|translate">
+                            <span ng-bind="row.limitPerUser"></span>
+                        </td>
+                        <td data-title="'campaign.levels'|translate">
+                            <label class="label label-default" ng-repeat="l in row.levels track by $index">
+                                {{row.levelNames && row.levelNames[l] ? row.levelNames[l] : l}}
+                            </label>
+                        </td>
+                        <td data-title="'campaign.segments'|translate">
+                            <label class="label label-default" ng-repeat="s in row.segments track by $index">
+                                {{row.segmentNames && row.segmentNames[s] ? row.segmentNames[s] : s}}
+                            </label>
+                        </td>
+                        <td data-title="'campaign.actions'|translate">
+                            <button type="button" class="button  button-quinary tiny"
+                                    ui-sref="seller.single-campaign({campaignId: row.campaignId})"
+                                    style="margin-bottom:5px;">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+<section class="pos-section" ng-init="SellerEarningRulesCtrl.getData()">
+
+    <h1>{{ "seller.dashboard.title.earning_rules" | translate }}</h1>
+
+    <div class="row">
+        <div class="client-list box">
+            <div class="box-title">
+                <h1 class="text-left">{{ "earning_rule.list" | translate }}</h1>
+            </div>
+            <div class="box-content">
+                <table ng-table="SellerEarningRulesCtrl.tableParams" class="default"
+                       template-pagination="templatePagination.html">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'earning_rule.name'|translate" sortable="'name'">
+                            <span ng-bind="row.name || 'not set'"></span>
+                        </td>
+                        <td data-title="'earning_rule.description'|translate" sortable="'description'">
+                            <span ng-bind="row.description"></span>
+                        </td>
+                        <td data-title="'earning_rule.active'|translate" sortable="'active'">
+                            <span ng-bind="row.active"></span>
+                        </td>
+                        <td data-title="'earning_rule.start_at'|translate" sortable="'startAt'">
+                            <span ng-bind="row.startAt|date: 'yyyy-MM-dd HH:mm'"></span>
+                        </td>
+                        <td data-title="'earning_rule.end_at'|translate" sortable="'EndAt'">
+                            <span ng-bind="row.endAt|date: 'yyyy-MM-dd HH:mm'"></span>
+                        </td>
+                        <td data-title="'earning_rule.all_time_active'|translate" sortable="'allTimeActive'">
+                            <span ng-bind="row.allTimeActive"></span>
+                        </td>
+                        <td data-title="'earning_rule.type'|translate" sortable="'type'">
+                            <span>{{SellerEarningRulesCtrl.types[row.type]}}</span>
+                        </td>
+                        <td data-title="'earning_rule.actions'|translate">
+                            <button type="button" class="button  button-quinary tiny" style="margin-bottom:5px;"
+                                    ng-click="earningRules[$index].showModal=true">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<modal ng-repeat="rule in earningRules"
+       show='earningRules[$index].showModal'
+       modalId="{{earningRules.earningRuleId}}"
+       modal-title="'earning_rule.details' | translate"
+       size="'tiny'"
+>
+    <table class="simple">
+        <thead>
+        <tr>
+            <td><b>{{ "earning_rule.type" | translate }}</b></td>
+            <td><span>{{rule.type}}</span></td>
+        </tr>
+        <tr ng-if="rule.type=='points'">
+            <td><b>{{ "earning_rule.point_value" | translate }}</b></td>
+            <td><span>{{ rule.pointValue }}</span></td>
+        </tr>
+        <tr ng-if="rule.type=='points'">
+            <td><b>{{ "earning_rule.excluded_skus" | translate }}</b></td>
+            <td>
+                <label class="label label-default" ng-repeat="s in rule.excludedSKUs">{{ rule.excludedSKUs[$index]
+                    }}</label>
+                <span ng-if="!rule.excludedSKUs.length">---</span>
+            </td>
+        </tr>
+        <tr ng-if="rule.type=='points'">
+            <td><b>{{ "earning_rule.excluded_labels" | translate }}</b></td>
+            <td>
+                <label class="label label-default" ng-repeat="s in rule.excludedLabels">{{ s.key }}:{{ s.value
+                    }}</label>
+                <span ng-if="!rule.excludedLabels.length">---</span>
+            </td>
+        </tr>
+        <tr ng-if="rule.type=='points'">
+            <td><b>{{ "earning_rule.min_order_value" | translate }}</b></td>
+            <td><span>{{ rule.minOrderValue }}</span></td>
+        </tr>
+        <tr ng-if="rule.type=='event'">
+            <td><b>{{ "earning_rule.event_name" | translate }}</b></td>
+            <td><span>{{ rule.eventName }}</span></td>
+        </tr>
+        <tr ng-if="rule.type=='product_purchase' || rule.type=='multiply_for_product'">
+            <td><b>{{ "earning_rule.sku" | translate }}</b></td>
+            <td><span>{{ rule.skuIds.join(', ') }}</span></td>
+        </tr>
+        <tr ng-if="rule.type=='event' || rule.type=='product_purchase'">
+            <td><b>{{ "earning_rule.points_amount" | translate }}</b></td>
+            <td><span>{{ rule.pointsAmount }}</span></td>
+        </tr>
+        <tr ng-if="rule.type=='multiply_for_product'">
+            <td><b>{{ "earning_rule.multiplier" | translate }}</b></td>
+            <td><span>{{ rule.multiplier }}</span></td>
+        </tr>
+        </thead>
+    </table>
+</modal>

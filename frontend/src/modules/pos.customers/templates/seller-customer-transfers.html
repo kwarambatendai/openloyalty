@@ -1,0 +1,39 @@
+<section class="pos-section" ng-init="SellerCustomerCtrl.getTransfersData()">
+
+    <h1>{{ "seller.dashboard.title.customer_transfers" | translate }}</h1>
+
+    <div class="row">
+        <div class="client-list box">
+            <div class="box-title">
+                <h1 class="text-left">{{ "customer.transfers_list" | translate }}</h1>
+            </div>
+            <div class="box-content">
+                <table ng-table="SellerCustomerCtrl.transfersTableParams" class="default"
+                       template-pagination="templatePagination.html">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'transfer.phone'|translate" sortable="'customerPhone'"
+                            filter="{customerPhone: 'text'}">
+                            <span ng-bind="row.customerPhone || 'not set'"></span>
+                        </td>
+                        <td data-title="'transfer.email'|translate" sortable="'customerEmail'"
+                            filter="{customerEmail: 'text'}">
+                            <span ng-bind="row.customerEmail"></span>
+                        </td>
+                        <td data-title="'transfer.state'|translate" sortable="'state'">
+                            <span ng-bind="row.state"></span>
+                        </td>
+                        <td data-title="'transfer.type'|translate" sortable="'type'">
+                            <span ng-bind="row.type"></span>
+                        </td>
+                        <td data-title="'transfer.value'|translate">
+                            <span ng-bind="row.value"></span>
+                        </td>
+                        <td data-title="'transfer.created_at'|translate">
+                            <span ng-bind="row.createdAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

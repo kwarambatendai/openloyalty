@@ -1,0 +1,26 @@
+OpenLoyalty\Domain\EarningRule\PointsEarningRule:
+  type: entity
+  fields:
+    pointValue:
+      type: decimal
+      precision: 14
+      scale: 2
+      column: point_value
+    minOrderValue:
+      type: decimal
+      precision: 14
+      scale: 2
+      column: min_order_value
+      options:
+        default: 0
+    excludeDeliveryCost:
+      type: boolean
+      options:
+        default: 0
+      column: exclude_delivery_cost
+    excludedSKUs:
+      type: skus_json_array
+      column: excluded_skus
+    excludedLabels:
+      type: labels_json_array
+      column: excluded_labels

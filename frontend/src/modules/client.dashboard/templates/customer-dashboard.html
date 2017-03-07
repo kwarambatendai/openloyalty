@@ -1,0 +1,210 @@
+<div class="client-section" ng-init="CustomerDashboardCtrl.getStatus()">
+    <div class="row">
+        <div class="columns small-12">
+
+            <header class="ol-main-header">
+                <h1>{{ "customer_dashboard.title" |translate }} {{status.name+' '+status.lastName}}</h1>
+            </header>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder dashboard-placeholder-big"></div>
+
+                            </div>
+                            <div class="columns medium-6" ng-show="status">
+                                <h2 class="name">{{'customer_dashboard.benefits_title' | translate}}</h2>
+                                <div ng-show="status" class="benefits">
+                                    <span translate="customer_dashboard.current_level"
+                                          translate-values="translateValues"></span><br/>
+                                    <span ng-show="status.pointsToNextLevel"
+                                          translate="customer_dashboard.points_to_next_level"
+                                          translate-values="translateValues"
+                                          translate-compile></span>
+                                    <span
+                                            ng-show="status.transactionsAmountToNextLevelWithoutDeliveryCosts"
+                                            translate="customer_dashboard.transaction_amount_without_delivery_costs_to_next_level"
+                                            translate-values="translateValues"
+                                    >
+                                    </span>
+                                    <span
+                                            ng-show="status.transactionsAmountToNextLevel"
+                                            translate="customer_dashboard.transaction_amount_to_next_level"
+                                            translate-values="translateValues"
+                                    >
+                                    </span>
+                                </div>
+                                <br/>
+                                <h2 class="name">{{'customer_dashboard.rewards_title' | translate}}</h2>
+                                <div ng-show="status" class="benefits">
+                                    <span translate="customer_dashboard.rewards"
+                                          translate-compile
+                                          translate-values="translateValues"></span><br/>
+                                </div>
+                                <br/>
+                                <h2 class="name">{{'customer_dashboard.earning_rules_title' | translate}}</h2>
+                                <div ng-show="status" class="benefits">
+                                    <span translate="customer_dashboard.earning_rules" translate-compile></span><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.my_benefits.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.my_benefits.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.static({pageName: 'benefits'})"><span translate="customer_dashboard.my_benefits.button_name"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.get_rewards.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.get_rewards.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.panel.campaign-list"><span translate="customer_dashboard.get_rewards.button_name"></span></button>
+                            </div>
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.earn_points.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.earn_points.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.panel.transfers-list"><span translate="customer_dashboard.earn_points.button_name"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.customize_profile.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.customize_profile.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.panel.profile-edit"><span translate="customer_dashboard.customize_profile.button_name"></span></button>
+                            </div>
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.connect_with_online_store.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.connect_with_online_store.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.static({pageName: 'match-with-ecommerce'})"><span translate="customer_dashboard.connect_with_online_store.button_name"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.check_transactions.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.check_transactions.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.panel.transactions-list"><span translate="customer_dashboard.check_transactions.button_name"></span></button>
+                            </div>
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.faq.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.faq.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.static({pageName: 'faq'})"><span translate="customer_dashboard.faq.button_name"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-benefits-card">
+                        <div class="row">
+                            <div class="columns medium-6 text-left">
+                                <h2 class="name">{{'customer_dashboard.visit_offline_stores.title' | translate}}</h2>
+                                <div class="benefits dark">
+                                    <span translate="customer_dashboard.visit_offline_stores.text"></span>
+                                </div>
+                                <button class="button button-septenary-colorized large" ui-sref="customer.static({pageName: 'visit-offline'})"><span translate="customer_dashboard.visit_offline_stores.button_name"></span></button>
+                            </div>
+                            <div class="columns medium-6">
+                                <div class="dashboard-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

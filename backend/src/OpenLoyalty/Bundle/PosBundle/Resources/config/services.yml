@@ -1,0 +1,25 @@
+services:
+  oloy.pos.form_type.create:
+    class: OpenLoyalty\Bundle\PosBundle\Form\Type\CreatePosFormType
+    tags:
+      - { name: form.type }
+  oloy.pos.form_type.edit:
+    class: OpenLoyalty\Bundle\PosBundle\Form\Type\EditPosFormType
+    tags:
+      - { name: form.type }
+  oloy.pos.form_type.loction:
+    class: OpenLoyalty\Bundle\PosBundle\Form\Type\LocationFormType
+    tags:
+      - { name: form.type }
+  oloy.pos.param_converter:
+    class: OpenLoyalty\Bundle\PosBundle\ParamConverter\PosParamConverter
+    arguments: ['@oloy.pos.repository']
+    tags:
+      - { name: request.param_converter, priority: 2, converter: pos_converter }
+  oloy.pos.serialization_listener.pos:
+    class: OpenLoyalty\Bundle\PosBundle\Event\Listener\PosSerializationListener
+    arguments:
+      - '@oloy.transaction.read_model.repository.transaction_details'
+      - '@ol.settings.manager'
+    tags:
+      - { name: jms_serializer.event_subscriber }

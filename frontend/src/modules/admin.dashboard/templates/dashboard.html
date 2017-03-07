@@ -1,0 +1,168 @@
+<box-loader loading="DashboardCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="DashboardCtrl.getStats();DashboardCtrl.getData()">
+    <h1>{{ "dashboard.heading" | translate }}</h1>
+</div>
+<div style="clear:both"></div>
+<div class="row" style="margin-top:15px">
+    <div class="columns small-12 large-3 medium-6">
+        <div class="card">
+            <div class="card-title text-center">
+                {{"admin.dashboard.total_points_spent"|translate}}
+            </div>
+            <div class="card-content text-center">
+                {{stats.points.totalPointsSpent |isEmpty:'-'}}
+            </div>
+        </div>
+    </div>
+    <div class="columns small-12 large-3 medium-6">
+        <div class="card">
+            <div class="card-title text-center">
+                {{"admin.dashboard.total_customers_registered"|translate}}
+            </div>
+            <div class="card-content text-center">
+                {{stats.customers.total |isEmpty:'-'}}
+            </div>
+        </div>
+    </div>
+    <div class="columns small-12 large-3 medium-6">
+        <div class="card">
+            <div class="card-title text-center">
+                {{"admin.dashboard.spending"|translate}}
+            </div>
+            <div class="card-content text-center" style="text-transform: uppercase;">
+                {{stats.transactions.amount | number:2 |isEmpty:'-'}} {{stats.transactions.currency |isEmpty:''}}
+            </div>
+        </div>
+    </div>
+    <div class="columns small-12 large-3 medium-6">
+        <div class="card">
+            <div class="card-title text-center">
+                {{"admin.dashboard.orders"|translate}}
+            </div>
+            <div class="card-content text-center">
+                {{stats.transactions.total |isEmpty:'-'}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "admin.dashboard.daily_registrations" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <canvas id="line"
+                class="chart chart-line"
+                chart-data="charts.registration.data"
+                chart-labels="charts.registration.labels"
+                chart-series="charts.registration.series"
+                chart-options="charts.registration.options"
+        >
+        </canvas>
+    </div>
+</div>
+
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "level.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="DashboardCtrl.loaderStates.levelList"></box-loader>
+        <table ng-table="DashboardCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'level.name'|translate" sortable="'name'">
+                    <span ng-bind="row.name"></span>
+                </td>
+                <td data-title="'level.description'|translate" sortable="'description'">
+                    <span ng-bind="row.description || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'level.condition_value'|translate" sortable="'conditionValue'">
+                    <span ng-bind="row.conditionValue"></span>
+                </td>
+                <td data-title="'level.reward_value'|translate">
+                    <span ng-bind="row.reward.value*100|number:2"></span>%
+                </td>
+                <td data-title="'level.users'|translate" sortable="'customersCount'">
+                    <span ng-bind="row.customersCount"></span>
+
+                    <button class="button button-primary tiny pull-right"
+                            ui-sref="admin.level-users({levelId: row.id})">
+                        {{ "global.show" | translate }}
+                    </button>
+                </td>
+                <td data-title="'level.active'|translate" sortable="'active'">
+                        <span>
+                            <button
+                                    ng-if="row.active"
+                                    class="tiny button button-septenary-colorized"
+                                    ng-click="DashboardCtrl.setLevelState(!row.active, row.id)"
+                            >
+                                {{'global.active'|translate}}
+                            </button>
+                            <button
+                                    ng-if="!row.active"
+                                    class="tiny button button-default"
+                                    ng-click="DashboardCtrl.setLevelState(!row.active, row.id)"
+                            >
+                                {{'global.inactive'|translate}}
+                            </button>
+                        </span>
+                </td>
+                <td data-title="'level.special_rewards'|translate">
+                        <span ng-if="row.specialRewards.length">
+                            <a class="tiny button button-primary"
+                               data-modal-id="{{row.id}}"
+                               ng-click="levels[$index].showModal=true">
+                                {{ "global.show" | translate }}
+                            </a>
+                        </span>
+                    <span ng-if="!row.specialRewards.length">
+                            {{ "global.not_set" | translate }}
+                        </span>
+                </td>
+                <td data-title="'Actions'">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.edit-level({levelId: row.id})">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<modal ng-repeat="level in levels"
+       show='levels[$index].showModal'
+       modalId="{{level.id}}"
+       ng-if="level.specialRewards.length"
+       modal-title="'level.special_rewards'|translate"
+>
+    <table class="default">
+        <thead>
+
+        <tr>
+            <th>{{ "level.name" | translate }}</th>
+            <th>{{ "level.code" | translate }}</th>
+            <th>{{ "level.value" | translate }}</th>
+            <th>{{ "level.active" | translate }}</th>
+            <th>{{ "level.start_at" | translate }}</th>
+            <th>{{ "level.end_at" | translate }}</th>
+            <th>{{ "level.created_at" | translate }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="special in level.specialRewards">
+            <td><span ng-bind="special.name"></span></td>
+            <td><span ng-bind="special.code"></span></td>
+            <td><span ng-bind="special.value*100|number:2"></span>%</td>
+            <td><span ng-bind="special.active"></span></td>
+            <td><span ng-bind="special.startAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+            <td><span ng-bind="special.endAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+            <td><span ng-bind="special.createdAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</modal>

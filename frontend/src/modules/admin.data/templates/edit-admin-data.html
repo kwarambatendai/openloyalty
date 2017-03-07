@@ -1,0 +1,121 @@
+<box-loader loading="CustomerCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="AdminDataCtrl.getData()">
+    <h1>{{ "admin_edit.heading" | translate }}</h1>
+</div>
+<div style="clear:both;"></div>
+
+<div class="box-content">
+    <div class="row column medium-12 small-12 medium-centered customer-tabs" style="margin-top: 20px;">
+        <ul class="tabs text-center" data-tabs id="example-tabs">
+            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">{{
+                "admin.data.basic"|translate }}</a></li>
+            <li class="tabs-title"><a href="#panel2">{{ "admin.data.change_password"|translate }}</a></li>
+        </ul>
+        <div class="tabs-content" data-tabs-content="example-tabs">
+            <div class="tabs-panel is-active" id="panel1">
+                <form novalidate ng-submit="AdminDataCtrl.editAdminData(editableFields)">
+                    <fieldset class="fieldset p-t-10">
+                        
+                        <div class="row">
+                            <div class="medium-2 small-3 columns">
+                                <label>{{ "admin.first_name" | translate }}</label>
+                            </div>
+                            <div class="medium-10 small-9 columns" form-validation="validate.firstName.errors">
+                                <input type="text" ng-model="editableFields.firstName">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="medium-2 small-3 columns">
+                                <label>{{ "admin.last_name" | translate }}</label>
+                            </div>
+                            <div class="medium-10 small-9 columns" form-validation="validate.lastName.errors">
+                                <input type="text" ng-model="editableFields.lastName">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="medium-2 small-3 columns">
+                                <label>{{ "admin.phone" | translate }}</label>
+                            </div>
+                            <div class="medium-10 small-9 columns" form-validation="validate.phone.errors">
+                                <input type="phone" ng-model="editableFields.phone">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="medium-2 small-3 columns">
+                                <label>{{ "admin.email" | translate }}<span class="required">*</span></label>
+                            </div>
+                            <div class="medium-10 small-9 columns" form-validation="validate.email.errors">
+                                <input type="email" ng-model="editableFields.email" required>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="columns small-12">
+                                <button class="button button-septenary-colorized  float-left m-r-1"
+                                        type="submit">
+                                    {{ "global.save" | translate }}
+                                </button>
+                                <button type="button" ui-sref="admin.customers-list"
+                                        class="button button-default float-left">
+                                    {{ "global.cancel" | translate }}
+                                </button>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tabs-panel" id="panel2">
+                <form novalidate ng-submit="AdminDataCtrl.changePassword(password)">
+                    <fieldset class="fieldset p-t-10">
+                        
+                        <div class="row">
+                            <div class="small-4 columns">
+                                <label>{{ "admin.change_password.current" | translate }} <span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="small-8 columns" form-validation="validate.currentPassword.errors">
+                                <input type="password" ng-model="password.currentPassword" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-4 columns">
+                                <label>{{ "admin.change_password.new_first" | translate }} <span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="small-8 columns" form-validation="validate.plainPassword.errors">
+                                <input type="password" ng-model="password.plainPassword" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-4 columns">
+                                <label>{{ "admin.change_password.new_second" | translate }} <span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="small-8 columns" form-validation="validate.plainPassword2.errors">
+                                <input type="password" ng-model="password.plainPassword2" required>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="columns small-12">
+                                <button class="button button-septenary-colorized  float-left m-r-1"
+                                        type="submit">
+                                    {{ "global.save" | translate }}
+                                </button>
+                                <button type="button" ui-sref="admin.customers-list"
+                                        class="button button-default float-left">
+                                    {{ "global.cancel" | translate }}
+                                </button>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

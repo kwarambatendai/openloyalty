@@ -1,0 +1,3 @@
+admin:
+    resource: '@OpenLoyaltyAuditBundle/Controller/Api/AuditController.php'
+    type: annotation

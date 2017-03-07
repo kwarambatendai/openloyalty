@@ -1,0 +1,41 @@
+services:
+  oloy.campaign.command_handler:
+    class: OpenLoyalty\Domain\Campaign\Command\CampaignCommandHandler
+    arguments:
+      - '@oloy.campaign.repository'
+    tags:
+      - { name: command_handler }
+  oloy.campaign.repository:
+    class: OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Repository\DoctrineCampaignRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'OpenLoyalty\Domain\Campaign\Campaign'
+  oloy.campaign.read_model.repository.coupon_usage:
+    class: 'Broadway\ReadModel\ReadModel'
+    factory: ['@oloy.user.read_model.repository_factory', create]
+    arguments:
+      - 'oloy.coupon_usage'
+      - 'OpenLoyalty\Domain\Campaign\ReadModel\CouponUsage'
+      - 'OpenLoyalty\Domain\Repository\Campaign\CouponUsageElasticsearchRepository'
+  oloy.campaign.read_model.projector.coupon_usage:
+    class: OpenLoyalty\Infrastructure\Campaign\ReadModel\CouponUsageProjector
+    arguments:
+      - '@oloy.campaign.read_model.repository.coupon_usage'
+    lazy: true
+    tags:
+      - { name: broadway.domain.event_listener }
+  oloy.campaign.read_model.repository.campaign_usage:
+    class: 'Broadway\ReadModel\ReadModel'
+    factory: ['@oloy.user.read_model.repository_factory', create]
+    arguments:
+      - 'oloy.campaign_usage'
+      - 'OpenLoyalty\Domain\Campaign\ReadModel\CampaignUsage'
+      - 'OpenLoyalty\Domain\Repository\Campaign\CampaignUsageElasticsearchRepository'
+  oloy.campaign.read_model.projector.campaign_usage:
+    class: OpenLoyalty\Domain\Campaign\ReadModel\CampaignUsageProjector
+    arguments:
+      - '@oloy.campaign.read_model.repository.campaign_usage'
+    calls:
+      - [setLogger, ['@logger']]
+    tags:
+      - { name: broadway.domain.event_listener }

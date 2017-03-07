@@ -1,0 +1,71 @@
+$primary: #127cc0;
+$secondary: #ed833f;
+$tertiary: #ffe560;
+$quaternary: #ecf5fa;
+$quinary: #40A967;
+$senary: #f9f7f4;
+$septenary: #BB343B;
+$octonary: #8E44AD;
+$nonary: #a48334;
+
+$light: #f9f7f4;
+$dark: #363636;
+$darkest: #1E1E1E;
+$black: #222;
+$gray: #e4e4e4;
+$lightgray: #f2f2f2;
+$white: #fff;
+
+$sp-gray: #999;
+$red: #a80b16;
+$sp-lightgray: #ccc;
+
+$light-border: rgba(249, 247, 244, 0.2);
+$default-button: #d4d4d4;
+$default-border: 0px;
+$label-border: 6px;
+$default-font: 'Open Sans', sans-serif;
+$page-title: rgb(54, 54, 54);
+
+$sidebar-width: 225px;
+$sidebar-bg: #333;
+$sidebar-nested-items: #242424;
+$sidebar-expanded-item: #2b2b2b;
+$sidebar-font-size: 13px;
+$sidebar-item-padding: 16px 12px;
+$sidebar-chevron-size: 11px;
+
+$logo-bg: #242424;
+$logo-height: 54px;
+$logo-font-size: 21px;
+
+$loader-bg: #242424;
+$loader-first-color: #bb343b;
+$loader-second-color: rgba(187, 52, 59, 0.2);
+
+$box-border: '';
+$box-title-size: 16px;
+$box-title-color: $darkest;
+$box-title-bg: #f9f9f9;
+$box-footer-bg: #f9f9f9;
+
+$form-label-color:$box-title-color;
+
+$table-th-color: rgb(40, 10, 10);
+$table-th-size: 13px;
+$table-tr-bg: #f9f9f9;
+
+$customer-header-color: #2b2b2b;
+
+$gray-font:rgb(153, 153, 153);
+
+$menu-icon-inactive: rgb(234, 237, 241);
+$menu-icon-active: white;
+
+$client-base-dark: rgb(51, 51, 51);
+$client-base-light: rgb(153, 153, 153);
+
+//overflow detector helper
+//* {
+//  border:1px solid black!important;
+//}

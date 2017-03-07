@@ -1,0 +1,56 @@
+<box-loader loading="CampaignCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="CampaignCtrl.getCustomersForCampaign()">
+    <h1>{{ "campaign.users_in_campaign" | translate }} {{campaignName}}</h1>
+</div>
+<div style="clear:both;"></div>
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left"> {{ "customer.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="CampaignCtrl.loaderStates.campaignCustomerList"></box-loader>
+        <table ng-table="CampaignCtrl.customersTableParams" class="default">
+            <tr ng-repeat="row in $data">
+                <td data-title="'customer.name'|translate">
+                    <span ng-bind="row.firstName"></span>
+                </td>
+                <td data-title="'customer.surname'|translate">
+                    <span ng-bind="row.lastName"></span>
+                </td>
+                <td data-title="'customer.phone'|translate">
+                    <span ng-bind="row.phone || 'not set'"></span>
+                </td>
+                <td data-title="'customer.email'|translate">
+                    <span ng-bind="row.email"></span>
+                </td>
+                <td data-title="'customer.gender'|translate">
+                    <span ng-bind="row.gender"></span>
+                </td>
+                <td data-title="'customer.birth_date'|translate">
+                    <span ng-bind="row.birthDate|date : 'yyyy-MM-dd'"></span>
+                </td>
+                <td data-title="'customer.created_at'|translate">
+                    <span ng-bind="row.createdAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                </td>
+                <td data-title="'customer.actions'|translate">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.edit-customer({customerId: row.customerId})" style="margin-bottom:5px;">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="button  button-quinary tiny"
+                            ui-sref="admin.single-customer({customerId: row.customerId})"
+                            style="margin-bottom:5px;">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-if="!$data.length">
+                <td colspan="8" style="text-align:center">
+                    {{ "campaign.no_data"|translate }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

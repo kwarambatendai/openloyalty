@@ -1,0 +1,41 @@
+<project name="OLOY" basedir="." default="none">
+    <property name="workspace" value="${basedir}" />
+    <property name="sourcedir" value="${basedir}/src" />
+
+    <target name="none">
+        <echo>By default I do nothing! Add -l to see all available tasks</echo>
+    </target>
+
+    <target name="setup" description="Setup everything">
+        <exec command="bin/console oloy:user:projections:index:create --drop-old -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:schema:update --force" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:drop -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:init -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:fixtures:load -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console oloy:segment:recreate -vv" checkreturn="true" passthru="true"/>
+    </target>
+    <target name="test" description="Setup everything and run tests">
+        <exec command="bin/console oloy:user:projections:index:create --drop-old -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:drop -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:init -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:fixtures:load -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="phpunit" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="test-security" description="Setup everything and run tests">
+        <exec command="bin/console oloy:user:projections:index:create --drop-old -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:drop -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:init -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:fixtures:load -n --env=test" checkreturn="true" passthru="true"/>
+        <exec command="phpunit --stop-on-failure --testsuite Security" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="demo" description="Setup for demo purposes">
+        <exec command="bin/console oloy:user:projections:index:create --drop-old -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:schema:update --force" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:drop -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console broadway:event-store:schema:init -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:fixtures:load --fixtures src/OpenLoyalty/Bundle/DemoBundle/_DataFixtures/ORM/ -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console oloy:segment:recreate -vv" checkreturn="true" passthru="true"/>
+    </target>
+</project>

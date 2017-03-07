@@ -1,0 +1,13 @@
+OpenLoyalty\Domain\Segment\Model\Criteria\TransactionAmount:
+  type: entity
+  fields:
+    fromAmount:
+      type: decimal
+      precision: 14
+      scale: 2
+      column: from_amount
+    toAmount:
+      type: decimal
+      precision: 14
+      scale: 2
+      column: to_amount

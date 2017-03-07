@@ -1,0 +1,110 @@
+<div class="client-section" ng-init="CustomerCampaignCtrl.getAvailableData(); CustomerCampaignCtrl.getStatus();">
+    <div class="row">
+        <div class="columns small-12">
+            <h1 class="">{{ "customer_campaign.list" |translate }}</h1>
+            <p class="text-center gf-padding-bottom-rewards">
+                <span class="active-points" translate="customer_campaign.active_points"
+                      translate-values="translateValues"></span><br/>
+                <a href="#" ui-sref="customer.panel.bought-campaign-list">{{ "customer_campaign.see_bought" | translate
+                    }} </a>
+            </p>
+            <div class="row campaigns">
+                <div class="columns small-12 medium-4" ng-repeat="c in campaigns">
+                    <div class="customer-card">
+                        <h2 class="name">{{c.name || "customer_campaign.no_name" | translate}}</h2>
+                        <span class="date" ng-if="!c.campaignActivity.allTimeActive">{{ c.campaignActivity.activeFrom|date: 'yyyy-MM-dd HH:mm' }} - {{ c.campaignActivity.activeTo|date: 'yyyy-MM-dd HH:mm' }}</span>
+                        <span class="date" ng-if="c.campaignActivity.allTimeActive">{{ "customer_campaign.all_time_Active" | translate }}</span>
+                        <p ng-if="c.shortDescription" class="desc">{{c.shortDescription || "customer_campaign.no_desc" |
+                            translate}}</p>
+                        <span class="points"><b>{{c.costInPoints}}</b> <b class="points-word">{{ "customer_campaign.points"| translate }}</b></span>
+                        <button ng-if="!c.will_be_active_from && !c.will_be_active_to && availablePoints >= c.costInPoints"
+                                class="button button-septenary-colorized square large"
+                                ng-click="c.showConfirmationModal=true"
+                                type="button">{{ "customer_campaign.redeem" |translate }}
+                        </button>
+                        <button ng-if="c.will_be_active_from || c.will_be_active_to && availablePoints >= c.costInPoints"
+                                class="button button-default square large" disabled="disabled"
+                                type="button">
+                            <span translate="customer_campaign.will_be_active_soon"></span>
+                        </button>
+                        <button ng-if="availablePoints < c.costInPoints" class="button button-default square large"
+                                disabled="disabled"
+                                type="button">
+                            <span translate="customer_campaign.not_enough_points"></span>
+                        </button>
+                        <span ng-if="c.will_be_active_from || c.will_be_active_to && availablePoints >= c.costInPoints"
+                              class="card-footer" translate="customer_campaign.will_be_active_dates"
+                              translate-values="{from: (c.will_be_active_from | date:'yyyy-MM-dd HH:mm'), to: (c.will_be_active_to | date:'yyyy-MM-dd HH:mm')}"></span>
+                        <span class="card-footer">{{c.conditionsDescription}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns small-12 text-center">
+                    <table ng-table="CustomerCampaignCtrl.tableParams"
+                           template-pagination="templatePaginationCustomer.html">
+                        <tr ng-repeat="row in $data">
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns small-12 text-center" ng-if="!campaigns.total">
+                    <span class="no-rewards color-dark">{{ "customer_campaign.no_rewards" | translate }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-repeat="c in campaigns track by $index">
+    <modal size="'tiny'" show="c.showConfirmationModal"
+           restore-on-exit="c.used"
+           modal-title="'customer_campaign.used_confirmation'|translate">
+        <div class="text-center">
+            <p class="color-dark">{{"customer_campaign.used_confirmation_description"|translate}}</p>
+            <div class="btns">
+                <button type="button"
+                        ng-click="CustomerCampaignCtrl.buyCampaign(c.campaignId, $index)"
+                        class="button small button-septenary-colorized">{{"customer_global.confirm"|translate}}
+                </button>
+                <button type="button"
+                        ng-click="c.showConfirmationModal = false"
+                        class="button small button-septenary">{{"customer_global.no"|translate}}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </modal>
+</div>
+<modal modalId="showBoughtCoupon" show="showBoughtModal" size="'tiny'" min-width="'500px'">
+    <div class="customer-card reward">
+        <h2 class="congratulations">{{"customer_campaign.reward_congratulations"|translate}}</h2>
+        <h2 class="reward-ready">{{"customer_campaign.reward_ready"|translate}}</h2>
+        <h2 class="name">{{boughtCampaign.name || "customer_campaign.no_name" |translate}}</h2>
+        <p class="desc">{{boughtCampaign.shortDescription || "customer_campaign.no_desc" |translate}}</p>
+        <span class="reward-code">{{"customer_campaign.reward_code"|translate}}</span>
+        <div class="reward-code">
+            <span>{{ boughtCoupon.code }}</span>
+        </div>
+        <span class="card-footer" style="padding:0 15%">{{ boughtCampaign.usageInstruction }}</span>
+    </div>
+</modal>
+<modal modalId="showRewardClosedModal"
+       show="CustomerCampaignCtrl.showRewardClosedModal"
+       size="'tiny'"
+       modal-title="'customer_campaign.reward_not_available'|translate">
+    <div class="text-center">
+        <div class="alert callout">
+            <p class="ng-binding">{{"customer_campaign.reward_ended"|translate}}</p>
+        </div>
+        <div class="btns">
+            <button type="button"
+                    ng-click="CustomerCampaignCtrl.showRewardClosedModal = false"
+                    class="button small button-septenary-colorized">{{"customer_global.ok"|translate}}
+            </button>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</modal>

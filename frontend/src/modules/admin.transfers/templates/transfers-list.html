@@ -1,0 +1,146 @@
+<box-loader loading="TransferCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="TransferCtrl.getData()">
+    <h1>{{ "transfer.heading" | translate }}</h1>
+    <div class="action-buttons">
+        <button class="medium button button-septenary-colorized" ng-click="TransferCtrl.openTransferModal()">
+            {{ "transfer.add_transfer" | translate }}
+        </button>
+        <!--<button class="medium button button-septenary-colorized" ng-click="TransferCtrl.openSpendPointsModal()">-->
+        <!--{{ "transfer.spend_points" | translate }}-->
+        <!--</button>-->
+    </div>
+</div>
+<div style="clear:both;"></div>
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "transfer.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="TransferCtrl.loaderStates.transferList"></box-loader>
+        <table ng-table="TransferCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'transfer.name'|translate" sortable="'customerFirstName'"
+                    filter="{customerFirstName: 'text'}">
+                    <span ng-bind="row.customerFirstName"></span>
+                </td>
+                <td data-title="'transfer.surname'|translate" sortable="'customerLastName'"
+                    filter="{customerLastName: 'text'}">
+                    <span ng-bind="row.customerLastName"></span>
+                </td>
+                <td data-title="'transfer.phone'|translate" sortable="'customerPhone'" filter="{customerPhone: 'text'}">
+                    <span ng-bind="row.customerPhone || 'not set'"></span>
+                </td>
+                <td data-title="'transfer.email'|translate" sortable="'customerEmail'" filter="{customerEmail: 'text'}">
+                    <span ng-bind="row.customerEmail"></span>
+                </td>
+                <td data-title="'transfer.state'|translate" sortable="'state'">
+                    <span ng-bind="row.state"></span>
+                </td>
+                <td data-title="'transfer.type'|translate" sortable="'type'">
+                    <span ng-bind="row.type"></span>
+                </td>
+                <td data-title="'transfer.value'|translate">
+                    <span ng-bind="row.value"></span>
+                </td>
+                <td data-title="'transfer.created_at'|translate" sortable="'createdAt'">
+                    <span ng-bind="row.createdAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                </td>
+                <td data-title="'transfer.customer_loyalty_card_number'|translate"
+                    sortable="'customerLoyaltyCardNumber'">
+                    <span ng-bind="row.customerLoyaltyCardNumber || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'transfer.pos_identifier'|translate" sortable="'posIdentifier'">
+                    <span ng-bind="row.posName || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'transfer.issuer.title'|translate" sortable="'issuer'">
+                    <span ng-bind="('transfer.issuer.'+row.issuer) | translate"></span>
+                </td>
+                <td data-title="'transfer.actions'|translate">
+                    <button type="button" ng-disabled="row.type=='spending' || row.state=='canceled'"
+                            class="button  button-septenary tiny" ng-click="transfers[$index].showRemoveModal=true">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div ng-repeat="s in transfers track by $index">
+    <modal size="'tiny'" show="s.showRemoveModal" modal-title="'transfer.delete_confirmation'|translate">
+        <div class="text-center">
+            <p class="color-dark">{{"transfer.delete_confirmation_description"|translate}}</p>
+            <div class="btns">
+                <button type="button" ng-click="TransferCtrl.cancelTransfer(s.pointsTransferId)"
+                        ng-disabled="TransferCtrl.loaderStates.cancelTransfer"
+                        class="button small button-septenary-colorized m-b-0 m-t-10">{{"global.confirm"|translate}}
+                </button>
+                <div class="spinner-loader-wrapper">
+                    <spinner-loader loading="TransferCtrl.loaderStates.cancelTransfer" class="inline"
+                                    delay="5"></spinner-loader>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </modal>
+</div>
+
+<modal modalId="showTransferModal" show="showTransferModal" modal-title="'transfer.transfer_points'|translate"
+       size="'tiny-small'" ng-init="TransferCtrl.getCustomers()">
+    <form novalidate ng-submit="TransferCtrl.transferPoints(newTransfer, transferType)">
+        <fieldset class="fieldset" style="margin-top:30px">
+            <div class="row">
+                <div class="columns medium-4">
+                    <label>{{ "transfer.transfer_type" | translate }} <span class="required">*</span></label>
+                </div>
+                <div class="columns medium-8" ng-init="transferType='spend'">
+                    <selectize ng-model="transferType" config="TransferCtrl.transferTypeConfig"
+                               options="TransferCtrl.transferType" required>
+                    </selectize>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns medium-4">
+                    <label>{{ "transfer.select_customer" | translate }} <span class="required">*</span></label>
+                    <spinner-loader loading="clientSearch"></spinner-loader>
+                </div>
+                <div class="columns medium-8" form-validation="validate.customer.errors">
+                    <selectize ng-model="newTransfer.customer" config="TransferCtrl.customerConfig"
+                               options="TransferCtrl.customers" required>
+                    </selectize>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns medium-4">
+                    <label>{{ "transfer.points_to_add" | translate }} <span class="required">*</span></label>
+                </div>
+                <div class="columns medium-8" form-validation="validate.points.errors">
+                    <input type="number" min="1" step="1" ng-model="newTransfer.points"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns medium-4">
+                    <label>{{ "transfer.comment" | translate }}</label>
+                </div>
+                <div class="columns medium-8" form-validation="validate.comment.errors">
+                    <input type="text" ng-model="newTransfer.comment"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns small-12 text-center">
+                    <button class="button button-septenary-colorized medium m-t-10 m-b-0" type="submit"
+                            ng-disabled="TransferCtrl.loaderStates.addTransfer">
+                        {{ "global.save" |translate }}
+                    </button>
+                    <div class="spinner-loader-wrapper">
+                        <spinner-loader loading="TransferCtrl.loaderStates.addTransfer" class="inline"
+                                        delay="5"></spinner-loader>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</modal>

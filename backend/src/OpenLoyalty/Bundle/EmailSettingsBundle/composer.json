@@ -1,0 +1,21 @@
+{
+  "name": "openloyalty/email-settings-bundle",
+  "type": "symfony-bundle",
+  "description": "Open Loyalty Email Settings Bundle",
+  "keywords": [],
+  "homepage": "",
+  "license": "",
+  "authors": [
+    {
+      "name": "Cezary Olejarczyk",
+      "email": "colejarczyk@divante.pl"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "openloyalty/email-bundle": "~1.0"
+  },
+  "autoload": {
+    "psr-4": { "OpenLoyalty\\Bundle\\EmailSettingsBundle\\": "" }
+  }
+}

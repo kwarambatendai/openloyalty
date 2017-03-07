@@ -1,0 +1,268 @@
+nav {
+  .top-bar-right {
+    ul.menu {
+      li span.drop {
+        padding: 14px;
+        cursor: pointer;
+      }
+      li:hover,li.is-active {
+        background-color: $lightgray;
+      }
+      li > a {
+        outline: none;
+        .fa {
+          margin-top: -3px;
+          padding-right: 7px;
+        }
+      }
+    }
+  }
+}
+
+.top-navigation {
+  &.admin {
+    .menu:not(.submenu) > li > a {
+      padding: 17px !important;
+    }
+    .top-bar {
+      padding: 0;
+      height: 55px;
+      background-color: $white;
+      margin-top: -1px;
+      border-bottom: 1px solid $gray;
+      ul {
+        background-color: $white;
+        li, a, span {
+          background-color: transparent;
+          color: $dark;
+        }
+      }
+      .top-bar-right {
+        .arrow-up {
+          display: none
+        }
+        .dropdown.menu {
+          display: table;
+          height: 54px;
+          .link-name {
+            font-weight: normal !important;
+            font-size: 13px !important;
+            display: inline-block;
+            vertical-align: middle;
+          }
+          li {
+            span.drop::after {
+              display: none !important;
+            }
+            .fi {
+              font-size: 25px !important;
+              display: inline-block;
+              vertical-align: middle;
+            }
+            .fi2 {
+              font-size: 20px !important;
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+          li.is-dropdown-submenu-parent.is-active {
+            .arrow-up {
+              z-index: 10;
+              display: block;
+              width: 0;
+              height: 0;
+              border-left: 12px solid transparent;
+              border-right: 12px solid transparent;
+              border-bottom: 12px solid white;
+              bottom: -11px;
+              left: calc(50% - 12px);
+              position: absolute;
+            }
+          }
+          ul.menu.submenu.is-dropdown-submenu {
+
+            -webkit-box-shadow: 0px -5px 14px -1px #e2e2e2;
+            -moz-box-shadow: 0px -5px 14px -1px #e2e2e2;
+            box-shadow: 0px -5px 14px -1px #e2e2e2;
+            margin-top: 10px;
+            min-width: 165px;
+            border-color: rgb(226, 226, 226);
+            li[role="menuitem"] > a {
+              font-weight: normal !important;
+              font-size: 13px;
+            }
+            li.b-t {
+              border-top: 1px solid rgb(226, 226, 226);
+            }
+          }
+          ul.menu.submenu.is-dropdown-submenu::after {
+            position: absolute;
+            top: 0px;
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+
+            border-bottom: 5px solid black;
+          }
+        }
+      }
+    }
+  }
+  &.client {
+    .top-logo {
+      .row {
+        max-width: 75rem !important;
+      }
+      .left-buttons {
+        position: relative;
+        .home-button {
+          position: absolute;
+          left: 0px;
+          top: 6px;
+          cursor: pointer;
+          border: 0;
+          color: $white;
+          transition: color 0.5s;
+          background: $dark;
+          padding: 3px 12px;
+          font-size: 9px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 1.3;
+          text-transform: uppercase;
+          .fi {
+            font-size: 30px;
+          }
+          &:hover {
+            color: darken($gray, 10%);
+            transition: color 0.5s;
+          }
+        }
+      }
+      .right-buttons {
+        position: relative;
+        .client-logout-button {
+          position: absolute;
+          right: 0px;
+          top: 6px;
+          border: 0;
+          color: $white;
+          transition: color 0.5s;
+          background: $dark;
+          padding: 3px 12px;
+          font-size: 9px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 1.3;
+          text-transform: uppercase;
+          cursor: pointer;
+          .fi {
+            font-size: 30px;
+          }
+          &:hover {
+            color: darken($gray, 10%);
+            transition: color 0.5s;
+          }
+        }
+      }
+      background-color: $customer-header-color;
+      min-height: 90px;
+      .logo {
+        display: block;
+        text-align: center;
+        padding: 0.675em 0;
+        .logo-part {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 36px;
+          line-height: 33px;
+        }
+        .logo-part-1 {
+          @extend .logo-part;
+          color: $senary;
+        }
+        .logo-part-2 {
+          @extend .logo-part;
+          color: $senary;
+        }
+        .copyrights {
+          font-size: 10px;
+        }
+      }
+    }
+    .top-bar {
+      padding: 0;
+      ul.menu {
+        width: 100%;
+        text-align: center;
+        background-color: darken($customer-header-color, 2%);
+        li {
+          display: inline-block;
+          a {
+            padding: 15px 25px;
+            display: block;
+            transition: background-color 0.5s, color 0.5s;
+            background-color: darken($customer-header-color, 2%);
+            .fi, .fi2 {
+              margin-right: 10px;
+              display: inline-block;
+              font-size: 20px;
+            }
+            &:hover, &.active {
+              color: $gray;
+              background-color: darken($customer-header-color, 10%);
+            }
+            &:focus {
+              color: $septenary;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.client.pos-client {
+    .top-logo .logo, .top-navigation.pos .top-logo .logo {
+      display: block;
+      text-align: center;
+      padding: 1.675em 0;
+    }
+    .top-logo, .top-navigation.pos .top-logo {
+      min-height: 130px;
+    }
+  }
+  &.pos {
+    background: $darkest;
+    margin-bottom: 15px;
+    @extend .client;
+    .top-logo {
+      background: transparent;
+      margin: 15px 0;
+      .logo-part-1 {
+        font-weight: bold;
+      }
+      span {
+        font-size: 28px !important;
+        text-transform: uppercase;
+        line-height: 1.2;
+        display: block;
+      }
+    }
+    .user-buttons {
+      button {
+        width: 70px;
+        margin-top: 15px;
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > span::after {
+  font-family: 'Flaticon';
+  border: 0 !important;
+  content: "\f177" !important;
+  top: 24px;
+  left: calc(100% - 10px);
+  font-size: $sidebar-chevron-size;
+}

@@ -1,0 +1,45 @@
+<box-loader loading="UsersCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="UserCtrl.getData()">
+    <h1>{{ "users.heading" | translate }}</h1>
+    <div class="action-buttons">
+        <button class="medium button button-septenary-colorized" ui-sref="admin.add-user">
+            {{ "users.add" | translate }}
+        </button>
+    </div>
+</div>
+<div style="clear:both;"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "users.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="UserCtrl.loaderStates.userList"></box-loader>
+        <table ng-table="UserCtrl.tableParams" class="default clients-list"
+               template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data" ng-class="!row.isActive ? 'strikeout': ''">
+                <td data-title="'users.name'|translate">
+                    <span ng-bind="row.firstName || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'users.surname'|translate" sortable="'lastName'">
+                    <span ng-bind="row.lastName || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'users.email'|translate">
+                    <span ng-bind="row.email || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'users.active' | translate">
+                    <span ng-bind="row.isActive ? ('global.yes' | translate) : ('global.no' | translate)"></span>
+                </td>
+                <td data-title="'users.external' | translate">
+                    <span ng-bind="row.external ? ('global.yes' | translate) : ('global.no' | translate)"></span>
+                </td>
+                <td data-title="'users.actions'|translate">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.edit-user({userId: row.id})">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

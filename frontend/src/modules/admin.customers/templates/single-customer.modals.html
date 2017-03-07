@@ -1,0 +1,291 @@
+<div ng-repeat="s in customerTransfers track by $index">
+    <modal size="'tiny'" show="s.showRemoveModal" modal-title="'transfer.delete_confirmation'|translate">
+        <div class="text-center">
+            <p class="color-dark">{{"transfer.delete_confirmation_description"|translate}}</p>
+            <div class="btns">
+                <button type="button" ng-click="CustomerCtrl.cancelTransfer(s.pointsTransferId)"
+                        class="button small button-septenary-colorized m-b-0 m-t-10"
+                        ng-disabled="CustomerCtrl.loaderStates.cancelTransfer">{{"global.confirm"|translate}}
+
+                </button>
+                <div class="spinner-loader-wrapper">
+                    <spinner-loader loading="CustomerCtrl.loaderStates.cancelTransfer" class="inline"
+                                    delay="5"></spinner-loader>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </modal>
+</div>
+<modal show='assignedLevel.showModal' modalId="{{assignedLevel.id}}" modal-title="'level.special_rewards'|translate"
+       size="tiny-small">
+    <table class="default">
+        <thead>
+
+        <tr>
+            <th>{{ "level.name"|translate }}</th>
+            <th>{{ "level.reward_code"|translate }}</th>
+            <th>{{ "level.reward_value"|translate }}</th>
+            <th>{{ "level.active"|translate }}</th>
+            <th>{{ "level.start_at"|translate }}</th>
+            <th>{{ "level.end_at"|translate }}</th>
+            <th>{{ "level.created_at"|translate }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="special in assignedLevel.specialRewards">
+            <td><span ng-bind="special.name"></span></td>
+            <td><span ng-bind="special.code"></span></td>
+            <td><span ng-bind="special.value"></span></td>
+            <td><span ng-bind="special.active"></span></td>
+            <td><span ng-bind="special.startAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+            <td><span ng-bind="special.endAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+            <td><span ng-bind="special.createdAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</modal>
+
+<modal show='CustomerCtrl.showAvailableLevelsModal' modalId="availableLevelsModal"
+       modal-title="'level.assign_level'|translate" size="'tiny'">
+    <form novalidate ng-submit="CustomerCtrl.assignLevel(newLevel)">
+        <fieldset class="fieldset">
+            <div class="row">
+                <div class="columns medium-4">
+                    <label>{{ "level.select_level"|translate }} <span class="required">*</span></label>
+                </div>
+                <div class="columns medium-8">
+                    <selectize
+                            ng-model="newLevel.id"
+                            ng-if="availableLevels.total"
+                            config="CustomerCtrl.levelsConfig"
+                            options="availableLevels"
+                    >
+                    </selectize>
+                    <div class="text-center" ng-if="!availableLevels.total">
+                        {{ "level.no_level"|translate }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns small-12 text-center">
+                    <button class="button button-septenary-colorized m-t-10 m-b-0" type="submit"
+                            ng-disabled="CustomerCtrl.loaderStates.assignLevel">
+                        {{"global.save"|translate }}
+                    </button>
+                    <div class="spinner-loader-wrapper">
+                        <spinner-loader loading="CustomerCtrl.loaderStates.assignLevel" class="inline"
+                                        delay="5"></spinner-loader>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</modal>
+
+<modal show='CustomerCtrl.showAvailablePosModal' modalId="availablePosModal"
+       modal-title="'level.assign_pos'|translate" size="'tiny'">
+    <form novalidate ng-submit="CustomerCtrl.assignPos(newPos)">
+        <fieldset class="fieldset">
+            <div class="row">
+                <div class="columns medium-4">
+                    <label>{{ "pos.select_pos"|translate }} <span class="required">*</span></label>
+                </div>
+                <div class="columns medium-8">
+                    <selectize
+                            ng-model="newPos.posId"
+                            ng-if="availablePos.total"
+                            config="CustomerCtrl.posConfig"
+                            options="CustomerCtrl.posList"
+                    >
+                    </selectize>
+                    <div class="text-center" ng-if="!availableLevels.total">
+                        {{ "pos.no_pos"|translate }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns small-12 text-center">
+                    <button class="button button-septenary-colorized m-t-10 m-b-0" type="submit"
+                            ng-disabled="CustomerCtrl.loaderStates.assignPos">
+                        {{ "global.save"|translate }}
+                    </button>
+                    <div class="spinner-loader-wrapper">
+                        <spinner-loader loading="CustomerCtrl.loaderStates.assignPos" class="inline"
+                                        delay="5"></spinner-loader>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</modal>
+
+<modal show="CustomerCtrl.showProfileDetails" modalId="profileDetails"
+       modal-title="'customer.profile_details'|translate"
+       size="'tiny'">
+    <table class="simple">
+        <tbody>
+        <tr>
+            <td><b>{{ "customer.name"|translate }}:</b></td>
+            <td><span ng-bind="customer.firstName"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.surname"|translate }}:</b></td>
+            <td><span ng-bind="customer.lastName"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.birth_date"|translate }}:</b></td>
+            <td><span ng-bind="customer.birthDate|date : 'yyyy-MM-dd'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.gender"|translate }}:</b></td>
+            <td><span ng-bind="customer.gender"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.created_at"|translate }}:</b></td>
+            <td><span ng-bind="customer.createdAt|date : 'yyyy-MM-dd HH:mm'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.city"|translate }}:</b></td>
+            <td><span ng-bind="customer.address.city || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.state"|translate }}:</b></td>
+            <td><span ng-bind="customer.address.province || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.street"|translate }}</b></td>
+            <td><span ng-bind="customer.address.street || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.building_name"|translate }}:</b></td>
+            <td><span ng-bind="customer.address.address1 || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.flat_name"|translate }}:</b></td>
+            <td><span ng-bind="customer.address.address2 || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.postal"|translate }}:</b></td>
+            <td><span ng-bind="customer.address.postal || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "customer.country"|translate }}:</b></td>
+            <td><span ng-bind="customer.address.country || '---'"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</modal>
+<modal ng-repeat="transaction in customerTransactions"
+       show='customerTransactions[$index].showModal'
+       modalId="{{transactions.transactionId}}"
+       modal-title="'transaction.details' | translate"
+>
+    <table class="default" ng-init="customer=transaction.customerData">
+        <tbody>
+        <tr>
+            <td><b>{{ "transaction.customer_name" | translate }}:</b></td>
+            <td><span ng-bind="customer.name"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.phone" | translate }}:</b></td>
+            <td><span ng-bind="customer.phone || 'not set'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.email" | translate }}:</b></td>
+            <td><span ng-bind="customer.email"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.loyaltyCardNumber" | translate }}:</b></td>
+            <td><span ng-bind="customer.loyaltyCardNumber"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.city" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.city"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.state" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.province"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.street" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.street"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.building_name" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.address1"></span></td>
+        </tr>
+        <tr ng-if="customer.address.address2">
+            <td><b>{{ "transaction.unit_name" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.address2"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.postal_code" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.postal"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.country" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.country"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.purchase_date" | translate }}:</b></td>
+            <td><span ng-bind="transaction.purchaseDate|date: 'yyyy-MM-dd HH:mm'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.transaction_id" | translate }}:</b></td>
+            <td><span ng-bind="transaction.transactionId"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.points_earned" | translate }}:</b></td>
+            <td><span ng-bind="transaction.pointsEarned"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.pos_name" | translate }}:</b></td>
+            <td><span ng-bind="transaction.posName"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.document_type" | translate }}:</b></td>
+            <td><span ng-bind="transaction.documentType"></span></td>
+        </tr>
+        </tbody>
+    </table>
+    <h5 class="text-left color-dark">{{ "transaction.item_details" | translate }}</h5>
+    <table class="default">
+        <thead>
+
+        <tr>
+            <th>{{ "transaction.name" | translate }}</th>
+            <th>{{ "transaction.quantity" | translate }}</th>
+            <th>{{ "transaction.sku" | translate }}</th>
+            <th>{{ "transaction.category" | translate }}</th>
+            <th>{{ "transaction.gross" | translate }}</th>
+            <th>{{ "transaction.labels" | translate }}</th>
+            <th>{{ "transaction.maker" | translate }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in transaction.items">
+            <td><span ng-bind="item.name"></span></td>
+            <td><span ng-bind="item.quantity"></span></td>
+            <td><span ng-bind="item.sku.code"></span></td>
+            <td><span ng-bind="item.category"></span></td>
+            <td>
+                <span ng-bind="item.grossValue"></span>
+                <span style="text-transform: uppercase" ng-bind="transaction.currency"></span>
+            </td>
+            <td><span class="label label-default"
+                      ng-repeat="label in item.labels">{{label.key}}:{{label.value}} </span></td>
+            <td><span ng-bind="item.maker"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.sum" | translate }}</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-transform: uppercase"><b>{{transaction.grossValue}}{{transaction.currency}}</b></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</modal>

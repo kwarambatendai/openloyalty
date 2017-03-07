@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        document.write('<base href="' + document.location.origin + document.location.pathname + '" />');
+    </script>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Open Loyalty</title>
+
+    <!--@todo: MOVE TO ASSETS-->
+    <link href='https://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&subset=latin-ext"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="./style/main.css" rel="stylesheet">
+
+    <!-- build:css assets.css -->
+    <link href="./node_modules/pickadate/lib/themes/classic.css" rel="stylesheet">
+    <link href="./node_modules/pickadate/lib/themes/classic.date.css" rel="stylesheet">
+    <link href="./node_modules/angular-flash-alert/dist/angular-flash.min.css" rel="stylesheet">
+    <link href="./node_modules/ui-select/dist/select.min.css">
+    <link href="./node_modules/selectize/dist/css/selectize.css">
+    <link href="./node_modules/jquery-datetimepicker/jquery.datetimepicker.css">
+    <link href="./node_modules/jsoneditor/dist/jsoneditor.min.css">
+    <!-- endbuild -->
+
+    <!-- build:js assets.js -->
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+    <script src="./node_modules/chart.js/dist/Chart.js"></script>
+    <script src="./node_modules/select2/dist/js/select2.full.min.js"></script>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/sortablejs/Sortable.min.js"></script>
+    <script src="./node_modules/microplugin/src/microplugin.js"></script>
+    <script src="./node_modules/sifter/sifter.min.js"></script>
+    <script src="./node_modules/angular-legacy-sortablejs/angular-legacy-sortable.js"></script>
+    <script src="./node_modules/angular-translate/dist/angular-translate.min.js"></script>
+    <script src="./node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="./node_modules/moment/moment.js"></script>
+    <script src="./node_modules/ng-table/dist/ng-table.js"></script>
+    <script src="./node_modules/angular-moment/angular-moment.js"></script>
+    <script src="./node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="./node_modules/restangular/dist/restangular.js"></script>
+    <script src="./node_modules/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="./node_modules/ui-select/dist/select.js"></script>
+    <script src="./node_modules/pickadate/lib/picker.js"></script>
+    <script src="./node_modules/pickadate/lib/picker.date.js"></script>
+    <script src="./node_modules/angular-flash-alert/dist/angular-flash.js"></script>
+    <script src="./node_modules/selectize/dist/js/selectize.js"></script>
+    <script src="./node_modules/angular-selectize2/dist/selectize.js"></script>
+    <script src="./node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="./node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
+    <script src="./node_modules/ng-jsoneditor/ng-jsoneditor.min.js"></script>
+
+
+    <!-- endbuild -->
+
+
+    <script src="build/config.js"></script>
+    <script src="build/client.campaign/module.js"></script>
+    <script src="build/client.dashboard/module.js"></script>
+    <script src="build/client.earning-rules/module.js"></script>
+    <script src="build/client.login/module.js"></script>
+    <script src="build/client.partials/module.js"></script>
+    <script src="build/client.profile/module.js"></script>
+    <script src="build/client.registration/module.js"></script>
+    <script src="build/client.transactions/module.js"></script>
+    <script src="build/client.transfers/module.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="OpenLoyalty" ng-controller="RootController as RootCtrl" ng-class="RootCtrl.getViewClass()" ng-cloak>
+
+<!--RootCtrl.loading-->
+<section class="loader" ng-class="{'show': RootCtrl.loading }">
+    <div class="loader-wrapper">
+        <div class="logo">
+            <div ng-bind-html="RootCtrl.logo"></div>
+        </div>
+
+        <div class="loader-icon">
+        </div>
+    </div>
+</section>
+
+<script type="text/ng-template" id="templatePagination.html">
+    <div class="row pagination">
+        <div class="columns medium-3 showing" ng-show="params.total()">
+            Showing <b>{{((params.page() - 1) * params.count()) + 1}}</b> up to <b>{{params.count() * params.page() >
+            params.total() ? params.total() : params.count() * params.page()}}</b> from <b>{{params.total()}}</b>
+            entries.
+        </div>
+        <div class="columns medium-6">
+
+            <div ng-include="'ng-table/pager.html'"></div>
+        </div>
+        <div class="columns medium-3"></div>
+        <div class="columns medium-3">
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="templatePaginationCustomer.html">
+    <div class="row pagination">
+        <div class="columns medium-12 text-center customer-pagination">
+            <div ng-include="'ng-table/pager.html'"></div>
+        </div>
+    </div>
+</script>
+
+<section class="">
+    <ng-include src="'./templates/top-nav.html'" ng-if="RootCtrl.loggedIn() && RootCtrl.isClientPanel()"></ng-include>
+
+    <div ui-view="extendTop"></div>
+    <div ui-view="main"></div>
+    <div ui-view></div>
+    <div ui-view="extendBottom"></div>
+
+    <ng-include src="'./templates/footer.html'" ng-if="RootCtrl.loggedIn() && RootCtrl.isClientPanel()"></ng-include>
+</section>
+
+<div class="flash-msg">
+    <flash-message
+            duration="5000"
+            show-close="true"
+    ></flash-message>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
+<script src="./scripts/main.js"></script>
+<div id="contentLoadedTest">{{ 'global.contentLoadedTest'|translate }}</div>
+</body>
+</html>

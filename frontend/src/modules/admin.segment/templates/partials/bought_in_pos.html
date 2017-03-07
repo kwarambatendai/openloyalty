@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="small-3 columns">
+        <label>{{ "segment.partials.choose_pos" | translate }} <span class="required">*</span></label>
+    </div>
+    <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].posIds.errors">
+        <ul class="pos-dnd pos-from" ng-sortable="posDndConfig">
+            <li class="item" ng-repeat="p in pos track by $index">
+                {{p.name}}
+            </li>
+        </ul>
+        <ul class="pos-dnd pos-to" ng-sortable="posDndConfig">
+            <li class="item"
+                ng-repeat="p in $parent.$parent.$parent.$parent.segmentModel.posIds track by $index">
+                {{p.name}}
+            </li>
+        </ul>
+        <span class="prompt">{{ "segment.pos_ids_prompt" | translate }} </span>
+    </div>
+</div>

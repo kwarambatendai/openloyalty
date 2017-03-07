@@ -1,0 +1,28 @@
+OpenLoyalty\Domain\Campaign\Campaign:
+  exlusion_policy: ALL
+  properties:
+    campaignId:
+      expose: true
+      inline: true
+    levels:
+      exclude: true
+    segments:
+      exclude: true
+    coupons:
+      exclude: true
+    limit:
+      access_type: public_method
+    limitPerUser:
+      access_type: public_method
+    campaignPhoto:
+      exclude: true
+  virtual_properties:
+    getFlatLevels:
+        serialized_name: levels
+        type: array
+    getFlatSegments:
+        serialized_name: segments
+        type: array
+    getFlatCoupons:
+        serialized_name: coupons
+        type: array

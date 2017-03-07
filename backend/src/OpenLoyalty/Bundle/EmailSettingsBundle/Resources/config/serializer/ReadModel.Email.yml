@@ -1,0 +1,20 @@
+OpenLoyalty\Domain\Email\ReadModel\Email:
+  exclusion_policy: all
+  properties:
+    emailId:
+      expose: true
+      inline: true
+    key:
+      expose: true
+    subject:
+      expose: true
+    content:
+      expose: true
+    senderName:
+      expose: true
+      serialized_name: sender_name
+    senderEmail:
+      expose: true
+      serialized_name: sender_email
+    updatedAt:
+      expose: true

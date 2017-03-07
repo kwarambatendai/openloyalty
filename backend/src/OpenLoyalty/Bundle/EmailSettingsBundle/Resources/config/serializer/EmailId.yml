@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Email\EmailId:
+  exclusion_policy: all
+  properties:
+    id:
+      expose: true
+      serialized_name: id

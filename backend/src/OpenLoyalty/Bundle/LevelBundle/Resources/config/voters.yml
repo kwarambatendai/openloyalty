@@ -1,0 +1,5 @@
+services:
+  oloy.level.voter.level:
+    class: OpenLoyalty\Bundle\LevelBundle\Security\Voter\LevelVoter
+    tags:
+      - { name: security.voter }

@@ -1,0 +1,3 @@
+oloy_segment:
+  resource: '@OpenLoyaltyUtilityBundle/Controller/UtilityController.php'
+  type: annotation

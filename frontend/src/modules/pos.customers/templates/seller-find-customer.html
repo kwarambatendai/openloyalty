@@ -1,0 +1,178 @@
+<div class="pos-section">
+
+    <h1>{{ "seller.dashboard.title.find_customer" | translate }}</h1>
+
+    <div class="row">
+        <div class="columns small-12">
+            <form novalidate ng-submit="SellerCustomerCtrl.find()">
+                <fieldset class="fieldset">
+                    <legend>{{ "seller.customer_search.heading" | translate }}</legend>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "seller.customer_search.loyalty_card_number"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.loyaltyCardNumber.errors">
+                            <input type="text" ng-model="search.loyaltyCardNumber"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "seller.customer_search.phone"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.phone.errors">
+                            <input type="text" ng-model="search.phone"/>
+                            <span class="prompt">{{ "seller.customer_search.phone_prompt"|translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "seller.customer_search.email"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.email.errors">
+                            <input type="text" ng-model="search.email"/>
+                            <span class="prompt">{{ "seller.customer_search.email_prompt"|translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "seller.customer_search.name"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.firstName.errors">
+                            <input type="text" ng-model="search.firstName"/>
+                            <input type="text" ng-model="search.lastName"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "seller.customer_search.city"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.city.errors">
+                            <input type="text" ng-model="search.city"/>
+                            <span class="prompt">{{ "seller.customer_search.city_prompt"|translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "seller.customer_search.postcode"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.postcode.errors">
+                            <input type="text" ng-model="search.postcode"/>
+                            <span class="prompt">{{ "seller.customer_search.postcode_prompt"|translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="columns small-12">
+                            <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                                {{ "seller.customer_search.find" | translate }}
+                            </button>
+                            <button class="button button-default float-left m-r-1" type="button"
+                                    ui-sref="seller.panel.dashboard">
+                                {{ "global.cancel" | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row" ng-if="customers" id="search_results">
+        <div class="client-list box">
+            <div class="box-title">
+                <h1 class="text-left">{{ "seller.customer_search.result" | translate }}</h1>
+            </div>
+            <div class="box-content">
+                <table class="default clients-list">
+                    <thead>
+                    <tr>
+                        <th><span ng-bind="'customer.name'|translate"></span></th>
+                        <th><span ng-bind="'customer.surname'|translate"></span></th>
+                        <th><span ng-bind="'customer.phone'|translate"></span></th>
+                        <th><span ng-bind="'customer.email'|translate"></span></th>
+                        <th><span ng-bind="'customer.gender'|translate"></span></th>
+                        <th><span ng-bind="'customer.birth_date'|translate"></span></th>
+                        <th><span ng-bind="'customer.created_at'|translate"></span></th>
+                        <th><span ng-bind="'customer.transactions_amount'|translate"></span></th>
+                        <th><span ng-bind="'customer.average_transaction_amount'|translate"></span></th>
+                        <th><span ng-bind="'customer.transactions_count'|translate"></span></th>
+                        <th><span ng-bind="'customer.days_from_last_transaction'|translate"></span></th>
+                        <th><span ng-bind="'customer.actions'|translate"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in customers" ng-class="!row.active ? 'strikeout': ''">
+                        <td>
+                            <span ng-bind="row.firstName"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="row.lastName"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="row.phone || 'not set'"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="row.email"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="row.gender"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="row.birthDate|date : 'yyyy-MM-dd'"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="row.createdAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="(row.transactionsAmount|number:2)+(row.currency|uppercase)"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="(row.averageTransactionAmount|number:2)+(row.currency|uppercase)"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="row.transactionsCount"></span>
+                        </td>
+                        <td>
+                            <span ng-bind=" row.lastTransactionDate ? (dateNow| amDifference : row.lastTransactionDate : 'days') : '---'"></span>
+                        </td>
+                        <td>
+                            <button type="button" class="button  button-secondary tiny"
+                                    ui-sref="seller.panel.edit-customer({customerId: row.id})"
+                                    style="margin-bottom:5px;">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+
+                            <button type="button" class="button  button-quinary tiny"
+                                    ui-sref="seller.panel.single-customer({customerId: row.id})" style="margin-bottom:5px;">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                            <button ng-if="row.active" type="button" class="button button-septenary tiny"  ng-click="customers[$index].showRemoveModal=true"
+                                    style="margin-bottom:5px;">
+                                <i class="fa fa-remove" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr ng-if="customers.length==0">
+                        <td colspan="12" class="text-center">
+                            {{"global.no_rows_to_display"|translate}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="s in customers track by $index">
+        <modal size="'tiny'" show="s.showRemoveModal" modal-title="'customer.delete_confirmation'|translate">
+            <div class="text-center">
+                <p class="color-dark">{{"customer.delete_confirmation_description"|translate}}</p>
+                <div class="btns">
+                    <button type="button" ng-click="SellerCustomerCtrl.deactivateCustomer(s.customerId)"
+                            class="button small button-septenary-colorized">{{"global.confirm"|translate}}
+                    </button>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </modal>
+    </div>
+</div>

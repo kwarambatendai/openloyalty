@@ -1,0 +1,16 @@
+OpenLoyalty\Domain\Audit\ReadModel\AuditLogDetails:
+  exclusion_policy: ALL
+  properties:
+    auditLogId:
+      expose: true
+      inline: true
+    eventType:
+      expose: true
+    createdAt:
+      expose: true
+    entityId:
+      expose: true
+    username:
+      expose: true
+    data:
+      expose: true

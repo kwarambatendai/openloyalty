@@ -1,0 +1,17 @@
+OpenLoyalty\Domain\Segment\Model\Criterion:
+  type: entity
+  table: ol__criterion
+  inheritanceType: "SINGLE_TABLE"
+  id:
+    criterionId:
+      type: criterion_id
+      column: criterion_id
+  manyToOne:
+    segmentPart:
+      targetEntity: OpenLoyalty\Domain\Segment\Model\SegmentPart
+      inversedBy: criteria
+      orphanRemoval: true
+      joinColumn:
+        name: segment_part_id
+        onDelete: "SET NULL"
+        referencedColumnName: segment_part_id

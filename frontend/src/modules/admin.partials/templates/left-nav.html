@@ -1,0 +1,102 @@
+<section class="sidebar-left">
+    <div class="row">
+        <div class="logo">
+            <div ng-bind-html="RootCtrl.logo"></div>
+        </div>
+        <ul class="vertical menu" data-accordion-menu>
+            <li>
+                <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>{{ "nav.home" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin">{{ "nav.dashboard" | translate }}</a></li>
+                    <!--<li><a ui-sref="#">{{ "nav.retention_matrix" | translate }}</a></li>-->
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-users" aria-hidden="true"></i>{{ "nav.customers" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.customers-list">{{ "nav.all_customers" | translate }}</a></li>
+                    <li><a ui-sref="admin.add-customer">{{ "nav.add_customer" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-trophy" aria-hidden="true"></i>{{ "nav.levels" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.levels-list">{{ "nav.all_levels" | translate }}</a></li>
+                    <li><a ui-sref="admin.add-level">{{ "nav.add_level" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i>{{ "nav.transfers" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.transfers-list">{{ "nav.all_transfers" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>{{ "nav.transactions" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.transaction-list">{{ "nav.all_transactions" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-heart" aria-hidden="true"></i>{{ "nav.earning_rules" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.earning-rule-list">{{ "nav.all_earning_rules" | translate }}</a></li>
+                    <li><a ui-sref="admin.add-earning-rule">{{ "nav.add_earning_rule" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-building" aria-hidden="true"></i>{{ "nav.pos" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.pos-list">{{ "nav.all_pos" | translate }}</a></li>
+                    <li><a ui-sref="admin.add-pos">{{ "nav.add_pos" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-address-card" aria-hidden="true"></i>{{ "nav.sellers" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.seller-list">{{ "nav.all_sellers" | translate }}</a></li>
+                    <li><a ui-sref="admin.add-seller">{{ "nav.add_seller" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-tags" aria-hidden="true"></i>{{ "nav.segments" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.segment-list">{{ "nav.all_segments" | translate }}</a></li>
+                    <li><a ui-sref="admin.add-segment">{{ "nav.add_segment" | translate }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i>{{ "nav.campaigns" | translate }}</a>
+                <ul class="menu vertical nested">
+                    <li><a ui-sref="admin.campaign-list">{{ "nav.all_campaigns" | translate }}</a></li>
+                    <li><a ui-sref="admin.add-campaign">{{ "nav.add_campaign" | translate }}</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!--<div class="menu-category">{{ "nav.support" | translate }}</div>-->
+        <!--<ul class="vertical menu" data-accordion-menu>-->
+            <!--<li>-->
+                <!--<a ui-sref="admin.static({pageName: 'guide'})"><i class="fa fa-map" aria-hidden="true"></i>{{ "nav.guide" | translate }}</a>-->
+            <!--</li>-->
+            <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="#"><i class="fa fa-cubes" aria-hidden="true"></i>Loyalty campaigns</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<ul class="menu vertical nested">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="#">Points transfers</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="#">Rewards</a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Program settings</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<ul class="menu vertical nested">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="#">Earning rules</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="#">Spending rules</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="#">POS listing</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="#">Salespeople</a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="#"><i class="fa fa-list" aria-hidden="true"></i>Reports</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--</ul>-->
+    </div>
+</section>

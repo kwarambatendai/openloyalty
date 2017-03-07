@@ -1,0 +1,119 @@
+<div class="client-section" ng-init="CustomerTransactionCtrl.getData()">
+    <div class="row">
+        <div class="columns small-12">
+            <header class="ol-main-header">
+                <h1>{{ 'customer_transaction.heading' | translate }}</h1>
+            </header>
+            <div class="box no-margin">
+                <div class="box-title">
+                    <h1>{{ "customer_transaction.list" |translate }}</h1>
+                </div>
+
+                <div class="box-content">
+                    <table ng-table="CustomerTransactionCtrl.tableParams" class="default"
+                           template-pagination="templatePagination.html">
+                        <tr ng-repeat="row in $data">
+                            <td data-title="'customer_transaction.document_number'|translate" sortable="'documentNumber'">
+                                <span ng-bind="row.documentNumber"></span>
+                            </td>
+                            <td data-title="'customer_transaction.document_type'|translate" sortable="'documentType'">
+                                <span>{{'customer_transaction.document_types.'+row.documentType|translate}}</span>
+                            </td>
+                            <td data-title="'customer_transaction.amount'|translate">
+                                <span style="text-transform: uppercase" ng-bind="row.grossValue+row.currency"></span>
+                            </td>
+                            <td data-title="'customer_transaction.purchase_date'|translate" sortable="'purchaseDate'">
+                                <span ng-bind="row.purchaseDate|date: 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                            <td data-title="'customer_transaction.purchase_place'|translate">
+                                <span ng-bind="row.posName"></span>
+                            </td>
+                            <td data-title="'customer_transaction.points_earned'|translate">
+                                <span ng-bind="row.pointsEarned"></span>
+                            </td>
+                            <td data-title="'customer_transaction.actions'|translate">
+                                <button type="button" class="button  button-quinary tiny" style="margin-bottom:5px;"
+                                        ng-click="transactions[$index].showModal=true">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-if="!$data.length">
+                            <td colspan="8" class="text-center">
+                                {{ "customer_transaction.empty_transactions" | translate }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <modal ng-repeat="transaction in transactions"
+                   show='transactions[$index].showModal'
+                   modalId="{{transactions.transactionId}}"
+                   modal-title="'customer_transaction.details' | translate"
+            >
+                <table class="default" ng-init="customer=transaction.customerData">
+                    <tbody>
+                    <tr>
+                        <td><b>{{ "customer_transaction.customer_name" | translate }}:</b></td>
+                        <td><span ng-bind="customer.name"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ "customer_transaction.phone" | translate }}:</b></td>
+                        <td><span ng-bind="customer.phone || 'not set'"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>{{ "customer_transaction.email" | translate }}:</b></td>
+                        <td><span ng-bind="customer.email"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ "customer_transaction.loyaltyCardNumber" | translate }}:</b></td>
+                        <td><span ng-bind="customer.loyaltyCardNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ "customer_transaction.purchase_date" | translate }}:</b></td>
+                        <td><span ng-bind="transaction.purchaseDate|date: 'yyyy-MM-dd HH:mm'"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ "customer_transaction.points_earned" | translate }}:</b></td>
+                        <td><span ng-bind="transaction.pointsEarned"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4 class="text-center">{{ "customer_transaction.item_details" | translate }}</h4>
+                <table class="default">
+                    <thead>
+
+                    <tr>
+                        <th>{{ "customer_transaction.name" | translate }}</th>
+                        <th>{{ "customer_transaction.quantity" | translate }}</th>
+                        <th>{{ "customer_transaction.sku" | translate }}</th>
+                        <th>{{ "customer_transaction.category" | translate }}</th>
+                        <th>{{ "customer_transaction.gross" | translate }}</th>
+                        <th>{{ "customer_transaction.maker" | translate }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in transaction.items">
+                        <td><span ng-bind="item.name"></span></td>
+                        <td><span ng-bind="item.quantity"></span></td>
+                        <td><span ng-bind="item.sku.code"></span></td>
+                        <td><span ng-bind="item.category"></span></td>
+                        <td style="text-transform: uppercase"><span ng-bind="item.grossValue+transaction.currency"></span></td>
+                        <td><span ng-bind="item.maker"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ "customer_transaction.sum" | translate }}</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-transform: uppercase"><b>{{transaction.grossValue}}{{transaction.currency}}</b></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </modal>
+        </div>
+    </div>
+</div>

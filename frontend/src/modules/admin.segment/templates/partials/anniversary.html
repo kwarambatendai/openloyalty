@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="small-3 columns">
+        <label>{{ "segment.partials.type" | translate }} <span class="required">*</span></label>
+    </div>
+    <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].anniversaryType.errors">
+        <selectize ng-model="$parent.$parent.$parent.$parent.segmentModel.anniversaryType"
+                   config="anniversaryTypeSelect"
+                   options="anniversaryType">
+        </selectize>
+        <span class="prompt">{{ "segment.anniversary_type_prompt" | translate }} </span>
+    </div>
+</div>
+<div class="row">
+    <div class="small-3 columns">
+        <label>{{ "segment.partials.days" | translate }}<span class="required">*</span></label>
+    </div>
+    <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].days.errors">
+        <input type="number"
+               ng-model="$parent.$parent.$parent.$parent.segmentModel.days"
+               required>
+        <span class="prompt">{{ "segment.anniversary_type_days_prompt" | translate }} </span>
+    </div>
+</div>

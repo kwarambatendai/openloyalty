@@ -1,0 +1,101 @@
+<box-loader loading="SellerCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="SellerCtrl.getSellerData()">
+    <h1>{{ "seller.edit_heading" | translate }}</h1>
+</div>
+
+<div style="clear:both;"></div>
+<form novalidate ng-submit="SellerCtrl.editSeller(editableFields)">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "seller.details" | translate }}</legend>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "seller.name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.firstName.errors">
+                            <input type="text" ng-model="editableFields.firstName" required>
+                            <span class="prompt">{{ "seller.first_name_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "seller.surname" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.lastName.errors">
+                            <input type="text" ng-model="editableFields.lastName" required>
+                            <span class="prompt">{{ "seller.last_name_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "seller.active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.active.errors">
+                            <selectize config="SellerCtrl.activeConfig" options="SellerCtrl.active"
+                                       ng-model="editableFields.active"></selectize>
+                            <span class="prompt">{{ "seller.active_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "seller.email" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.email.errors">
+                            <input type="email" ng-model="editableFields.email" required>
+                            <span class="prompt">{{ "seller.email_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "seller.phone" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.phone.errors">
+                            <input type="text" ng-model="editableFields.phone">
+                            <span class="prompt">{{ "seller.phone_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "seller.password" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.plainPassword.errors">
+                            <div ng-show="!showChange">
+                                <span class="regular-text">*****</span> <a class="link" ng-click="showChange=true">({{'seller.change_passowrd'|translate}})</a>
+                            </div>
+                            <input type="text" ng-show="showChange" ng-model="editableFields.plainPassword">
+                            <span class="prompt">{{ "seller.pass_prompt_change" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "seller.pos" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.posId.errors">
+                            <selectize config="SellerCtrl.posConfig"
+                                       options="SellerCtrl.pos"
+                                       ng-model="editableFields.posId">
+                            </selectize>
+                            <span class="prompt">{{ "seller.pos_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                    {{ "global.save" | translate }}
+                </button>
+                <button type="button" ui-sref="admin.seller-list" class="button button-default float-left" href="#">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

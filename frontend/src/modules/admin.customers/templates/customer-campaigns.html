@@ -1,0 +1,47 @@
+<box-loader loading="CustomerCtrl.loaderStates.campaignsList" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="CustomerCtrl.getCampaignsData()">
+    <h1>{{ "customer.campaigns_heading" | translate }}</h1>
+</div>
+<div style="clear:both;"></div>
+<div class="client-list box">
+
+    <div class="box-title">
+        <h1 class="text-left">{{ "customer.campaigns_list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="CustomerCtrl.loaderStates.campaignsList"></box-loader>
+        <table ng-table="CustomerCtrl.availableCampaignsTableParams" class="default"
+               template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'campaign.name'|translate" sortable="'name'">
+                    <span ng-bind="row.name"></span>
+                </td>
+                <td data-title="'campaign.active'|translate" sortable="'active'">
+                    <span ng-bind="row.active"></span>
+                </td>
+                <td data-title="'campaign.cost_in_points'|translate" sortable="'costInPoints'">
+                    <span ng-bind="row.costInPoints"></span>
+                </td>
+                <td data-title="'campaign.limit'|translate" sortable="'limit'">
+                    <span ng-bind="row.limit"></span>
+                </td>
+                <td data-title="'campaign.active_from'|translate">
+                        <span ng-bind="row.campaignActivity.activeFrom|date : 'yyyy-MM-dd HH:mm'"
+                              ng-hide="campaign.campaignActivity.allTimeActive"></span>
+                </td>
+                <td data-title="'campaign.active_to'|translate">
+                        <span ng-bind="row.campaignActivity.activeTo|date : 'yyyy-MM-dd HH:mm'"
+                              ng-hide="campaign.campaignActivity.allTimeActive"></span>
+                </td>
+                <td data-title="'campaign.actions'|translate">
+                    <button type="button" class="button  button-quinary tiny"
+                            ui-sref="admin.single-campaign({campaignId: row.campaignId})"
+                            style="margin-bottom:5px;">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

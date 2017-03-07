@@ -1,0 +1,7 @@
+services:
+  oloy.campaign.voters.campaign:
+    class: OpenLoyalty\Bundle\CampaignBundle\Security\Voter\CampaignVoter
+    arguments:
+      - '@oloy.campaign.campaign_provider'
+    tags:
+      - { name: security.voter }

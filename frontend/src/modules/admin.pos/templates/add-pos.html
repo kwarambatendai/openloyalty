@@ -1,0 +1,148 @@
+<box-loader loading="false" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading">
+    <h1>{{ "pos.add_heading" | translate }}</h1>
+</div>
+
+<div style="clear:both;"></div>
+<form novalidate ng-submit="PosCtrl.addPos(newPos)">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "pos.basic_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.name.errors">
+                            <input type="text" ng-model="newPos.name" required>
+                            <span class="prompt">{{ "pos.name_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.description" | translate }} </label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.description.errors">
+                            <textarea ng-model="newPos.description"></textarea>
+                            <span class="prompt">{{ "pos.description_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.identifier" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.identifier.errors">
+                            <input type="text" ng-model="newPos.identifier"/>
+                            <span class="prompt">{{ "pos.identifier_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "pos.localization" | translate }}</legend>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.street_name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.street.errors">
+                            <input type="text" ng-model="newPos.location.street" required>
+                            <span class="prompt">{{ "pos.street_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.building_name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.address1.errors">
+                            <input type="text" ng-model="newPos.location.address1" required>
+                            <span class="prompt">{{ "pos.address1_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.unit_name" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.address2.errors">
+                            <input type="text" ng-model="newPos.location.address2">
+                            <span class="prompt">{{ "pos.address2_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.postal_code" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.postal.errors">
+                            <input type="text" ng-model="newPos.location.postal" required>
+                            <span class="prompt">{{ "pos.postal_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.city" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.city.errors">
+                            <input type="text" ng-model="newPos.location.city" required>
+                            <span class="prompt">{{ "pos.city_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.state" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.province.errors">
+                            <input type="text" ng-model="newPos.location.province" required>
+                            <span class="prompt">{{ "pos.province_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.country" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.country.errors">
+                            <selectize ng-model="newPos.location.country"
+                                       options="PosCtrl.countries"
+                                       config="PosCtrl.countryConfig"
+                                       required
+                            ></selectize>
+                            <span class="prompt">{{ "pos.country_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.lat" | translate }} </label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.lat.errors">
+                            <input type="text" ng-model="newPos.location.lat">
+                            <span class="prompt">{{ "pos.lat_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "pos.long" | translate }} </label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.location.long.errors">
+                            <input type="text" ng-model="newPos.location.long">
+                            <span class="prompt">{{ "pos.long_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" ng-init="PosCtrl.loaderStates.posDetails=false">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                    {{ "global.save" | translate }}
+                </button>
+                <button type="button" ui-sref="admin.pos-list" class="button button-default float-left" href="#">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

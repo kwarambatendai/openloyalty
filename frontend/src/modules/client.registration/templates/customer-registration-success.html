@@ -1,0 +1,25 @@
+<section class="login admin text-center">
+    <form class="login-form" novalidate>
+        <div class="row">
+            <div class="small-12 small-centered columns">
+                <div class="logo text-center">
+                    <div ng-bind-html="RootCtrl.logo"></div>
+                </div>
+                <div class="inline-wrapper">
+                    <div class="form-box text-left" style="margin-bottom:15px">
+                        <h1 class="text-left">{{"customer_security.register_success_heading"|translate}}</h1>
+                        <p class="text-center" style="color:#40A967">
+                            {{'customer_security.registration_success_info'|translate}}
+                        </p>
+                        <div class="forgot text-center">
+                            <a href="#" ui-sref="customer-login">{{ "customer_security.back_to_login"|translate }}</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center">
+                    <small class="whisper">{{ "customer_security.login.copyrights" | translate }}</small>
+                </p>
+            </div>
+        </div>
+    </form>
+</section>

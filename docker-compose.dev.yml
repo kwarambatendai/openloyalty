@@ -1,0 +1,40 @@
+backend:
+  container_name: open_loyalty_backend
+  build: ./backend
+  links:
+    - elk
+    - db
+    - mail
+  volumes:
+    - ./backend:/var/www/ol/backend
+  ports:
+    - "8181:80"
+  extra_hosts:
+    - "web:127.0.0.1"
+frontend:
+  container_name: open_loyalty_frontend
+  build: ./frontend
+  volumes:
+    - ./frontend:/var/www
+  ports:
+    - "8182:3000"
+    - "8183:3001"
+    - "8184:3002"
+elk:
+  container_name: open_loyalty_elk
+  image: elasticsearch:2.2
+  ports:
+   - "9200:9200"
+db:
+  container_name: open_loyalty_postgresql
+  image: postgres
+  ports:
+    - "6543:5432"
+  environment:
+    - POSTGRES_DB=openloyalty
+    - POSTGRES_USER=openloyalty
+    - POSTGRES_PASSWORD=openloyalty
+mail:
+  image: mailhog/mailhog
+  ports:
+    - "8186:8025"

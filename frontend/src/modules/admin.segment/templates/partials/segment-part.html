@@ -1,0 +1,30 @@
+<div>
+    <div class="segment-or" ng-show="segmentIndex!=0">
+        <span class="text">{{ "global.or" | translate }}</span>
+    </div>
+    <div class="collection">
+        <button type="button" class="remove-collection"
+                ng-click="removeCriterion(segmentIndex, parentIndex)">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+        <div class="row">
+            <div class="small-3 columns">
+                <label>{{ "segment.partials.type" | translate }} <span class="required">*</span></label>
+            </div>
+            <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].type.errors">
+                <selectize
+                        ng-model="segmentModel.type"
+                        config="segmentTypeSelect"
+                        options="types">
+                </selectize>
+                <span class="prompt">{{ "segment.type_prompt" | translate }} </span>
+            </div>
+        </div>
+        <segment-criterion
+                criterion-type="segmentModel.type"
+                segment-index="segmentIndex"
+                parent-index="parentIndex"
+                validate="validate"
+        ></segment-criterion>
+    </div>
+</div>

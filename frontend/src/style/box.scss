@@ -1,0 +1,96 @@
+.customer-tabs {
+  .tabs-title {
+    text-decoration: none !important;
+    &.is-active {
+      a {
+        color: $client-base-dark;
+        text-decoration: none !important;
+      }
+    }
+  }
+}
+
+.box {
+  .box-content {
+    overflow-x: scroll;
+    &::-webkit-scrollbar-track {
+      background-color: $white;
+    }
+
+    &::-webkit-scrollbar {
+      height: 6px;
+      background-color: $dark;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darken($gray, 20%);
+    }
+    .empty-content {
+      font-size: 13px;
+      color: $gray-font;
+      font-weight:normal;
+    }
+  }
+  padding: 0 10px;
+  margin: 15px 15px 0 15px;
+  background-color: $white;
+  border: 1px solid $gray;
+  &.no-margin {
+    margin: 15px 0 0;
+  }
+  .box-title {
+    margin: 0 -10px 15px -10px;
+    border-bottom: 1px solid $gray;
+    overflow: hidden;
+    position: relative;
+    .fa {
+      padding-right: 10px;
+    }
+    h1 {
+      font-size: $box-title-size;
+      font-weight: bold;
+      padding: 10px;
+      margin-bottom: 0;
+      color: $box-title-color;
+      background-color: $box-title-bg;
+    }
+    .action-buttons {
+      margin-right: 15px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  .box-footer {
+    clear: both;
+    margin: 0 -15px 0 -15px;
+    padding: 15px 15px 0 15px;
+    border-top: 1px solid darken($senary, 5%);
+    &.gray {
+      background-color: $box-footer-bg;
+      font-size: 13px;
+      color: $darkest;
+      padding: 15px;
+      margin: 0 -10px;
+      a {
+        text-decoration: underline;
+        color: $darkest;
+        &:hover {
+          color: $septenary;
+        }
+      }
+    }
+  }
+  .is-dropdown-submenu {
+    border: 1px solid $senary;
+    border-radius: 3px;
+    top: 110% !important;
+    box-shadow: 1px 1px 1px darken($senary, 5%);
+    a {
+      font-size: 0.8rem;
+      &:hover {
+        background-color: $quaternary;
+      }
+    }
+  }
+}

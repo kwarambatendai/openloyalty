@@ -1,0 +1,555 @@
+<section class=" customer-profile pos-section" ng-init="SellerCustomerCtrl.getCustomerData()">
+
+    <h1>{{ customer.firstName + ' ' + customer.lastName }}</h1>
+
+    <div class="row">
+        <div class="columns small-12 medium-12 large-3">
+            <div class="box no-margin">
+                <div class="box-content text-center p-t-10">
+                    <img src="./img/avatar.jpg"
+                         class="user-avatar"/>
+                    <p class="customer-name">
+                        {{ customer.firstName + ' ' + customer.lastName }}
+                    </p>
+                    <p ng-if="customer.levelId" class="font-small">
+                        <span class="color-gray">{{"customer.current_level"|translate}} - </span>
+                        <b>{{ assignedLevel.name }}</b>
+                    </p>
+                    <p ng-if="customer.loyaltyCardNumber" class="font-small">
+                        <span class="color-gray">{{ "customer.lc_number" | translate }} - </span>
+                        <b>{{ customer.loyaltyCardNumber }}</b>
+                    </p>
+                    <p class="color-gray font-small">
+                        {{customer.email}} <br/> {{customer.phone}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="box no-margin">
+                <div class="box-title">
+                    <h1>{{ "customer.profile_details"|translate }}
+                        <div class="action-buttons float-right">
+                            <button class="tiny button button-primary"
+                                    style="margin-top: 8px;"
+                                    ui-sref="seller.panel.edit-customer({customerId: customer.id})">
+                                <i class="fa fa-pencil" style="padding:0!important"></i>
+                            </button>
+                        </div>
+                    </h1>
+                </div>
+                <div class="box-content">
+                    <table class="simple">
+                        <tbody>
+                        <tr>
+                            <td><b>{{ "customer.name"|translate }}:</b></td>
+                            <td><span ng-bind="customer.firstName"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "customer.surname"|translate }}:</b></td>
+                            <td><span ng-bind="customer.lastName"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "customer.birth_date"|translate }}:</b></td>
+                            <td><span ng-bind="customer.birthDate|date : 'yyyy-MM-dd'"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "customer.gender"|translate }}:</b></td>
+                            <td><span ng-bind="customer.gender"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "customer.created_at"|translate }}:</b></td>
+                            <td><span ng-bind="customer.createdAt|date : 'yyyy-MM-dd HH:mm'"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "customer.country"|translate }}:</b></td>
+                            <td><span ng-bind="customer.address.country"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="box-footer gray">
+                    <a ng-click="SellerCustomerCtrl.showProfileDetails=true">{{"customer.all_profile_details"|translate}}</a>
+                </div>
+            </div>
+
+            <div class="box no-margin">
+                <div class="box-title">
+                    <h1>
+                        {{ "customer.agreements"|translate }}
+                    </h1>
+                </div>
+                <div class="box-content">
+                    <table class="simple">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <checkbox disabled="disabled" ng-model="customer.agreement1"></checkbox>
+                            </td>
+                            <td><span>{{ "customer.agreement1"|translate }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <checkbox disabled="disabled" ng-model="customer.agreement2"></checkbox>
+                            </td>
+                            <td><span>{{ "customer.agreement3"|translate }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <checkbox type="checkbox" disabled="disabled" ng-model="customer.agreement3"></checkbox>
+                            </td>
+                            <td><span>{{ "customer.agreement3"|translate }}</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="box no-margin" ng-if="customer.segments.length">
+                <div class="box-title">
+                    <h1>
+                        {{ "customer.segments"|translate }}
+                    </h1>
+                </div>
+                <div class="box-content" style="padding-bottom:20px;">
+                    <label ng-repeat="s in customer.segments track by $index" class="label label-default">
+                        {{ s.segmentName }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="box no-margin">
+                <div class="box-title">
+                    <h1>{{ "customer.assigned_level"|translate }}
+                        <div class="action-buttons float-right">
+                            <button class="tiny button button-septenary"
+                                    style="margin-top: 8px;"
+                                    ng-click="SellerCustomerCtrl.showAvailableLevelsModal=true">
+                                <i class="fa fa-pencil" style="padding:0!important"></i>
+                            </button>
+                        </div>
+                    </h1>
+                </div>
+                <div class="box-content">
+                    <div ng-if="!customer.levelId" class="text-center" style="margin-bottom:15px;">
+                        {{ "customer.no_level"|translate }}
+                    </div>
+                    <table class="simple" ng-if="customer.levelId">
+                        <tbody>
+                        <tr>
+                            <td><b>{{ "level.name"|translate }}:</b></td>
+                            <td><span ng-bind="assignedLevel.name"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "level.condition_value"|translate }}:</b></td>
+                            <td><span ng-bind="assignedLevel.conditionValue"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "level.reward_code"|translate }}:</b></td>
+                            <td><span ng-bind="assignedLevel.reward.code"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "level.reward_value"|translate }}:</b></td>
+                            <td><span ng-bind="assignedLevel.reward.value|percent"></span><span>%</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "level.special_rewards"|translate }}:</b></td>
+                            <td>
+                                <a class="tiny button button-septenary-colorized" style="margin-bottom:3px"
+                                   ng-if="assignedLevel.specialRewards.length"
+                                   ng-click="assignedLevel.showModal=true">
+                                    {{ "global.show"|translate }}
+                                </a>
+                                <span ng-if="!assignedLevel.specialRewards.length">
+                                    {{ "global.not_set"|translate }}
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="box no-margin">
+                <div class="box-title">
+                    <h1>{{ "customer.assigned_pos"|translate }}
+                        <div class="action-buttons float-right">
+                            <button class="tiny button button-primary"
+                                    style="margin-top: 8px;"
+                                    ng-click="SellerCustomerCtrl.showAvailablePosModal=true">
+                                <i class="fa fa-pencil" style="padding:0!important"></i>
+                            </button>
+                        </div>
+                    </h1>
+                </div>
+                <div class="box-content">
+                    <div ng-if="!customer.posId" class="text-center" style="margin-bottom:15px;">
+                        {{ "customer.no_pos"|translate }}
+                    </div>
+                    <table class="simple" ng-if="customer.posId">
+                        <tbody>
+                        <tr>
+                            <td><b>{{ "pos.name"|translate }}:</b></td>
+                            <td><span ng-bind="assignedPos.name"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "pos.description"|translate }}:</b></td>
+                            <td><span ng-bind="assignedPos.description"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="columns small-12 medium-12 large-9">
+            <div class="row">
+                <div class="columns small-12 medium-6" ng-if="status">
+                    <div class="box no-margin">
+                        <div class="box-title">
+                            <h1>
+                                {{ "customer.loyalty.title"|translate }}
+                            </h1>
+                        </div>
+                        <div class="box-content">
+                            <table class="simple" ng-if="customer.levelId">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ "customer.loyalty.active_points"|translate }}:</b></td>
+                                    <td><span ng-bind="status.points"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer.loyalty.used_points"|translate }}:</b></td>
+                                    <td><span ng-bind="status.usedPoints"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer.loyalty.expired_points"|translate }}:</b></td>
+                                    <td><span ng-bind="status.expiredPoints"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns small-12 medium-6" ng-if="status">
+                    <div class="box no-margin">
+                        <div class="box-title">
+                            <h1>
+                                {{ "customer.profitability.title"|translate }}
+                            </h1>
+                        </div>
+                        <div class="box-content">
+                            <table class="simple" ng-if="customer.levelId">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ "customer.profitability.clv"|translate }}:</b></td>
+                                    <td><span ng-bind="status.transactionsAmount"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer.profitability.avo"|translate }}:</b></td>
+                                    <td><span ng-bind="status.averageTransactionsAmount"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer.profitability.orders"|translate }}:</b></td>
+                                    <td><span ng-bind="status.transactionsCount"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row column medium-12 small-12 medium-centered customer-tabs" style="margin-top: 20px;">
+                <ul class="tabs text-center" data-tabs id="example-tabs">
+                    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">{{
+                        "customer.tabs.transactions"|translate }}</a></li>
+                    <li class="tabs-title"><a href="#panel2">{{ "customer.tabs.transfers"|translate }}</a></li>
+                    <li class="tabs-title"><a href="#panel3">{{ "customer.tabs.campaigns"|translate }}</a></li>
+                    <li class="tabs-title"><a href="#panel4">{{ "customer.tabs.rewards"|translate }}</a></li>
+                </ul>
+                <div class="tabs-content" data-tabs-content="example-tabs">
+                    <div class="tabs-panel is-active" id="panel1">
+                        <table ng-table="SellerCustomerCtrl.transactionsTableParams" class="default">
+                            <tr ng-repeat="row in $data">
+                                <td data-title="'transaction.id'|translate">
+                                    <span ng-bind="row.transactionId"></span>
+                                </td>
+                                <td data-title="'transaction.document_number'|translate">
+                                    <span ng-bind="row.documentNumber"></span>
+                                </td>
+                                <td data-title="'transaction.document_type'|translate">
+                                    <span>{{'transaction.document_types.'+row.documentType|translate}}</span>
+                                </td>
+                                <td data-title="'transaction.purchase_date'|translate">
+                                    <span ng-bind="row.purchaseDate|date: 'yyyy-MM-dd'"></span>
+                                </td>
+                                <td data-title="'transaction.purchase_place'|translate">
+                                    <span ng-bind="row.posName"></span>
+                                </td>
+                            </tr>
+                            <tr ng-if="!$data.length">
+                                <td colspan="5" class="text-center">
+                                    {{ "customer.empty_transactions"|translate }}
+                                </td>
+                            </tr>
+                        </table>
+                        <button class="button button-septenary-colorized medium"
+                                ui-sref="seller.panel.single-customer.transactions">{{"customer.all_transactions"|translate}}
+                        </button>
+
+                    </div>
+                    <div class="tabs-panel" id="panel2">
+                        <table ng-table="SellerCustomerCtrl.transfersTableParams" class="default">
+                            <tr ng-repeat="row in $data">
+                                <td data-title="'transfer.phone'|translate">
+                                    <span ng-bind="row.customerPhone || 'not set'"></span>
+                                </td>
+                                <td data-title="'transfer.email'|translate">
+                                    <span ng-bind="row.customerEmail"></span>
+                                </td>
+                                <td data-title="'transfer.state'|translate">
+                                    <span ng-bind="row.state"></span>
+                                </td>
+                                <td data-title="'transfer.type'|translate">
+                                    <span ng-bind="row.type"></span>
+                                </td>
+                                <td data-title="'transfer.value'|translate">
+                                    <span ng-bind="row.value"></span>
+                                </td>
+                                <td data-title="'transfer.created_at'|translate">
+                                    <span ng-bind="row.createdAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                                </td>
+                            </tr>
+                            <tr ng-if="!$data.length">
+                                <td colspan="6" class="text-center">
+                                    {{ "customer.empty_transfers"|translate }}
+                                </td>
+                            </tr>
+                        </table>
+                        <button class="button button-septenary-colorized medium"
+                                ui-sref="seller.panel.single-customer.transfers">{{"customer.all_transfers"|translate}}
+                        </button>
+
+                    </div>
+                    <div class="tabs-panel" id="panel3">
+                        <table ng-table="SellerCustomerCtrl.availableCampaignsTableParams" class="default">
+                            <tr ng-repeat="row in $data">
+                                <td data-title="'campaign.name'|translate">
+                                    <span ng-bind="row.name"></span>
+                                </td>
+                                <td data-title="'campaign.active'|translate">
+                                    <span ng-bind="row.active"></span>
+                                </td>
+                                <td data-title="'campaign.cost_in_points'|translate">
+                                    <span ng-bind="row.costInPoints"></span>
+                                </td>
+                                <td data-title="'campaign.limit'|translate">
+                                    <span ng-bind="row.limit"></span>
+                                </td>
+                                <td data-title="'campaign.limit_per_user'|translate">
+                                    <span ng-bind="row.limitPerUser"></span>
+                                </td>
+                                <td data-title="'campaign.active_from'|translate">
+                                    <span ng-bind="row.campaignActivity.activeFrom|date : 'yyyy-MM-dd HH:mm'"
+                                          ng-hide="row.campaignActivity.allTimeActive"></span>
+                                    <span ng-show="row.campaignActivity.allTimeActive">{{ "campaign.all_time" | translate}}</span>
+                                </td>
+                                <td data-title="'campaign.active_to'|translate">
+                                    <span ng-bind="row.campaignActivity.activeTo|date : 'yyyy-MM-dd HH:mm'"
+                                          ng-hide="row.campaignActivity.allTimeActive"></span>
+                                    <span ng-show="row.campaignActivity.allTimeActive">{{ "campaign.all_time" | translate}}</span>
+
+                                </td>
+                            </tr>
+                            <tr ng-if="!$data.length">
+                                <td colspan="8" class="text-center">
+                                    {{ "customer.empty_campaigns"|translate }}
+                                </td>
+                            </tr>
+                        </table>
+                        <button class="button button-septenary-colorized medium"
+                                ui-sref="seller.panel.single-customer.campaigns">{{"customer.all_campaigns"|translate}}
+                        </button>
+
+                    </div>
+                    <div class="tabs-panel" id="panel4">
+                        <table ng-table="SellerCustomerCtrl.boughtCampaignsTableParams" class="default">
+                            <tr ng-repeat="row in $data">
+                                <td data-title="'campaign.name'|translate">
+                                    <span ng-bind="row.campaign.name"></span>
+                                </td>
+                                <td data-title="'campaign.cost_in_points'|translate">
+                                    <span ng-bind="row.costInPoints"></span>
+                                </td>
+                                <td data-title="'campaign.purchase_at'|translate">
+                                    <span ng-bind="row.purchaseAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                                </td>
+                                <td data-title="'campaign.coupon'|translate">
+                                    <span ng-bind="row.coupon.code"></span>
+                                </td>
+                            </tr>
+                            <tr ng-if="!$data.length">
+                                <td colspan="4" class="text-center">
+                                    {{ "customer.empty_rewards"|translate }}
+                                </td>
+                            </tr>
+                        </table>
+                        <button class="button button-septenary-colorized medium"
+                                ui-sref="seller.panel.single-customer.rewards">{{"customer.all_rewards"|translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <modal show='assignedLevel.showModal' modalId="{{assignedLevel.id}}" modal-title="'level.special_rewards'|translate"
+           size="tiny-small">
+        <table class="default">
+            <thead>
+
+            <tr>
+                <th>{{ "level.name"|translate }}</th>
+                <th>{{ "level.reward_code"|translate }}</th>
+                <th>{{ "level.reward_value"|translate }}</th>
+                <th>{{ "level.active"|translate }}</th>
+                <th>{{ "level.start_at"|translate }}</th>
+                <th>{{ "level.end_at"|translate }}</th>
+                <th>{{ "level.created_at"|translate }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="special in assignedLevel.specialRewards">
+                <td><span ng-bind="special.name"></span></td>
+                <td><span ng-bind="special.code"></span></td>
+                <td><span ng-bind="special.value"></span></td>
+                <td><span ng-bind="special.active"></span></td>
+                <td><span ng-bind="special.startAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+                <td><span ng-bind="special.endAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+                <td><span ng-bind="special.createdAt|date: 'yyyy-MM-dd HH:mm'"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </modal>
+
+    <modal show='SellerCustomerCtrl.showAvailableLevelsModal' modalId="availableLevelsModal"
+           modal-title="'level.assign_level'|translate" size="'tiny'">
+        <form novalidate ng-submit="SellerCustomerCtrl.assignLevel(newLevel)">
+            <fieldset class="fieldset">
+                <div class="row">
+                    <div class="columns medium-4">
+                        <label>{{ "level.select_level"|translate }} <span class="required">*</span></label>
+                    </div>
+                    <div class="columns medium-8">
+                        <selectize
+                                ng-model="newLevel.id"
+                                ng-if="availableLevels.total"
+                                config="SellerCustomerCtrl.levelsConfig"
+                                options="SellerCustomerCtrl.levels"
+                        >
+                        </selectize>
+                        <div class="text-center" ng-if="!availableLevels.total">
+                            {{ "level.no_level"|translate }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns small-12 text-center">
+                        <button class="button button-septenary-colorized m-t-10 m-b-0" type="submit">
+                            {{"global.save"|translate }}
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </modal>
+
+    <modal show='SellerCustomerCtrl.showAvailablePosModal' modalId="availablePosModal"
+           modal-title="'level.assign_pos'|translate" size="'tiny'">
+        <form novalidate ng-submit="SellerCustomerCtrl.assignPos(newPos)">
+            <fieldset class="fieldset">
+                <div class="row">
+                    <div class="columns medium-4">
+                        <label>{{ "pos.select_pos"|translate }} <span class="required">*</span></label>
+                    </div>
+                    <div class="columns medium-8">
+                        <selectize
+                                ng-model="newPos.posId"
+                                ng-if="availablePos.total"
+                                config="SellerCustomerCtrl.posConfig"
+                                options="SellerCustomerCtrl.posList"
+                        >
+                        </selectize>
+                        <div class="text-center" ng-if="!availableLevels.total">
+                            {{ "pos.no_pos"|translate }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns small-12 text-center">
+                        <button class="button button-septenary-colorized m-t-10 m-b-0" type="submit">
+                            {{ "global.save"|translate }}
+                        </button>
+
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </modal>
+
+    <modal show="SellerCustomerCtrl.showProfileDetails" modalId="profileDetails"
+           modal-title="'customer.profile_details'|translate"
+           size="'tiny'">
+        <table class="simple">
+            <tbody>
+            <tr>
+                <td><b>{{ "customer.name"|translate }}:</b></td>
+                <td><span ng-bind="customer.firstName"></span></td>
+            </tr>
+            <tr>
+                <td><b>{{ "customer.surname"|translate }}:</b></td>
+                <td><span ng-bind="customer.lastName"></span></td>
+            </tr>
+            <tr>
+                <td><b>{{ "customer.birth_date"|translate }}:</b></td>
+                <td><span ng-bind="customer.birthDate|date : 'yyyy-MM-dd'"></span></td>
+            </tr>
+            <tr>
+                <td><b>{{ "customer.gender"|translate }}:</b></td>
+                <td><span ng-bind="customer.gender"></span></td>
+            </tr>
+            <tr>
+                <td><b>{{ "customer.created_at"|translate }}:</b></td>
+                <td><span ng-bind="customer.createdAt|date : 'yyyy-MM-dd HH:mm'"></span></td>
+            </tr>
+            <tr ng-if="customer.address">
+                <td><b>{{ "customer.city"|translate }}:</b></td>
+                <td><span ng-bind="customer.address.city"></span></td>
+            </tr>
+            <tr>
+                <td><b>{{ "customer.state"|translate }}:</b></td>
+                <td><span ng-bind="customer.address.province"></span></td>
+            </tr>
+            <tr ng-if="customer.address">
+                <td><b>{{ "customer.street"|translate }}</b></td>
+                <td><span ng-bind="customer.address.street"></span></td>
+            </tr>
+            <tr ng-if="customer.address">
+                <td><b>{{ "customer.building_name"|translate }}:</b></td>
+                <td><span ng-bind="customer.address.address1"></span></td>
+            </tr>
+            <tr ng-if="customer.address">
+                <td><b>{{ "customer.flat_name"|translate }}:</b></td>
+                <td><span ng-bind="customer.address.address2 || '---'"></span></td>
+            </tr>
+            <tr ng-if="customer.address">
+                <td><b>{{ "customer.postal"|translate }}:</b></td>
+                <td><span ng-bind="customer.address.postal"></span></td>
+            </tr>
+            <tr ng-if="customer.address">
+                <td><b>{{ "customer.country"|translate }}:</b></td>
+                <td><span ng-bind="customer.address.country"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </modal>
+</section>

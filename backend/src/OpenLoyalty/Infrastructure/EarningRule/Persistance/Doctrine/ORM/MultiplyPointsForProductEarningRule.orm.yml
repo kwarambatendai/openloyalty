@@ -1,0 +1,14 @@
+OpenLoyalty\Domain\EarningRule\MultiplyPointsForProductEarningRule:
+  type: entity
+  fields:
+    skuIds:
+      type: json_array
+      column: sku_ids
+    multiplier:
+      type: decimal
+      precision: 14
+      scale: 2
+      column: multiplier
+    labels:
+      type: labels_json_array
+      column: labels

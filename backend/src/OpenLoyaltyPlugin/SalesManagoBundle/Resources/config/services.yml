@@ -1,0 +1,124 @@
+services:
+
+  config.repository:
+    class: Doctrine\ORM\EntityRepository
+    factory: ["@doctrine.orm.entity_manager", getRepository]
+    arguments:
+      - OpenLoyaltyPlugin\SalesManagoBundle\Entity\Config
+  deadletter.repository:
+    class: Doctrine\ORM\EntityRepository
+    factory: ["@doctrine.orm.entity_manager", getRepository]
+    arguments:
+      - OpenLoyaltyPlugin\SalesManagoBundle\Entity\Deadletter
+  oloy.sales_manago.service.sales_manago_validator:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Service\SalesManagoValidator
+    arguments:
+      - '@config.repository'
+  ol.salesmanago.translator:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Service\SalesManagoCustomerTranslator
+    arguments: ['@translator.default']
+  ol.salesmanago.formbuilder:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Service\SalesManagoFormBuilder
+    arguments:
+      - '@form.factory'
+  ol.salesManago.formhandler:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Service\SalesManagoFormHandler
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  oloy.data_provider.contact_data_provider:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\DataProvider\ContactDataProvider
+    arguments:
+      - '@oloy.level.repository'
+      - '@oloy.user.read_model.repository.customer_details'
+      - '@ol.salesmanago.translator'
+      - '@oloy.customer_status_provider'
+  oloy.data_provider.tags_data_provider:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\DataProvider\TagsDataProvider
+    arguments:
+      - '@oloy.user.read_model.repository.customer_details'
+      - '@oloy.segment.repository'
+
+  oloy.data_provider.transactions_data_provider:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\DataProvider\TransactionsDataProvider
+    arguments:
+      - '@oloy.user.read_model.repository.customer_details'
+      - '@oloy.transaction.read_model.repository.transaction_details'
+      - '@oloy.pos.repository'
+  oloy.salesmanago_plugin.customer_segment_tags_sender:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Service\SalesManagoContactSegmentTagsSender
+    arguments:
+      - '@config.repository'
+      - '@logger'
+      - '@oloy.data_provider.tags_data_provider'
+      - '@deadletter.repository'
+    tags:
+      - { name: monolog.logger, channel: plugins }
+  oloy.salesmanago_plugin.customer_transaction_sender:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Service\SalesManagoContactTransactionSender
+    arguments:
+      - '@config.repository'
+      - '@logger'
+      - '@oloy.data_provider.transactions_data_provider'
+      - '@deadletter.repository'
+
+    tags:
+      - { name: monolog.logger, channel: plugins }
+  oloy.salesmanago_plugin.customer_update_sender:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Service\SalesManagoContactUpdateSender
+    arguments:
+      - '@config.repository'
+      - '@logger'
+      - '@oloy.data_provider.contact_data_provider'
+      - '@deadletter.repository'
+    tags:
+      - { name: monolog.logger, channel: plugins }
+  oloy.salesmanago_plugin.customer_create_event_listener:
+    class:  OpenLoyaltyPlugin\SalesManagoBundle\Event\Listener\CustomerCreateListener
+    arguments:
+      - '@oloy.salesmanago_plugin.customer_update_sender'
+      - '@config.repository'
+    tags:
+      - { name: broadway.event_listener, event: oloy.customer.registered, method: onCustomerCreated }
+
+  oloy.salesmanago_plugin.customer_agreement_event_listener:
+    class:  OpenLoyaltyPlugin\SalesManagoBundle\Event\Listener\CustomerAgreementUpdateListener
+    arguments:
+      - '@oloy.salesmanago_plugin.customer_segment_tags_sender'
+      - '@config.repository'
+    tags:
+      - { name: broadway.event_listener, event: oloy.customer.agreements_updated, method: onCustomerAgreementUpdate }
+  oloy.salesmanago_plugin.customer_update_event_listener:
+    class:  OpenLoyaltyPlugin\SalesManagoBundle\Event\Listener\CustomerUpdateListener
+    arguments:
+      - '@oloy.salesmanago_plugin.customer_update_sender'
+      - '@config.repository'
+    tags:
+      - { name: broadway.event_listener, event: oloy.customer.updated, method: onCustomerUpdated }
+  oloy.salesmanago_plugin.customer_segment_event_listener:
+    class:  OpenLoyaltyPlugin\SalesManagoBundle\Event\Listener\CustomerSegmentListener
+    arguments:
+      - '@oloy.salesmanago_plugin.customer_segment_tags_sender'
+      - '@config.repository'
+    tags:
+      - { name: broadway.event_listener, event: oloy.segment.customer_added_to_segment, method: onCustomerAddedToSegment }
+  oloy.salesmanago_plugin.customer_segment_removal_event_listener:
+    class:  OpenLoyaltyPlugin\SalesManagoBundle\Event\Listener\CustomerSegmentListener
+    arguments:
+      - '@oloy.salesmanago_plugin.customer_segment_tags_sender'
+      - '@config.repository'
+    tags:
+      - { name: broadway.event_listener, event: oloy.segment.customer_removed_from_segment, method: onCustomerRemovedFromSegment }
+  ol.salesmanago.form_type.settings:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Form\Type\SalesManagoFormType
+    tags:
+     - { name: form.type }
+
+  oloy.transaction.customer_assign_to_transaction:
+    class: OpenLoyaltyPlugin\SalesManagoBundle\Event\Listener\CustomerTransactionListener
+    arguments:
+      - '@oloy.salesmanago_plugin.customer_transaction_sender'
+      - '@config.repository'
+    tags:
+      - { name: broadway.event_listener, event: oloy.transaction.customer_assigned, method: onCustomerTransactionRegistered }
+

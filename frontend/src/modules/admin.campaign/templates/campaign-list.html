@@ -1,0 +1,92 @@
+<box-loader loading="CampaignCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="500"></box-loader>
+
+<div class="heading" ng-init="CampaignCtrl.getData()">
+    <h1>{{ "campaign.heading" | translate }}</h1>
+    <div class="action-buttons">
+        <button class="medium button button-septenary-colorized" ui-sref="admin.add-campaign">
+            {{ "campaign.add" | translate }}
+        </button>
+    </div>
+</div>
+<div style="clear:both;"></div>
+
+<div class="client-list box" ng-hide="CampaignCtrl.loaderStates.coverLoader">
+
+    <div class="box-title">
+        <h1 class="text-left">{{ "campaign.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="CampaignCtrl.loaderStates.campaignList"></box-loader>
+        <table ng-table="CampaignCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'campaign.name'|translate" sortable="'name'">
+                    <span ng-bind="row.name"></span>
+                </td>
+                <td data-title="'campaign.active'|translate" sortable="'active'">
+                    <button
+                            ng-if="row.active"
+                            class="tiny button button-septenary-colorized"
+                            ng-click="CampaignCtrl.setCampaignState(!row.active, row.campaignId)"
+                    >
+                        {{'global.active'|translate}}
+                    </button>
+                    <button
+                            ng-if="!row.active"
+                            class="tiny button button-default"
+                            ng-click="CampaignCtrl.setCampaignState(!row.active, row.campaignId)"
+                    >
+                        {{'global.inactive'|translate}}
+                    </button>
+                </td>
+                <td data-title="'campaign.type'|translate" sortable="'reward'">
+                    <span>{{'campaign.'+row.reward|translate}}</span>
+                </td>
+                <td data-title="'campaign.cost_in_points'|translate" sortable="'costInPoints'">
+                    <span ng-bind="row.costInPoints"></span>
+                </td>
+                <td data-title="'campaign.limit'|translate" sortable="'limit'">
+                    <span ng-bind="row.limit" ng-if="!row.unlimited"></span>
+                    <span ng-if="row.unlimited">{{"global.unlimited"|translate}}</span>
+                </td>
+                <td data-title="'campaign.limit_per_user'|translate">
+                    <span ng-bind="row.limitPerUser" ng-if="!row.unlimited"></span>
+                    <span ng-if="row.unlimited">{{"global.unlimited"|translate}}</span>
+                </td>
+                <td data-title="'campaign.used_by_user'|translate">
+                    <span ng-bind="row.usersWhoUsedThisCampaignCount"></span>
+                </td>
+                <td data-title="'campaign.coupons_count'|translate">
+                    <span ng-bind="row.coupons.length"></span>
+                </td>
+                <td data-title="'campaign.active_from'|translate" sortable="'campaignActivity.activeFrom'">
+                    <span ng-if="row.campaignActivity.allTimeActive">{{'global.all_time_active'|translate}}</span>
+                    <span ng-if="!row.campaignActivity.allTimeActive"
+                          ng-bind="row.campaignActivity.activeFrom|date:'yyyy-MM-dd HH:mm'"></span>
+                </td>
+                <td data-title="'campaign.active_to'|translate" sortable="'campaignActivity.activeTo'">
+                    <span ng-if="row.campaignActivity.allTimeActive">{{'global.all_time_active'|translate}}</span>
+                    <span ng-if="!row.campaignActivity.allTimeActive"
+                          ng-bind="row.campaignActivity.activeTo|date:'yyyy-MM-dd HH:mm'"></span>
+                </td>
+                <td data-title="'campaign.customers'|translate" style="min-width: 150px;">
+                    <span ng-bind="row.visibleForCustomersCount"></span>
+
+                    <button class="button button-primary tiny pull-right"
+                            ui-sref="admin.campaign-customers({campaignId: row.campaignId, campaignName: row.name})">
+                        {{ "campaign.show_customers"|translate }}
+                    </button>
+                </td>
+                <td data-title="'campaign.actions'|translate">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.edit-campaign({campaignId: row.campaignId})">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="button  button-quinary tiny"
+                            ui-sref="admin.single-campaign({campaignId: row.campaignId})">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

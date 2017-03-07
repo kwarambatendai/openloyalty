@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Segment\Model\Criteria\BoughtInPos:
+  type: entity
+  fields:
+    posIds:
+      type: json_array
+      column: pos_ids

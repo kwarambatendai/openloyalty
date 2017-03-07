@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Segment\CustomerId:
+  exlusion_policy: ALL
+  properties:
+    customerId:
+      expose: true
+      serialized_name: customerId

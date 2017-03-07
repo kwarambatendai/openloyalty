@@ -1,0 +1,12 @@
+OpenLoyalty\Domain\Account\ReadModel\PointsTransferDetails:
+  exlusion_policy: all
+  properties:
+    pointsTransferId:
+      expose: true
+      inline: true
+    accountId:
+      expose: true
+      inline: true
+    customerId:
+      expose: true
+      inline: true

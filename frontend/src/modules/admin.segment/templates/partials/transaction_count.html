@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="small-3 columns">
+        <label>{{ "segment.partials.min" | translate }} <span class="required">*</span></label>
+    </div>
+    <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].min.errors">
+        <input type="number"
+               ng-model="$parent.$parent.$parent.$parent.segmentModel.min"
+               required>
+        <span class="prompt">{{ "segment.min_prompt" | translate }} </span>
+    </div>
+</div>
+<div class="row">
+    <div class="small-3 columns">
+        <label>{{ "segment.partials.max" | translate }} <span class="required">*</span></label>
+    </div>
+    <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].max.errors">
+        <input type="number"
+               ng-model="$parent.$parent.$parent.$parent.segmentModel.max"
+               required>
+        <span class="prompt">{{ "segment.mas_prompt" | translate }} </span>
+    </div>
+</div>

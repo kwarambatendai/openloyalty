@@ -1,0 +1,55 @@
+<div class="client-section" ng-init="CustomerEarningRulesCtrl.getRules()">
+    <div class="row">
+        <div class="columns small-12">
+            <h1 class="">{{ "customer_earning_rules.title" |translate }}</h1>
+
+            <div class="row">
+                <div class="columns small-12">
+                    <div class="customer-earning-rules-card">
+                        <table class="table default">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'customer_earning_rules.table.name' | translate }}</th>
+                                    <th>{{ 'customer_earning_rules.table.type' | translate }}</th>
+                                    <th>{{ 'customer_earning_rules.table.description' | translate }}</th>
+                                    <th>{{ 'customer_earning_rules.table.points' | translate }}</th>
+                                    <th>{{ 'customer_earning_rules.table.start_at' | translate }}</th>
+                                    <th>{{ 'customer_earning_rules.table.end_at' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="rule in rules">
+                                    <td>{{ rule.name }}</td>
+                                    <td>
+                                        <span style="text-transform: uppercase" ng-show="rule.type == 'points'" translate="customer_earning_rules.points" translate-values="{'currency': currency, 'pointsValue': rule.pointValue}">
+                                        </span>
+
+                                        <span ng-show="rule.type == 'event'">
+                                            {{rule.type}}
+                                        </span>
+                                        <span ng-show="rule.type == 'custom_event'" translate="customer_earning_rules.custom_event">
+                                        </span>
+
+                                        <span ng-show="rule.type == 'product_purchase'" translate="customer_earning_rules.product_purchase" translate-values="{'sku': rule.sku.code}">
+                                        </span>
+
+                                        <span ng-show="rule.type == 'multiply_for_product'" translate="customer_earning_rules.multiply_for_product" translate-values="{'multipier': rule.multiplier}">
+                                        </span>
+                                    </td>
+                                    <td>{{rule.description}}</td>
+                                    <td>{{ rule.type == 'points' ? 1 : rule.pointsAmount }}  <span ng-if="!rule.pointsAmount && rule.type != 'points'">---</span></td>
+                                    <td>
+                                        {{ rule.allTimeActive == false ? (rule.startAt | date:'yyyy-MM-dd HH:mm') : ('customer_global.all_time_active'|translate) }}
+                                    </td>
+                                    <td>
+                                        {{ rule.allTimeActive == false ? (rule.endAt | date:'yyyy-MM-dd HH:mm') : ('customer_global.all_time_active'|translate) }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

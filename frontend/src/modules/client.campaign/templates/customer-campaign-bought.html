@@ -1,0 +1,48 @@
+<div class="client-section" ng-init="CustomerCampaignCtrl.getBoughtData()">
+    <div class="row">
+        <div class="columns small-12">
+            <h1 class="">{{ "customer_campaign.bought_list" |translate }}</h1>
+
+            <div class="row campaigns">
+                <div class="columns small-12 medium-4" ng-repeat="c in campaigns">
+                    <div class="customer-card">
+                        <div class="card-data">
+                            <h2 class="name">{{c.campaign.name}}</h2>
+                            <p class="desc">{{c.campaign.shortDescription}}</p>
+                            <span class="reward-code" style="padding-bottom:15px; display: block">{{"customer_campaign.reward_code"|translate}}</span>
+                            <div class="reward-code">
+                                <span>{{ c.coupon.code }}</span>
+                            </div>
+                            <div>
+                                <span class="card-footer">{{c.campaign.usageInstruction}}</span>
+                            </div>
+                            <span ng-if="c.campaign.will_be_active_from && !c.campaign.campaignActivity.allTimeActive"
+                                  class="card-footer card-durability" translate="customer_campaign.will_be_active_dates" translate-values="{from: (c.campaign.will_be_active_from | date:'yyyy-MM-dd HH:mm'), to: (c.campaign.will_be_active_to | date:'yyyy-MM-dd HH:mm')}"></span>
+                            <span ng-if="c.campaign.campaignActivity.allTimeActive"
+                                  class="card-footer" translate="customer_campaign.will_be_active_all_time"></span>
+                        </div>
+                        <div class="card-checkbox">
+                            <checkbox ng-model="c.used" ng-click="CustomerCampaignCtrl.updateCouponUsage(c.campaignId.campaignId, c.coupon.code, c.used)"></checkbox>
+                            <span style="" class="coupon-used">{{'customer_campaign.coupon_used' | translate}}</span>
+                            <span class="card-footer">{{ c.campaign.conditionsDescription }}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns small-12 text-center">
+                    <table ng-table="CustomerCampaignCtrl.tableParams" template-pagination="templatePaginationCustomer.html">
+                        <tr ng-repeat="row in $data">
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns small-12 text-center" ng-if="!campaigns.length">
+                    <span class="no-rewards color-dark">{{ "customer_campaign.no_bought_rewards" | translate }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

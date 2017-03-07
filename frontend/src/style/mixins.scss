@@ -1,0 +1,87 @@
+@mixin custom_button($color) {
+  background-color: $default-button;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $white;
+  &:hover, &:focus, &:active {
+    background-color: darken($color, 15%);
+  }
+}
+
+@mixin custom_button_colorized($color) {
+  background-color: $color;
+  font-weight: 600;
+  color: $white;
+  text-transform: uppercase;
+  &:hover, &:focus, &:active {
+    background-color: darken($color, 15%);
+  }
+  &[disabled="disabled"] {
+    background-color: $color;
+    opacity: 0.4;
+
+    &:hover, &:focus, &:active {
+      background-color: $color;
+    }
+  }
+}
+
+@mixin custom_line_button($color) {
+  padding: 6px;
+  margin: 3px;
+  background-color: transparent;
+  border: 1px solid $color;
+  box-shadow: none;
+  color: $color;
+  font-weight: bold;
+  &:hover, &:focus, &:active {
+    background-color: $color;
+    color: $white;
+  }
+}
+
+@mixin margin($pixels) {
+  .m-t-#{$pixels} {
+    margin-top: #{$pixels}px !important;
+  }
+  .m-b-#{$pixels} {
+    margin-bottom: #{$pixels}px;
+  }
+  .m-r-#{$pixels} {
+    margin-right: #{$pixels}px;
+  }
+  .m-l-#{$pixels} {
+    margin-left: #{$pixels}px;
+  }
+  .m-x-#{$pixels} {
+    margin-left: #{$pixels}px;
+    margin-right: #{$pixels}px;
+  }
+  .m-y-#{$pixels} {
+    margin-top: #{$pixels}px;
+    margin-bottom: #{$pixels}px;
+  }
+}
+
+@mixin padding($pixels) {
+  .p-t-#{$pixels} {
+    padding-top: #{$pixels}px;
+  }
+  .p-b-#{$pixels} {
+    padding-bottom: #{$pixels}px;
+  }
+  .p-r-#{$pixels} {
+    padding-right: #{$pixels}px;
+  }
+  .p-l-#{$pixels} {
+    padding-left: #{$pixels}px;
+  }
+  .p-x-#{$pixels} {
+    padding-left: $pixels;
+    padding-right: #{$pixels}px;
+  }
+  .p-y-#{$pixels} {
+    padding-top: $pixels;
+    padding-bottom: #{$pixels}px;
+  }
+}

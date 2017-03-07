@@ -1,0 +1,114 @@
+<div class="pos-section" ng-init="CampaignCtrl.getCampaignData()">
+
+    <h1 ng-bind="campaign.name"></h1>
+
+    <div class="row">
+        <div class="columns small-12 medium-12">
+            <div class="box no-margin">
+                <div class="box-title">
+                    <h1>{{ "campaign.basic_info"|translate }}
+                        <div class="action-buttons float-right">
+                        </div>
+                    </h1>
+                </div>
+                <div class="box-content">
+                    <table class="default">
+                        <tbody>
+                        <tr>
+                            <td><b>{{ "campaign.name"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.name"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.reward"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.reward"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.short_description"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.shortDescription"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.conditions_description"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.conditions_description || 'not set'"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.cost_in_points"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.costInPoints"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.active"|translate }}:</b></td>
+                            <td>
+                                <span ng-show="campaign.active">{{ "global.active"|translate }}</span>
+                                <span ng-show="!campaign.active">{{ "global.inactive"|translate }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.levels"|translate }}:</b></td>
+                            <td>
+                                <label class="label label-default" ng-repeat="l in campaign.levels track by $index">
+                                    {{campaign.levelNames && campaign.levelNames[l] ? campaign.levelNames[l] : l}}
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.segments"|translate }}:</b></td>
+                            <td>
+                                <label class="label label-default" ng-repeat="s in campaign.segments track by $index">
+                                    {{campaign.segmentNames && campaign.segmentNames[s] ? campaign.segmentNames[s] : s}}
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.unlimited"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.unlimited"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.limit"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.limit"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.limit_per_user"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.limitPerUser"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.coupons"|translate }}:</b></td>
+                            <td><label class="label label-default" ng-repeat="c in campaign.coupons track by $index"> {{c}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.all_time_visible"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.campaignVisibility.allTimeVisible"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.visible_from"|translate }}:</b></td>
+                            <td><span
+                                    ng-bind="campaign.campaignVisibility.visibleFrom|date : 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.visible_to"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.campaignVisibility.visibleTo|date : 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.all_time_active"|translate }}:</b></td>
+                            <td><span
+                                    ng-bind="campaign.campaignActivity.allTimeActive|date : 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.active_from"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.campaignActivity.activeFrom|date : 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ "campaign.active_to"|translate }}:</b></td>
+                            <td><span ng-bind="campaign.campaignActivity.activeTo|date : 'yyyy-MM-dd HH:mm'"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

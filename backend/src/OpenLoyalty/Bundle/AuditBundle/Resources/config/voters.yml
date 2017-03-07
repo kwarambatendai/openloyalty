@@ -1,0 +1,5 @@
+services:
+  ol.audit.voter:
+    class: OpenLoyalty\Bundle\AuditBundle\Security\Voter\AuditVoter
+    tags:
+      - { name: security.voter }

@@ -1,0 +1,21 @@
+{
+  "name": "openloyalty/email-bundle",
+  "type": "symfony-bundle",
+  "description": "Open Loyalty Email Bundle",
+  "keywords": [],
+  "homepage": "",
+  "license": "",
+  "authors": [
+    {
+      "name": "Krzysztof Lobermajer",
+      "email": "kobermajer@acessto.pl"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "openloyalty/email-bundle": "~1.0"
+  },
+  "autoload": {
+    "psr-4": { "OpenLoyalty\\Bundle\\EmailBundle\\": "" }
+  }
+}

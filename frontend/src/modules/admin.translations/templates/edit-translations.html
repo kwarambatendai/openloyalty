@@ -1,0 +1,51 @@
+<box-loader loading="TranslationsCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="TranslationsCtrl.getTranslationsData()">
+    <h1>{{ "admin.translations.edit_heading" | translate }}</h1>
+</div>
+
+<div style="clear:both;"></div>
+<form novalidate ng-submit="TranslationsCtrl.editTranslations(editableFields)">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "admin.translations.name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.name.errors">
+                            <input type="text" ng-model="editableFields.name" required>
+                            <span class="prompt">{{ "admin.translations.name_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "admin.translations.content" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.content.errors">
+                            <div ng-jsoneditor="editorLoaded" options="jsonOptions" prefer-text="true"
+                                 ng-model="editableFields.content"
+                                 style="width: 100%; height: 400px; margin-bottom: 20px"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button  button-septenary-colorized float-left m-r-1" type="submit">
+                    {{ "global.save" | translate}}
+                </button>
+                <button type="button" ui-sref="admin.translations"
+                        class="button  button-quaternary float-left">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

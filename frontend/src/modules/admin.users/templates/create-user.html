@@ -1,0 +1,100 @@
+<box-loader loading="false" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading">
+    <h1>{{ "users.create_heading" | translate }}</h1>
+</div>
+<div style="clear:both;"></div>
+
+<form novalidate ng-submit="UserCtrl.create(newUser)">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "users.create" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "users.first_name" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.firstName.errors">
+                            <input type="text" ng-model="newUser.firstName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "users.last_name" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.lastName.errors">
+                            <input type="text" ng-model="newUser.lastName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "users.active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.active.errors">
+                            <selectize config="UserCtrl.activeConfig" options="UserCtrl.active"
+                                       ng-model="newUser.isActive"></selectize>
+                            <span class="prompt">{{ "users.active_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "users.phone" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.phone.errors">
+                            <input type="phone" ng-model="newUser.phone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "users.email" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.email.errors">
+                            <input type="email" ng-model="newUser.email" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "users.external" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.external.errors">
+                            <checkbox ng-model="newUser.external"></checkbox>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="!newUser.external">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "users.password" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.plainPassword.errors">
+                            <input type="text" ng-model="newUser.plainPassword">
+                        </div>
+                    </div>
+                    <div class="row" ng-if="newUser.external">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "users.api_key" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.apiKey.errors">
+                            <input type="text" ng-model="newUser.apiKey">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" ng-init="UserCtrl.loaderStates.userDetails=false">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button button-septenary-colorized  float-left m-r-1"
+                        type="submit">
+                    {{ "global.save" | translate }}
+                </button>
+                <button type="button" ui-sref="admin.users-list"
+                        class="button button-default float-left">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

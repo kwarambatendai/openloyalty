@@ -1,0 +1,4696 @@
+Pmo000:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Thomas Overcoat
+  price: '590.0000'
+  sku: Pmo000
+Pmo000l:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Thomas Overcoat
+  price: '590.0000'
+  sku: Pmo000l
+Pmo000m:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Thomas Overcoat
+  price: '590.0000'
+  sku: Pmo000m
+Pmo000s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Thomas Overcoat
+  price: '590.0000'
+  sku: Pmo000s
+Pmo000xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Thomas Overcoat
+  price: '590.0000'
+  sku: Pmo000xl
+Pmo000xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Thomas Overcoat
+  price: '590.0000'
+  sku: Pmo000xs
+Pmo001:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Draper Suit Coat
+  price: '510.0000'
+  sku: Pmo001
+Pmo001l:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Draper Suit Coat
+  price: '510.0000'
+  sku: Pmo001l
+Pmo001m:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Draper Suit Coat
+  price: '510.0000'
+  sku: Pmo001m
+Pmo001s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Draper Suit Coat
+  price: '510.0000'
+  sku: Pmo001s
+Pmo001xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Draper Suit Coat
+  price: '510.0000'
+  sku: Pmo001xl
+Pmo001xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Draper Suit Coat
+  price: '510.0000'
+  sku: Pmo001xs
+Pmo002:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Lincoln Blazer
+  price: '455.0000'
+  sku: Pmo002
+Pmo002l:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Lincoln Blazer
+  price: '455.0000'
+  sku: Pmo002l
+Pmo002m:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Lincoln Blazer
+  price: '455.0000'
+  sku: Pmo002m
+Pmo002s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Lincoln Blazer
+  price: '455.0000'
+  sku: Pmo002s
+Pmo002xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Lincoln Blazer
+  price: '455.0000'
+  sku: Pmo002xl
+Pmo002xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Lincoln Blazer
+  price: '455.0000'
+  sku: Pmo002xs
+Pmp000:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp000
+Pmp00028:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00028
+Pmp00030:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00030
+Pmp00031:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00031
+Pmp00032:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00032
+Pmp00034:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00034
+Pmp00036:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00036
+Pmp00038:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00038
+Pmp001:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp001
+Pmp00128:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp00128
+Pmp00130:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp00130
+Pmp00131:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp00131
+Pmp00132:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp00132
+Pmp00134:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp00134
+Pmp00136:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp00136
+Pmp00138:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Draper Pant
+  price: '295.0000'
+  sku: Pmp00138
+Pmp002:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp002
+Pmp00228:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00228
+Pmp00230:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00230
+Pmp00231:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00231
+Pmp00232:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00232
+Pmp00234:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00234
+Pmp00236:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00236
+Pmp00238:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Olive Bushwick Skinny Jean
+  price: '195.0000'
+  sku: Pmp00238
+Pms000:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Avery Oxford Shirt
+  price: '210.0000'
+  sku: Pms000
+Pms000l:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Avery Oxford Shirt
+  price: '210.0000'
+  sku: Pms000l
+Pms000m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Avery Oxford Shirt
+  price: '210.0000'
+  sku: Pms000m
+Pms000s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Avery Oxford Shirt
+  price: '210.0000'
+  sku: Pms000s
+Pms000xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Avery Oxford Shirt
+  price: '210.0000'
+  sku: Pms000xl
+Pms000xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Avery Oxford Shirt
+  price: '210.0000'
+  sku: Pms000xs
+Pms002:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Slim-fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: Pms002
+Pms002l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Slim-fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: Pms002l
+Pms002m:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Slim-fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: Pms002m
+Pms002s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Slim-fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: Pms002s
+Pms002xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Slim-fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: Pms002xl
+Pms002xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Slim-fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: Pms002xs
+Pms003:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Carroll Check Dress Shirt
+  price: '160.0000'
+  sku: Pms003
+Pms003l:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Carroll Check Dress Shirt
+  price: '160.0000'
+  sku: Pms003l
+Pms003m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Carroll Check Dress Shirt
+  price: '160.0000'
+  sku: Pms003m
+Pms003s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Carroll Check Dress Shirt
+  price: '160.0000'
+  sku: Pms003s
+Pms003xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Carroll Check Dress Shirt
+  price: '160.0000'
+  sku: Pms003xl
+Pms003xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Carroll Check Dress Shirt
+  price: '160.0000'
+  sku: Pms003xs
+Pms004:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Clark Dress Shirt
+  price: '210.0000'
+  sku: Pms004
+Pms004l:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Clark Dress Shirt
+  price: '210.0000'
+  sku: Pms004l
+Pms004m:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Clark Dress Shirt
+  price: '210.0000'
+  sku: Pms004m
+Pms004s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Clark Dress Shirt
+  price: '210.0000'
+  sku: Pms004s
+Pms004xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Clark Dress Shirt
+  price: '210.0000'
+  sku: Pms004xl
+Pms004xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Clark Dress Shirt
+  price: '210.0000'
+  sku: Pms004xs
+Pms005:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: Pms005
+Pms005l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: Pms005l
+Pms005m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: Pms005m
+Pms005s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: Pms005s
+Pms005xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: Pms005xl
+Pms005xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: Pms005xs
+Pmtk000:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk000
+Pmtk000l:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk000l
+Pmtk000m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk000m
+Pmtk000s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk000s
+Pmtk000xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk000xl
+Pmtk000xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk000xs
+Pmtk001l:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Striped Crew Tee
+  price: '75.0000'
+  sku: Pmtk001l
+Pmtk001m:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Striped Crew Tee
+  price: '75.0000'
+  sku: Pmtk001m
+Pmtk001s:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Striped Crew Tee
+  price: '75.0000'
+  sku: Pmtk001s
+Pmtk001xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Striped Crew Tee
+  price: '75.0000'
+  sku: Pmtk001xl
+Pmtk001xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Striped Crew Tee
+  price: '75.0000'
+  sku: Pmtk001xs
+Pmtk004:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Oatmeal Henley Tee
+  price: '125.0000'
+  sku: Pmtk004
+Pmtk004l:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Oatmeal Henley Tee
+  price: '125.0000'
+  sku: Pmtk004l
+Pmtk004m:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Oatmeal Henley Tee
+  price: '125.0000'
+  sku: Pmtk004m
+Pmtk004s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Oatmeal Henley Tee
+  price: '125.0000'
+  sku: Pmtk004s
+Pmtk004xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Oatmeal Henley Tee
+  price: '125.0000'
+  sku: Pmtk004xl
+Pmtk004xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Oatmeal Henley Tee
+  price: '125.0000'
+  sku: Pmtk004xs
+Pmtk005:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Henley Tee
+  price: '125.0000'
+  sku: Pmtk005
+Pmtk005l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Henley Tee
+  price: '125.0000'
+  sku: Pmtk005l
+Pmtk005m:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Henley Tee
+  price: '125.0000'
+  sku: Pmtk005m
+Pmtk005s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Henley Tee
+  price: '125.0000'
+  sku: Pmtk005s
+Pmtk005xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Henley Tee
+  price: '125.0000'
+  sku: Pmtk005xl
+Pmtk005xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Henley Tee
+  price: '125.0000'
+  sku: Pmtk005xs
+Pmtk006:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk006
+Pmtk006l:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk006l
+Pmtk006m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk006m
+Pmtk006s:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk006s
+Pmtk006xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk006xl
+Pmtk006xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: Pmtk006xs
+Pwb000:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb000
+Pwb00026:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb00026
+Pwb00027:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb00027
+Pwb00028:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb00028
+Pwb00029:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb00029
+Pwb00030:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb00030
+Pwb00031:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb00031
+Pwb00032:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: Pwb00032
+Pwb001:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb001
+Pwb00126:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb00126
+Pwb00127:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb00127
+Pwb00128:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb00128
+Pwb00129:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb00129
+Pwb00130:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb00130
+Pwb00131:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb00131
+Pwb00132:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Villa Bermuda Shorts
+  price: '150.0000'
+  sku: Pwb00132
+Pwb003:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb003
+Pwb0030:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb0030
+Pwb00310:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb00310
+Pwb00312:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb00312
+Pwb0032:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb0032
+Pwb0034:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb0034
+Pwb0036:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb0036
+Pwb0038:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Cornelia Skirt
+  price: '225.0000'
+  sku: Pwb0038
+Pwb005:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb005
+Pwb00526:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb00526
+Pwb00527:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb00527
+Pwb00528:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb00528
+Pwb00529:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb00529
+Pwb00530:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb00530
+Pwb00531:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb00531
+Pwb00532:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Grand Slim Straight Jean
+  price: '225.0000'
+  sku: Pwb00532
+Pwb006:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb006
+Pwb00626:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb00626
+Pwb00627:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb00627
+Pwb00628:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb00628
+Pwb00629:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb00629
+Pwb00630:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb00630
+Pwb00631:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb00631
+Pwb00632:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Hester Ankle Pant
+  price: '260.0000'
+  sku: Pwb00632
+Pwd000:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd000
+Pwd0000:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd0000
+Pwd00010:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd00010
+Pwd00012:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd00012
+Pwd0002:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd0002
+Pwd0004:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd0004
+Pwd0006:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd0006
+Pwd0008:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Angela Wrap Dress
+  price: '395.0000'
+  sku: Pwd0008
+Pwd001:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd001
+Pwd0010:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd0010
+Pwd00110:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd00110
+Pwd00112:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd00112
+Pwd0012:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd0012
+Pwd0014:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd0014
+Pwd0016:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd0016
+Pwd0018:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Jane Dress
+  price: '510.0000'
+  sku: Pwd0018
+Pwd002:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd002
+Pwd0020:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd0020
+Pwd00210:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd00210
+Pwd00212:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd00212
+Pwd0022:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd0022
+Pwd0024:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd0024
+Pwd0026:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd0026
+Pwd0028:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Jacqueline Medallion Dress
+  price: '425.0000'
+  sku: Pwd0028
+Pwt000:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Ludlow Seersucker Top
+  price: '185.0000'
+  sku: Pwt000
+Pwt000l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Ludlow Seersucker Top
+  price: '185.0000'
+  sku: Pwt000l
+Pwt000m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Ludlow Seersucker Top
+  price: '185.0000'
+  sku: Pwt000m
+Pwt000s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Ludlow Seersucker Top
+  price: '185.0000'
+  sku: Pwt000s
+Pwt000xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Ludlow Seersucker Top
+  price: '185.0000'
+  sku: Pwt000xl
+Pwt000xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Ludlow Seersucker Top
+  price: '185.0000'
+  sku: Pwt000xs
+Pwt001:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Gans Trench Coat
+  price: '550.0000'
+  sku: Pwt001
+Pwt001l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Gans Trench Coat
+  price: '550.0000'
+  sku: Pwt001l
+Pwt001m:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Gans Trench Coat
+  price: '550.0000'
+  sku: Pwt001m
+Pwt001s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Gans Trench Coat
+  price: '550.0000'
+  sku: Pwt001s
+Pwt001xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Gans Trench Coat
+  price: '550.0000'
+  sku: Pwt001xl
+Pwt001xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Gans Trench Coat
+  price: '550.0000'
+  sku: Pwt001xs
+Pwt002:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt002
+Pwt002l:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt002l
+Pwt002m:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt002m
+Pwt002s:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt002s
+Pwt002xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt002xl
+Pwt002xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt002xs
+Pwt003:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Charcoal Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt003
+Pwt003l:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Charcoal Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt003l
+Pwt003m:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Charcoal Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt003m
+Pwt003s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Charcoal Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt003s
+Pwt003xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Charcoal Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt003xl
+Pwt003xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Charcoal Sheri Collar Shirt
+  price: '140.0000'
+  sku: Pwt003xs
+Pwt004:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Milli Cardigan
+  price: '240.0000'
+  sku: Pwt004
+Pwt004l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Milli Cardigan
+  price: '240.0000'
+  sku: Pwt004l
+Pwt004m:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Milli Cardigan
+  price: '240.0000'
+  sku: Pwt004m
+Pwt004s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Milli Cardigan
+  price: '240.0000'
+  sku: Pwt004s
+Pwt004xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Milli Cardigan
+  price: '240.0000'
+  sku: Pwt004xl
+Pwt004xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Milli Cardigan
+  price: '240.0000'
+  sku: Pwt004xs
+Pwt005:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Stretch Cotton Camisole
+  price: '60.0000'
+  sku: Pwt005
+Pwt005l:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Stretch Cotton Camisole
+  price: '60.0000'
+  sku: Pwt005l
+Pwt005m:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Stretch Cotton Camisole
+  price: '60.0000'
+  sku: Pwt005m
+Pwt005s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Stretch Cotton Camisole
+  price: '60.0000'
+  sku: Pwt005s
+Pwt005xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Stretch Cotton Camisole
+  price: '60.0000'
+  sku: Pwt005xl
+Pwt005xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Stretch Cotton Camisole
+  price: '60.0000'
+  sku: Pwt005xs
+Pwt006:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Noa Sheer Blouse
+  price: '175.0000'
+  sku: Pwt006
+Pwt006l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Noa Sheer Blouse
+  price: '175.0000'
+  sku: Pwt006l
+Pwt006m:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Noa Sheer Blouse
+  price: '175.0000'
+  sku: Pwt006m
+Pwt006s:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Noa Sheer Blouse
+  price: '175.0000'
+  sku: Pwt006s
+Pwt006xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Noa Sheer Blouse
+  price: '175.0000'
+  sku: Pwt006xl
+Pwt006xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Noa Sheer Blouse
+  price: '175.0000'
+  sku: Pwt006xs
+Pwt007:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Brooklyn Jean Jacket
+  price: '320.0000'
+  sku: Pwt007
+Pwt007l:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Brooklyn Jean Jacket
+  price: '320.0000'
+  sku: Pwt007l
+Pwt007m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Brooklyn Jean Jacket
+  price: '320.0000'
+  sku: Pwt007m
+Pwt007s:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Brooklyn Jean Jacket
+  price: '320.0000'
+  sku: Pwt007s
+Pwt007xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Brooklyn Jean Jacket
+  price: '320.0000'
+  sku: Pwt007xl
+Pwt007xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Brooklyn Jean Jacket
+  price: '320.0000'
+  sku: Pwt007xs
+abl000:
+  category: Accessories/Bags & Luggage
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Isla Crossbody Handbag
+  price: '290.0000'
+  sku: abl000
+abl001:
+  category: Accessories/Bags & Luggage
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Florentine Satchel Handbag
+  price: '625.0000'
+  sku: abl001
+abl002:
+  category: Accessories/Bags & Luggage
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Flatiron Tablet Sleeve
+  price: '150.0000'
+  sku: abl002
+abl003:
+  category: VIP
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Broad St. Flapover Briefcase
+  price: '570.0000'
+  sku: abl003
+abl004:
+  category: VIP
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Houston Travel Wallet
+  price: '210.0000'
+  sku: abl004
+abl005:
+  category: Accessories/Bags & Luggage
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Roller Suitcase
+  price: '650.0000'
+  sku: abl005
+abl006:
+  category: Accessories/Bags & Luggage
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Classic Hardshell Suitcase 21"
+  price: '650.0000'
+  sku: abl006
+abl006c:
+  category: Accessories/Bags & Luggage
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Classic Hardshell Suitcase
+  price: '600.0000'
+  sku: abl006c
+abl007:
+  category: Accessories/Bags & Luggage
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Classic Hardshell Suitcase 29"
+  price: '750.0000'
+  sku: abl007
+abl009:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Classic Hardshell Suitcase 19"
+  price: '600.0000'
+  sku: abl009
+ace000:
+  category: Accessories/Eyewear
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Aviator Sunglasses
+  price: '295.0000'
+  sku: ace000
+ace001:
+  category: Accessories/Eyewear
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Jackie O Round Sunglasses
+  price: '295.0000'
+  sku: ace001
+ace002:
+  category: Accessories/Eyewear
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Retro Chic Eyeglasses
+  price: '295.0000'
+  sku: ace002
+acj000:
+  category: Accessories/Jewelry
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Silver Desert Necklace
+  price: '210.0000'
+  sku: acj000
+acj0006s:
+  category: Accessories/Jewelry
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Blue Horizons Bracelets
+  price: '55.0000'
+  sku: acj0006s
+acj00118:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Pearl Strand Necklace-18"
+  price: '250.0000'
+  sku: acj00118
+acj00124:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Pearl Strand Necklace-24"
+  price: '250.0000'
+  sku: acj00124
+acj001c:
+  category: Accessories/Jewelry
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Pearl Strand Necklace
+  price: '250.0000'
+  sku: acj001c
+acj003:
+  category: Accessories/Jewelry
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Pearl Stud Earrings
+  price: '110.0000'
+  sku: acj003
+acj004:
+  category: Accessories/Jewelry
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Swing Time Earrings
+  price: '75.0000'
+  sku: acj004
+acj005:
+  category: Accessories/Jewelry
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Swiss Movement Sports Watch
+  price: '500.0000'
+  sku: acj005
+ams000:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Dorian Perforated Oxford
+  price: '410.0000'
+  sku: ams000
+ams000c:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Dorian Perforated Oxford
+  price: '410.0000'
+  sku: ams000c
+ams001:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Dorian Perforated Oxford
+  price: '410.0000'
+  sku: ams001
+ams002:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Dorian Perforated Oxford
+  price: '410.0000'
+  sku: ams002
+ams003:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Dorian Perforated Oxford
+  price: '410.0000'
+  sku: ams003
+ams004:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Dorian Perforated Oxford
+  price: '410.0000'
+  sku: ams004
+ams005:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Wingtip Cognac Oxford
+  price: '375.0000'
+  sku: ams005
+ams005c:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Wingtip Cognac Oxford
+  price: '375.0000'
+  sku: ams005c
+ams006:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Wingtip Cognac Oxford
+  price: '375.0000'
+  sku: ams006
+ams007:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Wingtip Cognac Oxford
+  price: '375.0000'
+  sku: ams007
+ams008:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Wingtip Cognac Oxford
+  price: '375.0000'
+  sku: ams008
+ams009:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Wingtip Cognac Oxford
+  price: '375.0000'
+  sku: ams009
+ams010:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Suede Loafer, Navy
+  price: '310.0000'
+  sku: ams010
+ams010c:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Suede Loafer, Navy
+  price: '310.0000'
+  sku: ams010c
+ams011:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Suede Loafer, Navy
+  price: '310.0000'
+  sku: ams011
+ams012:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Suede Loafer, Navy
+  price: '310.0000'
+  sku: ams012
+ams013:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Suede Loafer, Navy
+  price: '310.0000'
+  sku: ams013
+ams014:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Suede Loafer, Navy
+  price: '310.0000'
+  sku: ams014
+aws000:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Barclay d'Orsay pump, Nude
+  price: '390.0000'
+  sku: aws000
+aws000c:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Barclay d'Orsay pump, Nude
+  price: '390.0000'
+  sku: aws000c
+aws001:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Barclay d'Orsay pump, Nude
+  price: '390.0000'
+  sku: aws001
+aws002:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Barclay d'Orsay pump, Nude
+  price: '390.0000'
+  sku: aws002
+aws003:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Barclay d'Orsay pump, Nude
+  price: '390.0000'
+  sku: aws003
+aws004:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Barclay d'Orsay pump, Nude
+  price: '390.0000'
+  sku: aws004
+aws005:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Ann Ankle Boot
+  price: '470.0000'
+  sku: aws005
+aws005c:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Ann Ankle Boot
+  price: '470.0000'
+  sku: aws005c
+aws006:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Ann Ankle Boot
+  price: '470.0000'
+  sku: aws006
+aws007:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Ann Ankle Boot
+  price: '470.0000'
+  sku: aws007
+aws008:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Ann Ankle Boot
+  price: '470.0000'
+  sku: aws008
+aws009:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Ann Ankle Boot
+  price: '470.0000'
+  sku: aws009
+aws010:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Hana Flat, Charcoal
+  price: '210.0000'
+  sku: aws010
+aws010c:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Hana Flat, Charcoal
+  price: '210.0000'
+  sku: aws010c
+aws011:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Hana Flat, Charcoal
+  price: '210.0000'
+  sku: aws011
+aws012:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Hana Flat, Charcoal
+  price: '210.0000'
+  sku: aws012
+aws013:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Hana Flat, Charcoal
+  price: '210.0000'
+  sku: aws013
+aws014:
+  category: Accessories/Shoes
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Hana Flat, Charcoal
+  price: '210.0000'
+  sku: aws014
+hbm000:
+  category: VIP
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: A Tale of Two Cities
+  price: '10.0000'
+  sku: hbm000
+hbm001:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Around the World in 80 Days
+  price: '5.0000'
+  sku: hbm001
+hbm002:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Olvidalo by Brownout
+  price: '2.0000'
+  sku: hbm002
+'hbm003 ':
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Alice in Wonderland
+  price: '5.0000'
+  sku: 'hbm003 '
+hbm005:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Falling by I Am Not Lefthanded
+  price: '2.0000'
+  sku: hbm005
+hbm006:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: If You Were by Keshco
+  price: '2.0000'
+  sku: hbm006
+hbm007:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Can't Stop It by Shearer
+  price: '2.0000'
+  sku: hbm007
+hbm008:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Love is an Eternal Lie by The Sleeping Tree
+  price: '2.0000'
+  sku: hbm008
+hbm009:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Goin Down to the Bus Stop by TBird
+  price: '2.0000'
+  sku: hbm009
+hbm010:
+  category: Home & Decor/Books & Music
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Fire [Kalima remix] by Unannounced Guest
+  price: '2.0000'
+  sku: hbm010
+hdb000:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Body Wash with Lemon Flower Extract and Aloe Vera
+  price: '28.0000'
+  sku: hdb000
+hdb001:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Bath Minerals and Salt
+  price: '25.0000'
+  sku: hdb001
+hdb002:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Shea Enfused Hydrating Body Lotion
+  price: '28.0000'
+  sku: hdb002
+hdb005:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Titian Raw Silk Pillow
+  price: '125.0000'
+  sku: hdb005
+hdb006:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Shay Printed Pillow
+  price: '210.0000'
+  sku: hdb006
+hdb007:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Carnegie Alpaca Throw
+  price: '275.0000'
+  sku: hdb007
+hdb008:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Park Row Throw
+  price: '240.0000'
+  sku: hdb008
+hdb009:
+  category: Home & Decor/Bed & Bath
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Gramercy Throw
+  price: '275.0000'
+  sku: hdb009
+hdd000:
+  category: Home & Decor/Decorative Accents
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Herald Glass Vase
+  price: '110.0000'
+  sku: hdd000
+hdd001:
+  category: Home & Decor/Decorative Accents
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Modern Murray Ceramic Vase
+  price: '135.0000'
+  sku: hdd001
+hdd001c:
+  category: VIP
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Modern Murray Ceramic Vase
+  price: '135.0000'
+  sku: hdd001c
+hdd002:
+  category: Home & Decor/Decorative Accents
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Modern Murray Ceramic Vase
+  price: '135.0000'
+  sku: hdd002
+hdd004:
+  category: Home & Decor/Decorative Accents
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Stone Salt and Pepper Shakers
+  price: '65.0000'
+  sku: hdd004
+hdd005:
+  category: Home & Decor/Decorative Accents
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Fragrance Diffuser Reeds
+  price: '75.0000'
+  sku: hdd005
+hdd006:
+  category: VIP
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Geometric Candle Holders
+  price: '90.0000'
+  sku: hdd006
+hde001:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Madison LX2200
+  price: '425.0000'
+  sku: hde001
+hde003:
+  category: VIP
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Madison RX3400
+  price: '715.0000'
+  sku: hde003
+hde004:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: 16GB Memory Card
+  price: '30.0000'
+  sku: hde004
+hde005:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: 8GB Memory Card
+  price: '20.0000'
+  sku: hde005
+hde006:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Large Camera Bag
+  price: '120.0000'
+  sku: hde006
+hde007:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: 3-Year Warranty
+  price: '75.0000'
+  sku: hde007
+hde008:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: 5-Year Warranty
+  price: '100.0000'
+  sku: hde008
+hde010:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Madison Earbuds
+  price: '35.0000'
+  sku: hde010
+hde011:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Madison Overear Headphones
+  price: '125.0000'
+  sku: hde011
+hde012:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Madison 8GB Digital Media Player
+  price: '150.0000'
+  sku: hde012
+hde013:
+  category: Home & Decor/Electronics
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Compact mp3 Player
+  price: '40.0000'
+  sku: hde013
+mem000:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Madison Island VIP Membership - 1 Year
+  price: '350.0000'
+  sku: mem000
+mpd000:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd000
+mpd00028:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00028
+mpd00031:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00031
+mpd00036:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00036
+mpd00038:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00038
+mpd000c:
+  category: Men
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd000c
+mpd001:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd001
+mpd002:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Khaki Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd002
+mpd003:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd003
+mpd00328:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00328
+mpd00331:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00331
+mpd00336:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00336
+mpd00338:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd00338
+mpd003c:
+  category: Men
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd003c
+mpd004:
+  category: Men/Pants & Denim
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd004
+mpd005:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Bowery Chino Pants
+  price: '140.0000'
+  sku: mpd005
+mpd006:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: The Essential Boot Cut Jean
+  price: '140.0000'
+  sku: mpd006
+mpd006c:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: The Essential Boot Cut Jean
+  price: '140.0000'
+  sku: mpd006c
+mpd007:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: The Essential Boot Cut Jean
+  price: '140.0000'
+  sku: mpd007
+mpd008:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: The Essential Boot Cut Jean
+  price: '140.0000'
+  sku: mpd008
+mpd009:
+  category: Men/Pants & Denim
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: The Essential Boot Cut Jean
+  price: '140.0000'
+  sku: mpd009
+mpd010:
+  category: Men/Pants & Denim
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: The Essential Boot Cut Jean
+  price: '140.0000'
+  sku: mpd010
+mpd011:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: The Essential Boot Cut Jean
+  price: '140.0000'
+  sku: mpd011
+mpd012:
+  category: Men/Pants & Denim
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Flat Front  Trouser
+  price: '195.0000'
+  sku: mpd012
+mpd012c:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Flat Front  Trouser
+  price: '195.0000'
+  sku: mpd012c
+mpd013:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Flat Front  Trouser
+  price: '195.0000'
+  sku: mpd013
+mpd014:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Flat Front  Trouser
+  price: '195.0000'
+  sku: mpd014
+mpd015:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Flat Front  Trouser
+  price: '195.0000'
+  sku: mpd015
+mpd016:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Flat Front  Trouser
+  price: '195.0000'
+  sku: mpd016
+mpd017:
+  category: Men/Pants & Denim
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Flat Front  Trouser
+  price: '195.0000'
+  sku: mpd017
+msj000:
+  category: Men/Shirts
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: msj000
+msj000c:
+  category: Men/Shirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: msj000c
+msj000xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: msj000xl
+msj000xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: msj000xs
+msj001:
+  category: Men/Shirts
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: msj001
+msj002:
+  category: Men/Shirts
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: French Cuff Cotton Twill Oxford
+  price: '190.0000'
+  sku: msj002
+msj003:
+  category: Men/Shirts
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Slim fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: msj003
+msj003c:
+  category: Men/Shirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Slim fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: msj003c
+msj003xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Slim fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: msj003xl
+msj003xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Slim fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: msj003xs
+msj004:
+  category: Men/Shirts
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Slim fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: msj004
+msj005:
+  category: Men/Shirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Slim fit Dobby Oxford Shirt
+  price: '175.0000'
+  sku: msj005
+msj006:
+  category: Men/Shirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Plaid Cotton Shirt
+  price: '160.0000'
+  sku: msj006
+msj006c:
+  category: Men/Shirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Plaid Cotton Shirt
+  price: '160.0000'
+  sku: msj006c
+msj006c-Khaki-L:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Plaid Cotton Shirt-Khaki-L
+  price: '160.0000'
+  sku: msj006c-Khaki-L
+msj006c-Khaki-M:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Plaid Cotton Shirt-Khaki-M
+  price: '160.0000'
+  sku: msj006c-Khaki-M
+msj006c-Khaki-S:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Plaid Cotton Shirt-Khaki-S
+  price: '160.0000'
+  sku: msj006c-Khaki-S
+msj006c-Red-L:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Plaid Cotton Shirt-Red-L
+  price: '160.0000'
+  sku: msj006c-Red-L
+msj006c-Red-M:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Plaid Cotton Shirt-Red-M
+  price: '160.0000'
+  sku: msj006c-Red-M
+msj006c-Red-S:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Plaid Cotton Shirt-Red-S
+  price: '160.0000'
+  sku: msj006c-Red-S
+msj006c-Royal Blue-L:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Plaid Cotton Shirt-Royal Blue-L
+  price: '160.0000'
+  sku: msj006c-Royal Blue-L
+msj006c-Royal Blue-M:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Plaid Cotton Shirt-Royal Blue-M
+  price: '160.0000'
+  sku: msj006c-Royal Blue-M
+msj006c-Royal Blue-S:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Plaid Cotton Shirt-Royal Blue-S
+  price: '160.0000'
+  sku: msj006c-Royal Blue-S
+msj006xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Plaid Cotton Shirt
+  price: '160.0000'
+  sku: msj006xl
+msj006xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Plaid Cotton Shirt
+  price: '160.0000'
+  sku: msj006xs
+msj007:
+  category: Men/Shirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Plaid Cotton Shirt
+  price: '160.0000'
+  sku: msj007
+msj008:
+  category: Men/Shirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Plaid Cotton Shirt
+  price: '160.0000'
+  sku: msj008
+msj009:
+  category: Men/New Arrivals
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Sullivan Sport Coat
+  price: '510.0000'
+  sku: msj009
+msj009c:
+  category: Men/Blazers
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Sullivan Sport Coat
+  price: '510.0000'
+  sku: msj009c
+msj009xl:
+  category: Men/Blazers
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Sullivan Sport Coat
+  price: '510.0000'
+  sku: msj009xl
+msj009xs:
+  category: Men/Blazers
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Sullivan Sport Coat
+  price: '510.0000'
+  sku: msj009xs
+msj010:
+  category: Men/New Arrivals
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Sullivan Sport Coat
+  price: '510.0000'
+  sku: msj010
+msj011:
+  category: Men/New Arrivals
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Sullivan Sport Coat
+  price: '510.0000'
+  sku: msj011
+msj012:
+  category: Men/Blazers
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Linen Blazer
+  price: '455.0000'
+  sku: msj012
+msj012c:
+  category: Men
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Linen Blazer
+  price: '455.0000'
+  sku: msj012c
+msj012xl:
+  category: Men/Blazers
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Linen Blazer
+  price: '455.0000'
+  sku: msj012xl
+msj012xs:
+  category: Men/Blazers
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Linen Blazer
+  price: '455.0000'
+  sku: msj012xs
+msj013:
+  category: Men/Blazers
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Linen Blazer
+  price: '455.0000'
+  sku: msj013
+msj014:
+  category: Men/Blazers
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Linen Blazer
+  price: '455.0000'
+  sku: msj014
+msj015:
+  category: Men/Blazers
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Stretch Cotton Blazer
+  price: '490.0000'
+  sku: msj015
+msj015c:
+  category: Men/Blazers
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Stretch Cotton Blazer
+  price: '490.0000'
+  sku: msj015c
+msj015xl:
+  category: Men/Blazers
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Stretch Cotton Blazer
+  price: '490.0000'
+  sku: msj015xl
+msj015xs:
+  category: Men/Blazers
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Stretch Cotton Blazer
+  price: '490.0000'
+  sku: msj015xs
+msj016:
+  category: Men/Blazers
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Stretch Cotton Blazer
+  price: '490.0000'
+  sku: msj016
+msj017:
+  category: Men/Blazers
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Stretch Cotton Blazer
+  price: '490.0000'
+  sku: msj017
+mtk000:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk000
+mtk000c:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk000c
+mtk000l:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk000l
+mtk000xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk000xl
+mtk000xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk000xs
+mtk001:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk001
+mtk002:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk002
+mtk002c:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk002c
+mtk002s:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk002s
+mtk002xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk002xl
+mtk002xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk002xs
+mtk003:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk003
+mtk004:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk004
+mtk004c:
+  category: Men/New Arrivals
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk004c
+mtk004m:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk004m
+mtk004xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Chelsea Tee
+  price: '160.0000'
+  sku: mtk004xl
+mtk004xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk004xs
+mtk005:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Chelsea Tee
+  price: '75.0000'
+  sku: mtk005
+mtk006:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: mtk006
+mtk006c:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: mtk006c
+mtk006xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: mtk006xl
+mtk006xs:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: mtk006xs
+mtk007:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: mtk007
+mtk008:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Merino V-neck Pullover Sweater
+  price: '210.0000'
+  sku: mtk008
+mtk009:
+  category: Men/New Arrivals
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Lexington Cardigan Sweater
+  price: '240.0000'
+  sku: mtk009
+mtk009c:
+  category: VIP
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Lexington Cardigan Sweater
+  price: '240.0000'
+  sku: mtk009c
+mtk009xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Lexington Cardigan Sweater
+  price: '240.0000'
+  sku: mtk009xl
+mtk009xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Lexington Cardigan Sweater
+  price: '240.0000'
+  sku: mtk009xs
+mtk010:
+  category: Men
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Lexington Cardigan Sweater
+  price: '240.0000'
+  sku: mtk010
+mtk011:
+  category: Men/New Arrivals
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Lexington Cardigan Sweater
+  price: '240.0000'
+  sku: mtk011
+mtk012:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Core Striped Sport Shirt
+  price: '125.0000'
+  sku: mtk012
+mtk012c:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Core Striped Sport Shirt
+  price: '125.0000'
+  sku: mtk012c
+mtk012xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Core Striped Sport Shirt-Indigo-XL
+  price: '125.0000'
+  sku: mtk012xl
+mtk012xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Core Striped Sport Shirt
+  price: '125.0000'
+  sku: mtk012xs
+mtk013:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Core Striped Sport Shirt
+  price: '125.0000'
+  sku: mtk013
+mtk014:
+  category: Men/Tees, Knits and Polos
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Core Striped Sport Shirt
+  price: '125.0000'
+  sku: mtk014
+shm000:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Mercer Loafer
+  price: '310.0000'
+  sku: shm000
+shm00010:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Mercer Loafer
+  price: '310.0000'
+  sku: shm00010
+shm00011:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Mercer Loafer
+  price: '310.0000'
+  sku: shm00011
+shm00012:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Mercer Loafer
+  price: '310.0000'
+  sku: shm00012
+shm0008:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Mercer Loafer
+  price: '310.0000'
+  sku: shm0008
+shm0009:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Mercer Loafer
+  price: '310.0000'
+  sku: shm0009
+shm001:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Broad St Saddle Shoes
+  price: '390.0000'
+  sku: shm001
+shm00110:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Broad St Saddle Shoes
+  price: '390.0000'
+  sku: shm00110
+shm00111:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Broad St Saddle Shoes
+  price: '390.0000'
+  sku: shm00111
+shm00112:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Broad St Saddle Shoes
+  price: '390.0000'
+  sku: shm00112
+shm0018:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Broad St Saddle Shoes
+  price: '390.0000'
+  sku: shm0018
+shm0019:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Broad St Saddle Shoes
+  price: '390.0000'
+  sku: shm0019
+shm002:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Empire Oxford
+  price: '410.0000'
+  sku: shm002
+shm00210:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Empire Oxford
+  price: '410.0000'
+  sku: shm00210
+shm00211:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Empire Oxford
+  price: '410.0000'
+  sku: shm00211
+shm00212:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Empire Oxford
+  price: '410.0000'
+  sku: shm00212
+shm0028:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Empire Oxford
+  price: '410.0000'
+  sku: shm0028
+shm0029:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Empire Oxford
+  price: '410.0000'
+  sku: shm0029
+shm003:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Lenox Boot
+  price: '550.0000'
+  sku: shm003
+shm00310:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Lenox Boot
+  price: '550.0000'
+  sku: shm00310
+shm00311:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Lenox Boot
+  price: '550.0000'
+  sku: shm00311
+shm00312:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Lenox Boot
+  price: '550.0000'
+  sku: shm00312
+shm0038:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Lenox Boot
+  price: '550.0000'
+  sku: shm0038
+shm0039:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Lenox Boot
+  price: '550.0000'
+  sku: shm0039
+shm004:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Studio Dress Shoe
+  price: '410.0000'
+  sku: shm004
+shm00410:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Studio Dress Shoe
+  price: '410.0000'
+  sku: shm00410
+shm00411:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Studio Dress Shoe
+  price: '410.0000'
+  sku: shm00411
+shm00412:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Studio Dress Shoe
+  price: '410.0000'
+  sku: shm00412
+shm0048:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Studio Dress Shoe
+  price: '410.0000'
+  sku: shm0048
+shm0049:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Studio Dress Shoe
+  price: '410.0000'
+  sku: shm0049
+shm005:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Yuca Sneaker
+  price: '350.0000'
+  sku: shm005
+shm00510:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Carnegie Sneaker
+  price: '350.0000'
+  sku: shm00510
+shm00511:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Carnegie Sneaker
+  price: '350.0000'
+  sku: shm00511
+shm00512:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Carnegie Sneaker
+  price: '350.0000'
+  sku: shm00512
+shm0058:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Carnegie Sneaker
+  price: '350.0000'
+  sku: shm0058
+shm0059:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Carnegie Sneaker
+  price: '350.0000'
+  sku: shm0059
+shm009:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Studio Dress Shoe
+  price: '410.0000'
+  sku: shm009
+shw000:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Hudson Snakeskin Pump
+  price: '375.0000'
+  sku: shw000
+shw00010:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Hudson Snakeskin Pump
+  price: '375.0000'
+  sku: shw00010
+shw0006:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Hudson Snakeskin Pump
+  price: '375.0000'
+  sku: shw0006
+shw0007:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Hudson Snakeskin Pump
+  price: '375.0000'
+  sku: shw0007
+shw0008:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Hudson Snakeskin Pump
+  price: '375.0000'
+  sku: shw0008
+shw0009:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Hudson Snakeskin Pump
+  price: '375.0000'
+  sku: shw0009
+shw001:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Prima Pump
+  price: '375.0000'
+  sku: shw001
+shw00110:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Prima Pump
+  price: '375.0000'
+  sku: shw00110
+shw0016:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Prima Pump
+  price: '375.0000'
+  sku: shw0016
+shw0017:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Prima Pump
+  price: '375.0000'
+  sku: shw0017
+shw0018:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Prima Pump
+  price: '375.0000'
+  sku: shw0018
+shw0019:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Prima Pump
+  price: '375.0000'
+  sku: shw0019
+shw002:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Plaza Platform
+  price: '320.0000'
+  sku: shw002
+shw00210:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Plaza Platform
+  price: '320.0000'
+  sku: shw00210
+shw0026:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Plaza Platform
+  price: '320.0000'
+  sku: shw0026
+shw0027:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Plaza Platform
+  price: '320.0000'
+  sku: shw0027
+shw0028:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Plaza Platform
+  price: '320.0000'
+  sku: shw0028
+shw0029:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Plaza Platform
+  price: '320.0000'
+  sku: shw0029
+shw003:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Annie Pump
+  price: '390.0000'
+  sku: shw003
+shw00310:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Annie Pump
+  price: '390.0000'
+  sku: shw00310
+shw0036:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Annie Pump
+  price: '390.0000'
+  sku: shw0036
+shw0037:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Annie Pump
+  price: '390.0000'
+  sku: shw0037
+shw0038:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Annie Pump
+  price: '390.0000'
+  sku: shw0038
+shw0039:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Annie Pump
+  price: '390.0000'
+  sku: shw0039
+shw004:
+  category: Accessories/Shoes
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Broadway Pump
+  price: '410.0000'
+  sku: shw004
+shw00410:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Broadway Pump
+  price: '410.0000'
+  sku: shw00410
+shw0046:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Broadway Pump
+  price: '410.0000'
+  sku: shw0046
+shw0047:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Broadway Pump
+  price: '410.0000'
+  sku: shw0047
+shw0048:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Broadway Pump
+  price: '410.0000'
+  sku: shw0048
+shw0049:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Broadway Pump
+  price: '410.0000'
+  sku: shw0049
+shw005:
+  category: Accessories/Shoes
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Ellis Flat
+  price: '250.0000'
+  sku: shw005
+shw00510:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Ellis Flat
+  price: '250.0000'
+  sku: shw00510
+shw0056:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Ellis Flat
+  price: '250.0000'
+  sku: shw0056
+shw0057:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Ellis Flat
+  price: '250.0000'
+  sku: shw0057
+shw0058:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Ellis Flat
+  price: '250.0000'
+  sku: shw0058
+shw0059:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Ellis Flat
+  price: '250.0000'
+  sku: shw0059
+vip000:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: 1-Year Members Only Shopping
+  price: '400.0000'
+  sku: vip000
+wbk000:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: NoLIta Cami
+  price: '150.0000'
+  sku: wbk000
+wbk000c:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: NoLIta Cami
+  price: '150.0000'
+  sku: wbk000c
+wbk000c-Pink-L:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: NoLIta Cami-Pink-L
+  price: '150.0000'
+  sku: wbk000c-Pink-L
+wbk000xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: NoLIta Cami
+  price: '150.0000'
+  sku: wbk000xl
+wbk000xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: NoLIta Cami
+  price: '150.0000'
+  sku: wbk000xs
+wbk001:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: NoLIta Cami
+  price: '150.0000'
+  sku: wbk001
+wbk002L:
+  category: Women
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Black NoLIta Cami
+  price: '150.0000'
+  sku: wbk002L
+wbk002M:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Black Nolita Cami
+  price: '150.0000'
+  sku: wbk002M
+wbk002c:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Black Nolita Cami
+  price: '150.0000'
+  sku: wbk002c
+wbk002c-Black-S:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Black Nolita Cami-Black-S
+  price: '150.0000'
+  sku: wbk002c-Black-S
+wbk002c-Black-XS:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Black Nolita Cami-Black-XS
+  price: '150.0000'
+  sku: wbk002c-Black-XS
+wbk003:
+  category: Women/New Arrivals
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Tori Tank
+  price: '60.0000'
+  sku: wbk003
+wbk003c:
+  category: Women
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Tori Tank
+  price: '60.0000'
+  sku: wbk003c
+wbk003xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Tori Tank
+  price: '60.0000'
+  sku: wbk003xl
+wbk003xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Tori Tank
+  price: '60.0000'
+  sku: wbk003xs
+wbk004:
+  category: Women/New Arrivals
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Tori Tank
+  price: '60.0000'
+  sku: wbk004
+wbk005:
+  category: Women/New Arrivals
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Tori Tank
+  price: '60.0000'
+  sku: wbk005
+wbk006:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Delancy Cardigan Sweater
+  price: '275.0000'
+  sku: wbk006
+wbk006c:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Delancy Cardigan Sweater
+  price: '275.0000'
+  sku: wbk006c
+wbk006xl:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Delancy Cardigan Sweater
+  price: '275.0000'
+  sku: wbk006xl
+wbk006xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Delancy Cardigan Sweater
+  price: '275.0000'
+  sku: wbk006xs
+wbk007:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Delancy Cardigan Sweater
+  price: '275.0000'
+  sku: wbk007
+wbk008:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Delancy Cardigan Sweater
+  price: '275.0000'
+  sku: wbk008
+wbk009:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Ludlow Oxford Top
+  price: '185.0000'
+  sku: wbk009
+wbk009c:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Ludlow Oxford Top
+  price: '185.0000'
+  sku: wbk009c
+wbk009xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Ludlow Oxford Top
+  price: '185.0000'
+  sku: wbk009xl
+wbk009xs:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Ludlow Oxford Top
+  price: '185.0000'
+  sku: wbk009xs
+wbk010:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Ludlow Oxford Top
+  price: '185.0000'
+  sku: wbk010
+wbk011:
+  category: Women/Tops & Blouses
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Ludlow Oxford Top
+  price: '185.0000'
+  sku: wbk011
+wbk012:
+  category: Women/New Arrivals
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Elizabeth Knit Top
+  price: '210.0000'
+  sku: wbk012
+wbk012c:
+  category: Women/New Arrivals
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Elizabeth Knit Top
+  price: '210.0000'
+  sku: wbk012c
+wbk012c-Pink-L:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Elizabeth Knit Top-Pink-L
+  price: '210.0000'
+  sku: wbk012c-Pink-L
+wbk012c-Pink-M:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Elizabeth Knit Top-Pink-M
+  price: '210.0000'
+  sku: wbk012c-Pink-M
+wbk012c-Pink-S:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Elizabeth Knit Top-Pink-S
+  price: '210.0000'
+  sku: wbk012c-Pink-S
+wbk012c-Red-L:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Elizabeth Knit Top-Red-L
+  price: '210.0000'
+  sku: wbk012c-Red-L
+wbk012c-Red-M:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Elizabeth Knit Top-Red-M
+  price: '210.0000'
+  sku: wbk012c-Red-M
+wbk012c-Red-S:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Elizabeth Knit Top-Red-S
+  price: '210.0000'
+  sku: wbk012c-Red-S
+wbk012c-Royal Blue-L:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Elizabeth Knit Top-Royal Blue-L
+  price: '210.0000'
+  sku: wbk012c-Royal Blue-L
+wbk012c-Royal Blue-M:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Elizabeth Knit Top-Royal Blue-M
+  price: '210.0000'
+  sku: wbk012c-Royal Blue-M
+wbk012c-Royal Blue-S:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Elizabeth Knit Top-Royal Blue-S
+  price: '210.0000'
+  sku: wbk012c-Royal Blue-S
+wbk012xl:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Elizabeth Knit Top
+  price: '210.0000'
+  sku: wbk012xl
+wbk012xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Elizabeth Knit Top
+  price: '210.0000'
+  sku: wbk012xs
+wbk013:
+  category: Women/New Arrivals
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Elizabeth Knit Top
+  price: '210.0000'
+  sku: wbk013
+wbk014:
+  category: Women/New Arrivals
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Elizabeth Knit Top
+  price: '210.0000'
+  sku: wbk014
+wpd00026:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd00026
+wpd00027:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd00027
+wpd00028:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd00028
+wpd00029:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd00029
+wpd00030:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd00030
+wpd00031:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd00031
+wpd00032:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd00032
+wpd000c:
+  category: Women/Pants & Denim
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: TriBeCa Skinny Jean
+  price: '185.0000'
+  sku: wpd000c
+wpd00526:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd00526
+wpd00527:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd00527
+wpd00528:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd00528
+wpd00529:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd00529
+wpd00530:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd00530
+wpd00531:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd00531
+wpd00532:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd00532
+wpd005c:
+  category: VIP
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: DUMBO Boyfriend Jean
+  price: '210.0000'
+  sku: wpd005c
+wpd010:
+  category: Women/New Arrivals
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd010
+wpd01010:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd01010
+wpd01012:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd01012
+wpd0104:
+  category: ''
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd0104
+wpd0106:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd0106
+wpd0108:
+  category: ''
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd0108
+wpd010c:
+  category: Women
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd010c
+wpd011:
+  category: Women/New Arrivals
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd011
+wpd012:
+  category: Women/New Arrivals
+  labels:
+    promotion: Last pieces in stock
+  maker: 7 For All Mankind
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd012
+wpd013:
+  category: Women/New Arrivals
+  labels:
+    promotion: Before Christmas sale
+  maker: Piazza Sempione
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd013
+wpd014:
+  category: Women/New Arrivals
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Park Avenue Pleat Front Trousers
+  price: '245.0000'
+  sku: wpd014
+wsd000:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Essex Pencil Skirt
+  price: '185.0000'
+  sku: wsd000
+wsd000c:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Essex Pencil Skirt
+  price: '185.0000'
+  sku: wsd000c
+wsd001:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Gabriela Hearst
+  name: Essex Pencil Skirt
+  price: '185.0000'
+  sku: wsd001
+wsd002:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Essex Pencil Skirt
+  price: '185.0000'
+  sku: wsd002
+wsd003:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Essex Pencil Skirt
+  price: '185.0000'
+  sku: wsd003
+wsd004:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Before Christmas sale
+  maker: 7 For All Mankind
+  name: Essex Pencil Skirt
+  price: '185.0000'
+  sku: wsd004
+wsd005:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Racer Back Maxi Dress
+  price: '280.0000'
+  sku: wsd005
+wsd005c:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Gabriela Hearst
+  name: Racer Back Maxi Dress
+  price: '280.0000'
+  sku: wsd005c
+wsd005xl:
+  category: ''
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Racer Back Maxi Dress
+  price: '280.0000'
+  sku: wsd005xl
+wsd005xs:
+  category: ''
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Racer Back Maxi Dress
+  price: '280.0000'
+  sku: wsd005xs
+wsd006:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: Girlsmusthave
+  name: Racer Back Maxi Dress
+  price: '280.0000'
+  sku: wsd006
+wsd007:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Racer Back Maxi Dress
+  price: '280.0000'
+  sku: wsd007
+wsd008:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Parfums De Marly
+  name: Sheath
+  price: '305.0000'
+  sku: wsd008
+wsd008c:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Ludlow Sheath Dress
+  price: '305.0000'
+  sku: wsd008c
+wsd009:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: Piazza Sempione
+  name: Sheath
+  price: '305.0000'
+  sku: wsd009
+wsd010:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Sheath
+  price: '305.0000'
+  sku: wsd010
+wsd011:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Sheath
+  price: '305.0000'
+  sku: wsd011
+wsd012:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: Parfums De Marly
+  name: Sheath
+  price: '305.0000'
+  sku: wsd012
+wsd013:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: New product
+  maker: 7 For All Mankind
+  name: Convertible Dress
+  price: '340.0000'
+  sku: wsd013
+wsd013c:
+  category: Women/New Arrivals
+  labels:
+    promotion: New product
+  maker: Gabriela Hearst
+  name: Lafayette Convertible Dress
+  price: '340.0000'
+  sku: wsd013c
+wsd014:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Parfums De Marly
+  name: Convertible Dress
+  price: '340.0000'
+  sku: wsd014
+wsd015:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Girlsmusthave
+  name: Convertible Dress
+  price: '340.0000'
+  sku: wsd015
+wsd016:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Last pieces in stock
+  maker: Piazza Sempione
+  name: Convertible Dress
+  price: '340.0000'
+  sku: wsd016
+wsd017:
+  category: Women/Dresses & Skirts
+  labels:
+    promotion: Before Christmas sale
+  maker: Girlsmusthave
+  name: Convertible Dress
+  price: '340.0000'
+  sku: wsd017

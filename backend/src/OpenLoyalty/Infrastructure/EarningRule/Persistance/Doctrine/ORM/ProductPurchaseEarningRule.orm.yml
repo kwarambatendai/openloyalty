@@ -1,0 +1,9 @@
+OpenLoyalty\Domain\EarningRule\ProductPurchaseEarningRule:
+  type: entity
+  fields:
+    skuIds:
+      type: json_array
+      column: sku_ids
+    pointsAmount:
+      type: integer
+      column: points_amount

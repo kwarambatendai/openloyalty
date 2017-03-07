@@ -1,0 +1,24 @@
+<?php
+
+namespace OpenLoyalty\Bundle\EarningRuleBundle\Form\Type;
+
+use OpenLoyalty\Bundle\EarningRuleBundle\Form\DataTransformer\LabelsDataTransformer;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+/**
+ * Class LabelsFormType.
+ */
+class LabelsFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->addModelTransformer(new LabelsDataTransformer());
+    }
+
+    public function getParent()
+    {
+        return TextType::class;
+    }
+}

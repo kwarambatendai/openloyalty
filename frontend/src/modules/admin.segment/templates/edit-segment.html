@@ -1,0 +1,93 @@
+<box-loader loading="SegmentCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="SegmentCtrl.getSegmentData()">
+    <h1>{{ "segment.edit_heading" | translate }}</h1>
+</div>
+<div style="clear:both"></div>
+<form novalidate ng-submit="SegmentCtrl.editSegment(editableFields)">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    
+                    <legend>{{ "segment.basic_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "segment.name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.name.errors">
+                            <input type="text" ng-model="editableFields.name" required>
+                            <span class="prompt">{{ "segment.name_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "segment.description" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.description.errors">
+                            <textarea ng-model="editableFields.description"></textarea>
+                            <span class="prompt">{{ "segment.description_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "segment.active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.active.errors">
+                            <selectize config="SegmentCtrl.activeConfig" options="SegmentCtrl.active"
+                                       ng-model="editableFields.active"></selectize>
+                            <span class="prompt">{{ "segment.active_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    
+                    <legend>{{ "segment.parts" | translate }}</legend>
+                    <div ng-repeat="part in editableFields.parts" ng-init="$parentIndex=$index">
+                        <div class="segment-and" ng-show="$index!=0">
+                            <span class="text">{{ "global.and" | translate }}</span>
+                        </div>
+                        <div class="collection" form-validation="validate.parts[$parentIndex].criteria.errors">
+                            <button type="button" class="remove-collection"
+                                    ng-click="SegmentCtrl.removeSegmentPart($index, true)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                            <div ng-repeat="criteria in editableFields.parts[$parentIndex].criteria">
+                                <segment-part segment-model="editableFields.parts[$parentIndex].criteria[$index]"
+                                              segment-index="$index" parent-index="$parentIndex"
+                                              edit="true"></segment-part>
+                            </div>
+                            <div class="text-right">
+                                <button class="button button-quinary tiny"
+                                        ng-click="SegmentCtrl.addCriterion($parentIndex, true)"
+                                        style="margin-right:25px;"
+                                        type="button">{{ "segment.add_criterion" | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button class="button button-secondary tiny" ng-click="SegmentCtrl.addSegmentPart(true)"
+                                type="button">{{ "segment.add_segment_part" | translate }}
+                        </button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                    {{ "global.save" | translate }}
+                </button>
+                <button type="button" ui-sref="admin.segment-list" class="button button-default float-left">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

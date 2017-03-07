@@ -1,0 +1,39 @@
+<section class="pos-section" ng-init="SellerCustomerCtrl.getCampaignsData()">
+
+    <h1>{{ "seller.dashboard.title.customer_campaigns" | translate }}</h1>
+
+    <div class="row">
+        <div class="client-list box">
+            <div class="box-title">
+                <h1 class="text-left">{{ "customer.campaigns_list" | translate }}</h1>
+            </div>
+            <div class="box-content">
+                <table ng-table="SellerCustomerCtrl.availableCampaignsTableParams" class="default"
+                       template-pagination="templatePagination.html">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'campaign.name'|translate" sortable="'name'">
+                            <span ng-bind="row.name"></span>
+                        </td>
+                        <td data-title="'campaign.active'|translate" sortable="'active'">
+                            <span ng-bind="row.active"></span>
+                        </td>
+                        <td data-title="'campaign.cost_in_points'|translate" sortable="'costInPoints'">
+                            <span ng-bind="row.costInPoints"></span>
+                        </td>
+                        <td data-title="'campaign.limit'|translate" sortable="'limit'">
+                            <span ng-bind="row.limit"></span>
+                        </td>
+                        <td data-title="'campaign.active_from'|translate">
+                            <span ng-bind="row.campaignActivity.activeFrom|date : 'yyyy-MM-dd HH:mm'"
+                                  ng-hide="campaign.campaignActivity.allTimeActive"></span>
+                        </td>
+                        <td data-title="'campaign.active_to'|translate">
+                            <span ng-bind="row.campaignActivity.activeTo|date : 'yyyy-MM-dd HH:mm'"
+                                  ng-hide="campaign.campaignActivity.allTimeActive"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

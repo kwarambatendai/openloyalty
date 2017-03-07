@@ -1,0 +1,6 @@
+services:
+  oloy.plugin.form.manager:
+      class: OpenLoyalty\Bundle\PluginBundle\Service\PluginFormManager
+      arguments:
+        - '%kernel.bundles%'
+        - '@service_container'

@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Audit\AuditLogId:
+  exlusion_policy: ALL
+  properties:
+    auditLogId:
+      expose: true
+      serialized_name: auditLogId

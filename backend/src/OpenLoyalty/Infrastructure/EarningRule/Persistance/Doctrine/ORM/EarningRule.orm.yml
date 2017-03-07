@@ -1,0 +1,38 @@
+OpenLoyalty\Domain\EarningRule\EarningRule:
+  type: entity
+  repositoryClass: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Repository\DoctrineEarningRuleRepository
+  table: ol__earning_rule
+  inheritanceType: "SINGLE_TABLE"
+  id:
+    earningRuleId:
+      type: earning_rule_id
+      column: earning_rule_id
+  fields:
+    name:
+      type: string
+    description:
+      type: text
+      nullable: true
+    active:
+      type: boolean
+      options:
+        default: 0
+    allTimeActive:
+      type: boolean
+      column: all_time_active
+      options:
+        default: 0
+    startAt:
+      type: datetime
+      column: start_at
+      nullable: true
+    endAt:
+      type: datetime
+      column: end_at
+      nullable: true
+  oneToMany:
+    usages:
+      targetEntity: OpenLoyalty\Domain\EarningRule\EarningRuleUsage
+      mappedBy: earningRule
+      cascade: ["all"]
+      orphanRemoval: true

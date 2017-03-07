@@ -1,0 +1,54 @@
+<div class="pos-section">
+
+    <h1>{{ "seller.dashboard.title.transactions" | translate }}</h1>
+
+    <div class="row">
+        <div class="columns small-12">
+            <form novalidate ng-submit="SellerTransactionCtrl.linkTransaction()">
+                <fieldset class="fieldset">
+                    <legend>{{ "seller.transaction.heading" | translate }}</legend>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "transaction.customer_loyalty_card_number"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.customerLoyaltyCardNumber.errors">
+                            <input type="text" ng-model="linked.customerLoyaltyCardNumber"/>
+                            <span class="prompt">{{ "seller.transaction.customer_loyalty_card_number_prompt"|translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "transaction.customer_phone_number"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.customerPhoneNumber.errors">
+                            <input type="text" ng-model="linked.customerPhoneNumber"/>
+                            <span class="prompt">{{ "seller.transaction.customer_phone_number_prompt"|translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-3">
+                            <label>{{ "transaction.transaction_document_number"|translate }}</label>
+                        </div>
+                        <div class="columns small-9" form-validation="validate.transactionDocumentNumber.errors">
+                            <selectize
+                                    options="SellerTransactionCtrl.transactionsToLink"
+                                    config="SellerTransactionCtrl.transactionConfig"
+                                    ng-model="linked.transactionDocumentNumber"
+                                    required
+                            >
+                            </selectize>
+                            <span class="prompt">{{ "seller.transaction.transaction_id_prompt"|translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="columns small-12">
+                            <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                                {{ "global.save" | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

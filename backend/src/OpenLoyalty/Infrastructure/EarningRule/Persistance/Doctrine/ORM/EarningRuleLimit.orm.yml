@@ -1,0 +1,11 @@
+OpenLoyalty\Domain\EarningRule\EarningRuleLimit:
+  type: embeddable
+  fields:
+    active:
+      type: boolean
+    limit:
+      type: integer
+      nullable: true
+    period:
+      type: string
+      nullable: true

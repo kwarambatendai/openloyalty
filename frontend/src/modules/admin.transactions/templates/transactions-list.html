@@ -1,0 +1,226 @@
+<box-loader loading="TransactionCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+<div class="heading" ng-init="TransactionCtrl.getData()">
+    <h1>{{ "transaction.heading" | translate }}</h1>
+    <div class="action-buttons">
+        <button class="medium button button-septenary-colorized" ng-click="linkTransactionModal=true">
+            {{ "transaction.link" | translate }}
+        </button>
+    </div>
+</div>
+<div style="clear:both"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left"><i class="fa fa-exchange" aria-hidden="true"></i>{{ "transaction.list" | translate }}
+        </h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="TransactionCtrl.loaderStates.transactionList"></box-loader>
+        <table ng-table="TransactionCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'transaction.document_number'|translate" filter="{documentNumber: 'text'}"
+                    sortable="'documentNumber'">
+                    <span ng-bind="row.documentNumber"></span>
+                </td>
+                <td data-title="'transaction.loyaltyCardNumber'|translate"
+                    filter="{customerData_loyaltyCardNumber: 'text'}" sortable="'customerDate.loyaltyCardNumber'">
+                    <span ng-bind="(row.customerData ? row.customerData.loyaltyCardNumber : 'not set') || 'not set'"></span>
+                </td>
+                <td data-title="'transaction.email'|translate" filter="{customerData_email: 'text'}"
+                    sortable="'customerDate.email'">
+                    <span ng-bind="(row.customerData ? row.customerData.email : 'not set') || 'not set'"></span>
+                </td>
+                <td data-title="'transaction.phone'|translate" filter="{customerData_phone: 'text'}"
+                    sortable="'customerDate.phone'">
+                    <span ng-bind="(row.customerData ? row.customerData.phone : 'not set') || 'not set'"></span>
+                </td>
+                <td data-title="'transaction.document_type'|translate" filter="{documentType: 'documentTypeSelect'}"
+                    filter-data="TransactionCtrl.documentTypeFilter">
+                    <span>{{'transaction.document_types.'+row.documentType|translate}}</span>
+                </td>
+                <td data-title="'transaction.purchase_date'|translate" sortable="'purchaseDate'">
+                    <span ng-bind="row.purchaseDate|date: 'yyyy-MM-dd HH:mm'"></span>
+                </td>
+                <td data-title="'transaction.purchase_place'|translate">
+                    <span ng-bind="row.posName || '---'"></span>
+                </td>
+                <td data-title="'transaction.amount'|translate">
+                    <span ng-bind="row.grossValue"></span>
+                    <span ng-bind="row.currency" style="text-transform: uppercase;"></span>
+                </td>
+                <td data-title="'transaction.actions'|translate">
+                    <button type="button" class="button  button-quinary tiny"
+                            ng-click="transactions[$index].showModal=true">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-show="!$data.length">
+                <td colspan="9" class="text-center">
+                    {{ 'global.no_rows_to_display'|translate }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<modal ng-repeat="transaction in transactions" show='transactions[$index].showModal'
+       modalId="{{transactions.transactionId}}" modal-title="'transaction.details' | translate">
+    <table class="default" ng-init="customer=transaction.customerData">
+        <tbody>
+        <tr>
+            <td><b>{{ "transaction.customer_name" | translate }}:</b></td>
+            <td><span ng-bind="customer.name || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.phone" | translate }}:</b></td>
+            <td><span ng-bind="customer.phone || 'not set'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.email" | translate }}:</b></td>
+            <td><span ng-bind="customer.email || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.loyaltyCardNumber" | translate }}:</b></td>
+            <td><span ng-bind="customer.loyaltyCardNumber || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.city" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.city || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.state" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.province || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.street" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.street || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.building_name" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.address1 || '---'"></span></td>
+        </tr>
+        <tr ng-if="customer.address.address2">
+            <td><b>{{ "transaction.unit_name" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.address2 || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.postal_code" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.postal || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.country" | translate }}:</b></td>
+            <td><span ng-bind="customer.address.country || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.purchase_date" | translate }}:</b></td>
+            <td><span ng-bind="transaction.purchaseDate|date: 'yyyy-MM-dd HH:mm'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.transaction_id" | translate }}:</b></td>
+            <td><span ng-bind="transaction.transactionId"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.points_earned" | translate }}:</b></td>
+            <td><span ng-bind="transaction.pointsEarned"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.pos_name" | translate }}:</b></td>
+            <td><span ng-bind="transaction.posName || '---'"></span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "transaction.document_type" | translate }}:</b></td>
+            <td><span>{{'transaction.document_types.'+transaction.documentType|translate}}</span></td>
+        </tr>
+        <tr ng-if="transaction.revisedDocument">
+            <td><b>{{ "transaction.revised_document" | translate }}:</b></td>
+            <td><span ng-bind="transaction.revisedDocument || '---'"></span></td>
+        </tr>
+        </tbody>
+    </table>
+    <h5 class="text-left color-dark">{{ "transaction.item_details" | translate }}</h5>
+    <div class="box-content-modal">
+        <table class="default">
+            <thead>
+            <tr>
+                <th>{{ "transaction.name" | translate }}</th>
+                <th>{{ "transaction.quantity" | translate }}</th>
+                <th>{{ "transaction.sku" | translate }}</th>
+                <th>{{ "transaction.category" | translate }}</th>
+                <th>{{ "transaction.gross" | translate }}</th>
+                <th>{{ "transaction.labels" | translate }}</th>
+                <th>{{ "transaction.maker" | translate }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in transaction.items">
+                <td><span ng-bind="item.name"></span></td>
+                <td><span ng-bind="item.quantity"></span></td>
+                <td><span ng-bind="item.sku.code"></span></td>
+                <td><span ng-bind="item.category"></span></td>
+                <td><span style="text-transform: uppercase" ng-bind="item.grossValue+transaction.currency"></span>
+                </td>
+                <td><span class="label label-default"
+                          ng-repeat="label in item.labels">{{label.key}}:{{label.value}} </span>
+                    <span ng-if="item.labels.length==0">---</span>
+                </td>
+                <td><span ng-bind="item.maker"></span></td>
+            </tr>
+            <tr>
+                <td><b>{{ "transaction.sum" | translate }}</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b style="text-transform: uppercase">{{transaction.grossValue}}{{transaction.currency}}</b></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</modal>
+<modal show='linkTransactionModal' modalId="linkTransactionModal" modal-title="'transaction.link_modal' | translate">
+    <form novalidate ng-submit="TransactionCtrl.linkTransaction()">
+        <fieldset class="fieldset default">
+            <div class="row">
+                <div class="columns medium-3">
+                    <label>{{ "transaction.customer_email"|translate }}</label>
+                    <spinner-loader loading="clientSearch"></spinner-loader>
+                </div>
+                <div class="columns medium-9" form-validation="linkedValidate.customerId.errors">
+                    <selectize options="TransactionCtrl.customersToLink" config="TransactionCtrl.customersConfig"
+                               ng-model="linked.customerId" required>
+                    </selectize>
+                    <span class="prompt">{{ "transaction.customer_email_prompt"|translate }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns medium-3">
+                    <label>{{ "transaction.transaction_document_number"|translate }}</label>
+                    <spinner-loader loading="documentSearch"></spinner-loader>
+                </div>
+                <div class="columns medium-9" form-validation="linkedValidate.transactionDocumentNumber.errors">
+                    <selectize options="TransactionCtrl.transactionsToLink" config="TransactionCtrl.transactionConfig"
+                               ng-model="linked.transactionDocumentNumber" required>
+                    </selectize>
+                    <span class="prompt">{{ "transaction.transaction_document_number_prompt"|translate }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns small-12 text-center">
+                    <button class="button button-septenary-colorized m-t-10 m-b-0" type="submit"
+                            ng-disabled="TransactionCtrl.loaderStates.addTransaction">
+                        {{ "global.save" | translate }}
+                    </button>
+                    <div class="spinner-loader-wrapper">
+                        <spinner-loader loading="TransactionCtrl.loaderStates.addTransaction" class="inline"
+                                        delay="5"></spinner-loader>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</modal>
+<script type="text/ng-template" id="ng-table/filters/documentTypeSelect.html">
+    <selectize ng-disabled="$filterRow.disabled" options="TransactionCtrl.documentTypeSelectOptions"
+               config="TransactionCtrl.documentTypeSelectConfig" ng-model="params.filter()[name]">
+    </selectize>
+</script>

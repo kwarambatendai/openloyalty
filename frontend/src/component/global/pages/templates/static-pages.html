@@ -1,0 +1,12 @@
+<section ng-class="{'content': StaticPagesCtrl.adminTemplate}">
+    <ng-include src="'./templates/top-nav.html'" ng-if="StaticPagesCtrl.adminTemplate"></ng-include>
+    <div class="color-dark" ng-class="{'client-section': !StaticPagesCtrl.adminTemplate}">
+        <div class="row">
+            <div class="columns small-12">
+                <static-page></static-page>
+                <ng-include src="'./templates/footer.html'" ng-if="!StaticPagesCtrl.adminTemplate"></ng-include>
+            </div>
+        </div>
+    </div>
+    <ng-include src="'./templates/footer.html'" ng-if="StaticPagesCtrl.adminTemplate"></ng-include>
+</section>

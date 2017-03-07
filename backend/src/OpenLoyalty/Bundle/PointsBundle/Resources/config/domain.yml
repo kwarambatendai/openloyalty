@@ -1,0 +1,78 @@
+services:
+  oloy.points.account.command_handler:
+    class: OpenLoyalty\Domain\Account\Command\AccountCommandHandler
+    arguments:
+      - '@oloy.points.account.repository'
+      - '@broadway.event_dispatcher'
+    lazy: true
+    tags:
+      - { name: command_handler }
+  oloy.points.account.repository:
+    class: OpenLoyalty\Domain\Account\AccountRepository
+    arguments:
+      - '@broadway.event_store'
+      - '@broadway.event_handling.event_bus'
+      - ['@broadway.metadata_enriching_event_stream_decorator']
+  oloy.points.account.repository.points_transfer_details:
+    class: 'Broadway\ReadModel\ReadModel'
+    factory: ['@oloy.user.read_model.repository_factory', create]
+    arguments:
+      - 'oloy.points_transfer_details'
+      - 'OpenLoyalty\Domain\Account\ReadModel\PointsTransferDetails'
+      - 'OpenLoyalty\Domain\Repository\Account\PointsTransferDetailsElasticsearchRepository'
+  oloy.points.account.read_model.projector.point_transfer_details:
+    class: 'OpenLoyalty\Domain\Account\ReadModel\PointsTransferDetailsProjector'
+    tags:
+      - { name: broadway.domain.event_listener }
+    arguments:
+      - '@oloy.points.account.repository.points_transfer_details'
+      - '@oloy.points.account.repository.account_details'
+      - '@oloy.user.read_model.repository.customer_details'
+      - '@oloy.transaction.read_model.repository.transaction_details'
+      - '@oloy.pos.repository'
+
+  oloy.points.account.repository.account_details:
+    class: 'Broadway\ReadModel\ReadModel'
+    factory: ['@oloy.user.read_model.repository_factory', create]
+    arguments:
+      - 'oloy.account_details'
+      - 'OpenLoyalty\Domain\Account\ReadModel\AccountDetails'
+  oloy.points.account.read_model.projector.account_details:
+    class: 'OpenLoyalty\Domain\Account\ReadModel\AccountDetailsProjector'
+    tags:
+      - { name: broadway.domain.event_listener }
+    arguments:
+      - '@oloy.points.account.repository.account_details'
+  oloy.points.apply_earning_rule_listener.transaction:
+    class: 'OpenLoyalty\Infrastructure\Account\SystemEvent\Listener\ApplyEarningRuleToTransactionListener'
+    arguments:
+      - '@broadway.command_handling.command_bus'
+      - '@oloy.points.account.repository.account_details'
+      - '@broadway.uuid.generator'
+      - '@oloy.earning_rule.applier'
+    tags:
+      - { name: broadway.event_listener, event: oloy.transaction.customer_assigned, method: onRegisteredTransaction}
+  oloy.points.apply_earning_rule_listener.event:
+    class: 'OpenLoyalty\Infrastructure\Account\SystemEvent\Listener\ApplyEarningRuleToEventListener'
+    arguments:
+      - '@broadway.command_handling.command_bus'
+      - '@broadway.uuid.generator'
+      - '@oloy.earning_rule.applier'
+      - '@oloy.points.account.repository.account_details'
+      - '@oloy.earning_rule.validator'
+    tags:
+      - { name: broadway.event_listener, event: oloy.account.created, method: onCustomerRegistered}
+      - { name: broadway.event_listener, event: oloy.transaction.customer_first_transaction, method: onFirstTransaction}
+      - { name: broadway.event_listener, event: oloy.customer.logged_in, method: onCustomerLogin}
+      - { name: broadway.event_listener, event: oloy.customer.referral, method: onCustomerReferral }
+      - { name: broadway.event_listener, event: oloy.customer.newsletter_subscription, method: onNewsletterSubscription }
+      - { name: broadway.event_listener, event: oloy.account.custom_event_occured, method: onCustomEvent }
+  oloy.account.spend_points_on_campaign_listener:
+      class: OpenLoyalty\Infrastructure\Account\Event\Listener\SpendPointsOnCampaignListener
+      arguments:
+        - '@broadway.command_handling.command_bus'
+        - '@oloy.points.account.repository.account_details'
+        - '@broadway.uuid.generator'
+      lazy: true
+      tags:
+        - { name: broadway.domain.event_listener }

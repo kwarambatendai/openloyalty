@@ -1,0 +1,24 @@
+change_password:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/ChangePasswordController.php'
+    type: annotation
+customer:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/CustomerController.php'
+    type: annotation
+seller:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/SellerController.php'
+    type: annotation
+security:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/SecurityController.php'
+    type: annotation
+
+customer_search:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/CustomerSearchController.php'
+    type: annotation
+
+password_reset:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/ResetPasswordController.php'
+    type: annotation
+
+admin:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/AdminController.php'
+    type: annotation

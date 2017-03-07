@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Model\SKU:
+  exlusion_policy: ALL
+  properties:
+    code:
+      expose: true
+      serialized_name: sku

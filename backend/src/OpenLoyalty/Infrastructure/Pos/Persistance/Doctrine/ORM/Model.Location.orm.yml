@@ -1,0 +1,21 @@
+OpenLoyalty\Domain\Pos\Model\Location:
+  type: embeddable
+  fields:
+    street:
+      type: string
+    address1:
+      type: string
+    address2:
+      type: string
+      nullable: true
+    postal:
+      type: string
+    country:
+      type: string
+    province:
+      type: string
+    city:
+      type: string
+    geoPoint:
+      type: ol_geo_point
+      nullable: true

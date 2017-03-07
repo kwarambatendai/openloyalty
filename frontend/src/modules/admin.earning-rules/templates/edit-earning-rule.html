@@ -1,0 +1,283 @@
+<box-loader loading="EarningRuleCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="EarningRuleCtrl.getEarningRuleData()">
+    <h1>{{ "earning_rule.edit_heading" | translate }}</h1>
+</div>
+
+<div style="clear:both;"></div>
+<form novalidate ng-submit="EarningRuleCtrl.editEarningRule(editableFields)">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "earning_rule.basic_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.name.errors">
+                            <input type="text" ng-model="editableFields.name" required>
+                            <span class="prompt">{{ "earning_rule.name_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.description" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.description.errors">
+                            <textarea ng-model="editableFields.description" required></textarea>
+                            <span class="prompt">{{ "earning_rule.description_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.active.errors">
+                            <selectize ng-model="editableFields.active"
+                                       options="EarningRuleCtrl.active"
+                                       config="EarningRuleCtrl.activeConfig"
+                                       required
+                            ></selectize>
+                            <span class="prompt">{{ "earning_rule.active_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "earning_rule.type_details" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.type" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.type.errors">
+                            <selectize ng-disabled="true" ng-model="editableFields.type"
+                                       options="EarningRuleCtrl.types"
+                                       config="EarningRuleCtrl.typeConfig"
+                            ></selectize>
+                            <span class="prompt">{{ "earning_rule.type_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='points'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.point_value" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.pointValue.errors">
+                            <input type="number" ng-model="editableFields.pointValue">
+                            <span class="prompt">{{ "earning_rule.point_value_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='points'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.excluded_skus" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns">
+                            <selectize config="skusConfig" options="egSkus"
+                                       ng-model="editableFields.excludedSKUs"></selectize>
+                            <span class="prompt">{{ "earning_rule.excluded_skus_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='points'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.exluded_labels" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns">
+                            <div class="collection"
+                                 ng-repeat="label in editableFields.excludedLabels track by $index">
+                                <div class="row">
+                                    <div class="medium-2 small-3 columns">
+                                        <label>{{ "earning_rule.key" | translate }} <span
+                                                class="required">*</span></label>
+                                    </div>
+                                    <div class="medium-10 small-9 columns"
+                                         form-validation="validate.excludedLabels[$index].key.errors">
+                                        <input ng-model="editableFields.excludedLabels[$index].key">
+                                        <span class="prompt">{{ "earning_rule.key_prompt" | translate }}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="medium-2 small-3 columns">
+                                        <label>{{ "earning_rule.value" | translate }} <span
+                                                class="required">*</span></label>
+                                    </div>
+                                    <div class="medium-10 small-9 columns"
+                                         form-validation="validate.excludedLabels[$index].value.errors">
+                                        <input ng-model="editableFields.excludedLabels[$index].value">
+                                        <span class="prompt">{{ "earning_rule.label_value_prompt" | translate }}</span>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="remove-collection"
+                                        ng-click="EarningRuleCtrl.removeExcludedLabel($index, true)">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <button type="button" class="button button-secondary tiny"
+                                    ng-click="EarningRuleCtrl.addExcludedLabel(true)">{{
+                                "earning_rule.add_excluded_label" | translate }}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='points'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.exclude_delivery_cost" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.excludeDeliveryCost.errors">
+                            <checkbox ng-model="editableFields.excludeDeliveryCost"></checkbox>
+                            <span class="prompt">{{ "earning_rule.excluded_delivery_cost_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='points'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.min_order_value" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.minOrderValue.errors">
+                            <input type="number" ng-model="editableFields.minOrderValue">
+                            <span class="prompt">{{ "earning_rule.min_order_value_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='event'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.event_name" | translate }}<span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.eventName.errors">
+                            <selectize options="EarningRuleCtrl.promotedEvents"
+                                       config="EarningRuleCtrl.promotedEventsConfig"
+                                       ng-model="editableFields.eventName"></selectize>
+                            <span class="prompt">{{ "earning_rule.event_name_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='custom_event'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.custom_event_name" | translate }}<span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.eventName.errors">
+                            <input type="text" ng-model="editableFields.eventName"/>
+                            <span class="prompt">{{ "earning_rule.custom_event_name_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row"
+                         ng-if="editableFields.type=='product_purchase' || editableFields.type=='multiply_for_product'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.sku" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.skuIds.errors">
+                            <selectize config="skusConfig" ng-model="editableFields.skuIds"></selectize>
+                            <span class="prompt">{{ "earning_rule.sku_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row"
+                         ng-if="editableFields.type=='event' || editableFields.type=='custom_event' || editableFields.type=='product_purchase'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.points_amount" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.pointsAmount.errors">
+                            <input type="number" ng-model="editableFields.pointsAmount">
+                            <span class="prompt">{{ "earning_rule.points_amount_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='custom_event'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.limit.active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.active.errors">
+                            <input type="checkbox"
+                                   ng-model="editableFields.limit.active"/>
+                            <span class="prompt">{{ "earning_rule.limit.active_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='custom_event' && editableFields.limit.active">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.limit.period" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.limit.period.errors">
+                            <selectize config="EarningRuleCtrl.availableEarningRuleLimitPeriodsConfig"
+                                       options="EarningRuleCtrl.availableEarningRuleLimitPeriods"
+                                       ng-model="editableFields.limit.period"></selectize>
+
+                            <span class="prompt">{{ "earning_rule.limit.period_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='custom_event' && editableFields.limit.active">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.limit.limit" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.limit.limit.errors">
+                            <input type="number"
+                                   ng-model="editableFields.limit.limit"/>
+                            <span class="prompt">{{ "earning_rule.limit.limit_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row"
+                         ng-if="editableFields.type=='multiply_for_product'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.multiplier" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.multiplier.errors">
+                            <input type="number" ng-model="editableFields.multiplier">
+                            <span class="prompt">{{ "earning_rule.multiplier_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{ "earning_rule.visibility_and_activity"|translate }}</legend>
+
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.all_time_active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.allTimeActive.errors">
+                            <checkbox ng-model="editableFields.allTimeActive" type="checkbox"></checkbox>
+                            <span class="prompt">{{ "earning_rule.all_time_active_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="editableFields.allTimeActive">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.start_at" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.startAt.errors">
+                            <input type="text" ng-model="editableFields.startAt" datepicker>
+                            <span class="prompt">{{ "earning_rule.start_at_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="editableFields.allTimeActive">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.end_at" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.endAt.errors">
+                            <input type="text" ng-model="editableFields.endAt" datepicker>
+                            <span class="prompt">{{ "earning_rule.end_at_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button  button-septenary-colorized float-left m-r-1" type="submit">
+                    {{ "global.save" | translate}}
+                </button>
+                <button type="button" ui-sref="admin.earning-rule-list"
+                        class="button  button-quaternary float-left">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>
+

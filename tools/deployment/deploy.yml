@@ -1,0 +1,47 @@
+---
+- hosts: web
+  tasks:
+    - name: create project directory
+      file: path={{ projectDirectory}}/current state=directory mode=0755
+    - name: clone project
+      git:
+        repo: "git@gitlab.accesto.pl:OpenLoyalty/OpenLoyalty.git"
+        dest: "{{ projectDirectory }}/current"
+        force: yes
+    - name: update docker containers
+      docker_service:
+        project_src: "{{ projectDirectory }}/current"
+        project_name: "open_loyalty"
+        debug: yes
+        build: yes
+        state: present
+        restarted: yes
+    - name: update settings
+      command: sed -i 's/localhost:8181\/app_dev.php/oloy.staging.accesto.pl:8181/g' frontend/parameters.json
+      args:
+        chdir: "{{ projectDirectory}}/current/"
+    - name: restart frontend
+      command: "/usr/local/bin/docker-compose -p open_loyalty restart frontend"
+      args:
+        chdir: "{{ projectDirectory}}/current/"
+    - name: build backend
+      command: "/usr/local/bin/docker-compose -p open_loyalty build backend"
+      args:
+        chdir: "{{ projectDirectory}}/current/"
+    - name: start all
+      command: "/usr/local/bin/docker-compose -p open_loyalty up -d"
+      args:
+        chdir: "{{ projectDirectory}}/current/"
+    - pause: minutes=3
+    - name: composer install
+      command: "/usr/local/bin/docker-compose -p open_loyalty exec -T backend composer install"
+      args:
+        chdir: "{{ projectDirectory}}/current/"
+    - name: phing setup
+      command: "/usr/local/bin/docker-compose -p open_loyalty exec -T backend phing setup"
+      args:
+        chdir: "{{ projectDirectory}}/current/"
+    - name: chmod
+      command: "/usr/local/bin/docker-compose -p open_loyalty exec -T backend chmod -R 777 var"
+      args:
+        chdir: "{{ projectDirectory}}/current/"

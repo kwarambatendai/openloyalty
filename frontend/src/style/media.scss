@@ -1,0 +1,13 @@
+@media screen and (max-width: 575px) {
+  .top-navigation.admin .top-bar ul span.link-name {
+    display:none!important;
+  }
+}
+
+@media screen and (max-height: 649px) {
+.login {
+  .small-centered.columns {
+    margin-top: 15px!important;
+  }
+}
+}

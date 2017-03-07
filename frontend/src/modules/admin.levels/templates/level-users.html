@@ -1,0 +1,40 @@
+<box-loader loading="LevelCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="LevelCtrl.getLevelCustomersData()">
+    <h1>{{ "level.users_in_level" | translate }} {{LevelCtrl.levelName}}</h1>
+</div>
+<div style="clear:both;"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "customer.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="LevelCtrl.loaderStates.userList"></box-loader>
+        <table ng-table="LevelCtrl.tableCustomerParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'customer.name'|translate" sortable="'firstName'" filter="{firstName: 'text'}">
+                    <span ng-bind="row.firstName"></span>
+                </td>
+                <td data-title="'customer.surname'|translate" sortable="'lastName'" filter="{lastName: 'text'}">
+                    <span ng-bind="row.lastName"></span>
+                </td>
+                <td data-title="'customer.phone'|translate" sortable="'phone'" filter="{phone: 'text'}">
+                    <span ng-bind="row.phone || 'not set'"></span>
+                </td>
+                <td data-title="'customer.email'|translate" sortable="'email'" filter="{email: 'text'}">
+                    <span ng-bind="row.email"></span>
+                </td>
+                <td data-title="'customer.actions'|translate">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.edit-customer({customerId: row.id})" style="margin-bottom:5px;">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="button  button-quinary tiny"
+                            ui-sref="admin.single-customer({customerId: row.id})" style="margin-bottom:5px;">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

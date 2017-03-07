@@ -1,0 +1,6 @@
+<div class='form-validate' ng-class="{'hasError' : formValidation}">
+    <div ng-transclude></div>
+    <span class="error-msg" ng-repeat="error in formValidation track by $index">
+        <span ng-bind="error|translate"></span>
+    </span>
+</div>

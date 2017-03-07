@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Segment\Model\Criteria\BoughtSKUs:
+  type: entity
+  fields:
+    skuIds:
+      type: json_array
+      column: sku_ids

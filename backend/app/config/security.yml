@@ -1,0 +1,122 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    role_hierarchy:
+        ROLE_SELLER:      ROLE_USER
+        ROLE_PARTICIPANT: ROLE_USER
+        ROLE_ADMIN:       ROLE_USER
+    encoders:
+        OpenLoyalty\Bundle\UserBundle\Entity\User: bcrypt
+
+    providers:
+        admin_provider:
+            id: oloy.user.admin_provider
+        customer_provider:
+            id: oloy.user.customer_provider
+        seller_provider:
+            id: oloy.user.seller_provider
+    firewalls:
+        admin_login:
+            pattern:  ^/api/admin/login
+            stateless: true
+            anonymous: true
+            provider: admin_provider
+            form_login:
+                check_path:               /api/admin/login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+        customer_login:
+            pattern:  ^/api/customer/login
+            stateless: true
+            anonymous: true
+            provider: customer_provider
+            form_login:
+                check_path:               /api/customer/login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+        seller_login:
+            pattern:  ^/api/seller/login
+            stateless: true
+            anonymous: true
+            provider: seller_provider
+            form_login:
+                check_path:               /api/seller/login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+        refresh:
+            pattern:  ^/api/token/refresh
+            stateless: true
+            anonymous: true
+        settings_choices:
+            pattern:  ^/api/settings/choices
+            stateless: true
+            anonymous: true
+        self_registration:
+            pattern:  ^/api/customer/self_register
+            stateless: true
+            anonymous: true
+        activate_account:
+            pattern:  ^/api/customer/activate
+            stateless: true
+            anonymous: true
+        password_reset:
+            pattern:  ^/api/password/reset
+            stateless: true
+            anonymous: true
+        campaign_photo:
+            pattern:  ^/api/campaign/([a-zA-Z\-0-9]+)/photo
+            methods: ["GET"]
+            stateless: true
+            anonymous: true
+        doc:
+            pattern:  ^/doc
+            stateless: true
+            anonymous: true
+        translations:
+            pattern:  ^/api/translations
+            stateless: true
+            anonymous: true
+        seller_api:
+            pattern:   ^/api/seller
+            stateless: true
+            provider: seller_provider
+            lexik_jwt: ~
+        customer_api:
+            pattern:   ^/api/customer
+            stateless: true
+            provider: customer_provider
+            lexik_jwt: ~
+        admin_api:
+            pattern:   ^/api
+            stateless: true
+            provider: admin_provider
+            lexik_jwt: ~
+            guard:
+              authenticators:
+                - oloy.user.guard.token
+              entry_point: oloy.user.guard.token
+        main:
+            pattern: ^/
+            anonymous: true
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+    access_control:
+        - { path: ^/api/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/admin/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/customer/self_register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/customer/activate/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/campaign/([a-zA-Z\-0-9]+)/photo, roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: ["GET"] }
+        - { path: ^/api/password/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/customer/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/customer/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/seller/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/seller/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/settings/choices, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/translations, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }

@@ -1,0 +1,7 @@
+OpenLoyalty\Domain\Campaign\Model\CampaignActivity:
+  exlusion_policy: ALL
+  properties:
+    activeFrom:
+      access_type: public_method
+    activeTo:
+      access_type: public_method

@@ -1,0 +1,151 @@
+<div class="client-section" ng-init="CustomerProfileCtrl.getData()">
+    <div class="row">
+        <div class="columns small-12">
+            <header class="ol-main-header">
+                <h1>{{ 'customer_status.my_profile' | translate }}</h1>
+            </header>
+            <div class="row">
+                <div class="columns small-12 medium-12 large-4">
+                    <div class="box no-margin qf-profile-height">
+                        <div class="box-content text-center p-t-10">
+                            <img src="./img/avatar.jpg"
+                                 class="user-avatar"/>
+                            <p class="customer-name color-dark">
+                                <b>{{ customer.firstName + ' ' + customer.lastName }}</b>
+                            </p>
+                            <p class="color-gray font-small">
+                                {{customer.email}} <br/> {{customer.phone}}
+                            </p>
+                            <p ng-if="customer.loyaltyCardNumber" class="font-small">
+                                <span class="color-gray">{{ "customer_profile.lc_number" | translate }}: {{ customer.loyaltyCardNumber }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns small-12 medium-12 large-4">
+                    <div class="box no-margin qf-profile-height">
+                        <div class="box-title">
+                            <h1>{{ "customer_profile.profile_details"|translate }}
+                                <div class="action-buttons float-right">
+                                    <button class="tiny button button-primary"
+                                            style="margin-top: 8px;"
+                                            ui-sref="customer.panel.profile-edit">
+                                        <i class="fa fa-pencil" style="padding:0!important"></i>
+                                    </button>
+                                </div>
+                            </h1>
+                        </div>
+                        <div class="box-content">
+                            <table class="simple">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ "customer_profile.name"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.firstName"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.surname"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.lastName"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.birth_date"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.birthDate|date : 'yyyy-MM-dd'"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.gender"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.gender"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.email"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.email"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.password"|translate }}:</b></td>
+                                    <td><span>***** (<a ui-sref="customer.panel.profile-edit"
+                                                        translate="customer_global.change"></a>)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.phone"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.phone"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.created_at"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.createdAt|date : 'yyyy-MM-dd HH:mm'"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.country"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.address.country || '---'"></span></td>
+                                </tr>
+                                <tr ng-if="customer.address">
+                                    <td><b>{{ "customer_profile.city"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.address.city || '---'"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ "customer_profile.state"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.address.province || '---'"></span></td>
+                                </tr>
+                                <tr ng-if="customer.address">
+                                    <td><b>{{ "customer_profile.street"|translate }}</b></td>
+                                    <td><span ng-bind="customer.address.street || '---'"></span></td>
+                                </tr>
+                                <tr ng-if="customer.address">
+                                    <td><b>{{ "customer_profile.building_name"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.address.address1 || '---'"></span></td>
+                                </tr>
+                                <tr ng-if="customer.address">
+                                    <td><b>{{ "customer_profile.flat_name"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.address.address2 || '---'"></span></td>
+                                </tr>
+                                <tr ng-if="customer.address">
+                                    <td><b>{{ "customer_profile.postal"|translate }}:</b></td>
+                                    <td><span ng-bind="customer.address.postal || '---'"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns small-12 medium-12 large-4">
+
+                    <div class="box no-margin qf-profile-height">
+                        <div class="box-title">
+                            <h1>
+                                {{ "customer_profile.agreements"|translate }}
+                                <div class="action-buttons float-right">
+                                    <button class="tiny button button-primary"
+                                            style="margin-top: 8px;"
+                                            ui-sref="customer.panel.profile-edit">
+                                        <i class="fa fa-pencil" style="padding:0!important"></i>
+                                    </button>
+                                </div>
+                            </h1>
+                        </div>
+                        <div class="box-content">
+                            <table class="simple">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <checkbox disabled="disabled" ng-model="customer.agreement1"></checkbox>
+                                    </td>
+                                    <td><span>{{ "customer_profile.agreement1"|translate }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <checkbox disabled="disabled" ng-model="customer.agreement2"></checkbox>
+                                    </td>
+                                    <td><span>{{ "customer_profile.agreement2"|translate }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <checkbox disabled="disabled" ng-model="customer.agreement3"></checkbox>
+                                    </td>
+                                    <td><span>{{ "customer_profile.agreement3"|translate }}</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

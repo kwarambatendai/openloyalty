@@ -1,0 +1,9 @@
+<div class="ng-modal" ng-show="show">
+    <div class="modal-bg" ng-click="hideModal($event)">
+        <div class="box modal small" id="id">
+            <div ng-if="modalTitle" class="box-title">{{ modalTitle }}</div>
+            <div ng-transclude></div>
+            <a class="close-modal" ng-click="hideModal($event)">&#215;</a>
+        </div>
+    </div>
+</div>

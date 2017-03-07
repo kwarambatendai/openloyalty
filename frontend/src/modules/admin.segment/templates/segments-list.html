@@ -1,0 +1,82 @@
+<box-loader loading="SegmentCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="SegmentCtrl.getData()">
+    <h1>{{ "segment.heading" | translate }}</h1>
+    <div class="action-buttons">
+        <button class="medium button button-septenary-colorized" ui-sref="admin.add-segment">
+            {{ "segment.add" | translate }}
+        </button>
+    </div>
+</div>
+<div style="clear:both;"></div>
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "segment.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="SegmentCtrl.loaderStates.segmentList"></box-loader>
+        <table ng-table="SegmentCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'segment.name'|translate" sortable="'name'">
+                    <span ng-bind="row.name"></span>
+                </td>
+                <td data-title="'segment.created_at'|translate" sortable="'createdAt'">
+                    <span ng-bind="row.createdAt|date: 'yyyy-MM-dd H:mm'"></span>
+                </td>
+                <td data-title="'segment.description'|translate">
+                    <span ng-bind="row.description ? row.description : ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'segment.users'|translate" sortable="'customersCount'">
+                    <span ng-bind="row.customersCount"></span>
+
+                    <button class="button button-primary tiny pull-right"
+                            ui-sref="admin.segment-users({segmentId: row.segmentId, segmentName: row.name})">
+                        {{ "global.show" | translate }}
+                    </button>
+                </td>
+                <td data-title="'segment.active'|translate">
+                    <button class="button button-default tiny" ng-if="!row.active" class="switch-active"
+                            ng-model="row.active"
+                            ng-click="SegmentCtrl.setSegmentState(!row.active, row.segmentId)">
+                        {{ "global.inactive" | translate }}
+                    </button>
+                    <button class="button button-septenary-colorized tiny" ng-if="row.active" class="switch-active"
+                            ng-model="row.active"
+                            ng-click="SegmentCtrl.setSegmentState(!row.active, row.segmentId)">
+                        {{ "global.active" | translate }}
+                    </button>
+                </td>
+                <td data-title="'segment.actions'|translate">
+                    <button class="button button-septenary tiny"
+                            ng-click="segments[$index].showRemoveModal=true"><i class="fa fa-times"></i></button>
+                    <button class="button button-secondary tiny"
+                            ui-sref="admin.edit-segment({segmentId: row.segmentId})"><i class="fa fa-pencil"></i>
+                    </button>
+                    <button class="button button-secondary tiny"
+                            ng-click="SegmentCtrl.getSegmentCsvData(row.segmentId, row.name)"><i
+                            class="fa fa-download "></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div ng-repeat="s in segments track by $index">
+    <modal size="'tiny'" show="s.showRemoveModal" modal-title="'segment.delete_confirmation'|translate">
+        <div class="text-center">
+            <p class="color-dark">{{"segment.delete_confirmation_description"|translate}}</p>
+            <div class="btns">
+                <button type="button" ng-click="SegmentCtrl.removeSegment(s.segmentId)"
+                        class="button small button-septenary-colorized m-b-0 m-t-10"
+                        ng-disabled="SegmentCtrl.loaderStates.removeSegment">{{"global.confirm"|translate}}
+                </button>
+                <div class="spinner-loader-wrapper">
+                    <spinner-loader loading="SegmentCtrl.loaderStates.removeSegment" class="inline"
+                                    delay="5"></spinner-loader>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </modal>
+</div>

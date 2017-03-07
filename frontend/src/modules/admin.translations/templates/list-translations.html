@@ -1,0 +1,38 @@
+<box-loader loading="TranslationsCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="TranslationsCtrl.getData()">
+    <h1>{{ "admin.translations.heading" | translate }}</h1>
+    <div class="action-buttons">
+
+        <button class="medium button button-septenary-colorized" ui-sref="admin.translations_add">
+            {{ "admin.translations.add" | translate }}
+        </button>
+    </div>
+</div>
+<div style="clear:both"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "admin.translations.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="TranslationsCtrl.loaderStates.translationList"></box-loader>
+        <table ng-table="TranslationsCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'admin.translations.name'|translate" sortable="'name'">
+                    <span ng-bind="row.name || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'admin.translations.updated_at'|translate" sortable="'description'">
+                    <span ng-bind="row.updatedAt|date: 'yyyy-MM-dd HH:mm'"></span>
+                </td>
+
+                <td data-title="'admin.translations.actions'|translate">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.translations_edit({translationId: row.key})"
+                            style="margin-bottom:5px;">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

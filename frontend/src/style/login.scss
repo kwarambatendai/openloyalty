@@ -1,0 +1,198 @@
+body.admin-login,
+body.customer-registration,
+body.customer_panel_registration,
+body.customer_panel_registration_success,
+body.customer-login,
+body.seller-login,
+body.forgot-password-request,
+body.customer-forgot-password-reset,
+body.seller-forgot-password-reset,
+body.forgot-password-reset,
+body.forgot-password-request-customer,
+body.forgot-password-request-seller,
+body.forgot-password-request-admin,
+body.forgot-password-reset-customer,
+body.forgot-password-reset-seller,
+body.forgot-password-reset-admin {
+  background-color: $darkest;
+}
+
+section {
+  .registration-form {
+    width: 680px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .login-form {
+    margin-top: 0 !important;
+  }
+
+  &.login {
+    &.admin {
+      margin-top: 0;
+      h1 {
+        color: $dark;
+        font-size: 20px;
+        margin-bottom: 24px;
+      }
+      .logo {
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        .logo-part {
+          font-family: 'Open Sans', sans-serif;
+          text-transform: uppercase;
+        }
+        .logo-part-1 {
+          @extend .logo-part;
+          font-weight: bold;
+        }
+        .logo-part-2 {
+          @extend .logo-part;
+        }
+        #openLoyaltyLogo {
+          max-width: 313px;
+        }
+      }
+
+      .form-box {
+        display: inline-block;
+        margin: 0 auto 15px auto;
+        max-width: 340px;
+        padding: 30px 30px 20px;
+        background-color: $white;
+        border: $default-border solid darken($senary, 5%);
+        checkbox.checked span.fi {
+          top: -3px;
+          left: 1px;
+        }
+        &.request {
+          min-height: 0;
+          padding-bottom: 30px;
+        }
+        .request-description {
+          font-size: 13px;
+        }
+        input {
+          border-color: $gray !important
+        }
+        .input-group-label {
+          border-color: $gray !important;
+          background-color: lighten($gray, 7%);
+        }
+        label {
+          color: $dark;
+          display: inline;
+          vertical-align: top;
+          > span:not(.fi) {
+            position: relative;
+            top: -14px;
+          }
+        }
+        button.login-button {
+          font-size: 16px;
+          min-height: 45px !important;
+          margin: 0;
+        }
+        .forgot {
+          margin-top: 20px;
+          a {
+            text-decoration: underline;
+            font-size: 13px;
+            color: lighten($black, 40%);
+            &:hover {
+              color: $septenary;
+            }
+          }
+        }
+      }
+      .registration-box {
+        vertical-align: top;
+        width: 340px;
+        display: inline-block;
+        background-color: lighten($darkest, 7%);
+        padding: 30px 30px 20px;
+        position: relative;
+        .registration-description {
+          font-size: 13px;
+        }
+        .check-list {
+          font-size: 13px;
+        }
+        .registration {
+          position: absolute;
+          width: calc(100% - 60px);
+          font-size: 16px;
+          bottom: 64px;
+          min-height: 45px !important;
+          margin: 0;
+        }
+      }
+    }
+    &.customer {
+      margin-top: 15vh;
+      input {
+        background-color: lighten($dark, 20%);
+        color: $white !important;
+        border: 0;
+      }
+      .input-group-label {
+        background-color: lighten($dark, 25%);
+        border: 0;
+        .fa {
+          color: $white;
+          opacity: 0.7;
+        }
+      }
+      .form-box {
+        padding: 15px 25px;
+        border-radius: 3px;
+        background-color: lighten($dark, 10%);
+        border: $default-border solid darken($senary, 5%);
+        .logo {
+          display: block;
+          text-align: center;
+          margin-bottom: 2em;
+          margin-top: 1em;
+          .logo-part {
+            font-family: 'Lobster Two', cursive;
+            font-size: 2.25em;
+          }
+          .logo-part-1 {
+            @extend .logo-part;
+            color: $secondary;
+          }
+          .logo-part-2 {
+            @extend .logo-part;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.customer-login {
+  section.login.admin .form-box checkbox.checked span.fi {
+    left: 2px;
+  }
+}
+
+.login {
+  form {
+    margin-top: 0 !important;
+  }
+  .small-centered.columns {
+    margin-top: calc(50vh - 286px);
+  }
+}
+.login {
+  .alert {
+    &[ng-show="showError"] {
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.retention-matrix {
+  border: 0;
+  tr {
+    height: 50px;
+  }
+  td{
+    width: percentage(1/3);
+  }
+  .legend-horizontal {
+
+  }
+  .legend-vertical {
+
+  }
+}

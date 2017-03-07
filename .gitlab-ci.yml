@@ -1,0 +1,54 @@
+stages:
+  - test
+  - build
+
+variables:
+    POSTGRES_DB: "openloyalty"
+    POSTGRES_USER: "openloyalty"
+    POSTGRES_PASSWORD: "openloyalty"
+
+php-7.0:
+  image: tetraweb/php:7.0
+  stage: test
+  services:
+    - elasticsearch:2.2
+    - postgres:latest
+  script:
+    - echo "memory_limit = 512M" > /usr/local/etc/php/conf.d/memory.ini
+    - cd backend
+    - docker-php-ext-enable zip pdo pgsql pdo_pgsql mbstring intl bcmath
+    - "sed -i 's/database_host: .*/database_host: postgres/g'  app/config/parameters.yml.dist"
+    - "sed -i 's/elastica_host: .*/elastica_host: elasticsearch/g' app/config/parameters.yml.dist"
+    - composer self-update
+    - composer install
+    - bin/console oloy:user:projections:index:create --drop-old
+    - bin/console doctrine:schema:update --env=test -n --force
+    - bin/console broadway:event-store:schema:drop
+    - bin/console broadway:event-store:schema:init
+    - bin/console doctrine:fixtures:load --env=test -n
+    - bin/console assets:install --env=test
+    - bin/console security:check
+    - bin/console doctrine:schema:validate --env=test --skip-sync
+    - vendor/phpunit/phpunit/phpunit
+    - bin/php-cs-fixer fix --dry-run --diff src
+
+phpqa:
+  image: eu.gcr.io/accesto-150506/accesto/phpqa:latest
+  stage: test
+  allow_failure: true
+  script:
+    - phpmd ./backend/src text /config/phpmd_accesto.xml
+build:
+  tags:
+    - docker_builder
+  only:
+    - tags
+    - triggers
+  stage: build
+  script:
+    - docker login -u _json_key -p "$REGISTRY_JSON_KEY" https://eu.gcr.io
+    - docker build -t eu.gcr.io/openloyalty/backend:$CI_BUILD_REF_NAME ./backend/
+    - docker build -t eu.gcr.io/openloyalty/frontend:$CI_BUILD_REF_NAME ./frontend/
+    - docker push eu.gcr.io/openloyalty/backend:$CI_BUILD_REF_NAME
+    - docker push eu.gcr.io/openloyalty/frontend:$CI_BUILD_REF_NAME
+

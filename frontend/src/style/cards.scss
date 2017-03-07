@@ -1,0 +1,285 @@
+.card {
+  position: relative;
+  cursor: pointer;
+  padding: 15px 20px;
+  margin: 0 0 15px 0;
+  border: 1px solid $gray;
+  background-color: $white;
+  .card-title {
+    color: $dark;
+    font-weight: normal;
+    text-align: left;
+    margin: 0 -15px 0 -15px;
+    padding: 5px 15px 25px;
+    font-size: 24px;
+  }
+  .card-content {
+    font-weight: bold;
+    font-size: 32px;
+    text-align: left;
+    color: $dark;
+  }
+
+  &.card-primary {
+    transition: background-color 0.5s;
+    background-color: $primary;
+    color: $white;
+    .card-title {
+      background-color: darken($primary, 15%);
+      transition: background-color 0.5s;
+    }
+    &:hover {
+      .card-title {
+        background-color: $primary;
+        transition: background-color 0.5s;
+      }
+      background-color: lighten($primary, 15%);
+      transition: background-color 0.5s;
+    }
+  }
+
+  &.card-secondary {
+    transition: background-color 0.5s;
+    background-color: $secondary;
+    color: $white;
+    .card-title {
+      background-color: darken($secondary, 15%);
+      transition: background-color 0.5s;
+    }
+    &:hover {
+      .card-title {
+        background-color: $secondary;
+        transition: background-color 0.5s;
+      }
+      background-color: lighten($secondary, 15%);
+      transition: background-color 0.5s;
+    }
+  }
+
+  &.card-tertiary {
+    transition: background-color 0.5s;
+    background-color: $tertiary;
+    color: $white;
+    .card-title {
+      background-color: darken($tertiary, 15%);
+      transition: background-color 0.5s;
+    }
+    &:hover {
+      .card-title {
+        background-color: $tertiary;
+        transition: background-color 0.5s;
+      }
+      background-color: lighten($tertiary, 15%);
+      transition: background-color 0.5s;
+    }
+  }
+
+  &.card-quaternary {
+    transition: background-color 0.5s;
+    background-color: $quaternary;
+    color: $gray;
+    .card-title {
+      background-color: darken($quaternary, 15%);
+      transition: background-color 0.5s;
+    }
+    &:hover {
+      .card-title {
+        background-color: $quaternary;
+        transition: background-color 0.5s;
+      }
+      background-color: lighten($quaternary, 15%);
+      transition: background-color 0.5s;
+    }
+  }
+  &.content-only {
+    padding: 15px;
+    .card-content {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 1.25em;
+      text-shadow: none;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &.card-inline {
+    margin: 0 15px 15px 15px;
+    width: 250px;
+    display: inline-block;
+    height: 150px;
+  }
+  &.card-flat {
+    box-shadow: none;
+  }
+}
+
+.customer-card {
+  background-color: $white;
+  border: 1px solid darken($gray, 10%);
+  text-align: center;
+  padding: 25px;
+  margin-bottom: 25px;
+  min-height: 320px;
+  &.reward {
+    border: 0;
+  }
+  .name {
+    margin-bottom: 0;
+    display: block;
+    font-size: 24px;
+    color: $dark;
+  }
+  .date {
+    display: block;
+    font-size: 10px;
+    color: $gray-font;
+  }
+  .desc {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    color: $dark;
+    margin-bottom: 0;
+  }
+  .points {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    color: $dark;
+    b.points-word {
+      display: inline;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+  .card-footer {
+    display: block;
+    font-size: 10px;
+    color: $gray-font;
+  }
+  .congratulations {
+    color: $dark;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+  }
+  .reward-ready {
+    color: $dark;
+    font-weight: 400;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &.reward {
+    .name {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+  span.reward-code {
+    color: darken($gray, 30%);
+    text-transform: uppercase;
+
+    font-size: 14px;
+  }
+  div.reward-code {
+    border: 1px solid darken($gray, 0%);
+    background-color: lighten($gray, 7%);
+    color: $dark;
+    padding: 15px;
+    width: 65%;
+    margin: 0 auto 15px auto;
+    font-size: 18px;
+  }
+  .checkbox {
+    margin: 0 !important;
+    top: 5px;
+  }
+  .coupon-used {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: darken($client-base-light, 5%);
+  }
+  .card-data {
+    min-height: 260px
+  }
+  .card-checkbox {
+    padding-top: 15px;
+  }
+}
+
+.customer-benefits-card,
+.customer-static-card {
+  background-color: $white;
+  border: 1px solid $gray;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 25px;
+  &.reward {
+    border: 0;
+  }
+  .name {
+    margin-bottom: 10px;
+    display: block;
+    color: $client-base-dark;
+    font-size: 32px;
+  }
+
+  b {
+    color: $client-base-dark;
+    text-transform: uppercase;
+  }
+  .benefits {
+    color: $client-base-light;
+    &.dark {
+      color: $client-base-dark;
+    }
+    a {
+      color: $client-base-light;
+    }
+  }
+
+  button.large {
+    font-size: 16px !important;
+    padding: 3.5% 8% !important;
+    border-radius: 0 !important;
+    margin-top: 20px;
+  }
+}
+
+.customer-earning-rules-card {
+  background-color: $white;
+  border: 1px solid $gray;
+  min-height: 300px;
+  text-align: center;
+  padding: 25px;
+  margin-bottom: 25px;
+  &.reward {
+    border: 0;
+  }
+  .points {
+    text-align: right;
+  }
+  .info {
+    text-align: left;
+  }
+  .description {
+    margin-bottom: 0;
+    display: block;
+    font-size: 14px;
+    color: $dark;
+  }
+
+  color: $dark;
+  .benefits {
+    &.b {
+      color: $black;
+    }
+  }
+}

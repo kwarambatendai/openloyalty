@@ -1,0 +1,20 @@
+services:
+  oloy.level.form_type.level:
+    class: OpenLoyalty\Bundle\LevelBundle\Form\Type\LevelFormType
+    tags:
+      - { name: form.type }
+  oloy.level.form_type.reward:
+    class: OpenLoyalty\Bundle\LevelBundle\Form\Type\RewardFormType
+    tags:
+      - { name: form.type }
+  oloy.level.form_type.special_reward:
+    class: OpenLoyalty\Bundle\LevelBundle\Form\Type\SpecialRewardFormType
+    arguments:
+      - '@broadway.uuid.generator'
+    tags:
+      - { name: form.type }
+  oloy.level.param_converter:
+    class: OpenLoyalty\Bundle\LevelBundle\ParamConverter\LevelParamConverter
+    arguments: ['@oloy.level.repository']
+    tags:
+      - { name: request.param_converter, priority: 2, converter: level_converter }

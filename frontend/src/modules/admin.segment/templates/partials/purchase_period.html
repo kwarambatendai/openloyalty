@@ -1,0 +1,26 @@
+<div>
+    <div class="row">
+        <div class="small-3 columns">
+            <label>{{ "segment.partials.date_from" | translate }} <span class="required">*</span></label>
+        </div>
+        <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].fromDate.errors">
+            <input type="text"
+                   ng-model="$parent.$parent.$parent.$parent.segmentModel.fromDate"
+                   datepicker
+                   required>
+            <span class="prompt">{{ "segment.from_date_prompt" | translate }} </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-3 columns">
+            <label>{{ "segment.partials.date_to" | translate }}<span class="required">*</span></label>
+        </div>
+        <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].toDate.errors">
+            <input type="text"
+                   ng-model="$parent.$parent.$parent.$parent.segmentModel.toDate"
+                   datepicker
+                   required>
+            <span class="prompt">{{ "segment.to_date_prompt" | translate }} </span>
+        </div>
+    </div>
+</div>

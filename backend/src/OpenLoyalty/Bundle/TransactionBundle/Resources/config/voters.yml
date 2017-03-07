@@ -1,0 +1,7 @@
+services:
+  oloy.transaction.voters.transaction:
+    class: OpenLoyalty\Bundle\TransactionBundle\Security\Voter\TransactionVoter
+    arguments:
+      - '@oloy.user.read_model.repository.seller_details'
+    tags:
+      - { name: security.voter }

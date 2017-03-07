@@ -1,0 +1,40 @@
+<box-loader loading="CustomerCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="CustomerCtrl.getTransfersData()">
+    <h1>{{ "customer.transfers_heading" | translate }}</h1>
+</div>
+<div style="clear:both;"></div>
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "customer.transfers_list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="CustomerCtrl.loaderStates.transfersList"></box-loader>
+        <table ng-table="CustomerCtrl.transfersTableParams" class="default"
+               template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'transfer.phone'|translate" sortable="'customerPhone'"
+                    filter="{customerPhone: 'text'}">
+                    <span ng-bind="row.customerPhone || 'not set'"></span>
+                </td>
+                <td data-title="'transfer.email'|translate" sortable="'customerEmail'"
+                    filter="{customerEmail: 'text'}">
+                    <span ng-bind="row.customerEmail"></span>
+                </td>
+                <td data-title="'transfer.state'|translate" sortable="'state'">
+                    <span ng-bind="row.state"></span>
+                </td>
+                <td data-title="'transfer.type'|translate" sortable="'type'">
+                    <span ng-bind="row.type"></span>
+                </td>
+                <td data-title="'transfer.value'|translate">
+                    <span ng-bind="row.value"></span>
+                </td>
+                <td data-title="'transfer.created_at'|translate">
+                    <span ng-bind="row.createdAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

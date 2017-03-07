@@ -1,0 +1,261 @@
+<section class="pos-section"
+         ng-init="SellerCustomerCtrl.getAvailableLevels();SellerCustomerCtrl.getAvailablePos();">
+
+    <h1>{{ "seller.dashboard.title.customer_registration" | translate }}</h1>
+
+    <div class="row">
+        <form novalidate class="text-left" ng-submit="SellerCustomerCtrl.addCustomer(newCustomer)">
+            <div class="box-content">
+                <div class="row">
+                    <div class="columns medium-12">
+                        <fieldset class="fieldset">
+                            <legend>{{ "registration.basic_info" | translate }}</legend>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.name" | translate }} <span class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.firstName.errors">
+                                    <input type="text" ng-model="newCustomer.firstName" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.surname" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.lastName.errors">
+                                    <input type="text" ng-model="newCustomer.lastName" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.gender" | translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.gender.errors">
+                                    <input type="radio" ng-model="newCustomer.gender" value="male" id="male" checked
+                                           ng-init="newCustomer.gender='male'">
+                                    <label for="male">{{ "registration.male" | translate }}</label>
+                                    <input type="radio" ng-model="newCustomer.gender" value="female" id="female">
+                                    <label for="female">{{ "registration.female" | translate }}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.birth_date" | translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.birthDate.errors">
+                                    <input type="text" ng-model="newCustomer.birthDate" datepicker required
+                                           no-time="true">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.email" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.email.errors">
+                                    <input type="email" ng-model="newCustomer.email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.phone" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.phone.errors">
+                                    <input type="text" ng-model="newCustomer.phone">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.lc_number" | translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.loyaltyCardNumber.errors">
+                                    <input type="text" ng-model="newCustomer.loyaltyCardNumber">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "level.select_level"|translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.levelId.errors">
+                                    <selectize
+                                            ng-model="newCustomer.levelId"
+                                            ng-if="availableLevels.total"
+                                            config="SellerCustomerCtrl.levelsConfig"
+                                            options="SellerCustomerCtrl.levels"
+                                    >
+                                    </selectize>
+                                    <div class="text-left font-small color-red p-t-10" ng-if="!availableLevels.total">
+                                        {{ "level.no_level"|translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "pos.select_pos"|translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.posId.errors">
+                                    <selectize
+                                            ng-model="newCustomer.posId"
+                                            ng-if="availablePos.total"
+                                            config="SellerCustomerCtrl.posConfig"
+                                            options="SellerCustomerCtrl.posList"
+                                    >
+                                    </selectize>
+                                    <div class="text-left font-small color-red p-t-10" ng-if="!availableLevels.total">
+                                        {{ "pos.no_pos"|translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.add_company" | translate }} </label>
+                                </div>
+                                <div class="medium-9 small-9 columns">
+                                    <checkbox ng-model="showCompany"></checkbox>
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showCompany">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.company_name" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.company.name.errors">
+                                    <input type="text" ng-model="newCustomer.company.name">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showCompany">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.nip" | translate }} <span class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.company.nip.errors">
+                                    <input type="text" ng-model="newCustomer.company.nip">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.add_address" | translate }} </label>
+                                </div>
+                                <div class="medium-9 small-9 columns">
+                                    <checkbox ng-model="showAddress"></checkbox>
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showAddress">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.street" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.address.street.errors">
+                                    <input type="text" ng-model="newCustomer.address.street">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showAddress">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.building_name" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.address.address1.errors">
+                                    <input type="text" ng-model="newCustomer.address.address1">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showAddress">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.flat_name" | translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.address.address2.errors">
+                                    <input type="text" ng-model="newCustomer.address.address2">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showAddress">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.postal" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.address.postal.errors">
+                                    <input type="text" ng-model="newCustomer.address.postal">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showAddress">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.city" | translate }} <span class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.address.city.errors">
+                                    <input type="text" ng-model="newCustomer.address.city">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showAddress">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.state" | translate }} </label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.address.province.errors">
+                                    <input type="text" ng-model="newCustomer.address.province">
+                                </div>
+                            </div>
+                            <div class="row" ng-show="showAddress">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.country" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.address.country.errors">
+                                    <selectize
+                                            config="SellerCustomerCtrl.countryConfig"
+                                            options="SellerCustomerCtrl.country"
+                                            ng-model="newCustomer.address.country">
+                                    </selectize>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="columns medium-12">
+                        <fieldset class="fieldset">
+                            <legend>{{ "registration.agreements" | translate }}</legend>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.agreement1" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.agreement1.errors">
+                                    <checkbox ng-model="newCustomer.agreement1"></checkbox>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.agreement2" | translate }} </label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.agreement2.errors">
+                                    <checkbox ng-model="newCustomer.agreement2"></checkbox>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "registration.agreement3" | translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns" form-validation="validate.agreement3.errors">
+                                    <checkbox ng-model="newCustomer.agreement3"></checkbox>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="columns small-12">
+                        <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                            {{ "global.save" | translate }}
+                        </button>
+                        <button type="button" ui-sref="seller.panel.dashboard" class="button button-default float-left">
+                            {{ "global.cancel" | translate }}
+                        </button>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

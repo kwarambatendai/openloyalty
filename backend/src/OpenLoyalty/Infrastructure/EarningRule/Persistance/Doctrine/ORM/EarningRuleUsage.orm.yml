@@ -1,0 +1,21 @@
+OpenLoyalty\Domain\EarningRule\EarningRuleUsage:
+  type: entity
+  repositoryClass: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Repository\DoctrineEarningRuleUsageRepository
+  table: ol__earning_rule_usage
+  id:
+    earningRuleUsageId:
+      type: earning_rule_usage_id
+      column: earning_rule_usage_id
+  fields:
+    date:
+      type: datetime
+    subject:
+      type: earning_rule_usage_subject
+      column: subject
+  manyToOne:
+    earningRule:
+      targetEntity: OpenLoyalty\Domain\EarningRule\EarningRule
+      inversedBy: usages
+      joinColumn:
+        name: earning_rule_id
+        referencedColumnName: earning_rule_id

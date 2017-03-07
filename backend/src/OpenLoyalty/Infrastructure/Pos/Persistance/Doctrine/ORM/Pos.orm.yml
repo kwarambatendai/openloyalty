@@ -1,0 +1,29 @@
+OpenLoyalty\Domain\Pos\Pos:
+  type: entity
+  repositoryClass: OpenLoyalty\Infrastructure\Pos\Persistance\Doctrine\Repository\DoctrinePosRepository
+  table: ol__pos
+  id:
+    posId:
+      type: pos_id
+      column: pos_id
+  fields:
+    name:
+      type: string
+    description:
+      type: text
+      nullable: true
+    identifier:
+      type: text
+    transactionsCount:
+      type: integer
+      nullable: true
+      column: transactions_count
+    transactionsAmount:
+      type: decimal
+      scale: 2
+      precision: 14
+      nullable: true
+      column: transactions_amount
+  embedded:
+    location:
+      class: OpenLoyalty\Domain\Pos\Model\Location

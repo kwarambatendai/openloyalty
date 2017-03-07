@@ -1,0 +1,2 @@
+const config = {$$jsonConfig}
+window.OpenLoyaltyConfig = {$$jsonConfig}

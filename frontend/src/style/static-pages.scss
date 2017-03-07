@@ -1,0 +1,136 @@
+
+.ol-main-header{
+  font-size: 22px;
+  text-align: center;
+}
+.ol-block{
+  width: 980px;
+  box-sizing: border-box;
+  margin: 20px auto;
+  border: 1px solid $sp-lightgray;
+  background: white;
+  color: black;
+  &--self{
+    padding: 20px;
+  }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .block-one-half{
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    &--left{
+      float: left;
+    }
+    &--right{
+      float: right;
+    }
+    &--center{
+      text-align: center;
+    }
+    &--text{
+      padding: 30px 25px;
+    }
+    h2{
+      font-size: 32px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    p{
+      font-size: 18px;
+      font-weight: 400;
+      margin: 0;
+    }
+    .color-gray{
+      color: $sp-gray;
+      a{
+        color: $sp-gray;
+      }
+      strong{
+        color: black;
+      }
+    }
+    a{
+      color: black;
+      text-decoration: underline;
+    }
+    figure{
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  .btn-area{
+    .btn-area__button{
+      display: inline-block;
+      font-size: 16px;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      background: $red;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+    p{
+      margin-top: 5px;
+      font-size: 13px;
+    }
+  }
+  .big-margin{
+    &--top{
+      margin-top: 40px !important;
+    }
+    &--bottom{
+      margin-bottom: 40px !important;
+    }
+  }
+}
+
+.page-footer{
+  text-align: center;
+  border-top: 1px solid $sp-lightgray;
+  box-sizing:border-box;
+  padding: 15px 10%;
+  margin: 30px auto;
+  color: $sp-gray;
+  font-size: 12px;
+  a{
+    color: gray;
+  }
+}
+
+
+.qf-padding-rewards{
+  padding: 5px !important;
+}
+.gf-padding-bottom-rewards{
+  padding-bottom: 40px !important;
+}
+.qf-block-width{
+  width: 980px !important;
+  margin: auto !important;
+}
+.qf-menu-padding{
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+.qf-profile-height{
+  min-height: 320px !important;
+}
+
+.dashboard-placeholder{
+  border: 1px solid #ddd;
+  width: 100%;
+  display: block;
+  height: 190px;
+  background: #fafafa;
+}
+
+.dashboard-placeholder-big{
+  height: 400px;
+}

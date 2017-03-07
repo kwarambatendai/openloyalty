@@ -1,0 +1,32 @@
+label {
+  color: $gray;
+  input {
+    font-weight: normal;
+  }
+}
+
+.label {
+  border-radius: 3px;
+  margin-right: 4px;
+  padding: 10px 16px;
+  margin-bottom:2px;
+  margin-top:2px;
+  &.primary {
+    background-color: $primary;
+  }
+  &.secondary {
+    background-color: $secondary;
+  }
+  &.tertiary {
+    background-color: $tertiary;
+  }
+  &.quaternary {
+    background-color: $quaternary;
+    color: $gray;
+  }
+  &.label-default {
+    color: $dark;
+    border: 1px solid darken($gray, 5%);
+    background-color: lighten($gray, 5%);
+  }
+}

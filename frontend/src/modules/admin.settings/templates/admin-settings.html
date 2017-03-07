@@ -1,0 +1,264 @@
+<box-loader loading="SettingsCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="SettingsCtrl.getData()">
+    <h1>{{ "settings.heading" | translate }}</h1>
+</div>
+<div style="clear:both"></div>
+
+<form novalidate ng-submit="SettingsCtrl.editSettings()">
+    <div class="box-content">
+        <div class="row">
+            <div class="columns medium-12">
+                <fieldset class="fieldset">
+                    <legend>{{"settings.title"|translate}}</legend>
+
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.currency" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.currency.errors">
+                            <selectize ng-model="settings.currency"
+                                       options="currencies"
+                                       config="SettingsCtrl.currencyConfig"
+                                       required
+                            ></selectize>
+                            <span class="prompt">{{ "settings.currency_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.timezone" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.timezone.errors">
+                            <selectize ng-model="settings.timezone"
+                                       options="timezones"
+                                       config="SettingsCtrl.timezoneConfig"
+                                       required
+                            ></selectize>
+                            <span class="prompt">{{ "settings.timezone_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <!--<div class="row">-->
+                    <!--<div class="small-3 medium-2 columns">-->
+                    <!--<label>{{ "settings.lang" | translate }}<span class="required">*</span></label>-->
+                    <!--</div>-->
+                    <!--<div class="small-9 medium-10 columns"  form-validation="validate.language.errors">-->
+                    <!--<selectize ng-model="settings.language"-->
+                    <!--options="languages"-->
+                    <!--config="SettingsCtrl.languageConfig"-->
+                    <!--required-->
+                    <!--&gt;</selectize>-->
+                    <!--<span class="prompt">{{ "settings.lang_prompt"|translate}}</span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.lang" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns"
+                             form-validation="validate.defaultFrontendTranslations.errors">
+                            <selectize ng-model="settings.defaultFrontendTranslations"
+                                       options="availableFrontendTranslations"
+                                       config="SettingsCtrl.defaultFrontendTranslationsConfig"
+                                       required
+                            ></selectize>
+                            <span class="prompt">{{ "settings.defaultTranslations_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.program_name" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.programName.errors">
+                            <input type="text" ng-model="settings.programName" required>
+                            <span class="prompt">{{ "settings.program_name_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.program_url" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.programUrl.errors">
+                            <input type="text" ng-model="settings.programUrl" required>
+                            <span class="prompt">{{ "settings.program_url_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.conditions_url" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.programConditionsUrl.errors">
+                            <input type="text" ng-model="settings.programConditionsUrl" required>
+                            <span class="prompt">{{ "settings.program_conditions_url_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.faq_url" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.programFaqUrl.errors">
+                            <input type="text" ng-model="settings.programFaqUrl" required>
+                            <span class="prompt">{{ "settings.program_faq_url_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.points_singular" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.programPointsSingular.errors">
+                            <input type="text" ng-model="settings.programPointsSingular" required>
+                            <span class="prompt">{{ "settings.program_points_singular_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.points_plural" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.programPointsPlural.errors">
+                            <input type="text" ng-model="settings.programPointsPlural" required>
+                            <span class="prompt">{{ "settings.program_points_plural_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.help_email" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.helpEmailAddress.errors">
+                            <input type="text" ng-model="settings.helpEmailAddress" required>
+                            <span class="prompt">{{ "settings.help_email_address_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.all_time_active" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.allTimeActive.errors">
+                            <checkbox ng-model="settings.allTimeActive"></checkbox>
+                            <span class="prompt">{{ "settings.all_time_active_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="!settings.allTimeActive">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.points_days_active" | translate }}<span class="required"
+                                                                                        ng-show="!settings.allTimeActive">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.pointsDaysActive.errors">
+                            <input ng-model="settings.pointsDaysActive" type="number" required>
+                            <span class="prompt">{{ "settings.posints_days_active_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.returns" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.returns.errors">
+                            <checkbox ng-model="settings.returns"></checkbox>
+                            <span class="prompt">{{ "settings.returns_prompt"|translate}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.tier_assign_type" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.tierAssignType.errors">
+                            <selectize ng-model="settings.tierAssignType"
+                                       options="SettingsCtrl.tiers"
+                                       config="SettingsCtrl.tierConfig"
+                                       required
+                            ></selectize>
+                            <span class="prompt">{{ "settings.tier_assign_type_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.exclude_delivery_costs" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns"
+                             form-validation="validate.excludeDeliveryCostsFromTierAssignment.errors">
+                            <checkbox ng-model="settings.excludeDeliveryCostsFromTierAssignment"></checkbox>
+                            <span class="prompt">{{ "settings.exclude_delivery_costs_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="settings.excludeDeliveryCostsFromTierAssignment">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.excluded_skus" | translate }}<span class="required">*</span></label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.excludedDeliverySKUs.errors">
+                            <selectize config="SettingsCtrl.skusConfig"
+                                       options="SettingsCtrl.egSkus"
+                                       ng-model="settings.excludedDeliverySKUs"></selectize>
+                            <span class="prompt">{{ "settings.exclude_delivery_costs_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 medium-2 columns">
+                            <label>{{ "settings.excluded_level_skus" | translate }}</label>
+                        </div>
+                        <div class="small-9 medium-10 columns" form-validation="validate.excludedLevelSKUs.errors">
+                            <selectize config="SettingsCtrl.skusConfig"
+                                       options="SettingsCtrl.egSkus"
+                                       ng-model="settings.excludedLevelSKUs"></selectize>
+                            <span class="prompt">{{ "settings.excludes_level_skus_prompt"|translate}}</span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend>{{"settings.identification_priority"|translate}}</legend>
+                    <div class="collection"
+                         ng-repeat="cip in settings.customersIdentificationPriority track by $index">
+                        <button type="button" class="remove-collection"
+                                ng-click="SettingsCtrl.removeIdentificationPriority($index)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                        <div class="row">
+                            <div class="small-3 medium-2 columns">
+                                <label>{{ "settings.priority" | translate }}<span class="required">*</span></label>
+                            </div>
+                            <div class="small-9 medium-10 columns"
+                                 form-validation="validate.customersIdentificationPriority[$index].priority.errors">
+                                <input type="number"
+                                       ng-model="settings.customersIdentificationPriority[$index].priority" required/>
+                                <span class="prompt">{{ "settings.priority_prompt"|translate}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-3 medium-2 columns">
+                                <label>{{ "settings.fields" | translate }}<span class="required">*</span></label>
+                            </div>
+                            <div class="small-9 medium-10 columns"
+                                 form-validation="validate.customersIdentificationPriority[$index].field.errors">
+                                <selectize ng-model="settings.customersIdentificationPriority[$index].field"
+                                           options="SettingsCtrl.fields"
+                                           config="SettingsCtrl.fieldConfig"
+                                           required
+                                ></selectize>
+                                <span class="prompt">{{ "settings.field_prompt"|translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button class="button button-secondary tiny"
+                                ng-click="SettingsCtrl.addIdentificationPriority()"
+                                type="button">{{ "segment.add_identification_priority" | translate }}
+                        </button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button  button-septenary-colorized float-left m-r-1" type="submit">
+                    {{ "global.save" | translate}}
+                </button>
+                <button type="button" ui-sref="admin"
+                        class="button  button-quaternary float-left">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

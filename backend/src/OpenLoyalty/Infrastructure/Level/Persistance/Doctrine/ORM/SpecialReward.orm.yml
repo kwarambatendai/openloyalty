@@ -1,0 +1,33 @@
+OpenLoyalty\Domain\Level\SpecialReward:
+  type: entity
+  repositoryClass: OpenLoyalty\Infrastructure\Level\Persistance\Doctrine\Repository\DoctrineSpecialRewardRepository
+  table: ol__level_special_rewards
+  id:
+    specialRewardId:
+      type: special_reward_id
+      colunn: special_reward_id
+  fields:
+    active:
+      type: boolean
+      options:
+        default: 0
+    createdAt:
+      type: datetime
+      column: created_at
+    startAt:
+      type: datetime
+      column: start_at
+    endAt:
+      type: datetime
+      column: end_at
+  manyToOne:
+    level:
+      targetEntity: OpenLoyalty\Domain\Level\Level
+      inversedBy: specialRewards
+      orphanRemoval: true
+      joinColumn:
+        name: level_id
+        onDelete: "SET NULL"
+        referencedColumnName: level_id
+
+

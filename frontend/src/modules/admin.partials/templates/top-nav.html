@@ -1,0 +1,57 @@
+<nav class="top-navigation admin">
+    <div class="top-bar">
+        <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu data-click-open="true" data-disable-hover="true">
+                <li>
+                    <span class="drop">
+                        <span class="link-name">{{ "global.account" | translate }}</span>
+                        <span class="fi flaticon-round-account-button-with-user-inside m-l-1"></span>
+                    </span>
+                    <div class="arrow-up"></div>
+                    <ul class="menu">
+                        <li>
+                            <a ui-sref="admin.data">
+                                {{ "admin.data.nav" | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="admin.static({pageName: 'guide'})">
+                                {{ "nav.guide" | translate }}
+                            </a>
+                        </li>
+                        <li class="b-t">
+                            <a ng-click="RootCtrl.logout()">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                {{ "global.logout" | translate }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="drop">
+                        <span class="link-name">{{ "global.settings" | translate }}</span>
+                        <span class="fi2 flaticon-settings m-l-1"></span>
+                    </span>
+                    <div class="arrow-up"></div>
+                    <ul class="menu">
+                        <li>
+                            <a ui-sref="admin.settings">
+                                {{ "global.configuration" | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="admin.users-list">
+                                {{ "global.users" | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="admin.translations">
+                                {{ "global.translations_list" | translate }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

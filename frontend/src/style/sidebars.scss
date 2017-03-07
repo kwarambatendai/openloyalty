@@ -1,0 +1,109 @@
+.sidebar-left {
+  z-index: 100;
+  position: fixed;
+  width: $sidebar-width;
+  top: 0;
+  height: 100vh;
+  max-height: 100%;
+  background-color: $sidebar-bg;
+  font-size: $sidebar-font-size;
+  #openLoyaltyLogo {
+    margin-top: -13px;
+  }
+  .menu-category {
+    padding-top: 20px;
+    padding-left: 10px;
+    color: #999999;
+    text-transform: uppercase;
+  }
+  ul.vertical.menu {
+    max-height: calc(100vh - 54px);
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+    }
+  }
+  .nested {
+    background-color: $sidebar-nested-items;
+    margin-left: 0;
+  }
+  ul:not(.submenu) > li {
+    > a {
+      &:hover, &focus {
+        background-color: $sidebar-expanded-item;
+      }
+    }
+  }
+  li > a {
+    outline: none;
+    padding: $sidebar-item-padding;
+    color: $senary;
+    &:hover, &:active {
+      color: darken($senary, 1%);
+      .fa {
+        color: $menu-icon-active;
+        opacity: 1;
+      }
+    }
+    .fa {
+      color: $menu-icon-inactive;
+      margin-top: -3px;
+      padding-right: 10px;
+      opacity: 0.5;
+    }
+  }
+  li[aria-expanded='true'] {
+    > a {
+      background-color: $sidebar-expanded-item;
+      .fa {
+        color: $menu-icon-active;
+        opacity: 1;
+      }
+    }
+  }
+  .is-accordion-submenu-parent > a::after {
+    border-color: $senary transparent transparent;
+  }
+  .logo {
+    display: block;
+    text-align: center;
+    padding-bottom: 0.675em;
+    background-color: $logo-bg;
+    height: $logo-height;
+    .logo-part {
+      font-family: 'Open Sans', sans-serif;
+      font-size: $logo-font-size;
+      line-height: 2.5;
+      text-transform: uppercase;
+    }
+    .logo-part-1 {
+      @extend .logo-part;
+      font-weight: bold;
+      color: $senary;
+    }
+    .logo-part-2 {
+      @extend .logo-part;
+      color: $senary;
+    }
+  }
+}
+
+.sidebar-right {
+  @extend .sidebar-left;
+  right: -2*$sidebar-width;
+  width: 2*$sidebar-width;
+  transition: right 0.5s;
+  &.slided {
+    right: 0;
+    transition: right 0.5s;
+  }
+}

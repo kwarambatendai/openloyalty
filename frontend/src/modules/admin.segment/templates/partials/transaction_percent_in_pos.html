@@ -1,0 +1,26 @@
+<div>
+    <div class="row">
+        <div class="small-3 columns">
+            <label>{{ "segment.partials.pos" | translate }} <span class="required">*</span></label>
+        </div>
+        <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].posId.errors">
+            <selectize
+                    ng-model="$parent.$parent.$parent.$parent.segmentModel.posId"
+                    config="percentPosSelect"
+                    options="percentPos">
+            </selectize>
+            <span class="prompt">{{ "segment.pos_id_prompt" | translate }} </span>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-3 columns">
+            <label>{{ "segment.partials.percent" | translate }}<span class="required">*</span></label>
+        </div>
+        <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].percent.errors">
+            <input class="input-group-field" type="number" min="0" max="100" step="1"
+                   ng-model="$parent.$parent.$parent.$parent.segmentModel.percent" required>
+            <span class="prompt">{{ "segment.percent_prompt" | translate }} </span>
+        </div>
+    </div>
+</div>

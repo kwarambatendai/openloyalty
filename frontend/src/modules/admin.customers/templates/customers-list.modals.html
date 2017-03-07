@@ -1,0 +1,28 @@
+<div ng-repeat="s in customers track by $index">
+    <modal size="'tiny'" show="s.showRemoveModal" modal-title="'customer.delete_confirmation'|translate">
+        <div class="text-center">
+            <p class="color-dark">{{"customer.delete_confirmation_description"|translate}}</p>
+            <div class="btns">
+                <button type="button" ng-click="CustomerCtrl.deactivateCustomer(s.customerId)"
+                        class="button small button-septenary-colorized m-b-0 m-t-10" ng-disabled="CustomerCtrl.loaderStates.deactivateCustomer">{{"global.confirm"|translate}}
+                </button>
+                <div class="spinner-loader-wrapper">
+                    <spinner-loader loading="CustomerCtrl.loaderStates.deactivateCustomer" class="inline"
+                                    delay="5"></spinner-loader>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </modal>
+    <modal size="'tiny'" show="s.showActivateModal" modal-title="'customer.activate_confirmation'|translate">
+        <div class="text-center">
+            <p class="color-dark">{{"customer.activate_confirmation_description"|translate}}</p>
+            <div class="btns">
+                <button type="button" ng-click="CustomerCtrl.activateCustomer(s.customerId)"
+                        class="button small button-septenary-colorized">{{"global.confirm"|translate}}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </modal>
+</div>

@@ -1,0 +1,35 @@
+<box-loader loading="CustomerCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="CustomerCtrl.getTransactionsData()">
+    <h1>{{ "customer.transactions_heading" | translate }}</h1>
+</div>
+<div style="clear:both;"></div>
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "customer.transactions_list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="CustomerCtrl.loaderStates.transactionList"></box-loader>
+        <table ng-table="CustomerCtrl.transactionsTableParams" class="default"
+               template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'transaction.id'|translate" filter="{transactionId: 'text'}">
+                    <span ng-bind="row.transactionId"></span>
+                </td>
+                <td data-title="'transaction.document_number'|translate" sortable="'documentNumber'">
+                    <span ng-bind="row.documentNumber"></span>
+                </td>
+                <td data-title="'transaction.document_type'|translate" sortable="'documentType'">
+                    <span>{{'transaction.document_types.'+row.documentType|translate}}</span>
+                </td>
+                <td data-title="'transaction.purchase_date'|translate" sortable="'purchaseDate'">
+                    <span ng-bind="row.purchaseDate|date: 'yyyy-MM-dd'"></span>
+                </td>
+                <td data-title="'transaction.purchase_place'|translate" sortable="'purchasePlace'">
+                    <span ng-bind="row.posName"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

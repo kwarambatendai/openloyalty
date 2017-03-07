@@ -1,0 +1,6 @@
+OpenLoyalty\Domain\Segment\SegmentPartId:
+  exlusion_policy: ALL
+  properties:
+    segmentPartId:
+      expose: true
+      serialized_name: segmentPartId

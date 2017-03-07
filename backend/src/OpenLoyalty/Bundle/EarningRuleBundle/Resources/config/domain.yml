@@ -1,0 +1,37 @@
+services:
+  oloy.earning_rule.command_handler:
+    class: OpenLoyalty\Domain\EarningRule\Command\EarningRuleCommandHandler
+    arguments:
+      - '@oloy.earning_rule.repository'
+      - '@broadway.uuid.generator'
+    lazy: true
+    tags:
+      - { name: command_handler }
+  oloy.earning_rule.repository:
+    class: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Repository\DoctrineEarningRuleRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'OpenLoyalty\Domain\EarningRule\EarningRule'
+  oloy.earning_rule.usage_repository:
+    class: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Repository\DoctrineEarningRuleUsageRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'OpenLoyalty\Domain\EarningRule\EarningRuleUsage'
+  oloy.earning_rule.algorithm.points_earning:
+    class: OpenLoyalty\Domain\EarningRule\Algorithm\PointsEarningRuleAlgorithm
+    tags:
+      - { name: oloy.earning_rule.algorithm, alias: PointsEarningRule }
+  oloy.earning_rule.algorithm.product_purchase:
+    class: OpenLoyalty\Domain\EarningRule\Algorithm\ProductPurchaseEarningRuleAlgorithm
+    tags:
+      - { name: oloy.earning_rule.algorithm, alias: ProductPurchaseEarningRule }
+  oloy.earning_rule.algorithm.multiply_points_for_product:
+    class: OpenLoyalty\Domain\EarningRule\Algorithm\MultiplyPointsForProductRuleAlgorithm
+    tags:
+      - { name: oloy.earning_rule.algorithm, alias: MultiplyPointsForProductEarningRule }
+  oloy.earning_rule.applier:
+    class: OpenLoyalty\Domain\EarningRule\OloyEarningRuleEvaluator
+    arguments:
+      - '@oloy.earning_rule.repository'
+      - '@oloy.transaction.read_model.repository.transaction_details'
+      - '@oloy.earning_rule.algorithm_factory'

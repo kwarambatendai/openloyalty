@@ -1,0 +1,24 @@
+<section class="content" style="margin-right: 225px;">
+    <div class="heading">
+        <h1>Debug tools</h1>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="client-list box">
+        <div class="box-title">
+            <h1 class="text-left">Translations loader</h1>
+        </div>
+        <div class="box-content">
+            <textarea placeholder="Put translations" ng-model="translationLoader" style="min-height:300px"></textarea>
+            <div class="row">
+                <div class="columns column-12 text-center">
+                    <button class="button button-septenary" ng-click="DebugCtrl.clear()">
+                        Clear localstorage
+                    </button>
+                    <button class="button button-septenary-colorized" ng-click="DebugCtrl.loadTranslations()">
+                        Load translations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

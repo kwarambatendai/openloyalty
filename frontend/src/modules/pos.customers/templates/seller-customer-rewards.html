@@ -1,0 +1,31 @@
+<section class="pos-section" ng-init="SellerCustomerCtrl.getRewardsData()">
+
+    <h1>{{ "seller.dashboard.title.customer_rewards" | translate }}</h1>
+
+    <div class="row">
+        <div class="client-list box">
+            <div class="box-title">
+                <h1 class="text-left">{{ "customer.rewards_list" | translate }}</h1>
+            </div>
+            <div class="box-content">
+                <table ng-table="SellerCustomerCtrl.boughtCampaignsTableParams" class="default"
+                       template-pagination="templatePagination.html">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'campaign.name'|translate">
+                            <span ng-bind="row.campaign.name"></span>
+                        </td>
+                        <td data-title="'campaign.cost_in_points'|translate" sortable="'costInPoints'">
+                            <span ng-bind="row.costInPoints"></span>
+                        </td>
+                        <td data-title="'campaign.purchase_at'|translate">
+                            <span ng-bind="row.purchaseAt|date : 'yyyy-MM-dd HH:mm'"></span>
+                        </td>
+                        <td data-title="'campaign.coupon'|translate">
+                            <span ng-bind="row.coupon.code"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

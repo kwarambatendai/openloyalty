@@ -1,0 +1,3 @@
+email_settings:
+    resource: '@OpenLoyaltyEmailSettingsBundle/Controller/Api/SettingsController.php'
+    type: annotation

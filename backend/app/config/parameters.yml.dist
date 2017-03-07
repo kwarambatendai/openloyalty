@@ -1,0 +1,45 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     db
+    database_port:     ~
+    database_name:     openloyalty
+    database_user:     openloyalty
+    database_password: openloyalty
+    database_driver:   pdo_pgsql
+    elastica_host:     elk
+    elastica_port:     9200
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    jwt_private_key_path: %kernel.root_dir%/var/jwt/private.pem   # ssh private key path
+    jwt_public_key_path:  %kernel.root_dir%/var/jwt/public.pem    # ssh public key path
+    jwt_key_pass_phrase:  'open'                                     # ssh key pass phrase
+    jwt_token_ttl:        86400
+    pagination_per_page: 10
+    mailer_transport: smtp
+    mailer_host: mail
+    mailer_user: ~
+    mailer_password: ~
+    mailer_port: 1025
+    mailer_from_address: open@oloy.com
+    mailer_from_name: open@oloy.com
+
+    frontend_password_reset_url: '%env(FRONTEND_PASSWORD_RESET_URL)%'
+    env(FRONTEND_PASSWORD_RESET_URL): localhost:8182/#/password/reset
+    frontend_activate_account_url: '%env(FRONTEND_ACTIVATE_ACCOUNT_URL)%'
+    env(FRONTEND_ACTIVATE_ACCOUNT_URL): 'localhost:8182/#/customer/panel/customer/registration/activate'
+    frontend_customer_panel_url: '%env(FRONTEND_CUSTOMER_PANEL_URL)%'
+    env(FRONTEND_CUSTOMER_PANEL_URL): 'http://localhost:8183/'
+    loyalty_program_name: OpenLoyalty
+    ecommerce_address: http://ecommerce.local
+
+    customer_search_max_results: 3
+    es_max_result_window_size: 10000
+    fallback_frontend_translations_file: english.json
+
+    campaign_photos_adapter: campaign_photos_local
+    campaign_photos_adapter_env: CAMPAIGN_PHOTOS_ADAPTER

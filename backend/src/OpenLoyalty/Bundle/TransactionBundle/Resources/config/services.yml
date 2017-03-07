@@ -1,0 +1,82 @@
+services:
+  oloy.transaction.form_type.label:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\LabelFormType
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.item:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\ItemFormType
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.sku:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\SKUFormType
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.customer_details:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\CustomerDetailsFormType
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.customer_address:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\CustomerAddressFormType
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.manually_assign_customer_to_transaction:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\ManuallyAssignCustomerToTransactionFormType
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.transaction_id:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionIdFormType
+    arguments:
+      - '@oloy.transaction.read_model.repository.transaction_details'
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.customer_id:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\CustomerIdFormType
+    arguments:
+      - '@oloy.user.read_model.repository.customer_details'
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.transaction:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionFormType
+    arguments:
+      - '@oloy.pos.repository'
+    tags:
+      - { name: form.type }
+  oloy.transaction.form_type.transaction_simulation:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionSimulationFormType
+    tags:
+      - { name: form.type }
+  oloy.transaction.param_converter:
+    class: OpenLoyalty\Bundle\TransactionBundle\ParamConverter\TransactionParamConverter
+    arguments: ['@oloy.transaction.read_model.repository.transaction_details']
+    tags:
+      - { name: request.param_converter, priority: -2, converter: transaction_details_converter }
+  oloy.transaction.settings_based_customer_id_provider:
+    class: OpenLoyalty\Bundle\TransactionBundle\Service\SettingsBasedCustomerIdProvider
+    arguments:
+      - '@ol.doctrine_settings.manager'
+      - '@oloy.user.read_model.repository.customer_details'
+
+  oloy.transaction.customer_id_provider:
+    alias: oloy.transaction.settings_based_customer_id_provider
+
+  oloy.transaction.oloy_customer_transactions_summary_provider:
+    class: OpenLoyalty\Bundle\TransactionBundle\Service\OloyCustomerTransactionsSummaryProvider
+    arguments: ['@oloy.user.read_model.repository.customer_details']
+
+  oloy.transaction.customer_transactions_summary_provider:
+    alias: oloy.transaction.oloy_customer_transactions_summary_provider
+
+  oloy.transaction.serialization_listener.transaction:
+    class: OpenLoyalty\Bundle\TransactionBundle\Event\Listener\TransactionSerializationListener
+    arguments: ['@oloy.points.account.repository.points_transfer_details', '@ol.settings.manager', '@oloy.pos.repository']
+    tags:
+        - { name: jms_serializer.event_subscriber }
+
+  oloy.transaction.form_handler.manually_assign_customer_to_transaction:
+    class: OpenLoyalty\Bundle\TransactionBundle\Form\Handler\ManuallyAssignCustomerToTransactionFormHandler
+    arguments:
+      - '@oloy.transaction.read_model.repository.transaction_details'
+      - '@oloy.user.read_model.repository.customer_details'
+      - '@broadway.command_handling.command_bus'
+      - '@broadway.event_dispatcher'
+      - '@security.authorization_checker'

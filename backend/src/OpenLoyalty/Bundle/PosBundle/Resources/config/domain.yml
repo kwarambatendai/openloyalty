@@ -1,0 +1,14 @@
+services:
+  oloy.pos.command_handler:
+    class: OpenLoyalty\Domain\Pos\Command\PosCommandHandler
+    arguments:
+      - '@oloy.pos.repository'
+      - '@broadway.event_dispatcher'
+    lazy: true
+    tags:
+      - { name: command_handler }
+  oloy.pos.repository:
+    class: OpenLoyalty\Infrastructure\Pos\Persistance\Doctrine\Repository\DoctrinePosRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'OpenLoyalty\Domain\Pos\Pos'

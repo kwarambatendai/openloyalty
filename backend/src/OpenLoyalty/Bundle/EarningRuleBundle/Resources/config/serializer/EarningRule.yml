@@ -1,0 +1,14 @@
+OpenLoyalty\Domain\EarningRule\EarningRule:
+  exlusion_policy: ALL
+  discriminator:
+    field_name: type
+    map:
+      points: OpenLoyalty\Domain\EarningRule\PointsEarningRule
+      event: OpenLoyalty\Domain\EarningRule\EventEarningRule
+      custom_event: OpenLoyalty\Domain\EarningRule\CustomEventEarningRule
+      product_purchase: OpenLoyalty\Domain\EarningRule\ProductPurchaseEarningRule
+      multiply_for_product: OpenLoyalty\Domain\EarningRule\MultiplyPointsForProductEarningRule
+  properties:
+    earningRuleId:
+      expose: true
+      inline: true

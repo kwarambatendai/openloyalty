@@ -1,0 +1,30 @@
+<div>
+    <div class="collection" ng-repeat="label in $parent.$parent.segmentModel.labels">
+        <div class="row">
+            <div class="small-3 columns">
+                <label>{{ "segment.partials.key" | translate }} <span class="required">*</span></label>
+            </div>
+            <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].labels[$index].key.errors">
+                <input type="text" ng-model="segment.labels[$index].key" required/>
+                <span class="prompt">{{ "segment.label_key_prompt" | translate }} </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-3 columns">
+                <label>{{ "segment.partials.value" | translate }} <span class="required">*</span></label>
+            </div>
+            <div class="small-9 columns" form-validation="validate.parts[parentIndex].criteria[segmentIndex].labels[$index].value.errors">
+                <input type="text" ng-model="segment.labels[$index].value" required/>
+                <span class="prompt">{{ "segment.label_value_prompt" | translate }} </span>
+            </div>
+        </div>
+
+        <button type="button" class="remove-collection" ng-click="removeLabel($index)">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <button type="button" class="button button-primary tiny" ng-click="addLabel()">
+        {{ "segment.partials.add_label" | translate }}
+    </button>
+</div>

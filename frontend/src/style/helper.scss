@@ -1,0 +1,376 @@
+.input-group-label {
+  .fa {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    font-size: 1rem;
+  }
+}
+
+.input-group {
+  * {
+    box-shadow: none !important;
+  }
+  > * {
+    height: 42px;
+  }
+  .input-group-label:first-child {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .input-group-field:last-child {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+}
+
+button, select, input, textarea, .button {
+  border-radius: 3px;
+}
+
+.whisper {
+  opacity: 0.43;
+  font-size: 70%;
+}
+
+.user-avatar {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 15px auto;
+}
+
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+input:checked ~ .switch-paddle {
+  background-color: $primary !important;
+}
+
+input[data-datepicker] {
+  &[disabled], &[readonly] {
+    background-color: transparent !important;
+    cursor: pointer !important;
+  }
+}
+
+.label.success {
+  background-color: $quinary;
+}
+
+.callout {
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  text-align: center;
+  &.alert {
+    color: darken($septenary, 30%);
+  }
+  &.success {
+    color: darken($quinary, 30%)
+  }
+}
+
+.flash-msg {
+  position: fixed;
+  max-width: 100%;
+  width: 400px;
+  bottom: 25px;
+  right: 25px;
+  height: auto;
+  z-index:5001;
+}
+
+.required {
+  color: $septenary;
+}
+
+.settings-title {
+  display: block;
+  background-color: lighten($dark, 15%);
+  margin-bottom: 15px;
+  padding-top: 15px;
+  h3 {
+    color: $white;
+  }
+}
+
+.settings-buttons {
+  bottom: 0;
+  padding-top: 15px;
+}
+
+.wrapper {
+  overflow-y: scroll;
+  height: calc(100vh - 150px);
+}
+
+.wrapper::-webkit-scrollbar-track {
+  background-color: $dark;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 6px;
+  background-color: $dark;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: darken($gray, 20%);
+  border-radius: 3px;
+}
+
+.pos-dnd {
+  height: 200px;
+  min-width: 250px;
+  display: inline-block;
+  margin-right: 2rem;
+  margin-left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  padding: 1rem;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  li {
+    cursor: pointer;
+
+    background-color: $senary;
+    padding: 0.3rem;
+  }
+}
+
+.hasError {
+  div[ng-transclude] {
+  }
+  margin-bottom: 0.5em;
+  input, select, textarea {
+    border-color: $septenary !important;
+  }
+  span.error-msg {
+    clear: both;
+    font-size: 13px;
+    color: $septenary;
+    display: block;
+    position: relative;
+    top: -12px;
+  }
+  .selectize-control {
+    margin-bottom: 8px !important;
+  }
+}
+
+.segment-or {
+  display: block;
+  height: 2px;
+  overflow: visible;
+  margin: 45px 25px 45px 2px;
+  background-color: darken($gray, 10%);
+  text-align: center;
+  position: relative !important;
+  .text {
+    display: inline-block;
+    margin-top: -30px;
+    margin-left: -25px;
+    position: absolute;
+    line-height: 3;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 20px;
+    background-color: darken($gray, 5%);
+    border: 2px solid darken($gray, 10%);
+    color: $white;
+  }
+}
+
+.segment-and {
+  @extend .segment-or;
+  margin-right: 0;
+  .text {
+    margin-left: -43px;
+  }
+}
+
+.is-accordion-submenu-parent > a::after {
+  font-family: 'Flaticon';
+  border: 0 !important;
+  content: "\f176" !important;
+  top: auto;
+  margin-top: -12px;
+  right: 30px;
+  font-size: $sidebar-chevron-size;
+
+}
+
+.is-accordion-submenu-parent[aria-expanded='true'] > a::after {
+  transform-origin: 0;
+  transform: none;
+}
+
+.is-accordion-submenu-parent[aria-expanded='false'] > a::after {
+  top: 40px;
+  transform-origin: 50% 50%;
+  transform: scaleY(-1);
+}
+
+.selectize-control.single .selectize-input:after {
+  font-family: 'Flaticon';
+  border: 0 !important;
+  content: "\f177" !important;
+  top: 14px !important;
+  right: 20px !important;
+  font-size: $sidebar-chevron-size;
+}
+
+.selectize-control.single .selectize-input.dropdown-active:after {
+  font-family: 'Flaticon';
+  border: 0 !important;
+  content: "\f176" !important;
+  top: 14px !important;
+  right: 20px !important;
+  font-size: $sidebar-chevron-size;
+}
+
+.m-r-1 {
+  margin-right: 10px;
+}
+
+.m-l-1 {
+  margin-left: 10px;
+}
+
+.p-t-10 {
+  padding-top: 10px !important;
+}
+
+.m-t-10 {
+  margin-top: 10px;
+}
+
+.m-b-0 {
+  margin-bottom: 0;
+}
+
+button.button.square {
+  border-radius: 0 !important;
+}
+
+.heading {
+  margin: 15px;
+  h1 {
+    font-size: 32px;
+    color: $dark;
+    float: left;
+  }
+  .action-buttons {
+    margin-left: 45px;
+    margin-top: 5px;
+    float: left;
+  }
+}
+
+fieldset {
+  .collection-remove {
+    top: 10px !important;
+  }
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_current,
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_default,
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box > div > div.xdsoft_current {
+  background-color: lighten($septenary, 40%) !important;
+  box-shadow: lighten($septenary, 30%) 0 1px 3px 0 inset !important;;
+  color: #fff !important;;
+  font-weight: 700 !important;;
+}
+
+div.xdsoft_datetimepicker .xdsoft_calendar td:hover,
+div.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box > div > div:hover {
+  color: #fff !important;
+  background: $septenary !important;
+  box-shadow: none !important;
+}
+
+.xdsoft_datetimepicker .xdsoft_label > .xdsoft_select > div > .xdsoft_option.xdsoft_current {
+  background-color: lighten($septenary, 40%) !important;
+  box-shadow: lighten($septenary, 30%) 0 1px 3px 0 inset !important;;
+}
+
+.xdsoft_datetimepicker .xdsoft_label > .xdsoft_select > div > .xdsoft_option:hover {
+  color: #fff !important;
+  background: $septenary !important;
+  box-shadow: none !important;
+}
+
+.color-gray {
+  color: $gray-font !important;
+}
+
+.color-dark {
+  color: $dark !important;
+}
+
+.color-white {
+  color: $white !important;
+}
+
+.color-red {
+  color: $septenary !important;
+}
+
+form fieldset.fieldset .hasError .prompt {
+  //vertical-align:middle;
+}
+
+.inline-wrapper {
+  display: table;
+  margin: 0 auto;
+  > div {
+    display: table-cell !important;
+  }
+}
+
+.font-small {
+  font-size: 13px !important;
+}
+
+.tabs-title {
+  color: $dark;
+  text-decoration: none !important;
+}
+
+canvas.chart {
+  min-height: 250px;
+}
+
+.link {
+  font-size:13px;
+  color: $dark;
+  text-decoration: none;
+  font-weight: normal;
+  &:hover, &:focus {
+    color: $septenary
+  }
+}
+
+.regular-text {
+  color: $dark;
+  font-size:13px;
+}
+
+#contentLoadedTest {
+  display:none!important;
+}
+
+.ngi-scope label {
+  color:black!important;
+}
+
+.ng-table-counts {
+  display:none!important;
+}

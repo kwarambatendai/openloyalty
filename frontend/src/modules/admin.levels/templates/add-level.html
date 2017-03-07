@@ -1,0 +1,211 @@
+<box-loader loading="false" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="newLevel={specialRewards: []}">
+    <h1>{{ "level.add_heading" | translate }}</h1>
+</div>
+<div style="clear:both;"></div>
+
+<form novalidate ng-submit="LevelCtrl.addLevel(newLevel)">
+    <div class="box-content">
+        <div class="row">
+            <div class="medium-12 columns">
+                <fieldset class="fieldset">
+
+                    <legend>{{ "level.basic_info" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.name.errors">
+                            <input type="text" ng-model="newLevel.name" required>
+                            <span class="prompt">{{ "level.name_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.active" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns"
+                             form-validation="validate.active.errors">
+                            <selectize config="LevelCtrl.activeConfig" options="LevelCtrl.active"
+                                       ng-model="newLevel.active" ng-init="newLevel.active=0"></selectize>
+                            <span class="prompt">{{ "level.active_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.description" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.description.errors">
+                            <input type="text" ng-model="newLevel.description"/>
+                            <span class="prompt">{{ "level.description_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.condition_value" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.conditionValue.errors">
+                            <input type="number" min=”0″ step="0.01" ng-model="newLevel.conditionValue"
+                                   required>
+                            <span class="prompt">{{ "level.condition_value_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.min_order" | translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.minOrder.errors">
+                            <input type="number" min=”0″ step="0.01" ng-model="newLevel.minOrder"
+                                   required>
+                            <span class="prompt">{{ "level.min_order_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+
+                    <legend>{{ "level.reward_details" | translate }}</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.reward_name" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.reward.name.errors">
+                            <input type="text" ng-model="newLevel.reward.name" required>
+                            <span class="prompt">{{ "level.reward_name_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.reward_value" | translate }} <span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.reward.value.errors">
+                            <input type="number" min="0" max="100" step="1"
+                                   ng-model="newLevel.reward.value" required>
+                            <span class="prompt">{{ "level.reward_value_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "level.reward_code" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.reward.code.errors">
+                            <input type="text" ng-model="newLevel.reward.code" required>
+                            <span class="prompt">{{ "level.reward_code_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="medium-12 columns">
+                <fieldset class="fieldset">
+
+                    <legend>{{ "level.special_reward_details" | translate }}</legend>
+                    <div class="" style="position:relative" ng-repeat="special in newLevel.specialRewards">
+                        <div class="segment-and" ng-show="$index!=0">
+                            <span class="text ng-binding">{{ "global.and" | translate }}</span>
+                        </div>
+                        <div class="collection">
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "level.active" | translate }}</label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.specialRewards[$index].active.errors">
+                                    <selectize config="LevelCtrl.activeConfig" options="LevelCtrl.active"
+                                               ng-model="newLevel.specialRewards[$index].active"
+                                               ng-init="newLevel.specialRewards[$index].active=0"></selectize>
+                                    <span class="prompt">{{ "level.specialreward_active_prompt" | translate }} </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "level.reward_name" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.specialRewards[$index].name.errors">
+                                    <input type="text" ng-model="newLevel.specialRewards[$index].name" required>
+                                    <span class="prompt">{{ "level.specialreward_name_prompt" | translate }} </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "level.value" | translate }} <span class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.specialRewards[$index].value.errors">
+                                    <input type="number" min="0" max="100" step="1"
+                                           ng-model="newLevel.specialRewards[$index].value" required>
+                                    <span class="prompt">{{ "level.specialreward_value_prompt" | translate }} </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "level.reward_code" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.specialRewards[$index].code.errors">
+                                    <input type="text" ng-model="newLevel.specialRewards[$index].code" required>
+                                    <span class="prompt">{{ "level.specialreward_code_prompt" | translate }} </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "level.start_at" | translate }} <span
+                                            class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.specialRewards[$index].startAt.errors">
+                                    <input type="datetime" datepicker
+                                           ng-model="newLevel.specialRewards[$index].startAt"
+                                           required>
+                                    <span class="prompt">{{ "level.specialreward_startat_prompt" | translate }} </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-3 small-3 columns">
+                                    <label>{{ "level.end_at" | translate }} <span class="required">*</span></label>
+                                </div>
+                                <div class="medium-9 small-9 columns"
+                                     form-validation="validate.specialRewards[$index].endAt.errors">
+                                    <input type="datetime" datepicker
+                                           ng-model="newLevel.specialRewards[$index].endAt"
+                                           required>
+                                    <span class="prompt">{{ "level.specialreward_endat_prompt" | translate }} </span>
+                                </div>
+                            </div>
+
+                            <button type="button" ng-click="LevelCtrl.removeSpecialReward($index)"
+                                    class="remove-collection">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="button" class="button button-secondary tiny" style="margin-bottom:25px"
+                                ng-click="LevelCtrl.addSpecialReward()">
+                            {{ "level.add_special_reward" | translate }}
+                        </button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" ng-init="LevelCtrl.loaderStates.levelDetails=false">
+        <div class="row">
+            <div class="columns small-12">
+                <button class="button button-septenary-colorized  float-left m-r-1" type="submit">
+                    {{ "global.save" | translate }}
+                </button>
+                <button type="button" ui-sref="admin.levels-list" class="button button-default float-left" href="#">
+                    {{ "global.cancel" | translate }}
+                </button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</form>

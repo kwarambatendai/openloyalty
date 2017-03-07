@@ -1,0 +1,84 @@
+div[ng-table-pagination] {
+  clear: both;
+  margin: 0 -15px 0 -15px;
+  border-top: 1px solid #f0ebe4;
+  padding: 15px 15px 0 15px;
+  min-height: 50px;
+  display: block;
+}
+
+.ng-table-pager {
+  button {
+    display: none
+  }
+}
+
+ul.ng-table-pagination {
+  text-align: center;
+  &.pagination {
+    li {
+      display: inline-block;
+      padding: 0;
+    }
+    li:not(.disabled) {
+
+      a {
+        &:hover {
+          color: $white !important;
+          span {
+            color: $white !important;
+          }
+        }
+      }
+    }
+    li:not(.disabled), a, a > span {
+      color: $gray;
+      border-radius: 3px;
+    }
+    li.active {
+      background-color: $default-button;
+      font-weight: 600;
+      color: $white;
+      a {
+        background-color: $default-button !important;
+        span {
+          color: $white !important;
+        }
+        &:hover {
+          span {
+            color: $white !important;
+          }
+        }
+      }
+    }
+  }
+  li.disabled {
+    cursor: not-allowed;
+    a {
+      cursor: not-allowed;
+      background-color: transparent;
+      span {
+
+      }
+    }
+  }
+}
+
+ul {
+  &.check-list {
+    list-style: none;
+    margin-left: 10px;
+    li {
+      color: $white;
+      position: relative;
+      padding-left: 23px;
+      &::before {
+        font-family: 'Flaticon';
+        content: "\f143";
+        position: absolute;
+        left: 4px;
+        top: 2px;
+      }
+    }
+  }
+}

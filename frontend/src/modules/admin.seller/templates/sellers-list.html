@@ -1,0 +1,91 @@
+<box-loader loading="SellerCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="SellerCtrl.getData()">
+    <h1>{{ "seller.heading" | translate }}</h1>
+    <div class="action-buttons">
+        <button class="button button-primary medium button-septenary-colorized" ui-sref="admin.add-seller">{{
+            "seller.add" | translate }}
+        </button>
+    </div>
+</div>
+<div style="clear:both;"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left"><i class="fa fa-exchange" aria-hidden="true"></i>{{ "seller.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="SellerCtrl.loaderStates.sellerList"></box-loader>
+        <table ng-table="SellerCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'seller.name'|translate" filter="{firstName: 'text'}" sortable="'firstName'">
+                    <span ng-bind="row.firstName"></span>
+                </td>
+                <td data-title="'seller.surname'|translate" filter="{lastName: 'text'}" sortable="'lastName'">
+                    <span ng-bind="row.lastName"></span>
+                </td>
+                <td data-title="'seller.phone'|translate" sortable="'phone'" filter="{phone: 'text'}">
+                    <span ng-bind="row.phone || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'seller.email'|translate" sortable="'email'" filter="{email: 'text'}">
+                    <span ng-bind="row.email"></span>
+                </td>
+                <td data-title="'seller.posId'|translate" sortable="'posId'">
+                    <span ng-bind="row.posId"></span>
+                </td>
+                <td data-title="'seller.posName'|translate" sortable="'posName'">
+                    <span ng-bind="row.posName"></span>
+                </td>
+                <td data-title="'seller.posCity'|translate" sortable="'posCity'">
+                    <span ng-bind="row.posCity"></span>
+                </td>
+                <td data-title="'seller.active'|translate">
+                        <span>
+                            <button
+                                    ng-if="row.active"
+                                    class="tiny button button-septenary-colorized"
+                                    ng-click="SellerCtrl.setSellerState(!row.active, row.sellerId)"
+                            >
+                                {{'global.active'|translate}}
+                            </button>
+                            <button
+                                    ng-if="!row.active"
+                                    class="tiny button button-default"
+                                    ng-click="SellerCtrl.setSellerState(!row.active, row.sellerId)"
+                            >{{'global.inactive'|translate}}
+
+                            </button>
+                        </span>
+                </td>
+                <td data-title="'seller.actions'|translate">
+                    <button class="button button-septenary tiny" ng-click="sellers[$index].showRemoveModal=true">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <button class="button button-secondary tiny"
+                            ui-sref="admin.edit-seller({sellerId: row.sellerId})">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div ng-repeat="s in sellers track by $index">
+    <modal size="'tiny'" show="s.showRemoveModal" modal-title="'seller.delete_confirmation'|translate">
+        <div class="text-center">
+            <p class="color-dark">{{"seller.delete_confirmation_description"|translate}}</p>
+            <div class="btns">
+                <button type="button" ng-click="SellerCtrl.removeSeller(s.sellerId)"
+                        class="button small button-septenary-colorized m-t-10 m-b-0"
+                        ng-disabled="SellerCtrl.loaderStates.removeSeller">{{"global.confirm"|translate}}
+                </button>
+
+                <div class="spinner-loader-wrapper">
+                    <spinner-loader loading="SellerCtrl.loaderStates.removeSelle" class="inline"
+                                    delay="5"></spinner-loader>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </modal>
+</div>

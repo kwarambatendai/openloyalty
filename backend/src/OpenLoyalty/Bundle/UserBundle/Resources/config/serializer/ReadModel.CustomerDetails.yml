@@ -1,0 +1,17 @@
+OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails:
+  exlusion_policy: all
+  properties:
+    customerId:
+      expose: true
+      inline: true
+    levelId:
+      expose: true
+      inline: true
+    gender:
+      expose: true
+      inline: true
+    posId:
+      expose: true
+      inline: true
+    transactionIds:
+      exclude: true
