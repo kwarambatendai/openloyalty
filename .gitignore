@@ -4,8 +4,6 @@ frontend/dist/*
 .idea
 cs_fixer*
 /frontend/npm-debug.log
-/docker-compose-override.yml
-backend/docker/php.ini
 
 backend/app/cache/
 backend/app/log/
