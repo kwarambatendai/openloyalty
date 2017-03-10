@@ -1,21 +1,15 @@
-MIT License
+OPEN LOYALTY LICENSE AGREEMENT
 
 Copyright (c) 2017 Divante
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1.  GENERAL PROVISIONS
+1.1.	License Agreement. This license agreement (“License Agreement”) assigns no title to or ownership of DIVANTE proprietary software (including, without limitation, permitted derivative works made by DIVANTE based on third-party software), or any other software as may be integrated, incorporated, or otherwise part of the former, or any associated documentation files (“Software”) to any person obtaining a copy of the Software (“Licensee”), and Licensee receives no rights to the Software other than those expressly granted or passed through in this License Agreement or under relevant notices in the Software files.
+1.2.	Copyright holder. DIVANTE Sp. z o. o., with its registered office in Wroclaw, at ul. Dmowskiego 17, 50-203 Wroclaw, Poland; NIP (Tax Id no.): 8951930748; entered into the National Court Register (KRS) under the KRS number: 0000313348, by the District Court Wrocław-Fabryczna in Wroclaw, VI Commercial Division of the National Court Register; share capital: 58,000 PLN (“DIVANTE”) warrants that it is the owner of the Software and of each and every component thereof, or the recipient of a valid license thereto, and that it has obtained and will maintain the full power and authority to grant the rights granted in this License Agreement without further consent of any person or entity.
+1.3.	Prevailing laws and venue. Unless otherwise dictated by mandatory provisions of applicable laws or third-party licenses, this License Agreement will be governed by the substantive laws in force in Poland, and any and all disputes will be heard exclusively by courts, tribunals or any other competent bodies having jurisdiction over the registered office of DIVANTE.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2.  LICENSE TERMS
+2.1.	Types of License. DIVANTE makes the Software available to Licensees under two distinct sets of terms, according to the intended or actual use thereof, whether for commercial purposes or otherwise, and the number of end-users involved (“Customers”) – the threshold set at 200 Customers.
+2.2.	General Terms. The exercise and enjoyment of rights available under this License Agreement is and will at all times be subject to strict compliance by Licensee and, by extension, its Customers with the terms hereof. Any breach of this License Agreement will result in an immediate termination of any and all rights granted herein, obligation to remove any and all copies of the Software, and pursuit by DIVANTE of any and all legal remedies available at law or in equity.
+2.3.	Community Edition. If the Software is used for non-commercial purposes, or if its intended or actual commercial use involves a maximum of 200 Customers, DIVANTE grants Licensee, free of charge, permission to deal in the Software, without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit its Customers to do so (permission notice), subject to the inclusion, where appropriate, in all copies or substantial portions of the Software, pertaining copyright and permission notices, such as, without limitation, “Copyright © 2016 DIVANTE (copyright notice)”.
+2.4.	Enterprise Edition. Where the Software, both, (i) is used for commercial purposes and (ii) involves over 200 Customers, then subject to full, timely, and effective payment of applicable fees as individually agreed upon with DIVANTE, DIVANTE grants Licensee – on top of rights and (attribution or otherwise) duties as defined in the Software Community Edition – a non-exclusive license to reproduce, modify, create derivative works from, reverse engineer, decompile, disassemble or otherwise attempt to derive source code, publicly perform and display, and use the Software as necessary for Licensee’s business. The rights granted in this Section 2.4 may not be extended, assigned, or otherwise transferred to any parent, subsidiary or affiliate of Licensee.
+2.5.	Warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. Licensee accepts and acknowledges that the Software may include third-party software of which license terms and notices may be accordingly attached to the Software files or otherwise communicated to Licensee for it to read, understand, and comply with.
