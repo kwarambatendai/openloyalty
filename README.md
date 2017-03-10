@@ -21,7 +21,8 @@ Then use another command to setup database, elastcsearch and load some demo data
 docker-compose exec backend phing setup
 ```
 
-That's all. Now you can go to [127.0.0.1:8181](http://127.0.0.1:8181).
+That's all. Now you can go to admin panel [127.0.0.1:8182](http://127.0.0.1:8182).
+Default login is **admin** and password **open**. You can also go to customer panel [127.0.0.1:8183](http://127.0.0.1:8183).
 
 If you are developer and want to attach source code then:
 
