@@ -3,7 +3,6 @@
  * Copyright © 2017 Divante, Inc. All rights reserved.
  * See LICENSE for license details.
  */
-
 namespace OpenLoyaltyPlugin\SalesManagoBundle\Service;
 
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;

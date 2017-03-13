@@ -3,7 +3,6 @@
  * Copyright © 2017 Divante, Inc. All rights reserved.
  * See LICENSE for license details.
  */
-
 namespace OpenLoyalty\Bundle\EmailSettingsBundle\Controller\Api;
 
 use OpenLoyalty\Bundle\EmailSettingsBundle\Form\Type\EmailFormType;

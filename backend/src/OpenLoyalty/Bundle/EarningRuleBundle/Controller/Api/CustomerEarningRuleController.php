@@ -3,7 +3,6 @@
  * Copyright © 2017 Divante, Inc. All rights reserved.
  * See LICENSE for license details.
  */
-
 namespace OpenLoyalty\Bundle\EarningRuleBundle\Controller\Api;
 
 use FOS\RestBundle\Controller\Annotations\Route;
