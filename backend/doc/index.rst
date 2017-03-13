@@ -10,12 +10,12 @@ Requirements
 ------------
 This project has full support for running in `Docker <https://www.docker.com/>`_.
 
-Best way to run it is to execute following command
+Best way to run it is to execute the following command
 
   docker-compose up
 (docker must be installed on your machine).
 
-There is also an option to run this without docker, but in such case following set of tool will be needed:
+There is also an option to run this without docker, but in such case following a set of the tool will be needed:
 
 * php7
 * MySql or PosstgreSql
