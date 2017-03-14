@@ -5,12 +5,6 @@
   "keywords": [],
   "homepage": "",
   "license": "",
-  "authors": [
-    {
-      "name": "Krzysztof Lobermajer",
-      "email": "kobermajer@acessto.pl"
-    }
-  ],
   "require": {
     "php": ">=7.0",
     "openloyalty/email-bundle": "~1.0"

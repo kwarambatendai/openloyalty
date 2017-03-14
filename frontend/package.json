@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Accesto sp. z o.o.",
+  "author": "Divante sp. z o.o.",
   "license": "ISC",
   "devDependencies": {
     "angular-mocks": "^1.5.8",
