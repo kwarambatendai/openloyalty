@@ -1,9 +1,23 @@
 [![Build Status](https://travis-ci.org/DivanteLtd/open-loyalty.svg?branch=master)](https://travis-ci.org/DivanteLtd/open-loyalty)
 
-# Open loyalty
+# Open Loyalty
 
 Open Loyalty is technology for loyalty solutions.
-It's a loyalty platform in open source, with ready-to-use gamification and loyalty features, easy to setup and customize, ready to work on-line and off-line.
+It's a loyalty platform in open source, with ready-to-use gamification and loyalty features, easy to set up and customize, ready to work on-line and off-line.
+
+See Open Loyalty product tour - https://youtu.be/cDZZemHxgAk.
+
+
+## Business applications
+
+There is variety of applications for Open Loyalty. Based on it you can build loyalty solutions like: loyalty modules for eCommerce, full loyalty programs for off-line and on-line, motivational programs for sales department or customer care programs with mobile application.
+
+## Screenshots
+
+![Dashboard](https://cloud.githubusercontent.com/assets/26326842/24359309/428f7dc4-1304-11e7-99c2-36ff23fe5036.png)
+![Client Cockpit](https://cloud.githubusercontent.com/assets/26326842/24359396/7f489fd4-1304-11e7-9ae5-f05c88eb8c56.png)
+![eCommerce Cockpit](https://cloud.githubusercontent.com/assets/26326842/24359495/d65c1210-1304-11e7-86bf-9e63ab754360.png)
+![POS Cockpit](https://cloud.githubusercontent.com/assets/26326842/24359465/b796e260-1304-11e7-9da5-4bfc0a026a16.png)
 
 ## Quick install
 
