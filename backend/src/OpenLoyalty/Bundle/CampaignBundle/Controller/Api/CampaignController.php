@@ -8,6 +8,7 @@ namespace OpenLoyalty\Bundle\CampaignBundle\Controller\Api;
 use Broadway\CommandHandling\CommandBusInterface;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\Annotations\Route;
+use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use OpenLoyalty\Bundle\CampaignBundle\Exception\CampaignLimitException;
@@ -55,6 +56,7 @@ class CampaignController extends FOSRestController
      * )
      *
      * @param Request $request
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -95,6 +97,7 @@ class CampaignController extends FOSRestController
      *
      * @param Request        $request
      * @param DomainCampaign $campaign
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -128,6 +131,7 @@ class CampaignController extends FOSRestController
      * )
      *
      * @param DomainCampaign $campaign
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -152,6 +156,7 @@ class CampaignController extends FOSRestController
      *
      * @param Request        $request
      * @param DomainCampaign $campaign
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return Response
      */
@@ -184,6 +189,7 @@ class CampaignController extends FOSRestController
      * )
      *
      * @param Request $request
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -221,6 +227,7 @@ class CampaignController extends FOSRestController
      *
      * @param DomainCampaign $campaign
      * @param                $active
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -251,6 +258,7 @@ class CampaignController extends FOSRestController
      * )
      *
      * @param Request $request
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -294,6 +302,7 @@ class CampaignController extends FOSRestController
      * )
      *
      * @param Request $request
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -337,6 +346,7 @@ class CampaignController extends FOSRestController
      * )
      *
      * @param DomainCampaign $campaign
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -357,6 +367,7 @@ class CampaignController extends FOSRestController
      *
      * @param Request        $request
      * @param DomainCampaign $campaign
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -397,6 +408,7 @@ class CampaignController extends FOSRestController
      *
      * @param Request         $request
      * @param CustomerDetails $customer
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -457,6 +469,7 @@ class CampaignController extends FOSRestController
      *
      * @param DomainCampaign  $campaign
      * @param CustomerDetails $customer
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -524,6 +537,7 @@ class CampaignController extends FOSRestController
      *
      * @param Request         $request
      * @param CustomerDetails $customer
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -582,6 +596,7 @@ class CampaignController extends FOSRestController
      * )
      *
      * @param Campaign $campaign
+     * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */

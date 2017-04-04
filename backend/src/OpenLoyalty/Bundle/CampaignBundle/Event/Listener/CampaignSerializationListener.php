@@ -120,8 +120,10 @@ class CampaignSerializationListener implements EventSubscriberInterface
                 }
             }
 
-            $event->getVisitor()->addData('segmentNames', $segmentNames);
-            $event->getVisitor()->addData('levelNames', $levelNames);
+            if (in_array('admin', (array) $event->getContext()->attributes->get('groups'))) {
+                $event->getVisitor()->addData('segmentNames', $segmentNames);
+                $event->getVisitor()->addData('levelNames', $levelNames);
+            }
 
             if (!$this->campaignValidator->isCampaignActive($campaign)) {
                 if (!$campaign->getCampaignActivity()->isAllTimeActive()) {

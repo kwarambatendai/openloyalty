@@ -1,5 +1,4 @@
 OpenLoyalty\Domain\Campaign\Campaign:
-  exlusion_policy: ALL
   properties:
     campaignId:
       expose: true
@@ -20,9 +19,12 @@ OpenLoyalty\Domain\Campaign\Campaign:
     getFlatLevels:
         serialized_name: levels
         type: array
+        groups: ['admin']
     getFlatSegments:
         serialized_name: segments
         type: array
+        groups: ['admin']
     getFlatCoupons:
         serialized_name: coupons
         type: array
+        groups: ['admin']
