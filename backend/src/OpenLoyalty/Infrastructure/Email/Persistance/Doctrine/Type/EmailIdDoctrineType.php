@@ -47,4 +47,14 @@ class EmailIdDoctrineType extends UuidType
 
         return;
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return self::NAME;
+    }
 }

@@ -8,6 +8,7 @@ namespace OpenLoyalty\Bundle\CampaignBundle\Controller\Api;
 use Broadway\CommandHandling\CommandBusInterface;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\Annotations\Route;
+use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use OpenLoyalty\Bundle\CampaignBundle\Exception\CampaignLimitException;
@@ -47,6 +48,7 @@ class CustomerCampaignsController extends FOSRestController
      * )
      *
      * @param Request $request
+     * @View(serializerGroups={"customer", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -107,6 +109,7 @@ class CustomerCampaignsController extends FOSRestController
      * )
      *
      * @param Request $request
+     * @View(serializerGroups={"customer", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -164,6 +167,7 @@ class CustomerCampaignsController extends FOSRestController
      * )
      *
      * @param Campaign $campaign
+     * @View(serializerGroups={"customer", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -232,6 +236,7 @@ class CustomerCampaignsController extends FOSRestController
      * )
      *
      * @param Campaign $campaign
+     * @View(serializerGroups={"customer", "Default"})
      *
      * @return \FOS\RestBundle\View\View
      */
