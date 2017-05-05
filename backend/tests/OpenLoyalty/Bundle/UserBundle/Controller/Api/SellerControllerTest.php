@@ -30,7 +30,7 @@ class SellerControllerTest extends BaseApiTest
                     'phone' => '0000000011',
                     'posId' => LoadPosData::POS_ID,
                     'plainPassword' => 'oloy',
-                ]
+                ],
             ]
         );
 
@@ -60,12 +60,11 @@ class SellerControllerTest extends BaseApiTest
                     'phone' => '0000000011',
                     'posId' => LoadPosData::POS_ID,
                     'plainPassword' => 'oloy',
-                ]
+                ],
             ]
         );
 
         $response = $client->getResponse();
-        $data = json_decode($response->getContent(), true);
         $this->assertEquals(400, $response->getStatusCode(), 'Response should have status 400');
     }
 
@@ -86,7 +85,7 @@ class SellerControllerTest extends BaseApiTest
                     'email' => 'john@doe.com',
                     'phone' => '0000000011',
                     'posId' => LoadPosData::POS_ID,
-                ]
+                ],
             ]
         );
 

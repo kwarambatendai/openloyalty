@@ -4,6 +4,7 @@ namespace OpenLoyalty\Domain\Pos\Command;
 
 use OpenLoyalty\Domain\Pos\Pos;
 use OpenLoyalty\Domain\Pos\PosId;
+use OpenLoyalty\Domain\Pos\PosRepository;
 
 /**
  * Class PosCommandHandlerTest.
@@ -17,7 +18,7 @@ abstract class PosCommandHandlerTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $poss = &$this->poss;
-        $this->inMemoryRepository = $this->getMock('OpenLoyalty\Domain\Pos\PosRepository');
+        $this->inMemoryRepository = $this->getMockBuilder(PosRepository::class)->getMock();
         $this->inMemoryRepository->method('save')->with($this->isInstanceOf(Pos::class))->will(
             $this->returnCallback(function($pos) use (&$poss) {
                 $poss[] = $pos;

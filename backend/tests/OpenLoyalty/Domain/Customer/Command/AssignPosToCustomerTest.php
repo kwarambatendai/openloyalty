@@ -25,8 +25,8 @@ class AssignPosToCustomerTest extends CustomerCommandHandlerTest
      */
     public function it_updates_customer_name()
     {
-        $customerId    = new CustomerId('00000000-0000-0000-0000-000000000000');
-        $posId    = new PosId('00000000-0000-0000-0000-000000000011');
+        $customerId = new CustomerId('00000000-0000-0000-0000-000000000000');
+        $posId = new PosId('00000000-0000-0000-0000-000000000011');
         $this->scenario
             ->withAggregateId($customerId)
             ->given([
@@ -34,7 +34,7 @@ class AssignPosToCustomerTest extends CustomerCommandHandlerTest
             ])
             ->when(new AssignPosToCustomer($customerId, $posId))
             ->then([
-                new PosWasAssignedToCustomer($customerId, $posId)
+                new PosWasAssignedToCustomer($customerId, $posId),
             ]);
     }
 
@@ -44,7 +44,7 @@ class AssignPosToCustomerTest extends CustomerCommandHandlerTest
     public function it_dispatch_event_on_update()
     {
         $customerId = new CustomerId('00000000-0000-0000-0000-000000000000');
-        $posId  = new PosId('00000000-0000-0000-0000-000000000011');
+        $posId = new PosId('00000000-0000-0000-0000-000000000011');
 
         $eventStore = new TraceableEventStore(new InMemoryEventStore());
 
@@ -53,7 +53,7 @@ class AssignPosToCustomerTest extends CustomerCommandHandlerTest
         $eventStore->append($customerId, new DomainEventStream($messages));
 
         $eventBus = new SimpleEventBus();
-        $eventDispatcher = $this->getMock(EventDispatcherInterface::class);
+        $eventDispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $eventDispatcher
             ->expects($this->once())
             ->method('dispatch')

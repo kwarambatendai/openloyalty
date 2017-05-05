@@ -6,14 +6,11 @@ use Broadway\CommandHandling\Testing\CommandHandlerScenarioTestCase;
 use Broadway\EventDispatcher\EventDispatcherInterface;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventStore\EventStoreInterface;
-use OpenLoyalty\Domain\Customer\Command\CustomerCommandHandler;
 use OpenLoyalty\Domain\Customer\CustomerRepository;
 use OpenLoyalty\Domain\Customer\Validator\CustomerUniqueValidator;
 
 /**
  * Class CustomerCommandHandlerTest.
- *
- * @package OpenLoyalty\Domain\Customer\Command
  */
 abstract class CustomerCommandHandlerTest extends CommandHandlerScenarioTestCase
 {
@@ -22,7 +19,7 @@ abstract class CustomerCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     protected function createCommandHandler(EventStoreInterface $eventStore, EventBusInterface $eventBus)
     {
-        $eventDispatcher = $this->getMock(EventDispatcherInterface::class);
+        $eventDispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $eventDispatcher->method('dispatch')->with($this->isType('string'))->willReturn(true);
 
         return $this->getCustomerCommandHandler($eventStore, $eventBus, $eventDispatcher);
@@ -51,20 +48,21 @@ abstract class CustomerCommandHandlerTest extends CommandHandlerScenarioTestCase
                 'city' => 'Wrocław',
                 'country' => 'PL',
                 'postal' => '50-300',
-                'province' => 'Dolnośląskie'
-            ]
+                'province' => 'Dolnośląskie',
+            ],
         ];
     }
 
     /**
-     * @param EventStoreInterface $eventStore
-     * @param EventBusInterface $eventBus
+     * @param EventStoreInterface      $eventStore
+     * @param EventBusInterface        $eventBus
+     * @param EventDispatcherInterface $eventDispatcher
      *
      * @return \OpenLoyalty\Domain\Customer\Command\CustomerCommandHandler
      */
     protected function getCustomerCommandHandler(EventStoreInterface $eventStore, EventBusInterface $eventBus, EventDispatcherInterface $eventDispatcher)
     {
-        $customerDetailsRepository = $this->getMock('Broadway\ReadModel\RepositoryInterface');
+        $customerDetailsRepository = $this->getMockBuilder('Broadway\ReadModel\RepositoryInterface')->getMock();
         $customerDetailsRepository->method('findBy')->willReturn([]);
         $validator = new CustomerUniqueValidator($customerDetailsRepository);
 

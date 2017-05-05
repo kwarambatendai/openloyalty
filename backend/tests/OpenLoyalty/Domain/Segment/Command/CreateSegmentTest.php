@@ -2,9 +2,6 @@
 
 namespace OpenLoyalty\Domain\Segment\Command;
 
-use OpenLoyalty\Domain\Segment\Model\Criteria\AverageTransactionAmount;
-use OpenLoyalty\Domain\Segment\Model\Criteria\BoughtInPos;
-use OpenLoyalty\Domain\Segment\Model\Criteria\TransactionCount;
 use OpenLoyalty\Domain\Segment\Model\Criterion;
 use OpenLoyalty\Domain\Segment\Segment;
 use OpenLoyalty\Domain\Segment\SegmentId;
@@ -47,7 +44,7 @@ class CreateSegmentTest extends SegmentCommandHandlerTest
                             'min' => 10,
                             'max' => 20,
                         ],
-                    ]
+                    ],
                 ],
             ],
         ]);

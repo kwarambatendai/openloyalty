@@ -7,7 +7,6 @@ use OpenLoyalty\Domain\EarningRule\EarningRuleId;
 use OpenLoyalty\Domain\EarningRule\EventEarningRule;
 use OpenLoyalty\Domain\EarningRule\PointsEarningRule;
 use OpenLoyalty\Domain\EarningRule\ProductPurchaseEarningRule;
-use OpenLoyalty\Domain\Model\SKU;
 
 /**
  * Class CreateEarningRuleTest.
@@ -90,7 +89,7 @@ class CreateEarningRuleTest extends EarningRuleCommandHandlerTest
             'startAt' => (new \DateTime())->getTimestamp(),
             'endAt' => (new \DateTime('+1 month'))->getTimestamp(),
             'skuIds' => ['123'],
-            'pointsAmount' => 100
+            'pointsAmount' => 100,
         ]);
         $handler->handle($command);
         $rule = $this->inMemoryRepository->byId($ruleId);

@@ -2,9 +2,6 @@
 
 namespace OpenLoyalty\Bundle\CampaignBundle\Form\Type;
 
-use OpenLoyalty\Bundle\CampaignBundle\Form\Type\CampaignActivityFormType;
-use OpenLoyalty\Bundle\CampaignBundle\Form\Type\CampaignFormType;
-use OpenLoyalty\Bundle\CampaignBundle\Form\Type\CampaignVisibilityFormType;
 use OpenLoyalty\Bundle\CampaignBundle\Model\Campaign;
 use OpenLoyalty\Bundle\LevelBundle\DataFixtures\ORM\LoadLevelData;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
@@ -21,9 +18,9 @@ class CampaignFormTypeTest extends TypeTestCase
 
     protected function setUp()
     {
-        $this->validator = $this->getMock(
+        $this->validator = $this->getMockBuilder(
             'Symfony\Component\Validator\Validator\ValidatorInterface'
-        );
+        )->getMock();
         $this->validator
             ->method('validate')
             ->will($this->returnValue(new ConstraintViolationList()));

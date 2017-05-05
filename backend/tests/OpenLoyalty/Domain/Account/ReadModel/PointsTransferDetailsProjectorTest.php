@@ -36,27 +36,27 @@ class PointsTransferDetailsProjectorTest extends ProjectorScenarioTestCase
     protected $customerId;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function createProjector(InMemoryRepository $repository)
     {
         $this->accountId = new AccountId('00000000-0000-0000-0000-000000000000');
         $this->customerId = new CustomerId('00000000-1111-0000-0000-000000000000');
 
-        $accountRepository = $this->getMock(InMemoryRepository::class);
+        $accountRepository = $this->getMockBuilder(InMemoryRepository::class)->getMock();
         $account = Account::createAccount($this->accountId, $this->customerId);
 
         $accountRepository->method('find')->willReturn($account);
-        $customerRepository = $this->getMock(InMemoryRepository::class);
+        $customerRepository = $this->getMockBuilder(InMemoryRepository::class)->getMock();
         $customer = Customer::registerCustomer(
             new \OpenLoyalty\Domain\Customer\CustomerId($this->customerId->__toString()),
             $this->getCustomerData()
         );
         $customerRepository->method('find')->willReturn($customer);
 
-        $transactionRepo = $this->getMock(TransactionDetailsRepository::class);
+        $transactionRepo = $this->getMockBuilder(TransactionDetailsRepository::class)->getMock();
         $transactionRepo->method('find')->willReturn(null);
-        $posRepo = $this->getMock(PosRepository::class);
+        $posRepo = $this->getMockBuilder(PosRepository::class)->getMock();
 
         return new PointsTransferDetailsProjector($repository, $accountRepository, $customerRepository, $transactionRepo, $posRepo);
     }
@@ -76,7 +76,7 @@ class PointsTransferDetailsProjectorTest extends ProjectorScenarioTestCase
         $this->scenario->given(array())
             ->when(new PointsWereAdded($this->accountId, new AddPointsTransfer($pointsId, 100, $date)))
             ->then(array(
-                $expectedReadModel
+                $expectedReadModel,
             ));
     }
 
@@ -95,7 +95,7 @@ class PointsTransferDetailsProjectorTest extends ProjectorScenarioTestCase
         $this->scenario->given(array())
             ->when(new PointsWereSpent($this->accountId, new SpendPointsTransfer($pointsId, 100, $date)))
             ->then(array(
-                $expectedReadModel
+                $expectedReadModel,
             ));
     }
 
@@ -113,11 +113,11 @@ class PointsTransferDetailsProjectorTest extends ProjectorScenarioTestCase
         $expectedReadModel->setCreatedAt($date);
         $this->scenario
             ->given(array(
-                new PointsWereAdded($this->accountId, new AddPointsTransfer($pointsId, 100, $date))
+                new PointsWereAdded($this->accountId, new AddPointsTransfer($pointsId, 100, $date)),
             ))
             ->when(new PointsTransferHasBeenCanceled($this->accountId, $pointsId))
             ->then(array(
-                $expectedReadModel
+                $expectedReadModel,
             ));
     }
 
@@ -135,11 +135,11 @@ class PointsTransferDetailsProjectorTest extends ProjectorScenarioTestCase
         $expectedReadModel->setCreatedAt($date);
         $this->scenario
             ->given(array(
-                new PointsWereAdded($this->accountId, new AddPointsTransfer($pointsId, 100, $date))
+                new PointsWereAdded($this->accountId, new AddPointsTransfer($pointsId, 100, $date)),
             ))
             ->when(new PointsTransferHasBeenExpired($this->accountId, $pointsId))
             ->then(array(
-                $expectedReadModel
+                $expectedReadModel,
             ));
     }
 
@@ -152,7 +152,7 @@ class PointsTransferDetailsProjectorTest extends ProjectorScenarioTestCase
         $pointsId = new PointsTransferId('00000000-0000-0000-0000-000000000000');
         $this->scenario
             ->given(array(
-                new PointsWereSpent($this->accountId, new SpendPointsTransfer($pointsId, 100))
+                new PointsWereSpent($this->accountId, new SpendPointsTransfer($pointsId, 100)),
             ))
             ->when(new PointsTransferHasBeenExpired($this->accountId, $pointsId))
             ->then(array(
@@ -192,8 +192,8 @@ class PointsTransferDetailsProjectorTest extends ProjectorScenarioTestCase
                 'city' => 'Wrocław',
                 'country' => 'PL',
                 'postal' => '50-300',
-                'province' => 'Dolnośląskie'
-            ]
+                'province' => 'Dolnośląskie',
+            ],
         ];
     }
 }

@@ -3,7 +3,6 @@
 namespace OpenLoyalty\Bundle\EarningRuleBundle\Form\Type;
 
 use OpenLoyalty\Bundle\EarningRuleBundle\Model\EarningRule;
-use OpenLoyalty\Domain\Model\SKU;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
@@ -18,9 +17,9 @@ class EditEarningRuleFormTypeTest extends TypeTestCase
 
     protected function setUp()
     {
-        $this->validator = $this->getMock(
+        $this->validator = $this->getMockBuilder(
             'Symfony\Component\Validator\Validator\ValidatorInterface'
-        );
+        )->getMock();
         $this->validator
             ->method('validate')
             ->will($this->returnValue(new ConstraintViolationList()));

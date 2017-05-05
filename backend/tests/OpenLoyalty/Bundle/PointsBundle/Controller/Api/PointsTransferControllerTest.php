@@ -40,7 +40,7 @@ class PointsTransferControllerTest extends BaseApiTest
             [
                 'transfer' => [
                     'customer' => LoadUserData::TEST_USER_ID,
-                    'points' => 100
+                    'points' => 100,
                 ],
             ]
         );
@@ -63,7 +63,7 @@ class PointsTransferControllerTest extends BaseApiTest
             [
                 'transfer' => [
                     'customer' => LoadUserData::TEST_USER_ID,
-                    'points' => 100
+                    'points' => 100,
                 ],
             ]
         );
@@ -86,13 +86,12 @@ class PointsTransferControllerTest extends BaseApiTest
             [
                 'transfer' => [
                     'customer' => LoadUserData::TEST_USER_ID,
-                    'points' => 10000
+                    'points' => 10000,
                 ],
             ]
         );
 
         $response = $client->getResponse();
-        $data = json_decode($response->getContent(), true);
         $this->assertEquals(400, $response->getStatusCode(), 'Response should have status 200');
     }
 

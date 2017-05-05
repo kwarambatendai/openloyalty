@@ -3,7 +3,6 @@
 namespace OpenLoyalty\Bundle\UserBundle\Security\Voter;
 
 use OpenLoyalty\Bundle\BaseVoterTest;
-use OpenLoyalty\Bundle\UserBundle\Security\Voter\CustomerSearchVoter;
 
 /**
  * Class CustomerSearchVoterTest.

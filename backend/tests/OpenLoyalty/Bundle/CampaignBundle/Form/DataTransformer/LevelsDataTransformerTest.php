@@ -2,7 +2,6 @@
 
 namespace OpenLoyalty\Bundle\CampaignBundle\Form\DataTransformer;
 
-use OpenLoyalty\Bundle\CampaignBundle\Form\DataTransformer\LevelsDataTransformer;
 use OpenLoyalty\Domain\Campaign\LevelId;
 
 /**

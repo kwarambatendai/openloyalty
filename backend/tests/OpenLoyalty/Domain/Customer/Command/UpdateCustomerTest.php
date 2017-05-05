@@ -17,8 +17,6 @@ use OpenLoyalty\Domain\Customer\SystemEvent\CustomerSystemEvents;
 
 /**
  * Class UpdateCustomerTest.
- *
- * @package OpenLoyalty\Domain\User\Command
  */
 class UpdateCustomerTest extends CustomerCommandHandlerTest
 {
@@ -35,7 +33,7 @@ class UpdateCustomerTest extends CustomerCommandHandlerTest
             ])
             ->when(new UpdateCustomerDetails($customerId, ['firstName' => 'Jane']))
             ->then([
-                new CustomerDetailsWereUpdated($customerId, ['firstName' => 'Jane'])
+                new CustomerDetailsWereUpdated($customerId, ['firstName' => 'Jane']),
             ]);
     }
 
@@ -53,7 +51,7 @@ class UpdateCustomerTest extends CustomerCommandHandlerTest
         $eventStore->append($customerId, new DomainEventStream($messages));
 
         $eventBus = new SimpleEventBus();
-        $eventDispatcher = $this->getMock(EventDispatcherInterface::class);
+        $eventDispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $eventDispatcher
             ->expects($this->once())
             ->method('dispatch')
@@ -77,7 +75,7 @@ class UpdateCustomerTest extends CustomerCommandHandlerTest
         $eventStore->append($customerId, new DomainEventStream($messages));
 
         $eventBus = new SimpleEventBus();
-        $eventDispatcher = $this->getMock(EventDispatcherInterface::class);
+        $eventDispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $eventDispatcher
             ->expects($this->at(0))
             ->method('dispatch')

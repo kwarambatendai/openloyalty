@@ -2,12 +2,10 @@
 
 namespace OpenLoyalty\Infrastructure\Account\SytemEvent\Listener;
 
-use Broadway\ReadModel\RepositoryInterface;
 use OpenLoyalty\Domain\Account\AccountId;
 use OpenLoyalty\Domain\Account\Command\AddPoints;
 use OpenLoyalty\Domain\Account\Model\AddPointsTransfer;
 use OpenLoyalty\Domain\Account\PointsTransferId;
-use OpenLoyalty\Domain\Account\ReadModel\AccountDetails;
 use OpenLoyalty\Domain\Transaction\CustomerId;
 use OpenLoyalty\Domain\Transaction\SystemEvent\CustomerAssignedToTransactionSystemEvent;
 use OpenLoyalty\Domain\Transaction\TransactionId;

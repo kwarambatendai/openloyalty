@@ -2,13 +2,11 @@
 
 namespace OpenLoyalty\Bundle\SegmentBundle\Controller\Api;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OpenLoyalty\Bundle\BaseApiTest;
 use OpenLoyalty\Bundle\PosBundle\DataFixtures\ORM\LoadPosData;
 use OpenLoyalty\Bundle\SegmentBundle\DataFixtures\ORM\LoadSegmentData;
 use OpenLoyalty\Domain\Segment\Model\Criteria\Anniversary;
-use OpenLoyalty\Domain\Segment\Model\Criteria\BoughtInPos;
 use OpenLoyalty\Domain\Segment\Model\Criteria\TransactionCount;
 use OpenLoyalty\Domain\Segment\Model\Criterion;
 use OpenLoyalty\Domain\Segment\Segment;
@@ -43,7 +41,7 @@ class SegmentControllerTest extends BaseApiTest
             'POST',
             '/api/segment',
             [
-                'segment' =>  [
+                'segment' => [
                     'name' => 'test1234',
                     'description' => 'desc',
                     'parts' => [
@@ -63,7 +61,7 @@ class SegmentControllerTest extends BaseApiTest
                                     'min' => 10,
                                     'max' => 20,
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -100,7 +98,7 @@ class SegmentControllerTest extends BaseApiTest
             'POST',
             '/api/segment',
             [
-                'segment' =>  [
+                'segment' => [
                     'name' => 'test2345',
                     'description' => 'desc',
                     'parts' => [
@@ -156,7 +154,7 @@ class SegmentControllerTest extends BaseApiTest
                                     'type' => Criterion::TYPE_BOUGHT_LABELS,
                                     'labels' => [[
                                         'key' => 'test',
-                                        'value' => 'label'
+                                        'value' => 'label',
                                     ]],
                                 ],
                             ],
@@ -196,7 +194,7 @@ class SegmentControllerTest extends BaseApiTest
             'PUT',
             '/api/segment/'.LoadSegmentData::SEGMENT_ID,
             [
-                'segment' =>  [
+                'segment' => [
                     'name' => 'test - updated',
                     'description' => 'desc',
                     'parts' => [
@@ -216,7 +214,7 @@ class SegmentControllerTest extends BaseApiTest
                                     'min' => 1,
                                     'max' => 100,
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],

@@ -12,8 +12,6 @@ use OpenLoyalty\Domain\Customer\SystemEvent\CustomerSystemEvents;
 
 /**
  * Class RegisterCustomerTest.
- *
- * @package OpenLoyalty\Domain\User\Command
  */
 class RegisterCustomerTest extends CustomerCommandHandlerTest
 {
@@ -28,7 +26,7 @@ class RegisterCustomerTest extends CustomerCommandHandlerTest
             ->given([])
             ->when(new RegisterCustomer($customerId, CustomerCommandHandlerTest::getCustomerData()))
             ->then(array(
-                new CustomerWasRegistered($customerId, CustomerCommandHandlerTest::getCustomerData())
+                new CustomerWasRegistered($customerId, CustomerCommandHandlerTest::getCustomerData()),
             ));
     }
 
@@ -42,7 +40,7 @@ class RegisterCustomerTest extends CustomerCommandHandlerTest
         $eventStore = new TraceableEventStore(new InMemoryEventStore());
 
         $eventBus = new SimpleEventBus();
-        $eventDispatcher = $this->getMock(EventDispatcherInterface::class);
+        $eventDispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $eventDispatcher
             ->expects($this->once())
             ->method('dispatch')

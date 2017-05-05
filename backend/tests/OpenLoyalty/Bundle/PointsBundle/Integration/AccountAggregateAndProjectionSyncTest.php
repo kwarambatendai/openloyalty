@@ -3,7 +3,6 @@
 namespace OpenLoyalty\Bundle\PointsBundle\Integration;
 
 use Broadway\ReadModel\RepositoryInterface;
-use OpenLoyalty\Bundle\PointsBundle\DataFixtures\ORM\LoadAccountsWithTransfersData;
 use OpenLoyalty\Bundle\UserBundle\DataFixtures\ORM\LoadUserData;
 use OpenLoyalty\Domain\Account\Account;
 use OpenLoyalty\Domain\Account\ReadModel\AccountDetails;
@@ -29,6 +28,8 @@ class AccountAggregateAndProjectionSyncTest extends KernelTestCase
     }
 
     /**
+     * @param int $customerId
+     * 
      * @return AccountDetails
      */
     protected function getAccountByCustomerId($customerId)

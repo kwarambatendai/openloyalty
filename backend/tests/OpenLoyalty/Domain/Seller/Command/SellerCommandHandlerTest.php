@@ -15,7 +15,7 @@ abstract class SellerCommandHandlerTest extends CommandHandlerScenarioTestCase
 {
     protected function createCommandHandler(EventStoreInterface $eventStore, EventBusInterface $eventBus)
     {
-        $sellerDetailsRepository = $this->getMock('Broadway\ReadModel\RepositoryInterface');
+        $sellerDetailsRepository = $this->getMockBuilder('Broadway\ReadModel\RepositoryInterface')->getMock();
         $sellerDetailsRepository->method('findBy')->willReturn([]);
         $validator = new SellerUniqueValidator($sellerDetailsRepository);
 

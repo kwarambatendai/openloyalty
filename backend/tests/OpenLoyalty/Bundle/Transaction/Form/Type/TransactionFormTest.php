@@ -3,13 +3,10 @@
 namespace OpenLoyalty\Bundle\Transaction\Form\Type;
 
 use OpenLoyalty\Bundle\PosBundle\DataFixtures\ORM\LoadPosData;
-use OpenLoyalty\Bundle\TransactionBundle\Form\Type\CustomerDetailsFormType;
 use OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionFormType;
-use OpenLoyalty\Bundle\UserBundle\DataFixtures\ORM\LoadUserData;
-use OpenLoyalty\Domain\Customer\CustomerId;
-use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use OpenLoyalty\Domain\Pos\Pos;
 use OpenLoyalty\Domain\Pos\PosId;
+use OpenLoyalty\Domain\Pos\PosRepository;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
@@ -26,9 +23,9 @@ class TransactionFormTest extends TypeTestCase
 
     protected function setUp()
     {
-        $this->validator = $this->getMock(
+        $this->validator = $this->getMockBuilder(
             'Symfony\Component\Validator\Validator\ValidatorInterface'
-        );
+        )->getMock();
         $this->validator
             ->method('validate')
             ->will($this->returnValue(new ConstraintViolationList()));
@@ -41,7 +38,7 @@ class TransactionFormTest extends TypeTestCase
             $metadata
         );
 
-        $this->posRepo = $this->getMock('OpenLoyalty\Domain\Pos\PosRepository');
+        $this->posRepo = $this->getMockBuilder(PosRepository::class)->getMock();
         $this->posRepo->method('findAll')
             ->willReturn([new Pos(new PosId(LoadPosData::POS_ID))]);
 
@@ -119,5 +116,4 @@ class TransactionFormTest extends TypeTestCase
             $this->assertArrayHasKey($key, $children);
         }
     }
-
 }

@@ -9,6 +9,7 @@ use OpenLoyalty\Bundle\SettingsBundle\Entity\StringSettingEntry;
 use OpenLoyalty\Bundle\SettingsBundle\Model\Settings;
 use OpenLoyalty\Bundle\SettingsBundle\Model\TranslationsEntry;
 use OpenLoyalty\Bundle\SettingsBundle\Service\TranslationsProvider;
+use OpenLoyalty\Bundle\SettingsBundle\Service\SettingsManager;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
@@ -60,11 +61,11 @@ class SettingsFormTypeTest extends TypeTestCase
             new TranslationsEntry('english.json'),
         ]);
 
-        $this->settingsManager = $this->getMock('OpenLoyalty\Bundle\SettingsBundle\Service\SettingsManager');
+        $this->settingsManager = $this->getMockBuilder(SettingsManager::class)->getMock();
         $this->settingsManager->method('getSettingByKey')->willReturn(null);
-        $this->validator = $this->getMock(
+        $this->validator = $this->getMockBuilder(
             'Symfony\Component\Validator\Validator\ValidatorInterface'
-        );
+        )->getMock();
         $this->validator
             ->method('validate')
             ->will($this->returnValue(new ConstraintViolationList()));
@@ -141,13 +142,13 @@ class SettingsFormTypeTest extends TypeTestCase
                 ['field' => 'email', 'priority' => 1],
             ],
             'excludedDeliverySKUs' => [
-                '123'
+                '123',
             ],
             'excludedLevelSKUs' => [
-                '123'
+                '123',
             ],
             'excludedLevelCategories' => [
-                '123'
+                '123',
             ],
         ]);
 

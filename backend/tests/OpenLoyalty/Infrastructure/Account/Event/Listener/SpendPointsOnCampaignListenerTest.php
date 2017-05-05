@@ -13,9 +13,7 @@ use OpenLoyalty\Domain\Account\ReadModel\AccountDetails;
 use OpenLoyalty\Domain\Customer\CampaignId;
 use OpenLoyalty\Domain\Customer\CustomerId;
 use OpenLoyalty\Domain\Customer\Event\CampaignWasBoughtByCustomer;
-use OpenLoyalty\Domain\Customer\Model\CampaignPurchase;
 use OpenLoyalty\Domain\Customer\Model\Coupon;
-use OpenLoyalty\Domain\Customer\SystemEvent\CustomerBoughtCampaignSystemEvent;
 
 /**
  * Class SpendPointsOnCampaignListenerTest.
@@ -23,9 +21,10 @@ use OpenLoyalty\Domain\Customer\SystemEvent\CustomerBoughtCampaignSystemEvent;
 class SpendPointsOnCampaignListenerTest extends \PHPUnit_Framework_TestCase
 {
     protected $uuid = '00000000-0000-0000-0000-000000000000';
+
     protected function getUuidGenerator()
     {
-        $mock = $this->getMock(UuidGeneratorInterface::class);
+        $mock = $this->getMockBuilder(UuidGeneratorInterface::class)->getMock();
         $mock->method('generate')->willReturn($this->uuid);
 
         return $mock;
@@ -66,16 +65,15 @@ class SpendPointsOnCampaignListenerTest extends \PHPUnit_Framework_TestCase
         $account = $this->getMockBuilder(AccountDetails::class)->disableOriginalConstructor()->getMock();
         $account->method('getAccountId')->willReturn(new AccountId($this->uuid));
 
-        $repo = $this->getMock(RepositoryInterface::class);
+        $repo = $this->getMockBuilder(RepositoryInterface::class)->getMock();
         $repo->method('findBy')->with($this->arrayHasKey('customerId'))->willReturn([$account]);
 
         return $repo;
     }
 
-
     protected function getCommandBus($expected)
     {
-        $mock = $this->getMock(CommandBusInterface::class);
+        $mock = $this->getMockBuilder(CommandBusInterface::class)->getMock();
         $mock->method('dispatch')->with($this->equalTo($expected));
 
         return $mock;

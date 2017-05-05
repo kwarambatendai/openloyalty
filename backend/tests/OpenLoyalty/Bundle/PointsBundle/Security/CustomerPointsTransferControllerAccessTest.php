@@ -3,7 +3,6 @@
 namespace OpenLoyalty\Bundle\PointsBundle\Security;
 
 use OpenLoyalty\Bundle\BaseAccessControlTest;
-use OpenLoyalty\Bundle\PointsBundle\DataFixtures\ORM\LoadAccountsWithTransfersData;
 
 /**
  * Class CustomerPointsTransferControllerAccessTest.

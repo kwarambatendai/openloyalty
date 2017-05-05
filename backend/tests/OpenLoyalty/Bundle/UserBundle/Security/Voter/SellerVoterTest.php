@@ -3,7 +3,6 @@
 namespace OpenLoyalty\Bundle\UserBundle\Security\Voter;
 
 use OpenLoyalty\Bundle\BaseVoterTest;
-use OpenLoyalty\Bundle\UserBundle\Security\Voter\SellerVoter;
 use OpenLoyalty\Domain\Seller\ReadModel\SellerDetails;
 use OpenLoyalty\Domain\Seller\SellerId;
 

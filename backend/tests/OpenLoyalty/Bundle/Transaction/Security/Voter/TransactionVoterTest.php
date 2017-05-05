@@ -32,7 +32,7 @@ class TransactionVoterTest extends BaseVoterTest
             TransactionVoter::ASSIGN_CUSTOMER_TO_TRANSACTION => ['seller' => true, 'customer' => false, 'admin' => true, 'id' => LoadTransactionData::TRANSACTION_ID],
             TransactionVoter::LIST_ITEM_LABELS => ['seller' => true, 'customer' => true, 'admin' => true],
         ];
-        $repo = $this->getMock(SellerDetailsRepository::class);
+        $repo = $this->getMockBuilder(SellerDetailsRepository::class)->getMock();
         $repo->method('find')->with($this->isType('string'))->willReturn(null);
         $voter = new TransactionVoter($repo);
 

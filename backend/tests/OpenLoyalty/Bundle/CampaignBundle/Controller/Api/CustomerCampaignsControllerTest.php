@@ -8,7 +8,6 @@ use OpenLoyalty\Bundle\UserBundle\DataFixtures\ORM\LoadUserData;
 use OpenLoyalty\Domain\Account\CustomerId;
 use OpenLoyalty\Domain\Account\ReadModel\AccountDetails;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
-use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetailsRepository;
 
 /**
  * Class CustomerCampaignsControllerTest.
@@ -83,6 +82,7 @@ class CustomerCampaignsControllerTest extends BaseApiTest
         $customerDetails = $customerDetailsRepository->findBy(['email' => $email]);
         /** @var CustomerDetails $customerDetails */
         $customerDetails = reset($customerDetails);
+
         return $customerDetails;
     }
 }
