@@ -24,7 +24,7 @@ class TransactionDetailsProjectorTest extends ProjectorScenarioTestCase
      */
     protected function createProjector(InMemoryRepository $repository)
     {
-        $posRepo = $this->getMock(PosRepository::class);
+        $posRepo = $this->getMockBuilder(PosRepository::class)->getMock();
         $posRepo->method('byId')->willReturn(null);
 
         return new TransactionDetailsProjector($repository, $posRepo);
@@ -78,7 +78,7 @@ class TransactionDetailsProjectorTest extends ProjectorScenarioTestCase
         $this->scenario->given([])
             ->when(new TransactionWasRegistered($transactionId, $transactionData, $customerData, $items, $posId))
             ->then([
-                $expectedReadModel
+                $expectedReadModel,
             ]);
     }
 
@@ -101,11 +101,11 @@ class TransactionDetailsProjectorTest extends ProjectorScenarioTestCase
 
         $this->scenario
             ->given([
-                new TransactionWasRegistered($transactionId, $this->getTransactionData(), $this->getCustomerData())
+                new TransactionWasRegistered($transactionId, $this->getTransactionData(), $this->getCustomerData()),
             ])
             ->when(new CustomerWasAssignedToTransaction($transactionId, $customerId))
             ->then(array(
-                $expectedReadModel
+                $expectedReadModel,
             ));
     }
 

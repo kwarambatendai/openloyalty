@@ -3,7 +3,6 @@
 namespace OpenLoyalty\Bundle\UserBundle\Security\Voter;
 
 use OpenLoyalty\Bundle\BaseVoterTest;
-use OpenLoyalty\Bundle\UserBundle\Security\Voter\CustomerVoter;
 use OpenLoyalty\Domain\Customer\CustomerId;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use OpenLoyalty\Domain\Seller\ReadModel\SellerDetailsRepository;
@@ -34,7 +33,7 @@ class CustomerVoterTest extends BaseVoterTest
             CustomerVoter::EDIT => ['seller' => true, 'customer' => false, 'admin' => true, 'id' => self::CUSTOMER_ID],
         ];
 
-        $repo = $this->getMock(SellerDetailsRepository::class);
+        $repo = $this->getMockBuilder(SellerDetailsRepository::class)->getMock();
         $repo->method('find')->willReturn(null);
 
         $voter = new CustomerVoter($repo);

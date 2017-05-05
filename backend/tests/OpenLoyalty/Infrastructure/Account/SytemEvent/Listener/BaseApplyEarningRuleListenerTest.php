@@ -19,9 +19,10 @@ use OpenLoyalty\Infrastructure\Account\EarningRuleApplier;
 abstract class BaseApplyEarningRuleListenerTest extends \PHPUnit_Framework_TestCase
 {
     protected $uuid = '00000000-0000-0000-0000-000000000000';
+
     protected function getUuidGenerator()
     {
-        $mock = $this->getMock(UuidGeneratorInterface::class);
+        $mock = $this->getMockBuilder(UuidGeneratorInterface::class)->getMock();
         $mock->method('generate')->willReturn($this->uuid);
 
         return $mock;
@@ -32,7 +33,7 @@ abstract class BaseApplyEarningRuleListenerTest extends \PHPUnit_Framework_TestC
         $account = $this->getMockBuilder(AccountDetails::class)->disableOriginalConstructor()->getMock();
         $account->method('getAccountId')->willReturn(new AccountId($this->uuid));
 
-        $repo = $this->getMock(RepositoryInterface::class);
+        $repo = $this->getMockBuilder(RepositoryInterface::class)->getMock();
         $repo->method('findBy')->with($this->arrayHasKey('customerId'))->willReturn([$account]);
 
         return $repo;
@@ -40,7 +41,7 @@ abstract class BaseApplyEarningRuleListenerTest extends \PHPUnit_Framework_TestC
 
     protected function getCommandBus($expected)
     {
-        $mock = $this->getMock(CommandBusInterface::class);
+        $mock = $this->getMockBuilder(CommandBusInterface::class)->getMock();
         $mock->method('dispatch')->with($this->equalTo($expected));
 
         return $mock;
@@ -48,7 +49,7 @@ abstract class BaseApplyEarningRuleListenerTest extends \PHPUnit_Framework_TestC
 
     protected function getApplierForEvent($returnValue)
     {
-        $mock = $this->getMock(EarningRuleApplier::class);
+        $mock = $this->getMockBuilder(EarningRuleApplier::class)->getMock();
         $mock->method('evaluateEvent')->with($this->logicalOr(
             $this->equalTo(AccountSystemEvents::ACCOUNT_CREATED),
             $this->equalTo(TransactionSystemEvents::CUSTOMER_FIRST_TRANSACTION),
@@ -62,7 +63,7 @@ abstract class BaseApplyEarningRuleListenerTest extends \PHPUnit_Framework_TestC
 
     protected function getApplierForTransaction($returnValue)
     {
-        $mock = $this->getMock(EarningRuleApplier::class);
+        $mock = $this->getMockBuilder(EarningRuleApplier::class)->getMock();
         $mock->method('evaluateTransaction')->with($this->isInstanceOf(TransactionId::class))
             ->willReturn($returnValue);
 

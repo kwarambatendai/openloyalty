@@ -3,21 +3,13 @@
 namespace OpenLoyalty\Bundle\UtilityBundle\Service;
 
 use Broadway\ReadModel\RepositoryInterface;
-use OpenLoyalty\Bundle\CampaignBundle\Service\CampaignValidator;
 use OpenLoyalty\Domain\Account\Account;
-use OpenLoyalty\Domain\Account\ReadModel\AccountDetails;
-use OpenLoyalty\Domain\Campaign\Campaign;
-use OpenLoyalty\Domain\Campaign\CampaignId;
 use OpenLoyalty\Domain\Campaign\CustomerId;
-use OpenLoyalty\Domain\Campaign\Model\Coupon;
-use OpenLoyalty\Domain\Campaign\ReadModel\CouponUsageRepository;
 use OpenLoyalty\Domain\Campaign\SegmentId;
-use OpenLoyalty\Domain\Customer\Customer;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomersBelongingToOneLevel;
 use OpenLoyalty\Domain\Level\Level;
 use OpenLoyalty\Domain\Level\LevelId;
-use OpenLoyalty\Domain\Segment\ReadModel\SegmentedCustomersRepository;
 use OpenLoyalty\Domain\Segment\Segment;
 
 /**
@@ -25,7 +17,6 @@ use OpenLoyalty\Domain\Segment\Segment;
  */
 class CustomerDetailsCsvFormatterTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $repo;
     protected $custDetailsRepo;
     protected $levelRepo;
@@ -34,9 +25,9 @@ class CustomerDetailsCsvFormatterTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->repo = $this->getMock(RepositoryInterface::class);
-        $this->custDetailsRepo = $this->getMock(RepositoryInterface::class);
-        $this->levelRepo = $this->getMock(RepositoryInterface::class);
+        $this->repo = $this->getMockBuilder(RepositoryInterface::class)->getMock();
+        $this->custDetailsRepo = $this->getMockBuilder(RepositoryInterface::class)->getMock();
+        $this->levelRepo = $this->getMockBuilder(RepositoryInterface::class)->getMock();
 
         $customerDetails = $this->getMockBuilder(CustomerDetails::class)->setMockClassName('CustomerDetails')->disableOriginalConstructor()->getMock();
         $customerDetails->method('getBirthDate')->willReturn(new \DateTime());
@@ -62,16 +53,17 @@ class CustomerDetailsCsvFormatterTest extends \PHPUnit_Framework_TestCase
         $this->segment = $this->getMockBuilder(Segment::class)->disableOriginalConstructor()->getMock();
         $this->segment->method('getSegmentId')->willReturn($segmentId);
 
-        $this->repo ->method('findBy')->with($this->arrayHasKey('segmentId'))
+        $this->repo->method('findBy')->with($this->arrayHasKey('segmentId'))
             ->willReturn([$account]);
-        $this->levelRepo ->method('findBy')->with($this->arrayHasKey('levelId'))
+        $this->levelRepo->method('findBy')->with($this->arrayHasKey('levelId'))
             ->willReturn([$customersLevel]);
         $this->custDetailsRepo->method('find')->willReturn($customerDetails);
     }
+
     /**
      * @test
      */
-    public function it_returns_properly_formated_csv()
+    public function it_returns_properly_formatted_csv()
     {
         $formatter = new CustomerDetailsCsvFormatter($this->repo, $this->custDetailsRepo, $this->levelRepo);
         $segment = $formatter->getFormattedSegmentUsers($this->segment);

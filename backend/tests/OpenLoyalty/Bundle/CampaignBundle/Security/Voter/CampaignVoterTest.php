@@ -3,7 +3,6 @@
 namespace OpenLoyalty\Bundle\CampaignBundle\Security\Voter;
 
 use OpenLoyalty\Bundle\BaseVoterTest;
-use OpenLoyalty\Bundle\CampaignBundle\Security\Voter\CampaignVoter;
 use OpenLoyalty\Bundle\CampaignBundle\Service\CampaignProvider;
 use OpenLoyalty\Domain\Campaign\Campaign;
 use OpenLoyalty\Domain\Campaign\CampaignId;

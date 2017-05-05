@@ -20,11 +20,11 @@ use OpenLoyalty\Domain\Transaction\ReadModel\TransactionDetailsRepository;
 class CustomerDetailsProjectorTest extends ProjectorScenarioTestCase
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function createProjector(InMemoryRepository $repository)
     {
-        $transactionDetailsRepo = $this->getMock(TransactionDetailsRepository::class);
+        $transactionDetailsRepo = $this->getMockBuilder(TransactionDetailsRepository::class)->getMock();
 
         return new CustomerDetailsProjector($repository, $transactionDetailsRepo);
     }
@@ -134,12 +134,14 @@ class CustomerDetailsProjectorTest extends ProjectorScenarioTestCase
         unset($data['loyaltyCardNumber']);
         unset($data['company']);
         unset($data['address']);
+
         return CustomerDetails::deserialize($data);
     }
 
     private function createReadModel(CustomerId $customerId, array $data)
     {
         $data['id'] = $customerId->__toString();
+
         return CustomerDetails::deserialize($data);
     }
 }

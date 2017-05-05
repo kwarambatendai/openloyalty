@@ -9,8 +9,7 @@ use OpenLoyalty\Domain\Customer\Command\CustomerCommandHandlerTest;
 use OpenLoyalty\Domain\Customer\PosId;
 
 /**
- * Class CustomerControllerTest
- * @package OpenLoyalty\Bundle\UserBundle\Controller\Api
+ * Class CustomerControllerTest.
  */
 class CustomerControllerTest extends BaseApiTest
 {
@@ -36,12 +35,12 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
                     'agreement1' => true,
                     'agreement2' => true,
                     'loyaltyCardNumber' => '0000000011',
-                ]
+                ],
             ]
         );
 
@@ -75,11 +74,11 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
                     'agreement1' => true,
                     'agreement2' => true,
-                ]
+                ],
             ]
         );
 
@@ -113,12 +112,12 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
                     'agreement1' => true,
                     'agreement2' => true,
                     'plainPassword' => 'OpenLoyalty123!',
-                ]
+                ],
             ]
         );
 
@@ -149,7 +148,7 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                     ],
-                ]
+                ],
             ]
         );
 
@@ -182,10 +181,10 @@ class CustomerControllerTest extends BaseApiTest
                         'address1' => '12',
                         'postal' => '00-800',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
-                    'loyaltyCardNumber' => '0000000011'
-                ]
+                    'loyaltyCardNumber' => '0000000011',
+                ],
             ]
         );
 
@@ -208,7 +207,7 @@ class CustomerControllerTest extends BaseApiTest
                     'lastName' => 'Doe',
                     'email' => 'john2@doe.com',
                     'agreement1' => true,
-                ]
+                ],
             ]
         );
 
@@ -242,10 +241,10 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
-                    'loyaltyCardNumber' => '000000000'
-                ]
+                    'loyaltyCardNumber' => '000000000',
+                ],
             ]
         );
 
@@ -276,10 +275,10 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
-                    'loyaltyCardNumber' => '0000000011'
-                ]
+                    'loyaltyCardNumber' => '0000000011',
+                ],
             ]
         );
 
@@ -310,11 +309,11 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
                     'phone' => '11111',
-                    'loyaltyCardNumber' => '0000000011'
-                ]
+                    'loyaltyCardNumber' => '0000000011',
+                ],
             ]
         );
 
@@ -340,13 +339,12 @@ class CustomerControllerTest extends BaseApiTest
             'PUT',
             '/api/customer/'.LoadUserData::TEST_USER_ID,
             [
-                'customer' => $customerData
+                'customer' => $customerData,
             ]
         );
 
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
-
 
         self::$kernel->boot();
 
@@ -380,13 +378,12 @@ class CustomerControllerTest extends BaseApiTest
             'PUT',
             '/api/customer/'.LoadUserData::TEST_USER_ID,
             [
-                'customer' => $customerData
+                'customer' => $customerData,
             ]
         );
 
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
-
 
         self::$kernel->boot();
 
@@ -437,7 +434,6 @@ class CustomerControllerTest extends BaseApiTest
         );
 
         $response = $client->getResponse();
-        $data = json_decode($response->getContent(), true);
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
     }
 
@@ -478,7 +474,6 @@ class CustomerControllerTest extends BaseApiTest
         $this->assertEquals('user@oloy.com', $data['customers'][0]['email']);
     }
 
-
     /**
      * @test
      */
@@ -497,7 +492,6 @@ class CustomerControllerTest extends BaseApiTest
 
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
-
 
         self::$kernel->boot();
 
@@ -529,8 +523,8 @@ class CustomerControllerTest extends BaseApiTest
                     'lastName' => 'Doe',
                     'email' => 'johhhn@doe.com',
                     'agreement1' => true,
-                    'referral_customer_email' => 'referral_customer_mail@test.com'
-                ]
+                    'referral_customer_email' => 'referral_customer_mail@test.com',
+                ],
             ]
         );
 
@@ -538,44 +532,44 @@ class CustomerControllerTest extends BaseApiTest
         $this->assertEquals(400, $response->getStatusCode(), 'Response should have status 400');
 
         $expectedResponseArray = [
-            "form" => [
-                "children" => [
-                    "firstName" => [],
-                    "lastName" => [],
-                    "gender" => [],
-                    "email" => [],
-                    "phone" => [],
-                    "birthDate" => [],
-                    "createdAt" => [],
-                    "address" => [
-                        "children" => [
-                            "street" => [],
-                            "address1" => [],
-                            "address2" => [],
-                            "postal" => [],
-                            "city" => [],
-                            "province" => [],
-                            "country" => []
-                        ]
-                    ],
-                    "company" =>[
-                        "children" => [
-                            "name" => [],
-                            "nip" => []
+            'form' => [
+                'children' => [
+                    'firstName' => [],
+                    'lastName' => [],
+                    'gender' => [],
+                    'email' => [],
+                    'phone' => [],
+                    'birthDate' => [],
+                    'createdAt' => [],
+                    'address' => [
+                        'children' => [
+                            'street' => [],
+                            'address1' => [],
+                            'address2' => [],
+                            'postal' => [],
+                            'city' => [],
+                            'province' => [],
+                            'country' => [],
                         ],
                     ],
-                    "loyaltyCardNumber" => [],
-                    "agreement1" => [],
-                    "agreement2" => [],
-                    "agreement3" => [],
-                    "referral_customer_email" => [
-                        "errors" => ["Referral customer email doesn't exist"]
+                    'company' => [
+                        'children' => [
+                            'name' => [],
+                            'nip' => [],
+                        ],
                     ],
-                    "levelId" => [],
-                    "posId" => [],
+                    'loyaltyCardNumber' => [],
+                    'agreement1' => [],
+                    'agreement2' => [],
+                    'agreement3' => [],
+                    'referral_customer_email' => [
+                        'errors' => ["Referral customer email doesn't exist"],
+                    ],
+                    'levelId' => [],
+                    'posId' => [],
                 ],
             ],
-          "errors" => [],
+          'errors' => [],
         ];
 
         $data = json_decode($response->getContent(), true);
@@ -592,7 +586,7 @@ class CustomerControllerTest extends BaseApiTest
         /** Get referral customer points*/
         $points = $this->getCustomerPoints($client, LoadUserData::USER_USER_ID);
 
-        /** Create new customer with referral email */
+        /* Create new customer with referral email */
         $client->request(
             'POST',
             '/api/customer/register',
@@ -602,8 +596,8 @@ class CustomerControllerTest extends BaseApiTest
                     'lastName' => 'Doe',
                     'email' => 'johhhn@doe.com',
                     'agreement1' => true,
-                    'referral_customer_email' => LoadUserData::USER_USERNAME
-                ]
+                    'referral_customer_email' => LoadUserData::USER_USERNAME,
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -623,7 +617,7 @@ class CustomerControllerTest extends BaseApiTest
     {
         $client = $this->createAuthenticatedClient();
 
-        /** Create new customer with referral email */
+        /* Create new customer with referral email */
         $client->request(
             'POST',
             '/api/customer/register',
@@ -633,8 +627,8 @@ class CustomerControllerTest extends BaseApiTest
                     'lastName' => 'Doe',
                     'email' => 'johhhnn@doe.com',
                     'agreement1' => true,
-                    'referral_customer_email' => ''
-                ]
+                    'referral_customer_email' => '',
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -664,13 +658,13 @@ class CustomerControllerTest extends BaseApiTest
                         'postal' => '00-800',
                         'city' => 'Warszawa',
                         'country' => 'PL',
-                        'province' => 'mazowieckie'
+                        'province' => 'mazowieckie',
                     ],
                     'agreement1' => true,
                     'agreement2' => true,
                     'plainPassword' => 'OpenLoyalty123!',
-                    'referral_customer_email' => 'wrong@test.email.com'
-                ]
+                    'referral_customer_email' => 'wrong@test.email.com',
+                ],
             ]
         );
 
@@ -678,43 +672,43 @@ class CustomerControllerTest extends BaseApiTest
         $this->assertEquals(400, $response->getStatusCode(), 'Response should have status 400');
 
         $expectedResponseArray = [
-            "form" => [
-                "children" => [
-                    "firstName" => [],
-                    "lastName" => [],
-                    "gender" => [],
-                    "email" => [],
-                    "phone" => [],
-                    "birthDate" => [],
-                    "createdAt" => [],
-                    "address" => [
-                        "children" => [
-                            "street" => [],
-                            "address1" => [],
-                            "address2" => [],
-                            "postal" => [],
-                            "city" => [],
-                            "province" => [],
-                            "country" => []
-                        ]
-                    ],
-                    "company" =>[
-                        "children" => [
-                            "name" => [],
-                            "nip" => []
+            'form' => [
+                'children' => [
+                    'firstName' => [],
+                    'lastName' => [],
+                    'gender' => [],
+                    'email' => [],
+                    'phone' => [],
+                    'birthDate' => [],
+                    'createdAt' => [],
+                    'address' => [
+                        'children' => [
+                            'street' => [],
+                            'address1' => [],
+                            'address2' => [],
+                            'postal' => [],
+                            'city' => [],
+                            'province' => [],
+                            'country' => [],
                         ],
                     ],
-                    "loyaltyCardNumber" => [],
-                    "agreement1" => [],
-                    "agreement2" => [],
-                    "agreement3" => [],
-                    "referral_customer_email" => [
-                        "errors" => ["Referral customer email doesn't exist"]
+                    'company' => [
+                        'children' => [
+                            'name' => [],
+                            'nip' => [],
+                        ],
                     ],
-                    "plainPassword" => [],
+                    'loyaltyCardNumber' => [],
+                    'agreement1' => [],
+                    'agreement2' => [],
+                    'agreement3' => [],
+                    'referral_customer_email' => [
+                        'errors' => ["Referral customer email doesn't exist"],
+                    ],
+                    'plainPassword' => [],
                 ],
             ],
-            "errors" => [],
+            'errors' => [],
         ];
 
         $data = json_decode($response->getContent(), true);
@@ -728,7 +722,7 @@ class CustomerControllerTest extends BaseApiTest
     {
         $client = $this->createAuthenticatedClient();
 
-        /** Create new customer with referral email */
+        /* Create new customer with referral email */
         $client->request(
             'POST',
             '/api/customer/self_register',
@@ -739,8 +733,8 @@ class CustomerControllerTest extends BaseApiTest
                     'email' => 'self_register@doe.com',
                     'agreement1' => true,
                     'plainPassword' => 'OpenLoyalty123!',
-                    'referral_customer_email' => LoadUserData::USER_USERNAME
-                ]
+                    'referral_customer_email' => LoadUserData::USER_USERNAME,
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -754,7 +748,7 @@ class CustomerControllerTest extends BaseApiTest
     {
         $client = $this->createAuthenticatedClient();
 
-        /** Create new customer with referral email */
+        /* Create new customer with referral email */
         $client->request(
             'POST',
             '/api/customer/self_register',
@@ -765,8 +759,8 @@ class CustomerControllerTest extends BaseApiTest
                     'email' => 'self_register2@doe.com',
                     'agreement1' => true,
                     'plainPassword' => 'OpenLoyalty123!',
-                    'referral_customer_email' => ''
-                ]
+                    'referral_customer_email' => '',
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -791,7 +785,7 @@ class CustomerControllerTest extends BaseApiTest
 
         $client->request(
             'POST',
-            '/api/customer/activate/' . $activateToken
+            '/api/customer/activate/'.$activateToken
         );
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
@@ -809,7 +803,7 @@ class CustomerControllerTest extends BaseApiTest
     {
         $client = $this->createAuthenticatedClient();
 
-        /** Create new customer with marketing agreement */
+        /* Create new customer with marketing agreement */
         $client->request(
             'POST',
             '/api/customer/register',
@@ -819,8 +813,8 @@ class CustomerControllerTest extends BaseApiTest
                     'lastName' => 'Doe',
                     'email' => 'marketing@doe.com',
                     'agreement1' => true,
-                    'agreement2' => true
-                ]
+                    'agreement2' => true,
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -843,7 +837,7 @@ class CustomerControllerTest extends BaseApiTest
         $client = $this->createAuthenticatedClient();
         $customerEmail = 'marketing_self@doe.com';
 
-        /** Create new customer with marketing agreement */
+        /* Create new customer with marketing agreement */
         $client->request(
             'POST',
             '/api/customer/self_register',
@@ -854,8 +848,8 @@ class CustomerControllerTest extends BaseApiTest
                     'email' => $customerEmail,
                     'agreement1' => true,
                     'agreement2' => true,
-                    'plainPassword' => 'OpenLoyalty123!'
-                ]
+                    'plainPassword' => 'OpenLoyalty123!',
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -873,7 +867,7 @@ class CustomerControllerTest extends BaseApiTest
         $activateToken = $this->getActivateTokenForCustomer($customerEmail);
         $client->request(
             'POST',
-            '/api/customer/activate/' . $activateToken
+            '/api/customer/activate/'.$activateToken
         );
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
@@ -899,7 +893,7 @@ class CustomerControllerTest extends BaseApiTest
         //Update customer data with checked agreement2
         $client->request(
             'GET',
-            '/api/customer/' . $customerId
+            '/api/customer/'.$customerId
         );
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
@@ -912,15 +906,15 @@ class CustomerControllerTest extends BaseApiTest
 
         $client->request(
             'PUT',
-            '/api/customer/' . $customerId,
+            '/api/customer/'.$customerId,
             [
                 'customer' => [
-                    'firstName'     => $customerData['firstName'],
-                    'lastName'      => $customerData['lastName'],
-                    'email'         => $customerData['email'],
-                    'agreement1'    => true,
-                    'agreement2'    => true,
-                ]
+                    'firstName' => $customerData['firstName'],
+                    'lastName' => $customerData['lastName'],
+                    'email' => $customerData['email'],
+                    'agreement1' => true,
+                    'agreement2' => true,
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -948,7 +942,7 @@ class CustomerControllerTest extends BaseApiTest
         //Update customer data with checked agreement2
         $client->request(
             'GET',
-            '/api/customer/' . $customerId
+            '/api/customer/'.$customerId
         );
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
@@ -957,15 +951,15 @@ class CustomerControllerTest extends BaseApiTest
 
         $client->request(
             'PUT',
-            '/api/customer/' . $customerId,
+            '/api/customer/'.$customerId,
             [
                 'customer' => [
-                    'firstName'     => $customerData['firstName'],
-                    'lastName'      => $customerData['lastName'],
-                    'email'         => $customerData['email'],
-                    'agreement1'    => true,
-                    'agreement2'    => false,
-                ]
+                    'firstName' => $customerData['firstName'],
+                    'lastName' => $customerData['lastName'],
+                    'email' => $customerData['email'],
+                    'agreement1' => true,
+                    'agreement2' => false,
+                ],
             ]
         );
         $response = $client->getResponse();
@@ -996,7 +990,7 @@ class CustomerControllerTest extends BaseApiTest
         //Update customer data with checked agreement2
         $client->request(
             'GET',
-            '/api/customer/' . $customerId
+            '/api/customer/'.$customerId
         );
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), 'Response should have status 200');
@@ -1005,15 +999,15 @@ class CustomerControllerTest extends BaseApiTest
 
         $client->request(
             'PUT',
-            '/api/customer/' . $customerId,
+            '/api/customer/'.$customerId,
             [
                 'customer' => [
-                    'firstName'     => $customerData['firstName'],
-                    'lastName'      => $customerData['lastName'],
-                    'email'         => $customerData['email'],
-                    'agreement1'    => true,
-                    'agreement2'    => true,
-                ]
+                    'firstName' => $customerData['firstName'],
+                    'lastName' => $customerData['lastName'],
+                    'email' => $customerData['email'],
+                    'agreement1' => true,
+                    'agreement2' => true,
+                ],
             ]
         );
         $response = $client->getResponse();

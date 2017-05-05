@@ -6,8 +6,7 @@ use OpenLoyalty\Bundle\BaseApiTest;
 use OpenLoyalty\Bundle\UserBundle\DataFixtures\ORM\LoadUserData;
 
 /**
- * Class RefreshTokenTest
- * @package OpenLoyalty\Bundle\UserBundle\Security
+ * Class RefreshTokenTest.
  */
 class RefreshTokenTest extends BaseApiTest
 {
@@ -32,13 +31,13 @@ class RefreshTokenTest extends BaseApiTest
         $refreshToken = $data['refresh_token'];
 
         $client = static::createClient();
-        $client->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $data['token']));
+        $client->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $token));
 
         $client->request(
             'POST',
             '/api/token/refresh',
             [
-                'refresh_token' => $refreshToken
+                'refresh_token' => $refreshToken,
             ]
         );
 

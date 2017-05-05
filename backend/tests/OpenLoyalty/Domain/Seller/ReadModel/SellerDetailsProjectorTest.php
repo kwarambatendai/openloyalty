@@ -20,12 +20,15 @@ use OpenLoyalty\Domain\Seller\SellerId;
 class SellerDetailsProjectorTest extends ProjectorScenarioTestCase
 {
     /**
+     * @param InMemoryRepository $repository
+     *
      * @return Projector
      */
     protected function createProjector(InMemoryRepository $repository)
     {
-        $posRepo = $this->getMock(PosRepository::class);
+        $posRepo = $this->getMockBuilder(PosRepository::class)->getMock();
         $posRepo->method('findBy')->willReturn(null);
+
         return new SellerDetailsProjector($repository, $posRepo);
     }
 
@@ -104,7 +107,7 @@ class SellerDetailsProjectorTest extends ProjectorScenarioTestCase
         $this->scenario
             ->given(array(
                 new SellerWasRegistered($sellerId, $data),
-                new SellerWasActivated($sellerId)
+                new SellerWasActivated($sellerId),
             ))
             ->when(new SellerWasDeactivated($sellerId))
             ->then(array(

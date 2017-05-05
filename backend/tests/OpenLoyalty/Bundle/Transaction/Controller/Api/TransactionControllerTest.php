@@ -5,11 +5,11 @@ namespace OpenLoyalty\Bundle\Transaction\Controller\Api;
 use OpenLoyalty\Bundle\BaseApiTest;
 use OpenLoyalty\Bundle\PosBundle\DataFixtures\ORM\LoadPosData;
 use OpenLoyalty\Bundle\SettingsBundle\Entity\JsonSettingEntry;
-use OpenLoyalty\Bundle\TransactionBundle\DataFixtures\ORM\LoadTransactionData;
 use OpenLoyalty\Bundle\UserBundle\DataFixtures\ORM\LoadUserData;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetailsRepository;
 use OpenLoyalty\Domain\Transaction\ReadModel\TransactionDetails;
+use OpenLoyalty\Bundle\SettingsBundle\Service\SettingsManager;
 
 /**
  * Class TransactionControllerTest.
@@ -362,11 +362,10 @@ class TransactionControllerTest extends BaseApiTest
         /** @var CustomerDetailsRepository $customerRepo */
         $customerRepo = static::$kernel->getContainer()->get('oloy.user.read_model.repository.customer_details');
         /** @var CustomerDetails $customer */
-        $customer = $customerRepo-> findOneByCriteria(['email' => 'user@oloy.com'], 1);
+        $customer = $customerRepo->findOneByCriteria(['email' => 'user@oloy.com'], 1);
         $customer = reset($customer);
         $transactionsCount = $customer->getTransactionsCount();
         $transactionsAmount = $customer->getTransactionsAmount();
-        $transactionAvg = $customer->getAverageTransactionAmount();
 
         $formData = [
             'revisedDocument' => '456',
@@ -430,12 +429,11 @@ class TransactionControllerTest extends BaseApiTest
         $this->assertInstanceOf(TransactionDetails::class, $transaction);
         $this->assertNotNull($transaction->getCustomerId());
         /** @var CustomerDetails $customer */
-        $customer = $customerRepo-> findOneByCriteria(['email' => 'user@oloy.com'], 1);
+        $customer = $customerRepo->findOneByCriteria(['email' => 'user@oloy.com'], 1);
         $customer = reset($customer);
         $newTransactionsCount = $customer->getTransactionsCount();
         $newTransactionsAmount = $customer->getTransactionsAmount();
-        $newTransactionAvg = $customer->getAverageTransactionAmount();
-        $this->assertEquals($transactionsCount-1, $newTransactionsCount);
+        $this->assertEquals($transactionsCount - 1, $newTransactionsCount);
         $this->assertEquals($transactionsAmount - 3, $newTransactionsAmount);
     }
 
@@ -448,11 +446,10 @@ class TransactionControllerTest extends BaseApiTest
         /** @var CustomerDetailsRepository $customerRepo */
         $customerRepo = static::$kernel->getContainer()->get('oloy.user.read_model.repository.customer_details');
         /** @var CustomerDetails $customer */
-        $customer = $customerRepo-> findOneByCriteria(['email' => 'user-temp@oloy.com'], 1);
+        $customer = $customerRepo->findOneByCriteria(['email' => 'user-temp@oloy.com'], 1);
         $customer = reset($customer);
         $transactionsCount = $customer->getTransactionsCount();
         $transactionsAmount = $customer->getTransactionsAmount();
-        $transactionAvg = $customer->getAverageTransactionAmount();
 
         $formData = [
             'revisedDocument' => '789',
@@ -508,11 +505,10 @@ class TransactionControllerTest extends BaseApiTest
         $this->assertInstanceOf(TransactionDetails::class, $transaction);
         $this->assertNotNull($transaction->getCustomerId());
         /** @var CustomerDetails $customer */
-        $customer = $customerRepo-> findOneByCriteria(['email' => 'user-temp@oloy.com'], 1);
+        $customer = $customerRepo->findOneByCriteria(['email' => 'user-temp@oloy.com'], 1);
         $customer = reset($customer);
         $newTransactionsCount = $customer->getTransactionsCount();
         $newTransactionsAmount = $customer->getTransactionsAmount();
-        $newTransactionAvg = $customer->getAverageTransactionAmount();
         $this->assertEquals($transactionsCount, $newTransactionsCount);
         $this->assertEquals($transactionsAmount - 1, $newTransactionsAmount);
     }
@@ -523,7 +519,7 @@ class TransactionControllerTest extends BaseApiTest
     public function it_register_new_transaction_and_assign_customer_by_loyalty_card()
     {
         static::$kernel->boot();
-        $settingsManager = $this->getMock('OpenLoyalty\Bundle\SettingsBundle\Service\SettingsManager');
+        $settingsManager = $this->getMockBuilder(SettingsManager::class)->getMock();
         $settingsManager->method('getSettingByKey')->with($this->isType('string'))->will(
             $this->returnCallback(function ($arg) {
                 if ($arg == 'customersIdentificationPriority') {

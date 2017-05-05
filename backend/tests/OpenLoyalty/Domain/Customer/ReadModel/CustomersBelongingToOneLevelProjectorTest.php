@@ -41,7 +41,7 @@ class CustomersBelongingToOneLevelProjectorTest extends ProjectorScenarioTestCas
         $this->levelId = new LevelId('00000000-2222-0000-0000-000000000111');
         $this->level2Id = new LevelId('00000000-2222-0000-0000-000000000222');
 
-        $customerRepository = $this->getMock(InMemoryRepository::class);
+        $customerRepository = $this->getMockBuilder(InMemoryRepository::class)->getMock();
         $customerData = $this->getCustomerData($this->levelId);
         $customerData['id'] = $this->customerId->__toString();
         $customer = CustomerDetails::deserialize($customerData);
@@ -61,7 +61,7 @@ class CustomersBelongingToOneLevelProjectorTest extends ProjectorScenarioTestCas
                     return $customer2;
                 }
             }));
-        $levelRepo = $this->getMock(LevelRepository::class);
+        $levelRepo = $this->getMockBuilder(LevelRepository::class)->getMock();
         $levelRepo->method('byId')->willReturn(null);
 
         return new CustomersBelongingToOneLevelProjector($customerRepository, $repository, $levelRepo);
@@ -88,7 +88,7 @@ class CustomersBelongingToOneLevelProjectorTest extends ProjectorScenarioTestCas
     {
         $this->scenario
             ->given([
-                new CustomerWasMovedToLevel($this->customerId, $this->levelId)
+                new CustomerWasMovedToLevel($this->customerId, $this->levelId),
             ])
             ->when(new CustomerWasMovedToLevel($this->customerId, $this->level2Id))
             ->then(array(
@@ -104,18 +104,18 @@ class CustomersBelongingToOneLevelProjectorTest extends ProjectorScenarioTestCas
     {
         $this->scenario
             ->given([
-                new CustomerWasMovedToLevel($this->customerId, $this->levelId)
+                new CustomerWasMovedToLevel($this->customerId, $this->levelId),
             ])
             ->when(new CustomerWasMovedToLevel($this->customer2Id, $this->levelId))
             ->then(array(
                 $this->createBaseReadModelWithMultipleCustomers($this->levelId, [
                     [
                         'id' => $this->customerId,
-                        'data' => $this->getCustomerData($this->levelId)
+                        'data' => $this->getCustomerData($this->levelId),
                     ],
                     [
                         'id' => $this->customer2Id,
-                        'data' => $this->getCustomerData($this->levelId, 'Andrzej')
+                        'data' => $this->getCustomerData($this->levelId, 'Andrzej'),
                     ],
                 ]),
             ));
@@ -166,8 +166,8 @@ class CustomersBelongingToOneLevelProjectorTest extends ProjectorScenarioTestCas
                 'city' => 'Wrocław',
                 'country' => 'PL',
                 'postal' => '50-300',
-                'province' => 'Dolnośląskie'
-            ]
+                'province' => 'Dolnośląskie',
+            ],
         ];
     }
 }

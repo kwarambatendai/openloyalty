@@ -4,6 +4,8 @@ namespace OpenLoyalty\Domain\Segment\Command;
 
 use OpenLoyalty\Domain\Segment\Segment;
 use OpenLoyalty\Domain\Segment\SegmentId;
+use OpenLoyalty\Domain\Segment\SegmentRepository;
+use OpenLoyalty\Domain\Segment\SegmentPartRepository;
 
 /**
  * Class SegmentCommandHandlerTest.
@@ -24,9 +26,9 @@ abstract class SegmentCommandHandlerTest extends \PHPUnit_Framework_TestCase
         $this->segment[] = $segment;
 
         $segments = &$this->segment;
-        $this->inMemoryRepository = $this->getMock('OpenLoyalty\Domain\Segment\SegmentRepository');
-        $this->partsInMemoryRepository = $this->getMock('OpenLoyalty\Domain\Segment\SegmentPartRepository');
-        $this->eventDispatcher = $this->getMock('Broadway\EventDispatcher\EventDispatcher');
+        $this->inMemoryRepository = $this->getMockBuilder(SegmentRepository::class)->getMock();
+        $this->partsInMemoryRepository = $this->getMockBuilder(SegmentPartRepository::class)->getMock();
+        $this->eventDispatcher = $this->getMockBuilder('Broadway\EventDispatcher\EventDispatcher')->getMock();
         $this->partsInMemoryRepository->method('remove')->with($this->any())->willReturn(true);
         $this->inMemoryRepository->method('save')->with($this->isInstanceOf(Segment::class))->will(
             $this->returnCallback(function($segment) use (&$segments) {

@@ -30,6 +30,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
     CONST LEVEL_WITH_REWARD_10_FROM_0 = '00000000-0000-0000-0000-000000000000';
     CONST LEVEL_WITH_REWARD_200_FROM_20 = '00000000-0000-0000-0000-000000000001';
     CONST LEVEL_WITH_REWARD_300_FROM_30 = '00000000-0000-0000-0000-000000000002';
+
     /**
      * @test
      */
@@ -39,7 +40,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
         $levelId = new LevelId('00000000-0000-0000-0000-000000000003');
         $level = new Level($levelId, 'test', 10);
 
-        $commandBus = $this->getMock(CommandBusInterface::class);
+        $commandBus = $this->getMockBuilder(CommandBusInterface::class)->getMock();
         $commandBus->expects($this->once())->method('dispatch')->with(
             $this->equalTo(
                 new MoveCustomerToLevel(
@@ -81,10 +82,9 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
         $levels = $this->getSampleLevels();
         $levelsRepo = $this->getLevelRepositoryWithArray($levels);
 
-
         $customerId = '00000000-0000-0000-0000-000000000000';
 
-        $commandBus = $this->getMock(CommandBusInterface::class);
+        $commandBus = $this->getMockBuilder(CommandBusInterface::class)->getMock();
         if ($resultLevelId == null) {
             $commandBus->expects($this->never())->method('dispatch');
         } else {
@@ -125,7 +125,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
         $levelId = new LevelId('00000000-0000-0000-0000-000000000003');
         $level = new Level($levelId, 'test', 0);
 
-        $commandBus = $this->getMock(CommandBusInterface::class);
+        $commandBus = $this->getMockBuilder(CommandBusInterface::class)->getMock();
         $commandBus->expects($this->once())->method('dispatch')->with(
             $this->equalTo(
                 new MoveCustomerToLevel(
@@ -160,7 +160,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
         $levelId = new LevelId('00000000-0000-0000-0000-000000000003');
         $level = new Level($levelId, 'test', 10);
 
-        $commandBus = $this->getMock(CommandBusInterface::class);
+        $commandBus = $this->getMockBuilder(CommandBusInterface::class)->getMock();
         $commandBus->expects($this->once())->method('dispatch')->with(
             $this->equalTo(
                 new MoveCustomerToLevel(
@@ -189,7 +189,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
 
     protected function getTierTypeAssignProvider($type)
     {
-        $mock = $this->getMock(TierAssignTypeProvider::class);
+        $mock = $this->getMockBuilder(TierAssignTypeProvider::class)->getMock();
         $mock->method('getType')->willReturn($type);
 
         return $mock;
@@ -197,7 +197,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
 
     protected function getCustomerDetailsRepository(CustomerLevelId $currentLevelId = null, CustomerLevelId $assignedLevelId = null)
     {
-        $repo = $this->getMock(CustomerDetailsRepository::class);
+        $repo = $this->getMockBuilder(CustomerDetailsRepository::class)->getMock();
         $repo->method('find')->with($this->isType('string'))->willReturnCallback(function($id) use ($currentLevelId, $assignedLevelId) {
             $customer = $this->getMockBuilder(CustomerDetails::class);
             $customer->disableOriginalConstructor();
@@ -217,7 +217,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
         if (!is_array($levels)) {
             $levels = [$levels];
         }
-        $repo = $this->getMock(LevelIdProvider::class);
+        $repo = $this->getMockBuilder(LevelIdProvider::class)->getMock();
         $repo->method('findLevelIdByConditionValueWithTheBiggestReward')
             ->with($this->greaterThanOrEqual(0))
             ->will($this->returnCallback(function ($conditionValue) use ($levels) {
@@ -247,7 +247,7 @@ class CalculateCustomerLevelListenerTest extends \PHPUnit_Framework_TestCase
 
     protected function getExcludeDeliveryCostsProvider($returnValue)
     {
-        $mock = $this->getMock(ExcludeDeliveryCostsProvider::class);
+        $mock = $this->getMockBuilder(ExcludeDeliveryCostsProvider::class)->getMock();
         $mock->method('areExcluded')->willReturn($returnValue);
 
         return $mock;

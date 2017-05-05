@@ -16,9 +16,9 @@ class EditPosFormTypeTest extends TypeTestCase
 
     protected function setUp()
     {
-        $this->validator = $this->getMock(
+        $this->validator = $this->getMockBuilder(
             'Symfony\Component\Validator\Validator\ValidatorInterface'
-        );
+        )->getMock();
         $this->validator
             ->method('validate')
             ->will($this->returnValue(new ConstraintViolationList()));

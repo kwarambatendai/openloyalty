@@ -2,14 +2,12 @@
 
 namespace OpenLoyalty\Bundle;
 
-use OpenLoyalty\Bundle\UserBundle\Controller\Api\CustomerControllerTest;
 use OpenLoyalty\Bundle\UserBundle\DataFixtures\ORM\LoadUserData;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
- * Class BaseApiTest
- * @package OpenLoyaltyBundle\Controller\Api
+ * Class BaseApiTest.
  */
 abstract class BaseApiTest extends WebTestCase
 {
@@ -30,7 +28,7 @@ abstract class BaseApiTest extends WebTestCase
                 array(
                     '_username' => $username,
                     '_password' => $password,
-                )]));
+                ), ]));
         $this->assertTrue(isset($data['refresh_token']), 'Response should have field "refresh_token". '.$client->getResponse()->getContent());
 
         $client = static::createClient();
@@ -49,7 +47,7 @@ abstract class BaseApiTest extends WebTestCase
     {
         $client->request(
             'GET',
-            '/api/customer/' . $customerId . '/status'
+            '/api/customer/'.$customerId.'/status'
         );
         $response = $client->getResponse();
         $data = json_decode($response->getContent(), true);
@@ -84,6 +82,7 @@ abstract class BaseApiTest extends WebTestCase
     {
         $customer = static::$kernel->getContainer()->get('doctrine.orm.entity_manager')
             ->getRepository('OpenLoyaltyUserBundle:Customer')->findOneBy(['id' => $customerId]);
+
         return $customer;
     }
 }

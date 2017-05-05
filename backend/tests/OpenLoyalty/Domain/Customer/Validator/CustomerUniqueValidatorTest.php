@@ -33,7 +33,7 @@ class CustomerUniqueValidatorTest extends \PHPUnit_Framework_TestCase
             'c@c.com' => $customer3,
         ];
 
-        $this->customerDetailsRepository = $this->getMock('Broadway\ReadModel\RepositoryInterface');
+        $this->customerDetailsRepository = $this->getMockBuilder('Broadway\ReadModel\RepositoryInterface')->getMock();
         $this->customerDetailsRepository->method('findBy')->with($this->logicalOr(
                 $this->arrayHasKey('email'),
                 $this->arrayHasKey('loyaltyCardNumber')
@@ -41,6 +41,7 @@ class CustomerUniqueValidatorTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnCallback(function($params) use ($customers) {
                 if (isset($params['email'])) {
                     $email = $params['email'];
+
                     return array_filter($customers, function(CustomerDetails $customerDetails) use ($email) {
                         if ($customerDetails->getEmail() == $email) {
                             return true;
@@ -51,6 +52,7 @@ class CustomerUniqueValidatorTest extends \PHPUnit_Framework_TestCase
                 }
                 if (isset($params['loyaltyCardNumber'])) {
                     $loyaltyCardNumber = $params['loyaltyCardNumber'];
+
                     return array_filter($customers, function(CustomerDetails $customerDetails) use ($loyaltyCardNumber) {
                         if ($customerDetails->getLoyaltyCardNumber() == $loyaltyCardNumber) {
                             return true;

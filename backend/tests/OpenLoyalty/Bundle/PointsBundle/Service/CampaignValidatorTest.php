@@ -107,7 +107,7 @@ class CampaignValidatorTest extends \PHPUnit_Framework_TestCase
 
     protected function getCouponUsageRepository($usage, $customerUsage)
     {
-        $repo = $this->getMock(CouponUsageRepository::class);
+        $repo = $this->getMockBuilder(CouponUsageRepository::class)->getMock();
         $repo->method('countUsageForCampaign')->with($this->isInstanceOf(CampaignId::class))
             ->willReturn($usage);
         $repo->method('countUsageForCampaignAndCustomer')->with(
@@ -120,7 +120,7 @@ class CampaignValidatorTest extends \PHPUnit_Framework_TestCase
 
     protected function getAccountDetailsRepository($points)
     {
-        $repo = $this->getMock(RepositoryInterface::class);
+        $repo = $this->getMockBuilder(RepositoryInterface::class)->getMock();
         $account = $this->getMockBuilder(AccountDetails::class)->disableOriginalConstructor()->getMock();
         $account->method('getAvailableAmount')->willReturn($points);
         $repo->method('findBy')->with($this->arrayHasKey('customerId'))

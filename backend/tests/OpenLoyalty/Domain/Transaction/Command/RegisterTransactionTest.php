@@ -2,8 +2,6 @@
 
 namespace OpenLoyalty\Domain\Transaction\Command;
 
-use OpenLoyalty\Domain\Customer\Command\CustomerCommandHandlerTest;
-use OpenLoyalty\Domain\Customer\CustomerId;
 use OpenLoyalty\Domain\Transaction\Event\TransactionWasRegistered;
 use OpenLoyalty\Domain\Transaction\PosId;
 use OpenLoyalty\Domain\Transaction\TransactionId;
@@ -76,7 +74,7 @@ class RegisterTransactionTest extends TransactionCommandHandlerTest
                     $transactionData,
                     $customerData,
                     $items
-                )
+                ),
             ));
     }
 
@@ -146,7 +144,7 @@ class RegisterTransactionTest extends TransactionCommandHandlerTest
                     $customerData,
                     $items,
                     $posId
-                )
+                ),
             ));
     }
 }

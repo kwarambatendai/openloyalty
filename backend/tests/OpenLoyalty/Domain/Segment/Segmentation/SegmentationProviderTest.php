@@ -5,8 +5,6 @@ namespace OpenLoyalty\Domain\Segment\Segmentation;
 use Broadway\ReadModel\RepositoryInterface;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetailsRepository;
-use OpenLoyalty\Domain\Customer\ReadModel\CustomerTransactionsSummary;
-use OpenLoyalty\Domain\Customer\ReadModel\CustomerTransactionsSummaryRepository;
 use OpenLoyalty\Domain\Model\SKU;
 use OpenLoyalty\Domain\Segment\CriterionId;
 use OpenLoyalty\Domain\Segment\Model\Criteria\AverageTransactionAmount;
@@ -40,7 +38,7 @@ class SegmentationProviderTest extends \PHPUnit_Framework_TestCase
     protected $transactionDetailsRepository;
 
     /**
-     * @var CustomerTransactionsSummaryRepository
+     * @var CustomerDetailsRepository
      */
     protected $customerDetailsRepository;
 
@@ -101,7 +99,7 @@ class SegmentationProviderTest extends \PHPUnit_Framework_TestCase
         $posTransaction4->setItems([new Item(new SKU('123'), 'item1', 1, 99, 'test', 'test')]);
         $transactions[] = $posTransaction4;
 
-        $this->transactionDetailsRepository = $this->getMock(TransactionDetailsRepository::class);
+        $this->transactionDetailsRepository = $this->getMockBuilder(TransactionDetailsRepository::class)->getMock();
         $this->transactionDetailsRepository->method('findBy')->with($this->arrayHasKey('posId'))->will(
             $this->returnCallback(function (array $arg) use ($transactions) {
                 $posId = $arg['posId'];
@@ -119,7 +117,7 @@ class SegmentationProviderTest extends \PHPUnit_Framework_TestCase
         $this->transactionDetailsRepository->method('findAll')->willReturn($transactions);
         $this->transactionDetailsRepository->method('findAllWithCustomer')->willReturn($transactions);
 
-        $this->customerDetailsRepository = $this->getMock(CustomerDetailsRepository::class);
+        $this->customerDetailsRepository = $this->getMockBuilder(CustomerDetailsRepository::class)->getMock();
         $this->customerDetailsRepository->method('findAllWithAverageTransactionAmountBetween')
             ->with(
                 $this->logicalOr($this->equalTo(40), $this->equalTo(0)),
@@ -168,7 +166,7 @@ class SegmentationProviderTest extends \PHPUnit_Framework_TestCase
                 return [];
             }));
 
-        $this->customerValidator = $this->getMock(CustomerValidator::class);
+        $this->customerValidator = $this->getMockBuilder(CustomerValidator::class)->getMock();
         $this->customerValidator->method('isValid')->with($this->isInstanceOf(CustomerId::class))->willReturn(true);
 
         $this->segmentationProvider = new SegmentationProvider();

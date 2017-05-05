@@ -30,13 +30,14 @@ class SellerUniqueValidatorTest extends \PHPUnit_Framework_TestCase
             'c@c.com' => $seller3,
         ];
 
-        $this->sellerDetailsRepository = $this->getMock('Broadway\ReadModel\RepositoryInterface');
+        $this->sellerDetailsRepository = $this->getMockBuilder('Broadway\ReadModel\RepositoryInterface')->getMock();
         $this->sellerDetailsRepository->method('findBy')->with(
             $this->arrayHasKey('email')
         )
             ->will($this->returnCallback(function($params) use ($sellers) {
                 if (isset($params['email'])) {
                     $email = $params['email'];
+
                     return array_filter($sellers, function(SellerDetails $sellerDetails) use ($email) {
                         if ($sellerDetails->getEmail() == $email) {
                             return true;

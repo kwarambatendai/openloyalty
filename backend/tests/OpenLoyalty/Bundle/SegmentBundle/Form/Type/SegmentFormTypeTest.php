@@ -6,9 +6,6 @@ use Broadway\UuidGenerator\UuidGeneratorInterface;
 use OpenLoyalty\Domain\Pos\Pos;
 use OpenLoyalty\Domain\Pos\PosId;
 use OpenLoyalty\Domain\Pos\PosRepository;
-use OpenLoyalty\Domain\Segment\Model\Criteria\AverageTransactionAmount;
-use OpenLoyalty\Domain\Segment\Model\Criteria\BoughtInPos;
-use OpenLoyalty\Domain\Segment\Model\Criteria\TransactionCount;
 use OpenLoyalty\Domain\Segment\Model\Criterion;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\PreloadedExtension;
@@ -28,9 +25,9 @@ class SegmentFormTypeTest extends TypeTestCase
 
     protected function setUp()
     {
-        $this->validator = $this->getMock(
+        $this->validator = $this->getMockBuilder(
             'Symfony\Component\Validator\Validator\ValidatorInterface'
-        );
+        )->getMock();
         $this->validator
             ->method('validate')
             ->will($this->returnValue(new ConstraintViolationList()));
@@ -43,10 +40,10 @@ class SegmentFormTypeTest extends TypeTestCase
             $metadata
         );
 
-        $this->uuidGenerator = $this->getMock(UuidGeneratorInterface::class);
+        $this->uuidGenerator = $this->getMockBuilder(UuidGeneratorInterface::class)->getMock();
         $this->uuidGenerator->method('generate')->willReturn('00000000-0000-0000-0000-0000000000'.rand(10,99));
 
-        $this->posRepository = $this->getMock(PosRepository::class);
+        $this->posRepository = $this->getMockBuilder(PosRepository::class)->getMock();
         $this->posRepository->method('findAll')->will($this->returnCallback(function () {
             $pos = [];
             $pos[] = new Pos(new PosId('00000000-0000-0000-0000-000000000000'));
@@ -97,7 +94,7 @@ class SegmentFormTypeTest extends TypeTestCase
                             'min' => 10,
                             'max' => 20,
                         ],
-                    ]
+                    ],
                 ],
             ],
         ];

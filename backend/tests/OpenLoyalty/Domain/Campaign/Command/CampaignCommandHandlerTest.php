@@ -21,7 +21,7 @@ abstract class CampaignCommandHandlerTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $campaigns = &$this->campaigns;
-        $this->inMemoryRepository = $this->getMock(CampaignRepository::class);
+        $this->inMemoryRepository = $this->getMockBuilder(CampaignRepository::class)->getMock();
         $this->inMemoryRepository->method('save')->with($this->isInstanceOf(Campaign::class))->will(
             $this->returnCallback(function($campaign) use (&$campaigns) {
                 $campaigns[] = $campaign;
