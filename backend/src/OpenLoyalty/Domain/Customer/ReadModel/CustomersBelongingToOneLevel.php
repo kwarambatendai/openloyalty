@@ -79,6 +79,8 @@ class CustomersBelongingToOneLevel implements ReadModelInterface, SerializableIn
     }
 
     /**
+     * @param array $data
+     *
      * @return mixed The object instance
      */
     public static function deserialize(array $data)

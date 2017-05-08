@@ -11,6 +11,7 @@ use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetailsRepository;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerLevelChangedSystemEvent;
 use OpenLoyalty\Domain\Level\Level;
 use OpenLoyalty\Domain\Level\LevelRepository;
+use OpenLoyalty\Domain\Level\LevelId;
 
 /**
  * Class CustomerLevelChangedListener.
@@ -55,7 +56,7 @@ class CustomerLevelChangedListener
         $levelId = $event->getLevelId();
 
         /** @var Level $level */
-        $level = $this->levelRepository->byId(new \OpenLoyalty\Domain\Level\LevelId($levelId->__toString()));
+        $level = $this->levelRepository->byId(new LevelId($levelId->__toString()));
         /** @var CustomerDetails $customer */
         $customer = $this->customerRepository->find($customerId->__toString());
         if (!$customer instanceof CustomerDetails || !$level instanceof Level) {

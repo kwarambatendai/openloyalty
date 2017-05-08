@@ -42,7 +42,7 @@ class CustomerDetailsCsvFormatterTest extends \PHPUnit_Framework_TestCase
         $customersLevel = $this->getMockBuilder(CustomersBelongingToOneLevel::class)->disableOriginalConstructor()->getMock();
         $customersLevel->method('getCustomers')->willReturn([['customerId' => '0000000']]);
         $levelId = $this->getMockBuilder(LevelId::class)->disableOriginalConstructor()->getMock();
-        $levelId->method('__toSting')->willReturn('00000000');
+        $levelId->method('__toString')->willReturn('00000000');
 
         $this->level = $this->getMockBuilder(Level::class)->disableOriginalConstructor()->getMock();
         $this->level->method('getLevelId')->willReturn($levelId);

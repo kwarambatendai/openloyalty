@@ -235,7 +235,9 @@ class CustomerCampaignsController extends FOSRestController
      *     section="Customer Campaign"
      * )
      *
+     * @param Request  $request
      * @param Campaign $campaign
+     * @param string   $coupon
      * @View(serializerGroups={"customer", "Default"})
      *
      * @return \FOS\RestBundle\View\View

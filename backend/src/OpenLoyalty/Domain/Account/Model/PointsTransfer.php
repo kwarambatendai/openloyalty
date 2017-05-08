@@ -54,6 +54,9 @@ abstract class PointsTransfer implements SerializableInterface
      * @param PointsTransferId $id
      * @param int              $value
      * @param \DateTime        $createdAt
+     * @param bool             $canceled
+     * @param string|null      $comment
+     * @param string           $issuer
      */
     public function __construct(PointsTransferId $id, $value, \DateTime $createdAt = null, $canceled = false, $comment = null, $issuer = self::ISSUER_SYSTEM)
     {

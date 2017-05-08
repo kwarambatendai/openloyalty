@@ -38,6 +38,7 @@ class AddPointsTransfer extends PointsTransfer
      * @param bool             $canceled
      * @param TransactionId    $transactionId
      * @param string           $comment
+     * @param string           $issuer
      */
     public function __construct(PointsTransferId $id, $value, \DateTime $createdAt = null, $canceled = false, TransactionId $transactionId = null, $comment = null, $issuer = self::ISSUER_SYSTEM)
     {
@@ -47,6 +48,8 @@ class AddPointsTransfer extends PointsTransfer
     }
 
     /**
+     * @param array $data
+     *
      * @return mixed The object instance
      */
     public static function deserialize(array $data)

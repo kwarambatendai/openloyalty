@@ -13,6 +13,8 @@ use OpenLoyalty\Domain\Account\PointsTransferId;
 class SpendPointsTransfer extends PointsTransfer
 {
     /**
+     * @param array $data
+     *
      * @return mixed The object instance
      */
     public static function deserialize(array $data)

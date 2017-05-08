@@ -11,7 +11,6 @@ use OpenLoyalty\Bundle\SettingsBundle\Entity\BooleanSettingEntry;
 use OpenLoyalty\Bundle\SettingsBundle\Entity\IntegerSettingEntry;
 use OpenLoyalty\Bundle\SettingsBundle\Entity\JsonSettingEntry;
 use OpenLoyalty\Bundle\SettingsBundle\Entity\StringSettingEntry;
-use OpenLoyalty\Bundle\SettingsBundle\Form\Type\CustomersIdentificationPriority;
 use OpenLoyalty\Bundle\SettingsBundle\Model\Settings;
 use OpenLoyalty\Infrastructure\Customer\TierAssignTypeProvider;
 use Symfony\Bridge\Doctrine\Tests\Fixtures\ContainerAwareFixture;

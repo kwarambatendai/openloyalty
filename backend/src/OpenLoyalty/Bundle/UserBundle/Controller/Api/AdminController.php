@@ -65,7 +65,8 @@ class AdminController extends FOSRestController
     }
 
     /**
-     * @param Request $request
+     * @param Request    $request
+     * @param Admin|null $admin
      *
      * @return \FOS\RestBundle\View\View
      * @Route(name="oloy.user.edit_admin", path="/admin/data/{admin}")
@@ -150,6 +151,8 @@ class AdminController extends FOSRestController
     }
 
     /**
+     * @param Admin|null $admin
+     *
      * @return \FOS\RestBundle\View\View
      * @Route(name="oloy.user.get_admin", path="/admin/data/{admin}")
      *

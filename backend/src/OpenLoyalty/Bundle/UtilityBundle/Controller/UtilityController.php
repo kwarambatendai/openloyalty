@@ -28,6 +28,7 @@ class UtilityController extends FOSRestController
      * @Security("is_granted('GENERATE_SEGMENT_CSV')")
      *
      * @param Request $request
+     * @param Segment $segment
      *
      * @return Response
      */
@@ -41,6 +42,7 @@ class UtilityController extends FOSRestController
 
         return $response;
     }
+
     /**
      * @Route(name="oloy.csv.level.generate", path="/csv/level/{level}")
      * @Method("GET")
@@ -68,18 +70,18 @@ class UtilityController extends FOSRestController
     protected function getCsvMap()
     {
         return [
-                'First name',
-                'Last name',
-                'E-mail address',
-                'Gender',
-                'Telephone',
-                'Loyalty card number',
-                'Birthdate',
-                'Created at',
-                'Legal agreement',
-                'Marketing agreement',
-                'Data processing agreement',
-            ];
+            'First name',
+            'Last name',
+            'E-mail address',
+            'Gender',
+            'Telephone',
+            'Loyalty card number',
+            'Birthdate',
+            'Created at',
+            'Legal agreement',
+            'Marketing agreement',
+            'Data processing agreement',
+        ];
     }
 
     /**
@@ -91,7 +93,7 @@ class UtilityController extends FOSRestController
      */
     protected function createStream($map, $customerDetails, $baseFilename)
     {
-        /**@var StreamedResponse $response**/
+        /**@var StreamedResponse $response * */
         $response = new StreamedResponse();
         $response->setCallback(function () use ($map, $customerDetails) {
             $handle = fopen('php://output', 'w');

@@ -30,7 +30,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations\Version;
 use OpenLoyalty\Bundle\EarningRuleBundle\Model\EarningRule as BundleEarningRule;
 
 /**

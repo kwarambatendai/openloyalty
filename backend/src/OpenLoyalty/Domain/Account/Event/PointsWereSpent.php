@@ -6,7 +6,6 @@
 namespace OpenLoyalty\Domain\Account\Event;
 
 use OpenLoyalty\Domain\Account\AccountId;
-use OpenLoyalty\Domain\Account\Model\PointsTransfer;
 use OpenLoyalty\Domain\Account\Model\SpendPointsTransfer;
 
 /**

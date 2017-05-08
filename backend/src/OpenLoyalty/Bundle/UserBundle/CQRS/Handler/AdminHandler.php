@@ -10,7 +10,6 @@ use Broadway\UuidGenerator\UuidGeneratorInterface;
 use OpenLoyalty\Bundle\UserBundle\CQRS\Command\CreateAdmin;
 use OpenLoyalty\Bundle\UserBundle\CQRS\Command\EditAdmin;
 use OpenLoyalty\Bundle\UserBundle\CQRS\Command\SelfEditAdmin;
-use OpenLoyalty\Bundle\UserBundle\Entity\Admin;
 use OpenLoyalty\Bundle\UserBundle\Entity\Repository\AdminRepository;
 use OpenLoyalty\Bundle\UserBundle\Exception\EmailAlreadyExistException;
 use OpenLoyalty\Bundle\UserBundle\Service\UserManager;

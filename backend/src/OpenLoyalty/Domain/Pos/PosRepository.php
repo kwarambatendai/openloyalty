@@ -20,4 +20,16 @@ interface PosRepository
     public function findAllPaginated($page = 1, $perPage = 10, $sortField = null, $direction = 'DESC');
 
     public function countTotal();
+
+    /**
+     * @param array      $criteria
+     * @param array|null $orderBy
+     * @param int|null   $limit
+     * @param int|null   $offset
+     *
+     * @return array the objects
+     *
+     * @throws \UnexpectedValueException
+     */
+    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);
 }

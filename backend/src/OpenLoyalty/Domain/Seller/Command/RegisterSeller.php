@@ -5,7 +5,6 @@
  */
 namespace OpenLoyalty\Domain\Seller\Command;
 
-use OpenLoyalty\Domain\Seller\PosId;
 use OpenLoyalty\Domain\Seller\SellerId;
 use Assert\Assertion as Assert;
 

@@ -70,6 +70,8 @@ class SellerDetails implements ReadModelInterface, SerializableInterface
     }
 
     /**
+     * @param array $data
+     * 
      * @return mixed The object instance
      */
     public static function deserialize(array $data)
