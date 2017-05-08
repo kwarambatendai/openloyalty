@@ -19,6 +19,7 @@ use OpenLoyalty\Domain\Customer\Command\ActivateCustomer;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Faker\Factory;
+use Faker\Generator;
 use OpenLoyalty\Domain\Transaction\Command\RegisterTransaction;
 use OpenLoyalty\Domain\Transaction\TransactionId;
 use Symfony\Component\Yaml\Yaml;
@@ -96,7 +97,7 @@ class LoadCustomersAndTransactionsData extends AbstractFixture implements Fixtur
             $user->setPlainPassword($faker->password);
 
             $password = $this->container->get('security.password_encoder')
-                ->encodePassword($user, $user->getPlainPassword());
+                                        ->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             $user->setIsActive(true);
 
@@ -114,18 +115,18 @@ class LoadCustomersAndTransactionsData extends AbstractFixture implements Fixtur
                         $this->getTransactionItems(),
                         new PosId($posIds[array_rand($posIds)])
                     )
-
                 );
             }
         }
     }
 
     /**
-     * @param Factory $faker
+     * @param Generator $faker
+     * @param bool      $christmas
      *
      * @return array
      */
-    public function getCustomerData($faker, $christmas = false)
+    public function getCustomerData(Generator $faker, $christmas = false)
     {
         $gender = ['male', 'female'];
 
@@ -163,11 +164,12 @@ class LoadCustomersAndTransactionsData extends AbstractFixture implements Fixtur
     }
 
     /**
-     * @param Factory $faker
+     * @param Generator $faker
+     * @param bool      $christmas
      *
      * @return array
      */
-    public function getTransactionData($faker, $christmas = false)
+    public function getTransactionData(Generator $faker, $christmas = false)
     {
         if (!$christmas) {
             $purchaseDate = $faker->dateTimeThisMonth;
@@ -254,7 +256,7 @@ class LoadCustomersAndTransactionsData extends AbstractFixture implements Fixtur
         $user->setPlainPassword($this::USER_PASSWORD);
 
         $password = $this->container->get('security.password_encoder')
-            ->encodePassword($user, $user->getPlainPassword());
+                                    ->encodePassword($user, $user->getPlainPassword());
 
         $user->addRole($this->getReference('role_participant'));
         $user->setPassword($password);

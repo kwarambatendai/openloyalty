@@ -122,6 +122,8 @@ abstract class User implements UserInterface, \Serializable
     }
 
     /**
+     * @param string $serialized
+     *
      * @see \Serializable::unserialize()
      */
     public function unserialize($serialized)
@@ -351,8 +353,8 @@ abstract class User implements UserInterface, \Serializable
 
     public function isPasswordRequestNonExpired($ttl)
     {
-        return $this->getPasswordRequestedAt() instanceof \DateTime &&
-        $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
+        return $this->getPasswordRequestedAt() instanceof \DateTime
+               && $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 
     /**

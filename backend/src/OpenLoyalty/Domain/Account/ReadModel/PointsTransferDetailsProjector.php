@@ -9,7 +9,6 @@ use Broadway\ReadModel\Projector;
 use Broadway\ReadModel\RepositoryInterface;
 use OpenLoyalty\Domain\Account\Account;
 use OpenLoyalty\Domain\Account\AccountId;
-use OpenLoyalty\Domain\Account\AccountRepository;
 use OpenLoyalty\Domain\Account\Event\PointsTransferHasBeenCanceled;
 use OpenLoyalty\Domain\Account\Event\PointsTransferHasBeenExpired;
 use OpenLoyalty\Domain\Account\Event\PointsWereAdded;

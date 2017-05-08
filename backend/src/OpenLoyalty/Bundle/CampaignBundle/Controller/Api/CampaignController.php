@@ -188,7 +188,8 @@ class CampaignController extends FOSRestController
      *     input={"class" = "OpenLoyalty\Bundle\CampaignBundle\Form\Type\EditCampaignFormType", "name" = "campaign"}
      * )
      *
-     * @param Request $request
+     * @param Request        $request
+     * @param DomainCampaign $campaign
      * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View
@@ -595,7 +596,10 @@ class CampaignController extends FOSRestController
      *     section="Customer Campaign"
      * )
      *
-     * @param Campaign $campaign
+     * @param Request         $request
+     * @param CustomerDetails $customer
+     * @param DomainCampaign  $campaign
+     * @param string          $coupon
      * @View(serializerGroups={"admin", "Default"})
      *
      * @return \FOS\RestBundle\View\View

@@ -59,7 +59,7 @@ class SegmentController extends FOSRestController
                 $form->get('name')->addError(new FormError('Segment with this name already exists'));
 
                 return $this->view($form->getErrors(), Response::HTTP_BAD_REQUEST);
-            };
+            }
 
             $segmentId = $this->get('broadway.uuid.generator')->generate();
             $this->get('broadway.command_handling.command_bus')
@@ -118,7 +118,7 @@ class SegmentController extends FOSRestController
                 $form->get('name')->addError(new FormError('Segment with this name already exists'));
 
                 return $this->view($form->getErrors(), Response::HTTP_BAD_REQUEST);
-            };
+            }
             $this->get('broadway.command_handling.command_bus')
                 ->dispatch(
                     new UpdateSegment(
@@ -244,8 +244,9 @@ class SegmentController extends FOSRestController
      * @QueryParam(name="phone", requirements="[a-zA-Z0-9\-]+", nullable=true, description="phone"))
      * @QueryParam(name="email", nullable=true, description="email"))
      *
-     * @param Request $request
-     * @param Segment $segment
+     * @param Request               $request
+     * @param Segment               $segment
+     * @param ParamFetcherInterface $paramFetcher
      *
      * @return \FOS\RestBundle\View\View
      */

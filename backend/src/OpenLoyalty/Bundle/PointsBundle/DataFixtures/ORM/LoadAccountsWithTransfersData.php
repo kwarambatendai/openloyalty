@@ -78,6 +78,8 @@ class LoadAccountsWithTransfersData extends ContainerAwareFixture implements Ord
     }
 
     /**
+     * @param int $customerId
+     *
      * @return string
      */
     protected function getAccountIdByCustomerId($customerId)

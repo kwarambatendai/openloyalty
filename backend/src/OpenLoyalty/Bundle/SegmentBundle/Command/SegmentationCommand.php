@@ -91,6 +91,7 @@ class SegmentationCommand extends Command implements ContainerAwareInterface
      * @param $segmentationProvider
      * @param $logger
      * @param $segmentName
+     * @param string|null $segmentId
      */
     public function recreateNamedSegment($segmentedCustomersRepository, $segmentedCustomersProjector, $segmentsRepository, $segmentationProvider, $logger, $segmentName = null, $segmentId = null)
     {

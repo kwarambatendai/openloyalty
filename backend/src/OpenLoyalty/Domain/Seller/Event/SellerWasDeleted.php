@@ -13,6 +13,8 @@ use OpenLoyalty\Domain\Seller\SellerId;
 class SellerWasDeleted extends SellerEvent
 {
     /**
+     * @param array $data
+     *
      * @return mixed The object instance
      */
     public static function deserialize(array $data)

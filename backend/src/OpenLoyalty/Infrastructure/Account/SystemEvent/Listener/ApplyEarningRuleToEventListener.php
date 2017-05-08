@@ -19,7 +19,6 @@ use OpenLoyalty\Domain\Customer\SystemEvent\CustomerLoggedInSystemEvent;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerReferralSystemEvent;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerSystemEvents;
 use OpenLoyalty\Domain\Customer\SystemEvent\NewsletterSubscriptionSystemEvent;
-use OpenLoyalty\Domain\Transaction\CustomerId;
 use OpenLoyalty\Domain\Transaction\SystemEvent\CustomerFirstTransactionSystemEvent;
 use OpenLoyalty\Domain\Transaction\SystemEvent\TransactionSystemEvents;
 use OpenLoyalty\Infrastructure\Account\EarningRuleApplier;

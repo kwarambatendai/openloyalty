@@ -16,6 +16,7 @@ use OpenLoyalty\Domain\Level\Level;
 use OpenLoyalty\Domain\Level\LevelRepository;
 use OpenLoyalty\Infrastructure\Customer\ExcludeDeliveryCostsProvider;
 use OpenLoyalty\Infrastructure\Customer\TierAssignTypeProvider;
+use OpenLoyalty\Domain\Level\LevelId;
 
 /**
  * Class CustomerStatusProvider.
@@ -99,7 +100,7 @@ class CustomerStatusProvider
         $accountDetails = $this->getAccountDetails($customerId);
         /** @var Level $level */
         $level = $customer->getLevelId() ?
-            $this->levelRepository->byId(new \OpenLoyalty\Domain\Level\LevelId($customer->getLevelId()->__toString()))
+            $this->levelRepository->byId(new LevelId($customer->getLevelId()->__toString()))
             : null;
 
         $nextLevel = null;

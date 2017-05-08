@@ -13,6 +13,7 @@ use OpenLoyalty\Domain\Seller\Event\SellerWasRegistered;
 use OpenLoyalty\Domain\Seller\Event\SellerWasUpdated;
 use OpenLoyalty\Domain\Seller\PosId;
 use OpenLoyalty\Domain\Seller\SellerId;
+use PHPUnit_Framework_MockObject_MockObject;
 
 /**
  * Class SellerDetailsProjectorTest.
@@ -26,6 +27,7 @@ class SellerDetailsProjectorTest extends ProjectorScenarioTestCase
      */
     protected function createProjector(InMemoryRepository $repository)
     {
+        /** @var PosRepository|PHPUnit_Framework_MockObject_MockObject $posRepo */
         $posRepo = $this->getMockBuilder(PosRepository::class)->getMock();
         $posRepo->method('findBy')->willReturn(null);
 

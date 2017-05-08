@@ -11,7 +11,6 @@ use OpenLoyalty\Bundle\CampaignBundle\Service\CampaignProvider;
 use OpenLoyalty\Bundle\CampaignBundle\Service\CampaignValidator;
 use OpenLoyalty\Bundle\UserBundle\Status\CustomerStatusProvider;
 use OpenLoyalty\Domain\Campaign\Campaign;
-use OpenLoyalty\Domain\Campaign\CustomerId;
 use OpenLoyalty\Domain\Campaign\ReadModel\CampaignUsageRepository;
 use OpenLoyalty\Domain\Campaign\ReadModel\CouponUsage;
 use OpenLoyalty\Domain\Campaign\ReadModel\CouponUsageRepository;

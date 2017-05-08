@@ -46,6 +46,7 @@ class CampaignPurchase implements SerializableInterface
      * @param \DateTime  $purchaseAt
      * @param int        $costInPoints
      * @param CampaignId $campaignId
+     * @param Coupon     $coupon
      */
     public function __construct(\DateTime $purchaseAt, $costInPoints, CampaignId $campaignId, Coupon $coupon)
     {
