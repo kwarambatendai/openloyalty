@@ -35,6 +35,23 @@ Then use another command to setup database, elastcsearch and load some demo data
 docker-compose exec backend phing setup
 ```
 
+If you find any problems using docker (for example on Windows environments) please try our Vagrant recipe.
+
+## Quick install with Vagrant
+
+You should have [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed prior to executing this recipe.
+
+Then, please execute following commands:
+
+```
+vagrant up
+vagrant ssh
+cd ol
+docker-compose up -d
+docker-compose exec backend phing demo
+```
+
+
 That's all. Now you can go to admin panel [127.0.0.1:8182](http://127.0.0.1:8182).
 Default login is **admin** and password **open**. You can also go to customer panel [127.0.0.1:8183](http://127.0.0.1:8183).
 
