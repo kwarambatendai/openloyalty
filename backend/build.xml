@@ -6,7 +6,7 @@
         <echo>By default I do nothing! Add -l to see all available tasks</echo>
     </target>
 
-    <target name="ci-setup-test" description="Setup everything and test (for CI)">
+    <target name="ci-setup-test" description="Setup everything and test (for CI)" depends="generate-jwt-keys">
         <exec command="bin/console oloy:user:projections:index:create --drop-old -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:schema:update --env=test -n --force" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:drop -n" checkreturn="true" passthru="true"/>
@@ -18,7 +18,7 @@
         <exec command="vendor/phpunit/phpunit/phpunit" checkreturn="true" passthru="true"/>
         <exec command="bin/php-cs-fixer fix --dry-run --diff src" checkreturn="true" passthru="true"/>
     </target>
-    <target name="setup" description="Setup everything">
+    <target name="setup" description="Setup everything" depends="generate-jwt-keys">
         <exec command="bin/console oloy:user:projections:index:create --drop-old -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:schema:update --force" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:drop -n" checkreturn="true" passthru="true"/>
@@ -41,12 +41,31 @@
         <exec command="vendor/phpunit/phpunit/phpunit --stop-on-failure --testsuite Security" checkreturn="true" passthru="true"/>
     </target>
 
-    <target name="demo" description="Setup for demo purposes">
+    <target name="demo" description="Setup for demo purposes" depends="generate-jwt-keys">
         <exec command="bin/console oloy:user:projections:index:create --drop-old -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:schema:update --force" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:drop -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:init -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:fixtures:load --fixtures src/OpenLoyalty/Bundle/DemoBundle/_DataFixtures/ORM/ -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console oloy:segment:recreate -vv" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="generate-jwt-keys" description="Generate new JWT keys if needed">
+        <if>
+            <not>
+                <or>
+                    <available file="app/var/jwt/private.pem" type="file"/>
+                    <available file="app/var/jwt/public.pem" type="file"/>
+                </or>
+            </not>
+            <then>
+                <mkdir dir="app/var/jwt"/>
+                <exec command="openssl genrsa -out app/var/jwt/private.pem 4096" checkreturn="true" passthru="true"/>
+                <exec command="openssl rsa -pubout -in app/var/jwt/private.pem -out app/var/jwt/public.pem" checkreturn="true" passthru="true"/>
+            </then>
+            <else>
+                <echo>JWT tokens already exist in app/var/jwt/!</echo>
+            </else>
+        </if>
     </target>
 </project>
