@@ -17,7 +17,7 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     jwt_private_key_path: %kernel.root_dir%/var/jwt/private.pem   # ssh private key path
     jwt_public_key_path:  %kernel.root_dir%/var/jwt/public.pem    # ssh public key path
-    jwt_key_pass_phrase:  'open'                                     # ssh key pass phrase
+    jwt_key_pass_phrase:  ''                                     # ssh key pass phrase
     jwt_token_ttl:        86400
     pagination_per_page: 10
     mailer_transport: smtp

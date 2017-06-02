@@ -29,7 +29,13 @@ Execute bellow command to run application:
 docker-compose up
 ```
 
-Then use another command to setup database, elastcsearch and load some demo data:
+or, if you are developer and want to attach source code then:
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+```
+
+Then use another command to setup database, Elasticsearch and load some demo data:
 
 ```
 docker-compose exec backend phing setup
@@ -60,6 +66,10 @@ If you are developer and want to attach source code then:
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```
+
+## Generate JWT keys
+
+Running `phing setup` will generate the JWT public/private keys for you, but in case you would like to generate them "manually" use `phing generate-jwt-keys`.
 
 ## Documentation
 
