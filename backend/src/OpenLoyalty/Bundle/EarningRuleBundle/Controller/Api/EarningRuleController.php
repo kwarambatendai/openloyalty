@@ -247,9 +247,7 @@ class EarningRuleController extends FOSRestController
      * @ApiDoc(
      *     name="report custom event and earn points",
      *     section="Earning Rule",
-     *     parameters={{"name"="event_name", "dataType":"string", "required":true}},
      *     requirements={{"name"="version", "description"="api version, v1 required", "default":"v1"}}
-     *
      * )
      *
      * @param $eventName
