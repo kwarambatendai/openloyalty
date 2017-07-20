@@ -38,6 +38,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PointsTransferController extends FOSRestController
 {
     /**
+     * List of all points transfers.
+     *
      * @Route(name="oloy.points.transfer.list", path="/points/transfer")
      * @Route(name="oloy.points.transfer.seller.list", path="/seller/points/transfer")
      * @Method("GET")
@@ -46,6 +48,12 @@ class PointsTransferController extends FOSRestController
      * @ApiDoc(
      *     name="get points transfers list",
      *     section="Points transfers",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request      $request
@@ -85,6 +93,8 @@ class PointsTransferController extends FOSRestController
     }
 
     /**
+     * Method allows to add points to customer.
+     *
      * @param Request $request
      * @Route(name="oloy.points.transfer.add", path="/points/transfer/add")
      * @Method("POST")
@@ -92,7 +102,12 @@ class PointsTransferController extends FOSRestController
      * @ApiDoc(
      *     name="Add points",
      *     section="Points transfers",
-     *     input={"class" = "OpenLoyalty\Bundle\PointsBundle\Form\Type\AddPointsFormType", "name" = "transfer"}
+     *     input={"class" = "OpenLoyalty\Bundle\PointsBundle\Form\Type\AddPointsFormType", "name" = "transfer"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *       404="Returned whend there is no account attached to customer"
+     *     }
      * )
      *
      * @return \FOS\RestBundle\View\View
@@ -139,6 +154,8 @@ class PointsTransferController extends FOSRestController
     }
 
     /**
+     * Method allows to spend customer points.
+     *
      * @param Request $request
      * @Route(name="oloy.points.transfer.spend", path="/points/transfer/spend")
      * @Method("POST")
@@ -146,7 +163,12 @@ class PointsTransferController extends FOSRestController
      * @ApiDoc(
      *     name="Add points",
      *     section="Points transfers",
-     *     input={"class" = "OpenLoyalty\Bundle\PointsBundle\Form\Type\AddPointsFormType", "name" = "transfer"}
+     *     input={"class" = "OpenLoyalty\Bundle\PointsBundle\Form\Type\AddPointsFormType", "name" = "transfer"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *       404="Returned when there is no account attached to customer"
+     *     }
      * )
      *
      * @return \FOS\RestBundle\View\View
@@ -201,6 +223,8 @@ class PointsTransferController extends FOSRestController
     }
 
     /**
+     * Cancel specific points transfer.
+     *
      * @param PointsTransferDetails $transfer
      *
      * @return \FOS\RestBundle\View\View
@@ -210,7 +234,12 @@ class PointsTransferController extends FOSRestController
      *
      * @ApiDoc(
      *     name="Cancel transfer",
-     *     section="Points transfers"
+     *     section="Points transfers",
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when points transfer cannot be canceled",
+     *       404="Returned when points transfer does not exist"
+     *     }
      * )
      */
     public function cancelTransferAction(PointsTransferDetails $transfer)

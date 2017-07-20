@@ -23,12 +23,20 @@ use Symfony\Component\HttpFoundation\Request;
 class CustomerPointsTransferController extends FOSRestController
 {
     /**
+     * List of all logged in customer points transfer.
+     *
      * @Route(name="oloy.points.transfer.customer.list", path="/customer/points/transfer")
      * @Method("GET")
      * @Security("is_granted('LIST_CUSTOMER_POINTS_TRANSFERS')")
      * @ApiDoc(
      *     name="get customer points transfers list",
      *     section="Customer Points transfers",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request      $request

@@ -35,13 +35,19 @@ use Symfony\Component\Form\FormError;
 class SegmentController extends FOSRestController
 {
     /**
+     * Method allows to create new segment.
+     *
      * @Route(name="oloy.segment.create", path="/segment")
      * @Method("POST")
      * @Security("is_granted('CREATE_SEGMENT')")
      * @ApiDoc(
      *     name="Create new segment",
      *     section="Segment",
-     *     input={"class" = "OpenLoyalty\Bundle\SegmentBundle\Form\Type\SegmentFormType", "name" = "segment"}
+     *     input={"class" = "OpenLoyalty\Bundle\SegmentBundle\Form\Type\SegmentFormType", "name" = "segment"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @param Request $request
@@ -88,13 +94,20 @@ class SegmentController extends FOSRestController
     }
 
     /**
+     * Method allows to update segment data.
+     *
      * @Route(name="oloy.segment.update", path="/segment/{segment}")
      * @Method("PUT")
      * @Security("is_granted('EDIT', segment)")
      * @ApiDoc(
      *     name="Update segment",
      *     section="Segment",
-     *     input={"class" = "OpenLoyalty\Bundle\SegmentBundle\Form\Type\EditSegmentFormType", "name" = "segment"}
+     *     input={"class" = "OpenLoyalty\Bundle\SegmentBundle\Form\Type\EditSegmentFormType", "name" = "segment"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *       404="Returned when segment does not exist"
+     *     }
      * )
      *
      * @param Request $request
@@ -145,12 +158,14 @@ class SegmentController extends FOSRestController
     }
 
     /**
+     * Method allows to activate.
+     *
      * @Route(name="oloy.segment.activate", path="/segment/{segment}/activate")
      * @Method("POST")
      * @Security("is_granted('ACTIVATE', segment)")
      * @ApiDoc(
      *     name="Activate segment",
-     *     section="Segment"
+     *     section="Segment",
      * )
      *
      * @param Segment $segment
@@ -168,6 +183,8 @@ class SegmentController extends FOSRestController
     }
 
     /**
+     * Method allows to deactivate segment.
+     *
      * @Route(name="oloy.segment.deactivate", path="/segment/{segment}/deactivate")
      * @Method("POST")
      * @Security("is_granted('DEACTIVATE', segment)")
@@ -191,6 +208,8 @@ class SegmentController extends FOSRestController
     }
 
     /**
+     * Method allows to delete segment.
+     *
      * @Route(name="oloy.segment.delete", path="/segment/{segment}")
      * @Method("DELETE")
      * @Security("is_granted('DELETE', segment)")
@@ -214,6 +233,8 @@ class SegmentController extends FOSRestController
     }
 
     /**
+     * Method will return segment details.
+     *
      * @Route(name="oloy.segment.get", path="/segment/{segment}")
      * @Method("GET")
      * @Security("is_granted('VIEW', segment)")
@@ -232,12 +253,20 @@ class SegmentController extends FOSRestController
     }
 
     /**
+     * Method will return customers assigned to this segment.
+     *
      * @Route(name="oloy.segment.get_customers", path="/segment/{segment}/customers")
      * @Method("GET")
      * @Security("is_granted('LIST_CUSTOMERS', segment)")
      * @ApiDoc(
      *     name="Get customers in segment",
-     *     section="Segment"
+     *     section="Segment",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      * @QueryParam(name="firstName", nullable=true, description="firstName"))
      * @QueryParam(name="lastName", nullable=true, description="lastName"))
@@ -302,12 +331,20 @@ class SegmentController extends FOSRestController
     }
 
     /**
+     * Method will return segments list.
+     *
      * @Route(name="oloy.segment.list", path="/segment")
      * @Method("GET")
      * @Security("is_granted('LIST_SEGMENTS')")
      * @ApiDoc(
      *     name="Get segments list",
-     *     section="Segment"
+     *     section="Segment",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request

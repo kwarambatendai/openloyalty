@@ -10,6 +10,7 @@ OpenLoyalty\Domain\Email\Email:
     key:
       type: string
       unique: true
+      column: "`key`"
     subject:
       type: string
     content:

@@ -46,13 +46,20 @@ use Symfony\Component\HttpFoundation\Response;
 class CampaignController extends FOSRestController
 {
     /**
+     * Create new campaign.
+     *
      * @Route(name="oloy.campaign.create", path="/campaign")
      * @Method("POST")
      * @Security("is_granted('CREATE_CAMPAIGN')")
      * @ApiDoc(
      *     name="Create new Campaign",
      *     section="Campaign",
-     *     input={"class" = "OpenLoyalty\Bundle\CampaignBundle\Form\Type\CampaignFormType", "name" = "campaign"}
+     *     input={"class" = "OpenLoyalty\Bundle\CampaignBundle\Form\Type\CampaignFormType", "name" = "campaign"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when there are errors in form",
+     *       404="Returned when campaign not found"
+     *     }
      * )
      *
      * @param Request $request
@@ -86,6 +93,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Add photo to campaign.
+     *
      * @Route(name="oloy.campaign.add_photo", path="/campaign/{campaign}/photo")
      * @Method("POST")
      * @Security("is_granted('EDIT', campaign)")
@@ -122,6 +131,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Remove photo from campaign.
+     *
      * @Route(name="oloy.campaign.remove_photo", path="/campaign/{campaign}/photo")
      * @Method("DELETE")
      * @Security("is_granted('EDIT', campaign)")
@@ -147,6 +158,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Get campaign photo.
+     *
      * @Route(name="oloy.campaign.get_photo", path="/campaign/{campaign}/photo")
      * @Method("GET")
      * @ApiDoc(
@@ -179,13 +192,20 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Edit campaign.
+     *
      * @Route(name="oloy.campaign.edit", path="/campaign/{campaign}")
      * @Method("PUT")
      * @Security("is_granted('EDIT', campaign)")
      * @ApiDoc(
      *     name="Create new Campaign",
      *     section="Campaign",
-     *     input={"class" = "OpenLoyalty\Bundle\CampaignBundle\Form\Type\EditCampaignFormType", "name" = "campaign"}
+     *     input={"class" = "OpenLoyalty\Bundle\CampaignBundle\Form\Type\EditCampaignFormType", "name" = "campaign"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when there are errors in form",
+     *       404="Returned when campaign not found"
+     *     }
      * )
      *
      * @param Request        $request
@@ -218,6 +238,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Change campaign state action to active or inactive.
+     *
      * @Route(name="oloy.campaign.change_state", path="/campaign/{campaign}/{active}", requirements={"active":"active|inactive"})
      * @Method("POST")
      * @Security("is_granted('EDIT', campaign)")
@@ -249,13 +271,21 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Get all campaigns.
+     *
      * @Route(name="oloy.campaign.list", path="/campaign")
      * @Security("is_granted('LIST_ALL_CAMPAIGNS')")
      * @Method("GET")
      *
      * @ApiDoc(
      *     name="get campaigns list",
-     *     section="Campaign"
+     *     section="Campaign",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request
@@ -293,13 +323,21 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Get all visible campaigns.
+     *
      * @Route(name="oloy.campaign.seller.list", path="/seller/campaign")
      * @Security("is_granted('LIST_ALL_VISIBLE_CAMPAIGNS')")
      * @Method("GET")
      *
      * @ApiDoc(
      *     name="get campaigns list",
-     *     section="Campaign"
+     *     section="Campaign",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request
@@ -337,6 +375,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Get single campaign details.
+     *
      * @Route(name="oloy.campaign.get", path="/campaign/{campaign}")
      * @Route(name="oloy.campaign.seller.get", path="/seller/campaign/{campaign}")
      * @Method("GET")
@@ -357,13 +397,21 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Get customers who for whom this campaign is visible.
+     *
      * @Route(name="oloy.campaign.get_customers_visible_for_campaign", path="/campaign/{campaign}/customers/visible")
      * @Method("GET")
      * @Security("is_granted('LIST_ALL_CAMPAIGNS')")
      *
      * @ApiDoc(
      *     name="campaign visible for customers",
-     *     section="Campaign"
+     *     section="Campaign",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request        $request
@@ -397,6 +445,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * List all campaigns that can be baught by this customer.
+     *
      * @Route(name="oloy.campaign.admin.customer.available", path="/admin/customer/{customer}/campaign/available")
      * @Route(name="oloy.campaign.seller.customer.available", path="/seller/customer/{customer}/campaign/available")
      * @Method("GET")
@@ -404,7 +454,13 @@ class CampaignController extends FOSRestController
      *
      * @ApiDoc(
      *     name="get available campaigns for customer list",
-     *     section="Campaign"
+     *     section="Campaign",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request         $request
@@ -458,6 +514,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Buy campaign.
+     *
      * @Route(name="oloy.campaign.buy", path="/admin/customer/{customer}/campaign/{campaign}/buy")
      * @Route(name="oloy.campaign.seller.buy", path="/seller/customer/{customer}/campaign/{campaign}/buy")
      * @Method("POST")
@@ -465,7 +523,11 @@ class CampaignController extends FOSRestController
      *
      * @ApiDoc(
      *     name="buy campaign for customer",
-     *     section="Campaign"
+     *     section="Campaign",
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="With error 'No coupons left' returned when campaign cannot be bought because of lack of coupons. With error 'Not enough points' returned when campaign cannot be bought because of not enough points on customer account. With empty error returned when campaign limits exceeded."
+     *     }
      * )
      *
      * @param DomainCampaign  $campaign
@@ -525,6 +587,8 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Get all campaigns bought by customer.
+     *
      * @Route(name="oloy.campaign.admin.customer.bought", path="/admin/customer/{customer}/campaign/bought")
      * @Route(name="oloy.campaign.seller.customer.bought", path="/seller/customer/{customer}/campaign/bought")
      * @Method("GET")
@@ -533,7 +597,13 @@ class CampaignController extends FOSRestController
      * @ApiDoc(
      *     name="get customer bough campaigns list",
      *     section="Customer Campaign",
-     *     parameters={{"name"="includeDetails", "dataType"="boolean", "required"=false}}
+     *     parameters={
+     *      {"name"="includeDetails", "dataType"="boolean", "required"=false},
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request         $request
@@ -588,12 +658,22 @@ class CampaignController extends FOSRestController
     }
 
     /**
+     * Mark specific coupon as used/unused by customer.
+     *
      * @Route(name="oloy.campaign.admin.customer.coupon_usage", path="/admin/customer/{customer}/campaign/{campaign}/coupon/{coupon}")
      * @Method("POST")
      *
      * @ApiDoc(
      *     name="mark coupon as used",
-     *     section="Customer Campaign"
+     *     section="Customer Campaign",
+     *     parameters={
+     *      {"name"="used", "dataType"="true|false", "required"=true, "description"="True if mark as used, false otherwise"},
+     *     },
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when parameter 'used' not provided",
+     *       404="Returned when customer or campaign not found"
+     *     }
      * )
      *
      * @param Request         $request

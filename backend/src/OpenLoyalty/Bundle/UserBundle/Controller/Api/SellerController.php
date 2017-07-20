@@ -34,13 +34,21 @@ use Symfony\Component\HttpFoundation\Response;
 class SellerController extends FOSRestController
 {
     /**
+     * Method will return list of sellers.
+     *
      * @Route(name="oloy.user.seller.list", path="/seller")
      * @Method("GET")
      * @Security("is_granted('LIST_SELLERS')")
      *
      * @ApiDoc(
      *     name="Sellers list",
-     *     section="Seller"
+     *     section="Seller",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request      $request
@@ -76,6 +84,8 @@ class SellerController extends FOSRestController
     }
 
     /**
+     * Method will return seller details.
+     *
      * @Route(name="oloy.user.seller.get", path="/seller/{seller}")
      * @Method("GET")
      * @Security("is_granted('VIEW', seller)")
@@ -98,6 +108,8 @@ class SellerController extends FOSRestController
     }
 
     /**
+     * Method allows to register new seller.
+     *
      * @param Request $request
      * @Route(name="oloy.user.seller.register", path="/seller/register")
      * @Method("POST")
@@ -105,7 +117,11 @@ class SellerController extends FOSRestController
      * @ApiDoc(
      *     name="Register Seller",
      *     section="Seller",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\SellerRegistrationFormType", "name" = "seller"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\SellerRegistrationFormType", "name" = "seller"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @return \FOS\RestBundle\View\View
@@ -148,6 +164,8 @@ class SellerController extends FOSRestController
     }
 
     /**
+     * Method allows to activate seller.
+     *
      * @param SellerDetails $seller
      *
      * @return \FOS\RestBundle\View\View
@@ -180,6 +198,8 @@ class SellerController extends FOSRestController
     }
 
     /**
+     * Method allows to deactivate seller.
+     *
      * @param SellerDetails $seller
      *
      * @return \FOS\RestBundle\View\View
@@ -211,6 +231,8 @@ class SellerController extends FOSRestController
     }
 
     /**
+     * Method allows to delete seller.
+     *
      * @param SellerDetails $seller
      *
      * @return \FOS\RestBundle\View\View
@@ -244,6 +266,8 @@ class SellerController extends FOSRestController
     }
 
     /**
+     * Method allows to update seller details.
+     *
      * @param Request       $request
      * @param SellerDetails $seller
      *
@@ -254,7 +278,11 @@ class SellerController extends FOSRestController
      * @ApiDoc(
      *     name="Edit Seller",
      *     section="Seller",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\SellerEditFormType", "name" = "seller"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\SellerEditFormType", "name" = "seller"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      */
     public function editSellerAction(Request $request, SellerDetails $seller)

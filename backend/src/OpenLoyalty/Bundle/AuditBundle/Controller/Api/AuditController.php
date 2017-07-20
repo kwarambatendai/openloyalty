@@ -22,13 +22,26 @@ use Symfony\Component\HttpFoundation\Request;
 class AuditController extends FOSRestController
 {
     /**
+     * Get audit log.
+     *
+     * Method will return actions log.
+     *
+     *
      * @Route(name="oloy.audit.log.get", path="/audit/log")
      * @Method("GET")
      * @Security("is_granted('AUDIT_LOG')")
      *
      * @ApiDoc(
      *     name="Get audit log",
-     *     section="Audit"
+     *     section="Audit",
+     *     parameters={
+     *      {"name"="eventType", "dataType"="string", "required"=false, "description"="Filter by event type"},
+     *      {"name"="entityId", "dataType"="string", "required"=false, "description"="Filter by entity id"},
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request      $request

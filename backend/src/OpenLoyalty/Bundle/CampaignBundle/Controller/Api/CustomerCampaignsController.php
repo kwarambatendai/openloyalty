@@ -38,13 +38,21 @@ use Symfony\Component\HttpFoundation\Request;
 class CustomerCampaignsController extends FOSRestController
 {
     /**
+     * Get all campaigns available for logged in customer.
+     *
      * @Route(name="oloy.campaign.customer.available", path="/customer/campaign/available")
      * @Method("GET")
      * @Security("is_granted('LIST_CAMPAIGNS_AVAILABLE_FOR_ME')")
      *
      * @ApiDoc(
      *     name="get customer available campaigns list",
-     *     section="Customer Campaign"
+     *     section="Customer Campaign",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request
@@ -98,6 +106,8 @@ class CustomerCampaignsController extends FOSRestController
     }
 
     /**
+     * Get all campaigns bought by logged in customer.
+     *
      * @Route(name="oloy.campaign.customer.bought", path="/customer/campaign/bought")
      * @Method("GET")
      * @Security("is_granted('LIST_CAMPAIGNS_BOUGHT_BY_ME')")
@@ -105,7 +115,13 @@ class CustomerCampaignsController extends FOSRestController
      * @ApiDoc(
      *     name="get customer bough campaigns list",
      *     section="Customer Campaign",
-     *     parameters={{"name"="includeDetails", "dataType"="boolean", "required"=false}}
+     *     parameters={
+     *       {"name"="includeDetails", "dataType"="boolean", "required"=false},
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request
@@ -157,13 +173,19 @@ class CustomerCampaignsController extends FOSRestController
     }
 
     /**
+     * Buy campaign by logged in customer.
+     *
      * @Route(name="oloy.campaign.customer.buy", path="/customer/campaign/{campaign}/buy")
      * @Method("POST")
      * @Security("is_granted('BUY', campaign)")
      *
      * @ApiDoc(
      *     name="buy campaign",
-     *     section="Customer Campaign"
+     *     section="Customer Campaign",
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="With error 'No coupons left' returned when campaign cannot be bought because of lack of coupons. With error 'Not enough points' returned when campaign cannot be bought because of not enough points on customer account. With empty error returned when campaign limits exceeded."
+     *     }
      * )
      *
      * @param Campaign $campaign
@@ -226,13 +248,23 @@ class CustomerCampaignsController extends FOSRestController
     }
 
     /**
+     * Mark specific coupon as used/unused by customer.
+     *
      * @Route(name="oloy.campaign.customer.coupon_usage", path="/customer/campaign/{campaign}/coupon/{coupon}")
      * @Method("POST")
      * @Security("is_granted('MARK_COUPON_AS_USED', campaign)")
      *
      * @ApiDoc(
      *     name="mark coupon as used",
-     *     section="Customer Campaign"
+     *     section="Customer Campaign",
+     *     parameters={
+     *      {"name"="used", "dataType"="true|false", "required"=true, "description"="True if mark as used, false otherwise"},
+     *     },
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when parameter 'used' not provided",
+     *       404="Returned when customer or campaign not found"
+     *     }
      * )
      *
      * @param Request  $request

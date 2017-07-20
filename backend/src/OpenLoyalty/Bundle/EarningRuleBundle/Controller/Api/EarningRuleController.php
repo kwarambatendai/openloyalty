@@ -38,13 +38,19 @@ use OpenLoyalty\Bundle\EarningRuleBundle\Model\EarningRule as BundleEarningRule;
 class EarningRuleController extends FOSRestController
 {
     /**
+     * Method allow to create new earning rule.
+     *
      * @Route(name="oloy.earning_rule.create", path="/earningRule")
      * @Method("POST")
      * @Security("is_granted('CREATE_EARNING_RULE')")
      * @ApiDoc(
      *     name="Create new Earning rule",
      *     section="Earning Rule",
-     *     input={"class" = "OpenLoyalty\Bundle\EarningRuleBundle\Form\Type\CreateEarningRuleFormType", "name" = "earningRule"}
+     *     input={"class" = "OpenLoyalty\Bundle\EarningRuleBundle\Form\Type\CreateEarningRuleFormType", "name" = "earningRule"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors"
+     *     }
      * )
      *
      * @param Request $request
@@ -83,13 +89,20 @@ class EarningRuleController extends FOSRestController
     }
 
     /**
+     * Edit existing earning rule.
+     *
      * @Route(name="oloy.earning_rule.edit", path="/earningRule/{earningRule}")
      * @Method("PUT")
      * @Security("is_granted('EDIT', earningRule)")
      * @ApiDoc(
      *     name="Edit Earning rule",
      *     section="Earning Rule",
-     *     input={"class" = "OpenLoyalty\Bundle\EarningRuleBundle\Form\Type\EditEarningRuleFormType", "name" = "earningRule"}
+     *     input={"class" = "OpenLoyalty\Bundle\EarningRuleBundle\Form\Type\EditEarningRuleFormType", "name" = "earningRule"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *       404="Returned when earning rule does not exist"
+     *     }
      * )
      *
      * @param Request     $request
@@ -138,13 +151,19 @@ class EarningRuleController extends FOSRestController
     }
 
     /**
+     * Method will return earning rule details.
+     *
      * @Route(name="oloy.earning_rule.get", path="/earningRule/{earningRule}")
      * @Route(name="oloy.earning_rule.seller.get", path="/seller/earningRule/{earningRule}")
      * @Method("GET")
      * @Security("is_granted('VIEW', earningRule)")
      * @ApiDoc(
      *     name="get Earning rule",
-     *     section="Earning Rule"
+     *     section="Earning Rule",
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       404="Returned when earning rule does not exist"
+     *     }
      * )
      *
      * @param EarningRule $earningRule
@@ -157,6 +176,8 @@ class EarningRuleController extends FOSRestController
     }
 
     /**
+     * Method will return a complete list of earning rules.
+     *
      * @Route(name="oloy.earning_rule.list", path="/earningRule")
      * @Route(name="oloy.earning_rule.seller.list", path="/seller/earningRule")
      * @Method("GET")
@@ -164,7 +185,14 @@ class EarningRuleController extends FOSRestController
      *
      * @ApiDoc(
      *     name="get earning rules list",
-     *     section="Earning Rule"
+     *     section="Earning Rule",
+     *     parameters={
+     *      {"name"="active", "dataType"="boolean", "required"=false, "description"="Return only active or inactive earning rules"},
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request
@@ -207,6 +235,8 @@ class EarningRuleController extends FOSRestController
     }
 
     /**
+     * Activate or deactivate earning rule.
+     *
      * @Route(name="oloy.earning_rule.activate", path="/earningRule/{earningRule}/activate")
      * @Method("POST")
      * @Security("is_granted('ACTIVATE', earningRule)")
@@ -214,7 +244,12 @@ class EarningRuleController extends FOSRestController
      * @ApiDoc(
      *     name="activate/deactivate earningRule",
      *     section="Earning Rule",
-     *     parameters={{"name"="active", "dataType"="boolean", "required"=true}}
+     *     parameters={{"name"="active", "dataType"="boolean", "required"=true}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when active parameter is not present",
+     *       404="Returned when earning rule does not exist"
+     *     }
      * )
      *
      * @param Request     $request
@@ -222,7 +257,7 @@ class EarningRuleController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function activateLevelAction(Request $request, EarningRule $earningRule)
+    public function activateEarningAction(Request $request, EarningRule $earningRule)
     {
         $activate = $request->request->get('active', null);
         if (null === $activate) {
@@ -241,13 +276,23 @@ class EarningRuleController extends FOSRestController
     }
 
     /**
+     * This method allows to use a custom event earning rule.<br/>
+     * All you need to do is call this api endpoint with proper parameters.
+     *
      * @Route(name="oloy.earning_rule.report_custom_event", path="/{version}/earnRule/{eventName}/customer/{customer}", requirements={"version": "v1"}, defaults={"version":"v1"})
      * @Method("POST")
      *
      * @ApiDoc(
      *     name="report custom event and earn points",
      *     section="Earning Rule",
-     *     requirements={{"name"="version", "description"="api version, v1 required", "default":"v1"}}
+     *     parameters={{"name"="event_name", "dataType":"string", "required":true}},
+     *     requirements={{"name"="version", "description"="api version, v1 required", "default":"v1"}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when earning rule for event does not exist or limit was exceeded. Additional info provided in response.",
+     *       404="Returned when customer does not exist"
+     *     }
+     *
      * )
      *
      * @param $eventName

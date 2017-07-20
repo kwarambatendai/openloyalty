@@ -18,6 +18,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class SecurityController extends FOSRestController
 {
     /**
+     * This method can be used to log out current user. It will revoke all refresh tokens assigned to current user so it will not be possible
+     * to obtain new token based on stored refresh token.
+     *
      * @return \FOS\RestBundle\View\View
      * @Route(name="oloy.security.revoke_refresh_token", path="/token/revoke")
      *

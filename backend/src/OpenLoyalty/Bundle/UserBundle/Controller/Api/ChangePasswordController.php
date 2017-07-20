@@ -23,6 +23,8 @@ use Symfony\Component\HttpFoundation\Request;
 class ChangePasswordController extends FOSRestController
 {
     /**
+     * Change logged user password.
+     *
      * @param Request $request
      * @Route(name="oloy.user.change_password", path="/admin/password/change")
      * @Route(name="oloy.user.change_password_customer", path="/customer/password/change")
@@ -30,7 +32,8 @@ class ChangePasswordController extends FOSRestController
      * @Method("POST")
      * @ApiDoc(
      *     name="Change current password",
-     *     section="Security"
+     *     section="Security",
+     *     input={"name"="", "class"="OpenLoyalty\Bundle\UserBundle\Form\Type\ChangePasswordFormType"}
      * )
      * @Security("is_granted('PASSWORD_CHANGE')")
      *

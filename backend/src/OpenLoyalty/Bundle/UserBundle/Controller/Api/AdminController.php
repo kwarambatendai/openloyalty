@@ -30,6 +30,8 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends FOSRestController
 {
     /**
+     * List all admins.
+     *
      * @Route(name="oloy.user.list", path="/admin")
      * @Method("GET")
      * @Security("is_granted('ROLE_ADMIN')")
@@ -37,7 +39,13 @@ class AdminController extends FOSRestController
      * @ApiDoc(
      *     name="Admins list",
      *     section="Admin",
-     *     parameters={{"name"="strict", "dataType"="boolean", "required"=false, "description"="Strict filtering"}}
+     *     parameters={
+     *      {"name"="strict", "dataType"="boolean", "required"=false, "description"="Strict filtering"},
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request
@@ -65,6 +73,8 @@ class AdminController extends FOSRestController
     }
 
     /**
+     * Method allows to update admin data.
+     *
      * @param Request    $request
      * @param Admin|null $admin
      *
@@ -75,7 +85,12 @@ class AdminController extends FOSRestController
      * @ApiDoc(
      *     name="Edit Admin",
      *     section="Admin",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\AdminFormType", "name" = "admin"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\AdminFormType", "name" = "admin"},
+     *     requirements={{"name"="admin", "description"="admin id which you want to edit, if empty - currently logged in admin will be edited", "dataType"="string"}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      */
     public function editAction(Request $request, Admin $admin = null)
@@ -114,6 +129,8 @@ class AdminController extends FOSRestController
     }
 
     /**
+     * Method allows to create new admin.
+     *
      * @param Request $request
      *
      * @return \FOS\RestBundle\View\View
@@ -123,7 +140,11 @@ class AdminController extends FOSRestController
      * @ApiDoc(
      *     name="Create Admin",
      *     section="Admin",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\AdminFormType", "name" = "admin"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\AdminFormType", "name" = "admin"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      */
     public function createAction(Request $request)
@@ -151,6 +172,8 @@ class AdminController extends FOSRestController
     }
 
     /**
+     * Method will return admin details.
+     *
      * @param Admin|null $admin
      *
      * @return \FOS\RestBundle\View\View
@@ -160,6 +183,7 @@ class AdminController extends FOSRestController
      * @ApiDoc(
      *     name="Get Admin",
      *     section="Admin",
+     *     requirements={{"name"="admin", "description"="admin id which you want to view, if empty - currently logged in admin data will be returned", "dataType"="string"}},
      * )
      */
     public function getAction(Admin $admin = null)

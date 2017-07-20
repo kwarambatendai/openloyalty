@@ -29,13 +29,19 @@ use Symfony\Component\HttpFoundation\Response;
 class SettingsController extends FOSRestController
 {
     /**
+     * Method allow to update system settings.
+     *
      * @Route(name="oloy.settings.edit", path="/settings")
      * @Method("POST")
      * @Security("is_granted('EDIT_SETTINGS')")
      * @ApiDoc(
      *     name="Edit system settings",
      *     section="Settings",
-     *     input={"class" = "OpenLoyalty\Bundle\SettingsBundle\Form\Type\SettingsFormType", "name" = "settings"}
+     *     input={"class" = "OpenLoyalty\Bundle\SettingsBundle\Form\Type\SettingsFormType", "name" = "settings"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @param Request $request
@@ -61,6 +67,8 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method will return all system settings.
+     *
      * @Route(name="oloy.settings.get", path="/settings")
      * @Method("GET")
      * @Security("is_granted('VIEW_SETTINGS')")
@@ -81,6 +89,8 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method will return current translations.
+     *
      * @Route(name="oloy.settings.translations", path="/translations")
      * @Method("GET")
      * @ApiDoc(
@@ -100,6 +110,8 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method will return list of available translations.
+     *
      * @Route(name="oloy.settings.translations_list", path="/admin/translations")
      * @Method("GET")
      * @Security("is_granted('EDIT_SETTINGS')")
@@ -124,6 +136,8 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method will return translations<br/> You must provide translation key, available keys can be obtained by /admin/translations endpoint.
+     *
      * @Route(name="oloy.settings.translations_get", path="/admin/translations/{key}")
      * @Method("GET")
      * @Security("is_granted('EDIT_SETTINGS')")
@@ -144,6 +158,8 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method allows to update specific translations.
+     *
      * @Route(name="oloy.settings.translations_update", path="/admin/translations/{key}")
      * @Method("PUT")
      * @Security("is_granted('EDIT_SETTINGS')")
@@ -180,12 +196,19 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method allows to create new translations.
+     *
      * @Route(name="oloy.settings.translations_create", path="/admin/translations")
      * @Method("POST")
      * @Security("is_granted('EDIT_SETTINGS')")
      * @ApiDoc(
      *     name="Create single translation",
-     *     section="Settings"
+     *     section="Settings",
+     *     input={"class"="OpenLoyalty\Bundle\SettingsBundle\Form\Type\TranslationsFormType", "name"="translation"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @param Request $request
@@ -209,13 +232,15 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method will return some data needed for specific select fields.
+     *
      * @Route(name="oloy.settings.get_form_choices", path="/settings/choices/{type}")
      * @Method("GET")
      * @Security("is_granted('VIEW_SETTINGS_CHOICES')")
      * @ApiDoc(
      *     name="Get choices",
      *     section="Settings",
-     *     parameters={{"name"="type", "description"="allowed types: timezone, language, country", "dataType"="string", "required"=true}}
+     *     parameters={{"name"="type", "description"="allowed types: timezone, language, country, availableFrontendTranslations, earningRuleLimitPeriod", "dataType"="string", "required"=true}}
      * )
      *
      * @param $type

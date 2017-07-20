@@ -22,6 +22,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class SettingsController extends FOSRestController
 {
     /**
+     * Edit plugins settings.
+     *
      * @Route(name="oloy.plugin.edit", path="/plugin")
      * @Method("POST")
      *
@@ -63,6 +65,8 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Get list of available plugins.
+     *
      * @Route(name="oloy.plugin.get", path="/plugin")
      * @Method("GET")
      *

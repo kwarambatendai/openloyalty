@@ -22,13 +22,19 @@ use Symfony\Component\HttpFoundation\Request;
 class CustomerSearchController extends FOSRestController
 {
     /**
+     * This method should be used to search customers.
+     *
      * @Route(name="oloy.user.search", path="/pos/search/customer")
      * @Method("POST")
      * @Security("is_granted('SEARCH_CUSTOMER')")
      * @ApiDoc(
      *     name="Search customer",
      *     section="Customer",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerSearchFormType", "name" = "search"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerSearchFormType", "name" = "search"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors or there are to many results and search query should be more specific",
+     *     }
      * )
      *
      * @param Request $request

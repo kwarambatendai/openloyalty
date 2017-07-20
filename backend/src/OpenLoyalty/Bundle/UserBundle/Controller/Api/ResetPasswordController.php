@@ -20,13 +20,19 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ResetPasswordController extends FOSRestController
 {
     /**
+     * Purpose of this method is to provide "Forgot password" functionality.<br/>Invoking this method will send message tot he user with password reset url.
+     *
      * @param Request $request
      * @Route(name="oloy.user.reset.request", path="/password/reset/request")
      * @Method("POST")
      * @ApiDoc(
      *     name="Request reset password",
      *     section="Security",
-     *     parameters={{"name"="username", "required"=true, "dataType"="string"}}
+     *     parameters={{"name"="username", "required"=true, "dataType"="string"}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when username parameter is not present or resetting password already requested",
+     *     }
      * )
      *
      * @return \FOS\RestBundle\View\View
@@ -63,6 +69,8 @@ class ResetPasswordController extends FOSRestController
     }
 
     /**
+     * Method allows to set new password after reset password requesting.
+     *
      * @param Request $request
      *
      * @return \FOS\RestBundle\View\View
@@ -72,7 +80,11 @@ class ResetPasswordController extends FOSRestController
      *     name="Reset password",
      *     section="Security",
      *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\PasswordResetFormType", "name" = "reset"},
-     *     parameters={{"name"="token", "required"=true, "dataType"="string"}}
+     *     parameters={{"name"="token", "required"=true, "dataType"="string"}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when token parameter is not present or user with such token does not exist",
+     *     }
      * )
      */
     public function resetAction(Request $request)

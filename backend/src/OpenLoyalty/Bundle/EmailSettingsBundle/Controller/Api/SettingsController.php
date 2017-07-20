@@ -23,6 +23,8 @@ use Symfony\Component\HttpFoundation\Response;
 class SettingsController extends FOSRestController
 {
     /**
+     * Method will return complete list of available email settings.
+     *
      * @Route(name="oloy.email_settings.list", path="/settings/emails")
      * @Method("GET")
      * @Security("is_granted('ROLE_ADMIN')")
@@ -43,13 +45,19 @@ class SettingsController extends FOSRestController
     }
 
     /**
+     * Method will return details of particular email setting.
+     *
      * @Route(name="oloy.email_settings.get", path="/settings/emails/{emailId}")
      * @Method("GET")
      * @Security("is_granted('ROLE_ADMIN')")
      *
      * @ApiDoc(
      *     name="Get single system e-mail",
-     *     section="Settings"
+     *     section="Settings",
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when emailId not provided or there is no object with such id"
+     *     }
      * )
      *
      * @param Request $request
@@ -82,7 +90,11 @@ class SettingsController extends FOSRestController
      * @ApiDoc(
      *     name="Update single system e-mail",
      *     section="Settings",
-     *     input={"class" = "OpenLoyalty\Bundle\EmailSettingsBundle\Form\Type\EmailFormType", "name" = "email"}
+     *     input={"class" = "OpenLoyalty\Bundle\EmailSettingsBundle\Form\Type\EmailFormType", "name" = "email"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors"
+     *     }
      * )
      *
      * @param Request $request

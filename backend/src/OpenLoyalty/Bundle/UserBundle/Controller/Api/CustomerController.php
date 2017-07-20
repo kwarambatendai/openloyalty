@@ -46,6 +46,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CustomerController extends FOSRestController
 {
     /**
+     * Method will return list of all customers.
+     *
      * @Route(name="oloy.customer.list", path="/customer")
      * @Method("GET")
      * @Security("is_granted('LIST_CUSTOMERS')")
@@ -53,7 +55,13 @@ class CustomerController extends FOSRestController
      * @ApiDoc(
      *     name="Customers list",
      *     section="Customer",
-     *     parameters={{"name"="strict", "dataType"="boolean", "required"=false, "description"="Strict filtering"}}
+     *     parameters={
+     *      {"name"="strict", "dataType"="boolean", "required"=false, "description"="Strict filtering"},
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request      $request
@@ -125,6 +133,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method will return customer details.
+     *
      * @Route(name="oloy.customer.get", path="/customer/{customer}")
      * @Method("GET")
      * @Security("is_granted('VIEW', customer)")
@@ -168,6 +178,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method will return number of customer registrations per day in last 30 days.
+     *
      * @Route(name="oloy.customer.get_customers_registrations_in_time", path="/customer/registrations/daily")
      * @Method("GET")
      *
@@ -218,6 +230,30 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method will return customer status<br/>
+     * [Example response]<br/>
+     * <pre>.
+     *
+     {
+     "firstName": "Jane",
+     "lastName": "Doe",
+     "customerId": "00000000-0000-474c-b092-b0dd880c07e2",
+     "points": 206,
+     "usedPoints": 100,
+     "expiredPoints": 0,
+     "level": "14.00%",
+     "levelName": "level0",
+     "nextLevel": "15.00%",
+     "nextLevelName": "level1",
+     "transactionsAmountWithoutDeliveryCosts": 3,
+     "transactionsAmountToNextLevel": 17,
+     "averageTransactionsAmount": "3.00",
+     "transactionsCount": 1,
+     "transactionsAmount": 3,
+     "currency": "eur",
+     }
+     * </pre>
+     *
      * @Route(name="oloy.customer.get_status", path="/customer/{customer}/status")
      * @Route(name="oloy.customer.admin_get_status", path="/admin/customer/{customer}/status")
      * @Route(name="oloy.customer.seller_get_status", path="/seller/customer/{customer}/status")
@@ -242,6 +278,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allows to register new customer.
+     *
      * @param Request $request
      * @Route(name="oloy.customer.register_customer", path="/customer/register")
      * @Route(name="oloy.customer.seller.register_customer", path="/seller/customer/register")
@@ -251,7 +289,11 @@ class CustomerController extends FOSRestController
      * @ApiDoc(
      *     name="Register Customer",
      *     section="Customer",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerRegistrationFormType", "name" = "customer"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerRegistrationFormType", "name" = "customer"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @return \FOS\RestBundle\View\View
@@ -323,6 +365,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allow to register by myself.
+     *
      * @param Request $request
      * @Route(name="oloy.customer.self_register_customer", path="/customer/self_register")
      *
@@ -330,7 +374,11 @@ class CustomerController extends FOSRestController
      * @ApiDoc(
      *     name="Register Customer",
      *     section="Customer",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerSelfRegistrationFormType", "name" = "customer"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerSelfRegistrationFormType", "name" = "customer"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @return \FOS\RestBundle\View\View
@@ -366,6 +414,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allows to update customer details.
+     *
      * @param Request         $request
      * @param CustomerDetails $customer
      *
@@ -377,7 +427,11 @@ class CustomerController extends FOSRestController
      * @ApiDoc(
      *     name="Edit Customer",
      *     section="Customer",
-     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerEditFormType", "name" = "customer"}
+     *     input={"class" = "OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerEditFormType", "name" = "customer"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      */
     public function editCustomerAction(Request $request, CustomerDetails $customer)
@@ -433,6 +487,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allows to assign level to customer.
+     *
      * @param Request         $request
      * @param CustomerDetails $customer
      *
@@ -444,7 +500,11 @@ class CustomerController extends FOSRestController
      * @ApiDoc(
      *     name="Add customer to level",
      *     section="Customer",
-     *     parameters={{"name"="levelId", "dataType"="string", "required"=true}}
+     *     parameters={{"name"="levelId", "dataType"="string", "required"=true}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when levelId is not provided or customer does not exist",
+     *     }
      * )
      */
     public function addCustomerToLevelAction(Request $request, CustomerDetails $customer)
@@ -462,6 +522,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allows to assign POS to customer.
+     *
      * @param Request         $request
      * @param CustomerDetails $customer
      *
@@ -474,7 +536,11 @@ class CustomerController extends FOSRestController
      * @ApiDoc(
      *     name="Assign pos to customer",
      *     section="Customer",
-     *     parameters={{"name"="posId", "dataType"="string", "required"=true}}
+     *     parameters={{"name"="posId", "dataType"="string", "required"=true}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when posId is not provided or customer does not exist",
+     *     }
      * )
      */
     public function assignPosToCustomerAction(Request $request, CustomerDetails $customer)
@@ -492,6 +558,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allows to deactivate customer<br/>Inactive customer will not be able to log in.
+     *
      * @Route(name="oloy.customer.deactivate_customer", path="/admin/customer/{customer}/deactivate")
      * @Route(name="oloy.customer.seller.deactivate_customer", path="/seller/customer/{customer}/deactivate")
      * @Method("POST")
@@ -522,6 +590,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allows to activate customer.
+     *
      * @Route(name="oloy.customer.ativate_customer", path="/admin/customer/{customer}/activate")
      * @Route(name="oloy.customer.seller.activate_customer", path="/seller/customer/{customer}/activate")
      * @Method("POST")
@@ -552,6 +622,8 @@ class CustomerController extends FOSRestController
     }
 
     /**
+     * Method allows to activate by activation token.
+     *
      * @Route(name="oloy.customer.ativate_account", path="/customer/activate/{token}")
      * @Method("POST")
      *

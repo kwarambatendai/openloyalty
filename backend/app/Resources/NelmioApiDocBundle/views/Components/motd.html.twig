@@ -1,0 +1,178 @@
+<div class="motd">
+    <h2 style="font-weight: bold">Access</h2>
+    <ul>
+        <li>
+            <h3 style="font-weight: bold;">Api (/api)</h3>
+            <p>Api uses login authentication by JWT</p>
+            <a href="https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#usage" target="_blank">https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#usage</a>
+            <p>To receive a token you need to <strong style="font-weight: bold">POST</strong> data (<strong style="font-weight: bold">_username</strong> and <strong style="font-weight: bold">_password</strong>) to the <i style="font-style: italic; font-weight: bold;">/api/&lt;user_type&gt;/</user_type>login_check</i></p>
+            <p><strong style="font-weight: bold">_username</strong> - user login is his email or email/loyalty card number/phone in case of customer.</p>
+            <p><strong style="font-weight: bold">_password</strong> - password</p>
+            <p><strong style="font-weight: bold">&lt;user_type&gt;</strong> can be admin/customer/seller</p>
+            <p>To refresh a token you need to <strong style="font-weight: bold">POST</strong> data (<strong style="font-weight: bold">refresh_token</strong>) to the <i style="font-style: italic; font-weight: bold;">/api/token/refresh</i></p>
+            <p>To use token you need to send additional <strong style="font-weight: bold">header</strong> field in api query - <strong style="font-weight: bold">Authorization: Bearer {token}</strong>, where {token} is token obtained from the api login method</p>
+            <h3 style="font-weight: bold;">Using api with admin token</h3>
+            <p>There is one additional authorization method available. If there is a api token assigned to admin (via administration panel), such user can use this token in each request instead JWT token.</p>
+            <p>To achieve that, special header <strong>X-AUTH-TOKEN</strong> or query parameter <strong>auth_token</strong> must be provided.</p>
+
+        </li>
+    </ul>
+    <script>
+        $(function() {
+            var token = localStorage.getItem('api_token_jwt');
+            if (token) {
+                appendTokenHeader(token);
+            }
+            $('.sandbox').each(function() {
+                var sandbox = $(this);
+                   var button = $('<button type="button">Login</button>');
+                   button.click(function() {
+                       $('#login-modal').show();
+                   });
+                   $(sandbox).find('.headers').append(
+                       button
+                   );
+           });
+        });
+
+        function authorizationHeaderExists(element) {
+            var headersKeys = $(element).find('.headers .tuple input.key');
+
+            for (var i = 0; i < headersKeys.length; i++) {
+                if ($(headersKeys[i]).val().toLowerCase() == 'authorization') {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function modalHide() {
+            $('#login-modal').hide();
+            $('#login-modal').find('input,select').each(function() {
+                $(this).val('');
+            });
+        }
+        function appendTokenHeader(token) {
+            $('.headers').each(function(){
+                var added = false;
+                $(this).find('.tuple').each(function() {
+                    if ($(this).find('.key').val() == 'Authorization') {
+                        $(this).find('.value').val('Bearer '+token);
+                        added =true;
+                    }
+                });
+                if (!added) {
+                    var tuple = $('<p class="tuple"></p>');
+                    tuple.append('<input type="text" class="key" value="Authorization"/>');
+                    tuple.append('<span>=</span>');
+                    tuple.append('<input type="text" class="value" value="Bearer '+token+'"/>');
+                    $(this).prepend(tuple);
+                }
+            });
+        }
+    </script>
+    <div class="modal fade" tabindex="-1" role="dialog" id="login-modal" style="display: none; position: fixed;
+            left: calc(50% - 300px);
+            top: 100px;
+            z-index: 10000;
+            width: 600px;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid black;
+        }">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" style="position: absolute; right: 0; top: 0;" data-dismiss="modal" aria-label="Close" onclick="modalHide()"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body" style="margin-top: 20px;">
+                    <table style="border: none; margin: 0 auto;">
+                        <tr>
+                            <td colspan="2" style="text-align: left;">
+                                <label class="control-label">User type</label>
+                            </td>
+                            <td colspan="2" style="text-align: right;">
+                                <select id="login_user_type" style="width: 100%;">
+                                    <option value="admin">Admin</option>
+                                    <option value="customer">Customer</option>
+                                    <option value="seller">Seller</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">
+                                <label class="control-label">Login</label>
+                            </td>
+                            <td style="text-align: right;">
+                                <input type="text" id="login_login"/>
+                            </td>
+                            <td style="text-align: left;">
+                                <label class="control-label">Password</label>
+                            </td>
+                            <td style="text-align: right;">
+                                <input type="password" id="login_password"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="modalHide()">Close</button>
+                    <button type="button" class="btn btn-primary" id="login-button">Login</button>
+                    <script>
+                        $('#login-button').click(function() {
+                           $.ajax({
+                               url: '/api/'+$('#login_user_type').val()+'/login_check',
+                               type: 'POST',
+                               dataType: 'json',
+                               data: {
+                                   _username: $('#login_login').val(),
+                                   _password: $('#login_password').val(),
+                               },
+                               success: function(response) {
+                                   if (!response.token) {
+                                       alert('wrong credentials');
+                                   } else {
+                                    window.token = response.token;
+                                       localStorage.setItem("api_token_jwt", window.token);
+
+                                       modalHide();
+                                       $('.sandbox').each(function() {
+                                           var sandbox = $(this);
+                                           appendTokenHeader(window.token);
+                                       });
+
+                                   }
+                               },
+                               error: function() {
+                                   alert('wrong credentials');
+                               }
+                           })
+                        });
+                    </script>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    {#<ul style="background: #fff; position: fixed; top:0; right: 0">#}
+        {#<li>#}
+            {#<small>#}
+                {#Dev log-in as: <a href="#" class="login" data-login="admin@faxcone.com">admin</a>, <a href="#" class="login" data-login="john.doe@faxcone.com">super user</a>, <a href="#" class="login" data-login="kevin.knight@faxcone.com">user</a>#}
+            {#</small>#}
+            {#<script>#}
+                {#$('.motd').on('click', '.login', function (e) {#}
+                    {#var apiUrl = '/app_dev.php/api/login_check';#}
+                    {#var password = 't4jn3';#}
+                    {#var domain = 'faxcone';#}
+
+                    {#e.preventDefault();#}
+                    {#$.post(apiUrl, {'_username': $(this).data('login'), '_password': password, '_domain': domain}, function (response) {#}
+                        {#$('fieldset.headers input.key').val('Authorization');#}
+                        {#$('fieldset.headers input.value').val('Bearer ' + response.token);#}
+                    {#});#}
+                {#});#}
+            {#</script>#}
+        {#</li>#}
+    {#</ul>#}
+</div>

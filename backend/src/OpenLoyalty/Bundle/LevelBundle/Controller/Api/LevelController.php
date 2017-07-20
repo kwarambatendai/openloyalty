@@ -28,6 +28,8 @@ use Symfony\Component\HttpFoundation\Response;
 class LevelController extends FOSRestController
 {
     /**
+     * Method allows to create new level.
+     *
      * @param Request $request
      * @Route(name="oloy.level.create", path="/level/create")
      * @Method("POST")
@@ -35,7 +37,11 @@ class LevelController extends FOSRestController
      * @ApiDoc(
      *     name="Create new Level",
      *     section="Level",
-     *     input={"class" = "OpenLoyalty\Bundle\LevelBundle\Form\Type\LevelFormType", "name" = "level"}
+     *     input={"class" = "OpenLoyalty\Bundle\LevelBundle\Form\Type\LevelFormType", "name" = "level"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors"
+     *     }
      * )
      *
      * @return \FOS\RestBundle\View\View
@@ -67,6 +73,8 @@ class LevelController extends FOSRestController
     }
 
     /**
+     * Method allows to edit existing level.
+     *
      * @param Request $request
      * @param Level   $level
      *
@@ -78,6 +86,10 @@ class LevelController extends FOSRestController
      *     name="Update Level",
      *     section="Level",
      *     input={"class" = "OpenLoyalty\Bundle\LevelBundle\Form\Type\LevelFormType", "name" = "level"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors"
+     *     }
      * )
      */
     public function updateLevelAction(Request $request, Level $level)
@@ -109,6 +121,8 @@ class LevelController extends FOSRestController
     }
 
     /**
+     * Method will return level details.
+     *
      * @Route(name="oloy.level.get", path="/level/{level}")
      * @Route(name="oloy.level.seller.get", path="/seller/level/{level}")
      * @Method("GET")
@@ -117,6 +131,10 @@ class LevelController extends FOSRestController
      * @ApiDoc(
      *     name="get Level",
      *     section="Level",
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       404="Returned when level does not exist"
+     *     }
      * )
      *
      * @param Level $level
@@ -132,6 +150,8 @@ class LevelController extends FOSRestController
     }
 
     /**
+     * Method will return list of customers assigned to this level.
+     *
      * @Route(name="oloy.level.get_customers", path="/level/{level}/customers")
      * @Method("GET")
      * @Security("is_granted('LIST_CUSTOMERS', level)")
@@ -177,6 +197,8 @@ class LevelController extends FOSRestController
     }
 
     /**
+     * Method will return complete list od levels.
+     *
      * @Route(name="oloy.level.list", path="/level")
      * @Route(name="oloy.level.seller.list", path="/seller/level")
      * @Method("GET")
@@ -185,6 +207,12 @@ class LevelController extends FOSRestController
      * @ApiDoc(
      *     name="get Level list",
      *     section="Level",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request
@@ -215,6 +243,8 @@ class LevelController extends FOSRestController
     }
 
     /**
+     * Method allows to activate or deactivate level.
+     *
      * @Route(name="oloy.level.activate", path="/level/{level}/activate")
      * @Method("POST")
      * @Security("is_granted('ACTIVATE', level)")
@@ -222,7 +252,12 @@ class LevelController extends FOSRestController
      * @ApiDoc(
      *     name="activate/deactivate level",
      *     section="Level",
-     *     parameters={{"name"="active", "dataType"="boolean", "required"=true}}
+     *     parameters={{"name"="active", "dataType"="boolean", "required"=true}},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when active parameter is not present",
+     *       404="Returned when level does not exist"
+     *     }
      * )
      *
      * @param Request $request

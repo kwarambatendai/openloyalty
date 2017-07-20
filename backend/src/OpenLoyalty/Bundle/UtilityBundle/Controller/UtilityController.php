@@ -7,6 +7,7 @@ namespace OpenLoyalty\Bundle\UtilityBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Route;
 use FOS\RestBundle\Controller\FOSRestController;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use OpenLoyalty\Bundle\UtilityBundle\Service\CustomerDetailsCsvFormatter;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use OpenLoyalty\Domain\Level\Level;
@@ -23,9 +24,14 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class UtilityController extends FOSRestController
 {
     /**
+     * Method will return csv with customers assigned to specific segment.
+     *
      * @Route(name="oloy.csv.segment.generate", path="/csv/segment/{segment}")
      * @Method("GET")
      * @Security("is_granted('GENERATE_SEGMENT_CSV')")
+     * @ApiDoc(
+     *     section="Utility"
+     * )
      *
      * @param Request $request
      * @param Segment $segment
@@ -44,9 +50,14 @@ class UtilityController extends FOSRestController
     }
 
     /**
+     * Method will return csv with customers assigned to specific level.
+     *
      * @Route(name="oloy.csv.level.generate", path="/csv/level/{level}")
      * @Method("GET")
      * @Security("is_granted('GENERATE_SEGMENT_CSV')")
+     * @ApiDoc(
+     *     section="Utility"
+     * )
      *
      * @param Request $request
      * @param Level   $level

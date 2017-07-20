@@ -131,11 +131,11 @@ broadway:
           hosts: "%elastica_host%:%elastica_port%"
     command_handling:
       dispatch_events: true
+
 nelmio_api_doc:
     sandbox:
-        authentication:
-            name: token
-            delivery: header
+        request_format:
+            method: accept_header
 
 jms_serializer:
     visitors:

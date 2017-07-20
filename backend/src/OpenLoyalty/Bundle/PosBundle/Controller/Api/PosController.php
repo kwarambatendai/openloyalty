@@ -27,13 +27,19 @@ use Symfony\Component\HttpFoundation\Response;
 class PosController extends FOSRestController
 {
     /**
+     * Method allows to create new POS.
+     *
      * @Route(name="oloy.pos.create", path="/pos")
      * @Security("is_granted('CREATE_POS')")
      * @Method("POST")
      * @ApiDoc(
      *     name="Create new POS",
      *     section="POS",
-     *     input={"class" = "OpenLoyalty\Bundle\PosBundle\Form\Type\CreatePosFormType", "name" = "pos"}
+     *     input={"class" = "OpenLoyalty\Bundle\PosBundle\Form\Type\CreatePosFormType", "name" = "pos"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @param Request $request
@@ -66,13 +72,20 @@ class PosController extends FOSRestController
     }
 
     /**
+     * Method allows to update POS data.
+     *
      * @Route(name="oloy.pos.update", path="/pos/{pos}")
      * @Method("PUT")
      * @Security("is_granted('EDIT', pos)")
      * @ApiDoc(
      *     name="Edit POS",
      *     section="POS",
-     *     input={"class" = "OpenLoyalty\Bundle\PosBundle\Form\Type\EditPosFormType", "name" = "pos"}
+     *     input={"class" = "OpenLoyalty\Bundle\PosBundle\Form\Type\EditPosFormType", "name" = "pos"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *       404="Returned when POS does not exits"
+     *     }
      * )
      *
      * @param Request                     $request
@@ -106,6 +119,8 @@ class PosController extends FOSRestController
     }
 
     /**
+     * Method will return POS details.
+     *
      * @Route(name="oloy.pos.get", path="/pos/{pos}")
      * @Route(name="oloy.pos.seller.get", path="/seller/pos/{pos}")
      * @Method("GET")
@@ -125,12 +140,16 @@ class PosController extends FOSRestController
     }
 
     /**
+     * Method will return POS details. <br/>
+     * You need to provide POS identifier.
+     *
      * @Route(name="oloy.pos.get_by_identifier", path="/pos/identifier/{pos}")
      * @Method("GET")
      * @Security("is_granted('VIEW', pos)")
      * @ApiDoc(
      *     name="get POS by identifier",
-     *     section="POS"
+     *     section="POS",
+     *     requirements={{"name": "pos", "required"=true, "description"="POS identifier", "dataType"="string"}}
      * )
      * @ParamConverter(class="OpenLoyalty\Domain\Pos\Pos", name="pos", options={"identifier":true})
      *
@@ -144,13 +163,21 @@ class PosController extends FOSRestController
     }
 
     /**
+     * Method will return complete list of POS.
+     *
      * @Route(name="oloy.pos.list", path="/pos")
      * @Route(name="oloy.pos.seller.list", path="/seller/pos")
      * @Method("GET")
      * @Security("is_granted('LIST_POS')")
      * @ApiDoc(
      *     name="get POS list",
-     *     section="POS"
+     *     section="POS",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request $request

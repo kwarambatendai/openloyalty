@@ -39,6 +39,8 @@ use Symfony\Component\HttpFoundation\Response;
 class TransactionController extends FOSRestController
 {
     /**
+     * Method will return complete list of all transactions.
+     *
      * @Route(name="oloy.transaction.list", path="/transaction")
      * @Route(name="oloy.transaction.customer.list", path="/customer/transaction")
      * @Route(name="oloy.transaction.seller.list", path="/seller/transaction")
@@ -48,6 +50,12 @@ class TransactionController extends FOSRestController
      * @ApiDoc(
      *     name="get transactions list",
      *     section="Transactions",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request      $request
@@ -100,6 +108,8 @@ class TransactionController extends FOSRestController
     }
 
     /**
+     * Method will return logged in customer transactions.
+     *
      * @Route(name="oloy.transaction.seller.list_customer_transactions", path="/seller/transaction/customer/{customer}")
      * @Security("is_granted('LIST_CUSTOMER_TRANSACTIONS', customer)")
      * @Method("GET")
@@ -107,6 +117,12 @@ class TransactionController extends FOSRestController
      * @ApiDoc(
      *     name="get transactions list",
      *     section="Transactions",
+     *     parameters={
+     *      {"name"="page", "dataType"="integer", "required"=false, "description"="Page number"},
+     *      {"name"="perPage", "dataType"="integer", "required"=false, "description"="Number of elements per page"},
+     *      {"name"="sort", "dataType"="string", "required"=false, "description"="Field to sort by"},
+     *      {"name"="direction", "dataType"="asc|desc", "required"=false, "description"="Sorting direction"},
+     *     }
      * )
      *
      * @param Request         $request
@@ -143,6 +159,8 @@ class TransactionController extends FOSRestController
     }
 
     /**
+     * Method will return transactions with provided document number.
+     *
      * @Route(name="oloy.transaction.seller.list_by_document_number", path="/seller/transaction/{documentNumber}")
      * @Method("GET")
      *
@@ -178,6 +196,8 @@ class TransactionController extends FOSRestController
     }
 
     /**
+     * Method wil return available labels.
+     *
      * @Route(name="oloy.transaction.get_item_labels", path="/transaction/item/labels")
      * @Method("GET")
      * @Security("is_granted('LIST_ITEM_LABELS')")
@@ -201,6 +221,8 @@ class TransactionController extends FOSRestController
     }
 
     /**
+     * Method will return transaction details.
+     *
      * @Route(name="oloy.transaction.get", path="/transaction/{transaction}")
      * @Route(name="oloy.transaction.customer.get", path="/customer/transaction/{transaction}")
      * @Method("GET")
@@ -220,13 +242,19 @@ class TransactionController extends FOSRestController
     }
 
     /**
+     * Method allows to register new transaction in system.
+     *
      * @Route(name="oloy.transaction.register", path="/transaction")
      * @Method("POST")
      * @Security("is_granted('CREATE_TRANSACTION')")
      * @ApiDoc(
      *     name="Register transaction",
      *     section="Transactions",
-     *     input={"class" = "OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionFormType", "name" = "transaction"}
+     *     input={"class" = "OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionFormType", "name" = "transaction"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @param Request $request
@@ -273,12 +301,19 @@ class TransactionController extends FOSRestController
     }
 
     /**
+     * Method will return number of points which can be obtained after registering such transaction.<br/>
+     * It will not change anything in the system.
+     *
      * @Route(name="oloy.transaction.simulate", path="/transaction/simulate")
      * @Method("POST")
      * @ApiDoc(
      *     name="Simulate transaction",
      *     section="Transactions",
-     *     input={"class" = "OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionSimulationFormType", "name" = "transaction"}
+     *     input={"class" = "OpenLoyalty\Bundle\TransactionBundle\Form\Type\TransactionSimulationFormType", "name" = "transaction"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @param Request $request
@@ -316,13 +351,19 @@ class TransactionController extends FOSRestController
     }
 
     /**
+     * Method allows to assign customer to specyfic transaction.
+     *
      * @Route(name="oloy.transaction.assign_customer", path="/admin/transaction/customer/assign")
      * @Route(name="oloy.transaction.pos.assign_customer", path="/pos/transaction/customer/assign")
      * @Method("POST")
      * @ApiDoc(
      *     name="Assign customer to transaction",
      *     section="Transactions",
-     *     input={"class" = "OpenLoyalty\Bundle\TransactionBundle\Form\Type\ManuallyAssignCustomerToTransactionFormType", "name" = "assign"}
+     *     input={"class" = "OpenLoyalty\Bundle\TransactionBundle\Form\Type\ManuallyAssignCustomerToTransactionFormType", "name" = "assign"},
+     *     statusCodes={
+     *       200="Returned when successful",
+     *       400="Returned when form contains errors",
+     *     }
      * )
      *
      * @param Request $request
