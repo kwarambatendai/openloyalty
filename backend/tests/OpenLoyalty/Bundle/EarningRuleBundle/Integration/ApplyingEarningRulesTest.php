@@ -86,6 +86,6 @@ class ApplyingEarningRulesTest extends BaseApiTest
 
         $this->assertTrue(count($points) > 0);
         $points = reset($points);
-        $this->assertEquals(144, $points->getValue(), 'There should be 25 points for this transaction, but there are '.$points->getValue());
+        $this->assertEquals(144.9, $points->getValue(), 'There should be 144.9 points for this transaction, but there are '.$points->getValue());
     }
 }

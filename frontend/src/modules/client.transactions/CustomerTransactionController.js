@@ -13,6 +13,7 @@ export default class CustomerTransactionController {
         this.$q = $q;
         this.$filter = $filter;
         this.config = DataService.getConfig();
+        this.$scope.loader = true;
     }
 
     getData() {
@@ -27,6 +28,7 @@ export default class CustomerTransactionController {
                 self.CustomerTransactionService.getTransactions(self.ParamsMap.params(params.url()))
                     .then(
                         res => {
+                            self.$scope.loader = false;
                             self.$scope.transactions = res;
                             params.total(res.total);
                             dfd.resolve(res);

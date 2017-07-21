@@ -35,8 +35,8 @@ class LoadEmailsData extends ContainerAwareFixture implements FixtureInterface, 
                         'key' => $email['template'],
                         'subject' => $email['subject'],
                         'content' => $email['content'],
-                        'senderName' => $this->getContainer()->getParameter('mailer_from_name'),
-                        'senderEmail' => $this->getContainer()->getParameter('mailer_from_address'),
+                        'sender_name' => $this->getContainer()->getParameter('mailer_from_name'),
+                        'sender_email' => $this->getContainer()->getParameter('mailer_from_address'),
                     ]
                 )
             );

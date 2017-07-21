@@ -25,6 +25,7 @@ export default class CustomerCampaignController {
         this.$scope.total = 0;
         this.$scope.totalPages = [];
         this.config = DataService.getConfig();
+        this.$scope.loaderVisible = true;
     }
 
     getStatus() {
@@ -72,6 +73,7 @@ export default class CustomerCampaignController {
                 self.CustomerCampaignService.getAvailable(self.ParamsMap.params(params.url()))
                     .then(
                         res => {
+                            self.$scope.loaderVisible = false;
                             self.$scope.campaigns = res;
                             params.total(res.total);
                             self.available = true;

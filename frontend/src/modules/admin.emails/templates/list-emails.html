@@ -1,0 +1,33 @@
+<box-loader loading="EmailsCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="EmailsCtrl.getData()">
+    <h1>{{ "admin.emails.heading" | translate }}</h1>
+</div>
+<div style="clear:both"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "admin.emails.list" | translate }}</h1>
+    </div>
+
+    <div class="box-content">
+        <box-loader loading="EmailsCtrl.loaderStates.translationList"></box-loader>
+        <table ng-table="EmailsCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'admin.emails.key'|translate">
+                    <span ng-bind="row.key || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'admin.emails.subject'|translate">
+                    <span ng-bind="row.subject || ('global.not_set'|translate)"></span>
+                </td>
+
+                <td data-title="'admin.emails.edit'|translate">
+                    <button type="button" class="button  button-secondary tiny"
+                            ui-sref="admin.emails_edit({emailId: row.id})"
+                            style="margin-bottom:5px;">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

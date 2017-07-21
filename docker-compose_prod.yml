@@ -5,7 +5,7 @@ backend:
     - elk
     - db
     - mail
-  command: bash -c "composer install && bin/console assets:install --symlink && chown -R www-data:www-data /var/www/ol/backend/var && apache2-foreground"
+  command: bash -c "composer install -o --prefer-dist && bin/console assets:install --symlink && chown -R www-data:www-data /var/www/ol/backend/var && apache2-foreground"
   ports:
     - "8181:80"
   extra_hosts:

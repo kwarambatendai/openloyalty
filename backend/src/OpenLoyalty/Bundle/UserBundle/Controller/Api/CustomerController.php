@@ -16,12 +16,12 @@ use OpenLoyalty\Bundle\AuditBundle\Service\AuditManagerInterface;
 use OpenLoyalty\Bundle\UserBundle\Entity\Customer;
 use OpenLoyalty\Bundle\UserBundle\Entity\Seller;
 use OpenLoyalty\Bundle\UserBundle\Entity\User;
+use OpenLoyalty\Bundle\UserBundle\Event\UserRegisteredWithInvitationToken;
 use OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerEditFormType;
 use OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerRegistrationFormType;
 use OpenLoyalty\Bundle\UserBundle\Form\Type\CustomerSelfRegistrationFormType;
 use OpenLoyalty\Domain\Customer\Command\ActivateCustomer;
 use OpenLoyalty\Domain\Customer\Command\AssignPosToCustomer;
-use OpenLoyalty\Domain\Customer\Command\CustomerReferral;
 use OpenLoyalty\Domain\Customer\Command\DeactivateCustomer;
 use OpenLoyalty\Domain\Customer\Command\MoveCustomerToLevel;
 use OpenLoyalty\Domain\Customer\Command\NewsletterSubscription;
@@ -71,7 +71,7 @@ class CustomerController extends FOSRestController
      *
      * @QueryParam(name="firstName", nullable=true, description="firstName"))
      * @QueryParam(name="lastName", nullable=true, description="lastName"))
-     * @QueryParam(name="phone", requirements="[a-zA-Z0-9\-]+", nullable=true, description="phone"))
+     * @QueryParam(name="phone", nullable=true, description="phone"))
      * @QueryParam(name="email", nullable=true, description="email"))
      * @QueryParam(name="loyaltyCardNumber", nullable=true, description="loyaltyCardNumber"))
      * @QueryParam(name="transactionsAmount", nullable=true, description="transactionsAmount"))
@@ -325,7 +325,6 @@ class CustomerController extends FOSRestController
                 $posId = $form->get('posId')->getData();
                 $agreement2 = $form->get('agreement2')->getData();
                 $commandBus = $this->get('broadway.command_handling.command_bus');
-                $referralCustomerEmail = $form->get('referral_customer_email')->getData();
 
                 if (!$posId && $this->isGranted('ROLE_SELLER') && $loggedUser instanceof Seller) {
                     $this->handleSellerWasACreator($loggedUser, $customerId, $user);
@@ -343,8 +342,6 @@ class CustomerController extends FOSRestController
                 $commandBus->dispatch(
                     new ActivateCustomer($customerId)
                 );
-
-                $this->dispatchCustomerReferralEvent($referralCustomerEmail, $customerId);
 
                 if ($agreement2) {
                     $this->dispatchNewsletterSubscriptionEvent($user, $customerId);
@@ -398,6 +395,13 @@ class CustomerController extends FOSRestController
                 $referralCustomerEmail = $form->get('referral_customer_email')->getData();
 
                 $this->handleCustomerRegisteredByHimself($user, $referralCustomerEmail);
+
+                if ($invitationToken = $form->get('invitationToken')->getData()) {
+                    $this->get('event_dispatcher')->dispatch(
+                        UserRegisteredWithInvitationToken::NAME,
+                        new UserRegisteredWithInvitationToken($invitationToken, $customerId)
+                    );
+                }
 
                 return $this->view(
                     [
@@ -649,9 +653,7 @@ class CustomerController extends FOSRestController
             );
             $this->get('oloy.user.user_manager')->updateUser($user);
 
-            $referralCustomerEmail = $user->getReferralCustomerEmail();
             $customerId = new CustomerId($user->getId());
-            $this->dispatchCustomerReferralEvent($referralCustomerEmail, $customerId);
 
             $repo = $this->get('oloy.user.read_model.repository.customer_details');
             $customer = $repo->find($user->getId());
@@ -703,22 +705,6 @@ class CustomerController extends FOSRestController
             $user,
             isset($url) ? $url : null
         );
-    }
-
-    /**
-     * @param string     $referralCustomerEmail
-     * @param CustomerId $customerId
-     */
-    protected function dispatchCustomerReferralEvent($referralCustomerEmail, CustomerId $customerId)
-    {
-        if ($referralCustomerEmail) {
-            $commandBus = $this->get('broadway.command_handling.command_bus');
-            $referralUser = $this->get('oloy.user.user_manager')->findUserByUsernameOrEmail($referralCustomerEmail);
-            $referralUserId = new CustomerId($referralUser->getId());
-            $commandBus->dispatch(
-                new CustomerReferral($customerId, $referralUserId)
-            );
-        }
     }
 
     /**

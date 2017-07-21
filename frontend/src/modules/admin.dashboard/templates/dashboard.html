@@ -46,7 +46,38 @@
         </div>
     </div>
 </div>
-
+<div class="row" style="margin-top:15px">
+    <div class="columns small-12 large-4 medium-6">
+        <div class="card">
+            <div class="card-title text-center">
+                {{"customer.referred.referred_total"|translate}}
+            </div>
+            <div class="card-content text-center">
+                {{stats.referral.total |isEmpty:'-'}}
+            </div>
+        </div>
+    </div>
+    <div class="columns small-12 large-4 medium-6">
+        <div class="card">
+            <div class="card-title text-center">
+                {{"customer.referred.referred_completed"|translate}}
+            </div>
+            <div class="card-content text-center">
+                {{stats.referral.totalCompleted |isEmpty:'-'}}
+            </div>
+        </div>
+    </div>
+    <div class="columns small-12 large-4 medium-6">
+        <div class="card">
+            <div class="card-title text-center">
+                {{"customer.referred.referred_registered"|translate}}
+            </div>
+            <div class="card-content text-center" style="text-transform: uppercase;">
+                {{stats.referral.totalRegistered |isEmpty:'-'}}
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="client-list box">
     <div class="box-title">

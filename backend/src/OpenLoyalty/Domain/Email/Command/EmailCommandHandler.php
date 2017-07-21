@@ -76,8 +76,8 @@ class EmailCommandHandler extends CommandHandler
         $data = $command->getEmailData();
         $email->setSubject($this->getData($data, 'subject'));
         $email->setContent($this->getData($data, 'content'));
-        $email->setSenderName($this->getData($data, 'senderName', $this->getSenderName()));
-        $email->setSenderName($this->getData($data, 'senderEmail', $this->getSenderEmail()));
+        $email->setSenderName($this->getData($data, 'sender_name', $this->getSenderName()));
+        $email->setSenderEmail($this->getData($data, 'sender_email', $this->getSenderEmail()));
         $this->repository->save($email);
 
         $this->eventDispatcher->dispatch(
@@ -99,7 +99,7 @@ class EmailCommandHandler extends CommandHandler
      */
     protected function getSenderEmail(): string
     {
-        return $this->params['from_email'];
+        return $this->params['from_address'];
     }
 
     /**

@@ -41,7 +41,13 @@ class SettingsController extends FOSRestController
         $emailRepository = $this->get('oloy.email.read_model.repository');
         $emails = $emailRepository->getAll();
 
-        return $this->view($emails);
+        return $this->view(
+            [
+                'emails' => $emails,
+                'total' => count($emails),
+            ],
+            200
+        );
     }
 
     /**

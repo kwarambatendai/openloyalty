@@ -3,7 +3,7 @@
  * Copyright © 2017 Divante, Inc. All rights reserved.
  * See LICENSE for license details.
  */
-namespace OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Functions;
+namespace OpenLoyalty\Infrastructure\General\Persistance\Doctrine\Functions;
 
 use Doctrine\Common\Inflector\Inflector;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;

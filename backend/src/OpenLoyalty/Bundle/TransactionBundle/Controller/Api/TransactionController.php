@@ -342,7 +342,7 @@ class TransactionController extends FOSRestController
             $excludedSKUs = $settingsManager->getSettingByKey('excludedDeliverySKUs');
             $transactionDetails->setExcludedDeliverySKUs($excludedSKUs ? $excludedSKUs->getValue() : null);
 
-            $points = $this->get('oloy.earning_rule.applier')->evaluateTransaction($transactionDetails);
+            $points = $this->get('oloy.earning_rule.applier')->evaluateTransaction($transactionDetails, $transactionDetails->getCustomerId());
 
             return $this->view(['points' => $points]);
         }

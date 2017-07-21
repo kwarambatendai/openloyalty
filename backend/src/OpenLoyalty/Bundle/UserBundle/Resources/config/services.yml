@@ -80,6 +80,14 @@ services:
       - '@doctrine.orm.entity_manager'
       - '@broadway.uuid.generator'
       - '@oloy.user.customer.unique_validator'
+  oloy.user.form_handler.invitation:
+    class: OpenLoyalty\Bundle\UserBundle\Form\Handler\InvitationFormHandler
+    arguments:
+      - '@broadway.command_handling.command_bus'
+      - '@oloy.user.read_model.repository.invitation_details'
+      - '@oloy.user.read_model.repository.customer_details'
+      - '@broadway.uuid.generator'
+      - '@oloy.user.email_provider'
   oloy.user.form_handler.seller_registration:
     class: OpenLoyalty\Bundle\UserBundle\Form\Handler\SellerRegistrationFormHandler
     arguments:
@@ -200,3 +208,10 @@ services:
         - '@oloy.user.read_model.repository.customer_details'
       tags:
         - { name: broadway.event_listener, event: oloy.customer.level_changed, method: sendEmail }
+  oloy.user.listener.user_registered_with_invitation_token:
+      class: OpenLoyalty\Bundle\UserBundle\EventListener\UserRegisteredWithInvitationTokenListener
+      arguments:
+        - '@oloy.user.read_model.repository.invitation_details'
+        - '@broadway.command_handling.command_bus'
+      tags:
+        - { name: kernel.event_listener, event: user.invitation.user_registered_with_invitation_token, method: handle }

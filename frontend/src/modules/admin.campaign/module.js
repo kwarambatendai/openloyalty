@@ -66,26 +66,6 @@ angular.module(MODULE_NAME, [])
                     }
                 }
             })
-            .state('admin.add-campaign', {
-                url: "/add-campaign",
-                views: {
-                    'extendTop@': {
-                        templateUrl: './templates/add-campaign-extend-top.html',
-                        controller: 'CampaignController',
-                        controllerAs: 'CampaignCtrl'
-                    },
-                    'main@': {
-                        templateUrl: './templates/add-campaign.html',
-                        controller: 'CampaignController',
-                        controllerAs: 'CampaignCtrl'
-                    },
-                    'extendBottom@': {
-                        templateUrl: './templates/add-campaign-extend-bottom.html',
-                        controller: 'CampaignController',
-                        controllerAs: 'CampaignCtrl'
-                    }
-                }
-            })
             .state('admin.single-campaign', {
                 url: "/single-campaign/:campaignId",
                 views: {
@@ -106,6 +86,27 @@ angular.module(MODULE_NAME, [])
                     }
                 }
             })
+            .state('admin.add-campaign', {
+                url: "/add-campaign",
+                views: {
+                    'extendTop@': {
+                        templateUrl: './templates/add-campaign-extend-top.html',
+                        controller: 'CampaignController',
+                        controllerAs: 'CampaignCtrl'
+                    },
+                    'main@': {
+                        templateUrl: './templates/add-campaign.html',
+                        controller: 'CampaignController',
+                        controllerAs: 'CampaignCtrl'
+                    },
+                    'extendBottom@': {
+                        templateUrl: './templates/add-campaign-extend-bottom.html',
+                        controller: 'CampaignController',
+                        controllerAs: 'CampaignCtrl'
+                    }
+                }
+            })
+
     })
     .run(($templateCache, $http) => {
         let catchErrorTemplate = () => {
@@ -151,7 +152,7 @@ angular.module(MODULE_NAME, [])
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/add-campaign.html`)
+        $http.get(`./build/${MODULE_NAME}/templates/single-campaign.html`)
             .then(
                 response => {
                     $templateCache.put('./templates/single-campaign.html', response.data);

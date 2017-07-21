@@ -7,6 +7,7 @@ namespace OpenLoyalty\Bundle\UserBundle\Service;
 
 use OpenLoyalty\Bundle\EmailBundle\Mailer\OloyMailer;
 use OpenLoyalty\Bundle\EmailBundle\Service\MessageFactoryInterface;
+use OpenLoyalty\Domain\Customer\ReadModel\InvitationDetails;
 use OpenLoyalty\Domain\Level\Level;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use OpenLoyalty\Domain\Campaign\Campaign;
@@ -92,6 +93,19 @@ class EmailProvider
                 'phone' => $registeredUser->getPhone(),
                 'password' => $password,
                 'customer_panel_url' => $this->customerPanelUrl,
+            ]
+        );
+    }
+
+    public function invitationEmail(InvitationDetails $invitationDetails)
+    {
+        $this->sendMessage(
+            'Invitation',
+            $invitationDetails->getRecipientEmail(),
+            'OpenLoyaltyUserBundle:email:invitation.html.twig',
+            [
+                'referrerName' => $invitationDetails->getReferrerName(),
+                'url' => $this->customerPanelUrl.'#!/customer/panel/customer/registration/'.$invitationDetails->getToken(),
             ]
         );
     }

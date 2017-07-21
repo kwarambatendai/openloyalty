@@ -70,7 +70,7 @@ class PointsTransferDetails implements ReadModelInterface, SerializableInterface
     protected $createdAt;
 
     /**
-     * @var int
+     * @var float
      */
     protected $value = 0;
 
@@ -253,11 +253,11 @@ class PointsTransferDetails implements ReadModelInterface, SerializableInterface
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getValue()
     {
-        return $this->value;
+        return round($this->value, 2);
     }
 
     /**
@@ -317,7 +317,7 @@ class PointsTransferDetails implements ReadModelInterface, SerializableInterface
     }
 
     /**
-     * @param int $value
+     * @param float $value
      */
     public function setValue($value)
     {

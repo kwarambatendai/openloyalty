@@ -1,0 +1,48 @@
+<box-loader loading="CustomerCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="CustomerCtrl.getReferredData()">
+    <h1>{{ "customer.referred.heading" | translate }}</h1>
+    <!--<div class="action-buttons">-->
+        <!--<button class="medium button button-septenary-colorized" ui-sref="admin.add-customer">-->
+            <!--{{ "customer.add" | translate }}-->
+        <!--</button>-->
+    <!--</div>-->
+</div>
+<div style="clear:both;"></div>
+
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "customer.referred.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <box-loader loading="CustomerCtrl.loaderStates.customerReferredList"></box-loader>
+        <table ng-table="CustomerCtrl.referredTableParams" class="default clients-list"
+               template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'customer.referred.referrer_id'|translate" sortable="'referrerId'" filter="{referrerId: 'text'}">
+                    <span ng-bind="row.referrerId"></span>
+                </td>
+                <td data-title="'customer.referred.referrer_name'|translate" sortable="'referrerName'" filter="{referrerName: 'text'}">
+                    <span ng-bind="row.referrerName"></span>
+                </td>
+                <td data-title="'customer.referred.recipient_id'|translate" sortable="'phone'" filter="{recipientId: 'text'}">
+                    <span ng-bind="row.recipientId || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'customer.referred.recipient_name'|translate" sortable="'recipientName'" filter="{recipientName: 'text'}">
+                    <span ng-bind="row.recipientName || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'customer.referred.recipient_email'|translate" sortable="'recipientEmail'" filter="{recipientEmail: 'text'}">
+                    <span ng-bind="row.recipientEmail || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'customer.referred.status'|translate" sortable="'status'" filter="{status: 'statusSelect'}">
+                    <span>{{'customer.referred.statuses.'+row.status|translate}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/ng-template" id="ng-table/filters/statusSelect.html">
+    <selectize ng-disabled="$filterRow.disabled" options="CustomerCtrl.referredStatusSelectOptions"
+               config="CustomerCtrl.referredStatusSelectConfig" ng-model="params.filter()[name]">
+    </selectize>
+</script>

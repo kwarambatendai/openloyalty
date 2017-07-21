@@ -34,7 +34,7 @@ abstract class PointsTransfer implements SerializableInterface
     protected $createdAt;
 
     /**
-     * @var int
+     * @var float
      */
     protected $value;
 
@@ -62,7 +62,7 @@ abstract class PointsTransfer implements SerializableInterface
     {
         $this->id = $id;
         Assert::notBlank($value);
-        Assert::integer($value);
+        Assert::numeric($value);
         Assert::min($value, 1);
         $this->value = $value;
         if ($createdAt) {
@@ -92,11 +92,11 @@ abstract class PointsTransfer implements SerializableInterface
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getValue()
     {
-        return $this->value;
+        return (float) $this->value;
     }
 
     /**

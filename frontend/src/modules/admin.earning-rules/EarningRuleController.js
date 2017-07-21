@@ -1,10 +1,12 @@
 export default class EarningRuleController {
-    constructor($scope, $state, AuthService, EarningRuleService, DataService, Flash, NgTableParams, $q, ParamsMap, $stateParams, EditableMap, Validation, $filter) {
+    constructor($scope, $state, AuthService, EarningRuleService, SegmentService, LevelService, DataService, Flash, NgTableParams, $q, ParamsMap, $stateParams, EditableMap, Validation, $filter) {
         if (!AuthService.isGranted('ROLE_ADMIN')) {
             AuthService.logout();
         }
         this.$scope = $scope;
         this.EarningRuleService = EarningRuleService;
+        this.SegmentService = SegmentService;
+        this.LevelService = LevelService;
         this.$state = $state;
         this.Flash = Flash;
         this.$scope.newEarningRule = {};
@@ -13,6 +15,8 @@ export default class EarningRuleController {
         this.NgTableParams = NgTableParams;
         this.DataService = DataService;
         this.promotedEvents = this.DataService.getAvailablePromotedEvents();
+        this.referralTypes = this.DataService.getAvailableReferralTypes();
+        this.referralEvents = this.DataService.getAvailableReferralEvents();
         this.availableEarningRuleLimitPeriods = this.DataService.getAvailableEarningRuleLimitPeriods();
         this.ParamsMap = ParamsMap;
         this.EditableMap = EditableMap;
@@ -21,12 +25,25 @@ export default class EarningRuleController {
         this.$filter = $filter;
         this.$scope.egSkus = ['SKU123'];
         this.config = DataService.getConfig();
+        this.segments = null;
+        this.levels = null;
         this.$scope.skusConfig = {
             delimiter: ';',
             persist: false,
             create: true,
             plugins: ['remove_button'],
         };
+
+        this.target = [
+            {
+                name: this.$filter('translate')('global.segment'),
+                type: 'segment'
+            },
+            {
+                name: this.$filter('translate')('global.level'),
+                type: 'level'
+            }
+        ];
         this.typeConfig = {
             valueField: 'value',
             labelField: 'name',
@@ -34,6 +51,27 @@ export default class EarningRuleController {
             sortField: 'name',
             maxItems: 1,
             onChange: this.eventTypeChanged.bind(this)
+        };
+        this.levelsConfig = {
+            valueField: 'id',
+            labelField: 'name',
+            create: false,
+            plugins: ['remove_button'],
+            sortField: 'name'
+        };
+        this.segmentsConfig = {
+            valueField: 'segmentId',
+            labelField: 'name',
+            create: false,
+            plugins: ['remove_button'],
+            sortField: 'name'
+        };
+        this.targetConfig = {
+            valueField: 'type',
+            labelField: 'name',
+            create: false,
+            sortField: 'name',
+            maxItems: 1
         };
         this.activeConfig = {
             valueField: 'value',
@@ -43,6 +81,20 @@ export default class EarningRuleController {
             maxItems: 1,
         };
         this.promotedEventsConfig = {
+            valueField: 'code',
+            labelField: 'name',
+            create: false,
+            sortField: 'name',
+            maxItems: 1,
+        };
+        this.referralTypesConfig = {
+            valueField: 'code',
+            labelField: 'name',
+            create: false,
+            sortField: 'name',
+            maxItems: 1,
+        };
+        this.referralEventsConfig = {
             valueField: 'code',
             labelField: 'name',
             create: false,
@@ -86,14 +138,35 @@ export default class EarningRuleController {
             {
                 name: this.$filter('translate')('earning_rule.types.multiply_for_product'),
                 value: "multiply_for_product"
+            },
+            {
+                name: this.$filter('translate')('earning_rule.types.referral'),
+                value: "referral"
             }
-        ]
+        ];
 
         this.loaderStates = {
             earningRuleDetails: true,
             earningRuleList: true,
             coverLoader: true
         }
+
+        let segmentPromise = this.SegmentService.getActiveSegments({perPage: 1000})
+            .then(
+                res => {
+                    this.segments = res;
+                }
+            );
+
+        let levelPromise = this.LevelService.getLevels()
+            .then(
+                res => {
+                    this.levels = res;
+                }
+            );
+
+        this.dataPromise = this.$q.all([segmentPromise, levelPromise]);
+
     }
 
     getData() {
@@ -137,6 +210,18 @@ export default class EarningRuleController {
 
     getEarningRuleData() {
         let self = this;
+
+        if (self.earningRuleId) {
+            self.dataPromise.then(self._getEarningRule())
+        } else {
+            self.$state.go('admin.earning-rule-list');
+            let message = self.$filter('translate')('xhr.get_campaign.no_id');
+            self.Flash.create('warning', message);
+        }
+    }
+
+    _getEarningRule() {
+        let self = this;
         self.loaderStates.earningRuleDetails = true;
 
         if (self.earningRuleId) {
@@ -144,6 +229,21 @@ export default class EarningRuleController {
                 .then(
                     res => {
                         self.$scope.earningRule = res;
+                        self.$scope.editableFields = self.EditableMap.humanizeCampaign(res);
+                        if (self.$scope.editableFields.levels && self.$scope.editableFields.levels.length) {
+                            let levels = self.$scope.editableFields.levels;
+                            for (let i in levels) {
+                                let level = _.find(self.levels, {id: levels[i]});
+                            }
+
+                        }
+                        if (self.$scope.editableFields.segments && self.$scope.editableFields.segments.length) {
+                            let segments = self.$scope.editableFields.segments;
+                            for (let i in segments) {
+                                let segment = _.find(self.segments, {id: segments[i]});
+                            }
+
+                        }
                         self.$scope.editableFields = self.EditableMap.humanizeEarningRuleFields(res);
                         self.loaderStates.earningRuleDetails = false;
                     },
@@ -272,4 +372,4 @@ export default class EarningRuleController {
     }
 }
 
-EarningRuleController.$inject = ['$scope', '$state', 'AuthService', 'EarningRuleService', 'DataService', 'Flash', 'NgTableParams', '$q', 'ParamsMap', '$stateParams', 'EditableMap', 'Validation', '$filter'];
+EarningRuleController.$inject = ['$scope', '$state', 'AuthService', 'EarningRuleService', 'SegmentService', 'LevelService', 'DataService', 'Flash', 'NgTableParams', '$q', 'ParamsMap', '$stateParams', 'EditableMap', 'Validation', '$filter'];

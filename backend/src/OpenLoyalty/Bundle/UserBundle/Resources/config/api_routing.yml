@@ -22,3 +22,7 @@ password_reset:
 admin:
     resource: '@OpenLoyaltyUserBundle/Controller/Api/AdminController.php'
     type: annotation
+
+invitation:
+    resource: '@OpenLoyaltyUserBundle/Controller/Api/InvitationController.php'
+    type: annotation

@@ -117,11 +117,6 @@ class CustomerRegistrationFormHandler
                 $form->get('phone')->addError(new FormError($e->getMessage()));
             }
         }
-        if (isset($customerData['referral_customer_email']) && $customerData['referral_customer_email']) {
-            if (!$this->userManager->isCustomerExist($customerData['referral_customer_email'])) {
-                $form->get('referral_customer_email')->addError(new FormError("Referral customer email doesn't exist"));
-            }
-        }
 
         if ($form->getErrors(true)->count() > 0) {
             return $form->getErrors();

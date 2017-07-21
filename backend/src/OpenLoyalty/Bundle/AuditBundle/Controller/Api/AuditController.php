@@ -10,8 +10,11 @@ use FOS\RestBundle\Controller\Annotations\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use OpenLoyalty\Domain\Audit\AuditLogRepository;
+use OpenLoyalty\Domain\Audit\Model\AuditLogSearchCriteria;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Request\ParamFetcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,6 +52,11 @@ class AuditController extends FOSRestController
      *
      * @QueryParam(name="eventType", nullable=true, description="Event type"))
      * @QueryParam(name="entityId", nullable=true, description="Entity ID"))
+     * @QueryParam(name="entityType", nullable=true, description="Entity Type"))
+     * @QueryParam(name="username", nullable=true, description="username"))
+     * @QueryParam(name="auditLogId", nullable=true, description="audit log ID"))
+     * @QueryParam(name="createdAtFrom", nullable=true, description="created at from"))
+     * @QueryParam(name="createdAtTo", nullable=true, description="created at to"))
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -59,17 +67,36 @@ class AuditController extends FOSRestController
         /* @var AuditLogRepository $readRepository */
         $auditRepository = $this->get('oloy.audit.log.repository');
 
+        $criteria = $this->createCriteriaFromParamFetcher($paramFetcher);
+        $form = $this->get('form.factory')->createNamedBuilder('', FormType::class, null, [
+            'allow_extra_fields' => true,
+            'method' => 'GET',
+        ])
+            ->add('createdAtFrom', DateTimeType::class, [
+                'required' => false,
+                'widget' => 'single_text',
+                'format' => DateTimeType::HTML5_FORMAT,
+            ])
+            ->add('createdAtTo', DateTimeType::class, [
+                'required' => false,
+                'widget' => 'single_text',
+                'format' => DateTimeType::HTML5_FORMAT,
+            ])->getForm();
+
+        $form->handleRequest($request);
+
+        $criteria->setCreatedAtFrom($form->get('createdAtFrom')->getData());
+        $criteria->setCreatedAtTo($form->get('createdAtTo')->getData());
+
         $logs = $auditRepository->findAllPaginated(
-            $paramFetcher->get('eventType'),
-            $paramFetcher->get('entityId'),
+            $criteria,
             $pagination->getPage(),
             $pagination->getPerPage(),
             $pagination->getSort(),
             $pagination->getSortDirection()
         );
         $total = $auditRepository->countTotal(
-            $paramFetcher->get('eventType'),
-            $paramFetcher->get('entityId')
+            $this->createCriteriaFromParamFetcher($paramFetcher)
         );
 
         return $this->view(
@@ -78,6 +105,17 @@ class AuditController extends FOSRestController
                 'total' => $total,
             ],
             Response::HTTP_OK
+        );
+    }
+
+    private function createCriteriaFromParamFetcher(ParamFetcher $paramFetcher)
+    {
+        return new AuditLogSearchCriteria(
+            $paramFetcher->get('entityId', null),
+            $paramFetcher->get('entityType', null),
+            $paramFetcher->get('eventType', null),
+            $paramFetcher->get('username', null),
+            $paramFetcher->get('auditLogId', null)
         );
     }
 }

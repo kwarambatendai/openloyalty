@@ -47,7 +47,7 @@
                                     class="required">*</span></label>
                         </div>
                         <div class="medium-10 small-9 columns" form-validation="validate.conditionValue.errors">
-                            <input type="number" min=”0″ step="0.01" ng-model="newLevel.conditionValue"
+                            <input type="number" min=”0″ step="0.5" ng-model="newLevel.conditionValue"
                                    required>
                             <span class="prompt">{{ "level.condition_value_prompt" | translate }} </span>
                         </div>
@@ -57,7 +57,7 @@
                             <label>{{ "level.min_order" | translate }}</label>
                         </div>
                         <div class="medium-10 small-9 columns" form-validation="validate.minOrder.errors">
-                            <input type="number" min=”0″ step="0.01" ng-model="newLevel.minOrder"
+                            <input type="number" min=”0″ step="0.5" ng-model="newLevel.minOrder"
                                    required>
                             <span class="prompt">{{ "level.min_order_prompt" | translate }} </span>
                         </div>

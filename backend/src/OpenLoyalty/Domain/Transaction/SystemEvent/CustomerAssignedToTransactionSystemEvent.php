@@ -30,13 +30,19 @@ class CustomerAssignedToTransactionSystemEvent extends TransactionSystemEvent
      */
     protected $grossValueWithoutDeliveryCosts;
 
-    public function __construct(TransactionId $transactionId, CustomerId $customerId, $grossValue, $grossValueWithoutDeliveryCosts, $amountExcludedForLevel = 0)
+    /**
+     * @var int
+     */
+    protected $transactionsCount;
+
+    public function __construct(TransactionId $transactionId, CustomerId $customerId, $grossValue, $grossValueWithoutDeliveryCosts, $amountExcludedForLevel = 0, $transactionsCount = null)
     {
         parent::__construct($transactionId, []);
         $this->grossValue = $grossValue;
         $this->grossValueWithoutDeliveryCosts = $grossValueWithoutDeliveryCosts;
         $this->customerId = $customerId;
         $this->amountExcludedForLevel = $amountExcludedForLevel;
+        $this->transactionsCount = $transactionsCount;
     }
 
     /**
@@ -69,5 +75,13 @@ class CustomerAssignedToTransactionSystemEvent extends TransactionSystemEvent
     public function getAmountExcludedForLevel()
     {
         return $this->amountExcludedForLevel;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTransactionsCount()
+    {
+        return $this->transactionsCount;
     }
 }

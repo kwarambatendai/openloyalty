@@ -25,7 +25,7 @@ class CampaignWasBoughtByCustomer extends CustomerEvent
     protected $createdAt;
 
     /**
-     * @var int
+     * @var float
      */
     protected $costInPoints;
 
@@ -90,7 +90,7 @@ class CampaignWasBoughtByCustomer extends CustomerEvent
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getCostInPoints()
     {

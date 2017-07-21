@@ -49,7 +49,7 @@ class EmailCommand
         Assert::notEmpty($data['key']);
         Assert::notEmpty($data['subject']);
         Assert::notEmpty($data['content']);
-        Assert::notEmpty($data['senderName']);
-        Assert::notEmpty($data['senderEmail']);
+        Assert::notEmpty($data['sender_name']);
+        Assert::notEmpty($data['sender_email']);
     }
 }

@@ -1,4 +1,7 @@
+
+
 <div class="client-section" ng-init="CustomerCampaignCtrl.getAvailableData(); CustomerCampaignCtrl.getStatus();">
+    <box-loader loading="loaderVisible" cover="1" class="cover client" delay="1000"></box-loader>
     <div class="row">
         <div class="columns small-12">
             <h1 class="">{{ "customer_campaign.list" |translate }}</h1>

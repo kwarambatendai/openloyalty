@@ -133,15 +133,23 @@
             <td><b>{{ "earning_rule.event_name" | translate }}</b></td>
             <td><span>{{ ('earning_rule.promoted_events.'+rule.eventName) | translate }}</span></td>
         </tr>
+        <tr ng-if="rule.type=='referral'">
+            <td><b>{{ "earning_rule.event_name" | translate }}</b></td>
+            <td><span>{{ ('earning_rule.referral_events.'+rule.eventName)|translate }}</span></td>
+        </tr>
         <tr ng-if="rule.type=='custom_event'">
             <td><b>{{ "earning_rule.event_name" | translate }}</b></td>
             <td><span>{{ rule.eventName }}</span></td>
+        </tr>
+        <tr ng-if="rule.type=='referral'">
+            <td><b>{{ "earning_rule.reward_type" | translate }}</b></td>
+            <td><span>{{ ('earning_rule.referral_types.'+rule.rewardType)|translate }}</span></td>
         </tr>
         <tr ng-if="rule.type=='product_purchase' || rule.type=='multiply_for_product'">
             <td><b>{{ "earning_rule.sku" | translate }}</b></td>
             <td><span>{{ rule.skuIds.join(', ') }}</span></td>
         </tr>
-        <tr ng-if="rule.type=='event' || rule.type=='product_purchase' || rule.type=='custom_event'">
+        <tr ng-if="rule.type=='event' || rule.type=='product_purchase' || rule.type=='referral' || rule.type=='custom_event'">
             <td><b>{{ "earning_rule.points_amount" | translate }}</b></td>
             <td><span>{{ rule.pointsAmount }}</span></td>
         </tr>
@@ -162,6 +170,14 @@
         <tr ng-if="rule.type=='multiply_for_product'">
             <td><b>{{ "earning_rule.multiplier" | translate }}</b></td>
             <td><span>{{ rule.multiplier }}</span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "earning_rule.levels" | translate }}</b></td>
+            <td><span style="padding-right: 10px" ng-repeat="(key, value) in rule.segmentNames">{{ value }}</span></td>
+        </tr>
+        <tr>
+            <td><b>{{ "earning_rule.segments" | translate }}</b></td>
+            <td><span style="padding-right: 10px" ng-repeat="(key, value) in rule.levelNames">{{ value }}</span></td>
         </tr>
         </thead>
     </table>

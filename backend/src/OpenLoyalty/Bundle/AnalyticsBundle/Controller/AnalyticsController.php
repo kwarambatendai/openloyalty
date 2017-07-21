@@ -9,7 +9,9 @@ use FOS\RestBundle\Controller\Annotations\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use OpenLoyalty\Domain\Account\ReadModel\PointsTransferDetailsRepository;
+use OpenLoyalty\Domain\Customer\Invitation;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetailsRepository;
+use OpenLoyalty\Domain\Customer\ReadModel\InvitationDetailsRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -114,6 +116,32 @@ class AnalyticsController extends FOSRestController
 
         return $this->view([
             'total' => $repo->countTotal(),
+        ]);
+    }
+
+    /**
+     * @Route(name="oloy.analytics.referrals", path="/admin/analytics/referrals")
+     * @Method("GET")
+     * @Security("is_granted('VIEW_STATS')")
+     * @ApiDoc(
+     *     name="referral statistics",
+     *     section="Analytics"
+     * )
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function getReferralStats()
+    {
+        /** @var InvitationDetailsRepository $repo */
+        $repo = $this->get('oloy.user.read_model.repository.invitation_details');
+
+        $totalCompleted = $repo->countTotal(['status' => Invitation::STATUS_MADE_PURCHASE], true);
+        $totalRegistered = $repo->countTotal(['status' => Invitation::STATUS_REGISTERED], true);
+
+        return $this->view([
+            'total' => $repo->countTotal(),
+            'totalCompleted' => $totalCompleted,
+            'totalRegistered' => $totalRegistered,
         ]);
     }
 }

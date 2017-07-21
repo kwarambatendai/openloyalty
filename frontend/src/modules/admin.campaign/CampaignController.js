@@ -433,7 +433,7 @@ export default class CampaignController {
      * @returns {string}
      */
     generatePhotoRoute() {
-        return getConfig().apiUrl + '/campaign/' + this.$stateParams.campaignId + '/photo'
+        return this.DataService.getConfig().apiUrl + '/campaign/' + this.$stateParams.campaignId + '/photo'
     }
 
     /**

@@ -96,8 +96,8 @@ class Email
             $data['key'],
             $data['subject'],
             $data['content'],
-            $data['senderName'],
-            $data['senderEmail']
+            $data['sender_name'],
+            $data['sender_email']
         );
     }
 

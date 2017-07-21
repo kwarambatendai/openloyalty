@@ -9,6 +9,7 @@ import ModalDirective from './component/global/modal/ModalDirective';
 import DatepickerDirective from './component/global/datepicker/DatepickerDirective';
 import FormValidationDirective from './component/global/validation/FormValidationDirective';
 import CsvUploadDirective from './component/global/csv/CsvUploadDirective';
+import BoxLoaderDirective from './component/global/boxLoader/BoxLoaderDirective';
 import SecurityController from './component/global/security/SecurityController';
 import SecurityService from './component/global/security/SecurityService';
 import DataService from './component/global/data/DataService';
@@ -43,6 +44,7 @@ angular.module('OpenLoyalty', [
     'ng-sortable',
     'pascalprecht.translate',
     'selectize',
+    'angular-loading-bar',
     'pos.login',
     'pos.campaigns',
     'pos.customers',
@@ -52,9 +54,10 @@ angular.module('OpenLoyalty', [
     'pos.transactions'
 ])
 
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider, $translateProvider, $locationProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider, $translateProvider, $locationProvider, cfpLoadingBarProvider) {
         let config = window.OpenLoyaltyConfig;
 
+        cfpLoadingBarProvider.includeSpinner = false;
         $locationProvider.hashPrefix('!');
         $translateProvider.useLoader('TranslationLoader');
         $translateProvider.preferredLanguage('en');
@@ -185,6 +188,7 @@ angular.module('OpenLoyalty', [
     .directive('formValidation', () => new FormValidationDirective())
     .directive('csvUpload', () => new CsvUploadDirective())
     .directive('checkbox', () => new CheckboxDirective())
+    .directive('boxLoader', BoxLoaderDirective.create)
 
     .service('EditableMap', EditableMap)
     .service('ParamsMap', ParamsMap)

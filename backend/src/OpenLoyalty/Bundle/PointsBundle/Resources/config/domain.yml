@@ -56,17 +56,17 @@ services:
     class: 'OpenLoyalty\Infrastructure\Account\SystemEvent\Listener\ApplyEarningRuleToEventListener'
     arguments:
       - '@broadway.command_handling.command_bus'
+      - '@oloy.points.account.repository.account_details'
       - '@broadway.uuid.generator'
       - '@oloy.earning_rule.applier'
-      - '@oloy.points.account.repository.account_details'
       - '@oloy.earning_rule.validator'
     tags:
       - { name: broadway.event_listener, event: oloy.account.created, method: onCustomerRegistered}
       - { name: broadway.event_listener, event: oloy.transaction.customer_first_transaction, method: onFirstTransaction}
       - { name: broadway.event_listener, event: oloy.customer.logged_in, method: onCustomerLogin}
-      - { name: broadway.event_listener, event: oloy.customer.referral, method: onCustomerReferral }
       - { name: broadway.event_listener, event: oloy.customer.newsletter_subscription, method: onNewsletterSubscription }
       - { name: broadway.event_listener, event: oloy.account.custom_event_occured, method: onCustomEvent }
+      - { name: broadway.event_listener, event: oloy.invitation.customer_attached, method: onCustomerAttachedToInvitation }
   oloy.account.spend_points_on_campaign_listener:
       class: OpenLoyalty\Infrastructure\Account\Event\Listener\SpendPointsOnCampaignListener
       arguments:

@@ -1,4 +1,4 @@
-<box-loader loading="EarningRuleCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+<box-loader loading="EarningRuleCtrl.loaderStates.earningRuleDetails" cover="1" class="cover" delay="1000"></box-loader>
 
 <div class="heading" ng-init="EarningRuleCtrl.getEarningRuleData()">
     <h1>{{ "earning_rule.edit_heading" | translate }}</h1>
@@ -66,7 +66,7 @@
                                     class="required">*</span></label>
                         </div>
                         <div class="medium-10 small-9 columns" form-validation="validate.pointValue.errors">
-                            <input type="number" ng-model="editableFields.pointValue">
+                            <input type="number" ng-model="editableFields.pointValue"  step="0.5">
                             <span class="prompt">{{ "earning_rule.point_value_prompt" | translate }}</span>
                         </div>
                     </div>
@@ -162,6 +162,31 @@
                             <span class="prompt">{{ "earning_rule.custom_event_name_prompt" | translate }}</span>
                         </div>
                     </div>
+                    <div class="row" ng-if="editableFields.type=='referral'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.event_name" | translate }}<span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.eventName.errors">
+                            <selectize options="EarningRuleCtrl.referralEvents"
+                                       config="EarningRuleCtrl.referralEventsConfig"
+                                       ng-model="editableFields.eventName"></selectize>
+                            <span class="prompt">{{ "earning_rule.event_name_prompt" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="editableFields.type=='referral'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.reward" | translate }}<span
+                                    class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.rewardType.errors">
+                            <selectize options="EarningRuleCtrl.referralTypes"
+                                       config="EarningRuleCtrl.referralTypesConfig"
+                                       ng-model="editableFields.rewardType"></selectize>
+                            <span class="prompt">{{ "earning_rule.reward_prompt" | translate }}</span>
+                        </div>
+                    </div>
+
                     <div class="row"
                          ng-if="editableFields.type=='product_purchase' || editableFields.type=='multiply_for_product'">
                         <div class="medium-2 small-3 columns">
@@ -173,13 +198,13 @@
                         </div>
                     </div>
                     <div class="row"
-                         ng-if="editableFields.type=='event' || editableFields.type=='custom_event' || editableFields.type=='product_purchase'">
+                         ng-if="editableFields.type=='event' || editableFields.type=='custom_event' || editableFields.type=='referral' || editableFields.type=='product_purchase'">
                         <div class="medium-2 small-3 columns">
                             <label>{{ "earning_rule.points_amount" | translate }} <span
                                     class="required">*</span></label>
                         </div>
                         <div class="medium-10 small-9 columns" form-validation="validate.pointsAmount.errors">
-                            <input type="number" ng-model="editableFields.pointsAmount">
+                            <input type="number" ng-model="editableFields.pointsAmount" step="0.5">
                             <span class="prompt">{{ "earning_rule.points_amount_prompt" | translate }}</span>
                         </div>
                     </div>
@@ -222,7 +247,7 @@
                                     class="required">*</span></label>
                         </div>
                         <div class="medium-10 small-9 columns" form-validation="validate.multiplier.errors">
-                            <input type="number" ng-model="editableFields.multiplier">
+                            <input type="number" step="0.5" ng-model="editableFields.multiplier">
                             <span class="prompt">{{ "earning_rule.multiplier_prompt" | translate }}</span>
                         </div>
                     </div>
@@ -262,6 +287,44 @@
                         </div>
                     </div>
                 </fieldset>
+                <fieldset class="fieldset">
+                    <legend>Target</legend>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.target_type" | translate }} </label>
+                        </div>
+                        <div class="medium-10 small-9 columns">
+                            <selectize config="EarningRuleCtrl.targetConfig" options="EarningRuleCtrl.target"
+                                       ng-model="editableFields.target"></selectize>
+                            <span class="prompt">{{ "earning_rule.target_type_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="editableFields.target=='level'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.levels" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.levels.errors">
+                            <selectize config="EarningRuleCtrl.levelsConfig"
+                                       options="EarningRuleCtrl.levels"
+                                       ng-model="editableFields.levels">
+                            </selectize>
+                            <span class="prompt">{{ "earning_rule.levels_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="editableFields.target=='segment'">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "earning_rule.segments" | translate }} <span class="required">*</span></label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.segments.errors">
+                            <selectize config="EarningRuleCtrl.segmentsConfig"
+                                       options="EarningRuleCtrl.segments"
+                                       ng-model="editableFields.segments">
+                            </selectize>
+                            <span class="prompt">{{ "earning_rule.segments_prompt" | translate }} </span>
+                        </div>
+                    </div>
+                </fieldset>
+
             </div>
         </div>
     </div>

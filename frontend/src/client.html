@@ -27,6 +27,8 @@
     <link href="./node_modules/selectize/dist/css/selectize.css">
     <link href="./node_modules/jquery-datetimepicker/jquery.datetimepicker.css">
     <link href="./node_modules/jsoneditor/dist/jsoneditor.min.css">
+    <link href="./node_modules/angular-loading-bar/build/loading-bar.css">
+
     <!-- endbuild -->
 
     <!-- build:js assets.js -->
@@ -57,6 +59,8 @@
     <script src="./node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
     <script src="./node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
     <script src="./node_modules/ng-jsoneditor/ng-jsoneditor.min.js"></script>
+    <script src="./node_modules/angular-loading-bar/build/loading-bar.js"></script>
+
 
 
     <!-- endbuild -->
@@ -77,8 +81,9 @@
 
 <body ng-app="OpenLoyalty" ng-controller="RootController as RootCtrl" ng-class="RootCtrl.getViewClass()" ng-cloak>
 
+</div>
 <!--RootCtrl.loading-->
-<section class="loader" ng-class="{'show': RootCtrl.loading }">
+<section class="loader" ng-class="{'show': RootCtrl.loadingParts }">
     <div class="loader-wrapper">
         <div class="logo">
             <div ng-bind-html="RootCtrl.logo"></div>

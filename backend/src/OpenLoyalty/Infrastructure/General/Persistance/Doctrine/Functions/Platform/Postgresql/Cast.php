@@ -3,11 +3,11 @@
  * Copyright © 2017 Divante, Inc. All rights reserved.
  * See LICENSE for license details.
  */
-namespace OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Functions\Platform\Postgresql;
+namespace OpenLoyalty\Infrastructure\General\Persistance\Doctrine\Functions\Platform\Postgresql;
 
 use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\SqlWalker;
-use OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Functions\Cast as DqlFunction;
+use OpenLoyalty\Infrastructure\General\Persistance\Doctrine\Functions\Cast as DqlFunction;
 
 /**
  * Class Cast.

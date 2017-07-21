@@ -10,7 +10,7 @@ angular.module(MODULE_NAME, [])
                 url: "/earningRules",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-earning-rules.html',
+                        templateUrl: './templates/customer-earning-rules-extend-top.html',
                         controller: 'CustomerEarningRulesController',
                         controllerAs: 'CustomerEarningRulesCtrl'
                     },
@@ -20,7 +20,7 @@ angular.module(MODULE_NAME, [])
                         controllerAs: 'CustomerEarningRulesCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-earning-rules.html',
+                        templateUrl: './templates/customer-earning-rules-extend-bottom.html',
                         controller: 'CustomerEarningRulesController',
                         controllerAs: 'CustomerEarningRulesCtrl'
                     }

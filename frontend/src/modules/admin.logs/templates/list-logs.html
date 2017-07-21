@@ -1,0 +1,62 @@
+<box-loader loading="LogsCtrl.loaderStates.coverLoader" cover="1" class="cover" delay="1000"></box-loader>
+
+<div class="heading" ng-init="LogsCtrl.getData()">
+    <h1>{{ "admin.logs.heading" | translate }}</h1>
+
+</div>
+<div style="clear:both"></div>
+<div class="client-list box">
+    <div class="box-title">
+        <h1 class="text-left">{{ "admin.logs.list" | translate }}</h1>
+    </div>
+    <div class="box-content">
+        <div class="row">
+        <div class="columns medium-12">
+            <fieldset class="fieldset fieldset-in">
+                <legend>{{ "admin.logs.search_by_date" | translate }}</legend>
+                <div class="row">
+                    <div class="small-3 medium-1 columns">
+                        <label>{{ "admin.logs.from" | translate }} </label>
+                    </div>
+                    <div class="small-4 medium-2 columns">
+                        <input type="text" ng-model="LogsCtrl.date.from" datepicker>
+                    </div>
+                    <div class="small-3 medium-1 columns">
+                        <label>{{ "admin.logs.to" | translate }} </label>
+                    </div>
+                    <div class="small-4 medium-4 columns" style="float: left;">
+                        <input type="text" ng-model="LogsCtrl.date.to" datepicker>
+                    </div>
+                    <div class="small-4 medium-4 columns">
+                        <span ><button class="button button-septenary-colorized" ng-click="LogsCtrl.getDataFromPeriod()" >Search</button></span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        </div>
+        <div id="wt"></div>
+        <box-loader loading="LogsCtrl.loaderStates.translationList"></box-loader>
+        <table ng-table="LogsCtrl.tableParams" class="default" template-pagination="templatePagination.html">
+            <tr ng-repeat="row in $data">
+                <td data-title="'admin.logs.created_at'|translate">
+                    <span ng-bind="( row.createdAt | date: 'yyyy-MM-dd HH:mm') || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'admin.logs.entity_type'|translate" filter="{entityType: 'text'}">
+                    <span ng-bind="row.entityType || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'admin.logs.event_type'|translate" filter="{eventType: 'text'}">
+                    <span ng-bind="row.eventType || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'admin.logs.username'|translate" filter="{username: 'text'}">
+                    <span ng-bind="row.username || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'admin.logs.audit_log_id'|translate" filter="{auditLogId: 'text'}">
+                    <span ng-bind="row.auditLogId.auditLogId || ('global.not_set'|translate)"></span>
+                </td>
+                <td data-title="'admin.logs.entity_id'|translate" filter="{entityId: 'text'}">
+                    <span ng-bind="row.entityId || ('global.not_set'|translate)"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

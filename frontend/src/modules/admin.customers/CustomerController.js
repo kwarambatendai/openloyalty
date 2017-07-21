@@ -89,6 +89,7 @@ export default class CustomerController {
             customerTabs: true,
             customerDetails: true,
             customerList: true,
+            customerReferredList: true,
             customerPOS: true,
             customerLevel: true,
             campaignList: true,
@@ -101,6 +102,34 @@ export default class CustomerController {
             assignPos: false,
             deactivateCustomer: false
         }
+
+        this.referredStatusSelectOptions = [{
+            value: '',
+            label: $filter('translate')('customer.referred.statuses.all')
+        },
+            {
+                value: 'invited',
+                label: $filter('translate')('customer.referred.statuses.invited')
+            },
+            {
+                value: 'registered',
+                label: $filter('translate')('customer.referred.statuses.registered')
+            },
+            {
+                value: 'made_purchase',
+                label: $filter('translate')('customer.referred.statuses.made_purchase')
+            }
+        ];
+
+        this.referredStatusSelectConfig = {
+            valueField: 'value',
+            labelField: 'label',
+            create: false,
+            sortField: 'label',
+            searchField: 'label',
+            maxItems: 1,
+            allowEmptyOption: true
+        };
     }
 
     getData() {
@@ -128,6 +157,44 @@ export default class CustomerController {
                             let message = self.$filter('translate')('xhr.get_customers.error');
                             self.Flash.create('danger', message);
                             self.loaderStates.customerList = false;
+                            self.loaderStates.coverLoader = false;
+                            dfd.reject();
+                        }
+                    );
+
+                return dfd.promise;
+            }
+        });
+    }
+
+    getReferredData() {
+        let self = this;
+
+        self.referredTableParams = new self.NgTableParams({
+            count: self.config.perPage,
+            sorting: {
+                createdAt: 'desc'
+            }
+        }, {
+            getData: function (params) {
+                let dfd = self.$q.defer();
+                self.loaderStates.customerReferredList = true;
+                self.CustomerService.getReferredCustomers(self.ParamsMap.params(params.url()))
+                    .then(
+                        res => {
+                            self.referredTotal = res.total;
+                            self.referredCompleted = res.additional ? res.additional.totalCompleted: '';
+                            self.referredRegistered = res.additional ? res.additional.totalRegistered: '';
+                            self.loaderStates.customerReferredList = false;
+                            self.loaderStates.coverLoader = false;
+                            self.$scope.referredCustomers = res;
+                            params.total(res.total);
+                            dfd.resolve(res)
+                        },
+                        () => {
+                            let message = self.$filter('translate')('xhr.get_referred_customers.error');
+                            self.Flash.create('danger', message);
+                            self.loaderStates.customerReferredList = false;
                             self.loaderStates.coverLoader = false;
                             dfd.reject();
                         }

@@ -16,6 +16,7 @@ class RemoveProjectionsCommand extends ContainerAwareCommand
 {
     protected $repos = [
         'oloy.user.read_model.repository.customer_details',
+        'oloy.user.read_model.repository.invitation_details',
         'oloy.points.account.repository.account_details',
         'oloy.points.account.repository.points_transfer_details',
         'oloy.user.read_model.repository.customers_belonging_to_one_level',

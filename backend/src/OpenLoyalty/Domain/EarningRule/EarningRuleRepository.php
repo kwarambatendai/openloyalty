@@ -11,11 +11,13 @@ interface EarningRuleRepository
 
     public function findAll();
 
-    public function findByCustomEventName($eventName);
+    public function findByCustomEventName($eventName, array $segmentIds = [], $levelId = null, \DateTime $date = null);
+
+    public function findReferralByEventName($eventName, array $segmentIds = [], $levelId = null, \DateTime $date = null);
 
     public function findAllActive(\DateTime $date = null);
 
-    public function findAllActiveEventRules($eventName = null, \DateTime $date = null);
+    public function findAllActiveEventRules($eventName = null, array $segmentIds = [], $levelId = null, \DateTime $date = null);
 
     public function findAllPaginated($page = 1, $perPage = 10, $sortField = null, $direction = 'DESC');
 
@@ -26,4 +28,6 @@ interface EarningRuleRepository
     public function remove(EarningRule $earningRule);
 
     public function isCustomEventEarningRuleExist($eventName, $currentEarningRuleId = null);
+
+    public function findAllActiveEventRulesBySegmentsAndLevels(\DateTime $date = null, array $segmentIds = [], $levelId = null);
 }

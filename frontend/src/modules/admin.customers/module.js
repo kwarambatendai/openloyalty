@@ -26,6 +26,26 @@ angular.module(MODULE_NAME, [])
                     }
                 },
             })
+            .state('admin.referred-customers-list', {
+                url: "/referred-customers-list",
+                views: {
+                    'extendTop@': {
+                        templateUrl: './templates/referred-customers-list-extend-top.html',
+                        controller: 'CustomerController',
+                        controllerAs: 'CustomerCtrl'
+                    },
+                    'main@': {
+                        templateUrl: './templates/referred-customers-list.html',
+                        controller: 'CustomerController',
+                        controllerAs: 'CustomerCtrl'
+                    },
+                    'extendBottom@': {
+                        templateUrl: './templates/referred-customers-list-extend-bottom.html',
+                        controller: 'CustomerController',
+                        controllerAs: 'CustomerCtrl'
+                    }
+                },
+            })
             .state('admin.add-customer', {
                 url: "/add-customer",
                 views: {
@@ -174,6 +194,9 @@ angular.module(MODULE_NAME, [])
 
         $templateCache.put('./templates/customers-list-extend-top.html', '');
         $templateCache.put('./templates/customers-list-extend-bottom.html', '');
+
+        $templateCache.put('./templates/referred-customers-list-extend-top.html', '');
+        $templateCache.put('./templates/referred-customers-list-extend-bottom.html', '');
 
         $templateCache.put('./templates/add-customer-extend-top.html', '');
         $templateCache.put('./templates/add-customer-extend-bottom.html', '');

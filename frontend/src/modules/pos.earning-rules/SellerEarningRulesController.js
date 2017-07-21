@@ -13,6 +13,7 @@ export default class SellerEarningRulesController {
         this.$filter = $filter;
         this.$q = $q;
         this.ParamsMap = ParamsMap;
+        this.loaderVisible = true;
         this.types = {
             "points": $filter('translate')('earning_rule.types.points'),
             "event": $filter('translate')('earning_rule.types.event'),
@@ -32,12 +33,14 @@ export default class SellerEarningRulesController {
                     .then(
                         res => {
                             self.$scope.earningRules = res;
+                            self.loaderVisible = false;
                             params.total(res.total);
                             dfd.resolve(res);
                         },
                         () => {
                             let message = self.$filter('translate')('xhr.get_earning_rules.error');
                             self.Flash.create('danger', message);
+                            self.loaderVisible = false;
                             dfd.reject();
                         }
                     );

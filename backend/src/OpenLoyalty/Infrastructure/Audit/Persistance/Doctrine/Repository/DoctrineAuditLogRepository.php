@@ -10,6 +10,7 @@ use Doctrine\ORM\QueryBuilder;
 use OpenLoyalty\Domain\Audit\AuditLog;
 use OpenLoyalty\Domain\Audit\AuditLogId;
 use OpenLoyalty\Domain\Audit\AuditLogRepository;
+use OpenLoyalty\Domain\Audit\Model\AuditLogSearchCriteria;
 
 /**
  * Class DoctrineAuditRepository.
@@ -52,34 +53,31 @@ class DoctrineAuditLogRepository extends EntityRepository implements AuditLogRep
     }
 
     /**
-     * @param string $eventType
-     * @param int    $entityId
+     * @param AuditLogSearchCriteria $criteria
      *
      * @return int
      */
-    public function countTotal($eventType, $entityId)
+    public function countTotal(AuditLogSearchCriteria $criteria)
     {
         $query = $this->createQueryBuilder('a');
         $query->select('count(a.auditLogId)');
 
-        $this->decorateParams($query, $eventType, $entityId);
+        $this->decorateParams($query, $criteria);
 
         return $query->getQuery()->getSingleScalarResult();
     }
 
     /**
-     * @param string $eventType
-     * @param int    $entityId
-     * @param int    $page
-     * @param int    $perPage
-     * @param null   $sortField
-     * @param string $direction
+     * @param AuditLogSearchCriteria $criteria
+     * @param int                    $page
+     * @param int                    $perPage
+     * @param null                   $sortField
+     * @param string                 $direction
      *
      * @return array
      */
     public function findAllPaginated(
-        $eventType,
-        $entityId,
+        AuditLogSearchCriteria $criteria,
         $page = 1,
         $perPage = 10,
         $sortField = null,
@@ -87,7 +85,7 @@ class DoctrineAuditLogRepository extends EntityRepository implements AuditLogRep
     ) {
         $qb = $this->createQueryBuilder('a');
 
-        $this->decorateParams($qb, $eventType, $entityId);
+        $this->decorateParams($qb, $criteria);
 
         $qb->setMaxResults($perPage);
         $qb->setFirstResult(($page - 1) * $perPage);
@@ -96,19 +94,33 @@ class DoctrineAuditLogRepository extends EntityRepository implements AuditLogRep
     }
 
     /**
-     * @param QueryBuilder $query
-     * @param string       $eventType
-     * @param int          $entityId
+     * @param QueryBuilder           $query
+     * @param AuditLogSearchCriteria $criteria
      *
      * @return QueryBuilder
      */
-    protected function decorateParams(QueryBuilder $query, $eventType, $entityId)
+    protected function decorateParams(QueryBuilder $query, AuditLogSearchCriteria $criteria)
     {
-        if ($eventType) {
-            $query->andWhere('a.eventType = :eventType')->setParameter('eventType', $eventType);
+        if ($criteria->getEventType()) {
+            $query->andWhere('a.eventType = :eventType')->setParameter('eventType', $criteria->getEventType());
         }
-        if ($entityId) {
-            $query->andWhere('a.entityId = :entityId')->setParameter('entityId', $entityId);
+        if ($criteria->getEntityId()) {
+            $query->andWhere('a.entityId = :entityId')->setParameter('entityId', $criteria->getEntityId());
+        }
+        if ($criteria->getEntityType()) {
+            $query->andWhere('a.entityType = :entityType')->setParameter('entityType', $criteria->getEntityType());
+        }
+        if ($criteria->getAuditLogId()) {
+            $query->andWhere('a.auditLogId = :auditLogId')->setParameter('auditLogId', $criteria->getAuditLogId());
+        }
+        if ($criteria->getUsername()) {
+            $query->andWhere('a.username = :username')->setParameter('username', $criteria->getUsername());
+        }
+        if ($criteria->getCreatedAtFrom()) {
+            $query->andWhere('a.createdAt >= :createdAtFrom')->setParameter('createdAtFrom', $criteria->getCreatedAtFrom());
+        }
+        if ($criteria->getCreatedAtTo()) {
+            $query->andWhere('a.createdAt <= :createdAtTo')->setParameter('createdAtTo', $criteria->getCreatedAtTo());
         }
 
         return $query;

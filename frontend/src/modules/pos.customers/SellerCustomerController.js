@@ -66,6 +66,10 @@ export default class SellerCustomerController {
         this.NgTableParams = NgTableParams;
         this.$scope.customers = null;
         this.$q = $q;
+        this.loaderVisible = {
+            editCustomer: true,
+            singleCustomer: true
+        };
 
         if (this.customerId && this.$state.current.name === 'seller.panel.single-customer') {
             let self = this;
@@ -256,11 +260,16 @@ export default class SellerCustomerController {
                         self.$scope.editableFields = self.EditableMap.humanizeCustomer(res);
                         self.$scope.showAddress = !(_.isEmpty(self.$scope.editableFields.address));
                         self.$scope.showCompany = !(_.isEmpty(self.$scope.editableFields.company));
+                        self.loaderVisible.editCustomer = false;
+                        self.loaderVisible.singleCustomer = false;
                     },
                     () => {
                         self.$state.go('seller.panel.customer-search');
                         let message = self.$filter('translate')('xhr.get_customer.cant_edit');
                         self.Flash.create('danger', message);
+                        self.loaderVisible.editCustomer = false;
+                        self.loaderVisible.singleCustomer = false;
+
                     }
                 );
             self.SellerCustomerService.getCustomerStatus(self.customerId)

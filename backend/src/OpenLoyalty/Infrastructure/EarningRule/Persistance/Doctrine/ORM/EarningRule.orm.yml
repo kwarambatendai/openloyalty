@@ -17,6 +17,12 @@ OpenLoyalty\Domain\EarningRule\EarningRule:
       type: boolean
       options:
         default: 0
+    levels:
+      type: earning_rule_levels_json_array
+      nullable: true
+    segments:
+      type: earning_rule_segments_json_array
+      nullable: true
     allTimeActive:
       type: boolean
       column: all_time_active

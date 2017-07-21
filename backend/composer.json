@@ -41,10 +41,10 @@
         "fzaninotto/faker": "^1.6",
         "pixers/salesmanago-api": "1.1.1",
         "knplabs/knp-gaufrette-bundle": "^0.3.0",
-        "beberlei/DoctrineExtensions": "^1.0"
+        "beberlei/DoctrineExtensions": "^1.0",
+        "sensio/generator-bundle": "^3.0"
     },
     "require-dev": {
-        "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
         "phpunit/phpunit": "^5.7"
     },

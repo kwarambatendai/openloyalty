@@ -63,7 +63,7 @@
                                     class="required">*</span></label>
                         </div>
                         <div class="medium-10 small-9 columns" form-validation="validate.costInPoints.errors">
-                            <input type="number" ng-model="editableFields.costInPoints" required>
+                            <input type="number" ng-model="editableFields.costInPoints" step="0.5" required>
                             <span class="prompt">{{ "campaign.cost_in_points_prompt" | translate }} </span>
                         </div>
                     </div>

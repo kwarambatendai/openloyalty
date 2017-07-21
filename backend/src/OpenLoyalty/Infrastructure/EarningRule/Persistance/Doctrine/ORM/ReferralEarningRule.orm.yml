@@ -1,0 +1,14 @@
+OpenLoyalty\Domain\EarningRule\ReferralEarningRule:
+  type: entity
+  fields:
+    eventName:
+      type: string
+      column: event_name
+    rewardType:
+      type: string
+      column: reward_type
+    pointsAmount:
+      type: decimal
+      scale: 2
+      precision: 14
+      column: points_amount

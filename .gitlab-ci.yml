@@ -1,6 +1,5 @@
 stages:
   - test
-  - build
 
 variables:
     POSTGRES_DB: "openloyalty"
@@ -16,6 +15,10 @@ php-7.0:
   script:
     - echo "memory_limit = 512M" > /usr/local/etc/php/conf.d/memory.ini
     - cd backend
+    - mkdir app/var
+    - mkdir app/var/jwt
+    - openssl genrsa -out app/var/jwt/private.pem 4096
+    - openssl rsa -pubout -in app/var/jwt/private.pem -out app/var/jwt/public.pem
     - docker-php-ext-enable zip pdo pgsql pdo_pgsql mbstring intl bcmath
     - "sed -i 's/database_host: .*/database_host: postgres/g'  app/config/parameters.yml.dist"
     - "sed -i 's/elastica_host: .*/elastica_host: elasticsearch/g' app/config/parameters.yml.dist"

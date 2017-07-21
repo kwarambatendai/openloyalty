@@ -19,7 +19,7 @@ class CampaignPurchase implements SerializableInterface
     protected $purchaseAt;
 
     /**
-     * @var int
+     * @var float
      */
     protected $costInPoints;
 
@@ -65,7 +65,7 @@ class CampaignPurchase implements SerializableInterface
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getCostInPoints()
     {

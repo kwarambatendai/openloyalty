@@ -6,12 +6,13 @@
 namespace OpenLoyalty\Bundle\EarningRuleBundle\Form\Type;
 
 use OpenLoyalty\Bundle\EarningRuleBundle\Model\EarningRule;
+use OpenLoyalty\Bundle\EarningRuleBundle\Form\DataTransformer\LevelsDataTransformer;
+use OpenLoyalty\Bundle\EarningRuleBundle\Form\DataTransformer\SegmentsDataTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -39,6 +40,7 @@ class CreateEarningRuleFormType extends AbstractType
                 'Custom event rule' => EarningRule::TYPE_CUSTOM_EVENT,
                 'Product purchase' => EarningRule::TYPE_PRODUCT_PURCHASE,
                 'Multiply earned points' => EarningRule::TYPE_MULTIPLY_FOR_PRODUCT,
+                'Referral' => EarningRule::TYPE_REFERRAL,
             ],
         ]);
 
@@ -51,6 +53,30 @@ class CreateEarningRuleFormType extends AbstractType
                 'required' => true,
                 'constraints' => [new NotBlank()],
             ])
+            ->add('target', ChoiceType::class, [
+                'required' => false,
+                'choices' => [
+                    'level' => 'level',
+                    'segment' => 'segment',
+                ],
+                'mapped' => false,
+            ])
+            ->add(
+                $builder->create('levels', CollectionType::class, [
+                    'entry_type' => TextType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'error_bubbling' => false,
+                ])->addModelTransformer(new LevelsDataTransformer())
+            )
+            ->add(
+            $builder->create('segments', CollectionType::class, [
+                'entry_type' => TextType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'error_bubbling' => false,
+            ])->addModelTransformer(new SegmentsDataTransformer())
+            )
             ->add('active', CheckboxType::class, [
                 'required' => false,
             ])
@@ -82,7 +108,8 @@ class CreateEarningRuleFormType extends AbstractType
         $type = $data['type'];
         if ($type == EarningRule::TYPE_POINTS) {
             $form
-                ->add('pointValue', IntegerType::class, [
+                ->add('pointValue', NumberType::class, [
+                    'scale' => 2,
                     'required' => true,
                     'constraints' => [new NotBlank()],
                 ])
@@ -98,7 +125,8 @@ class CreateEarningRuleFormType extends AbstractType
                     'required' => true,
                     'constraints' => [new NotBlank()],
                 ])
-                ->add('pointsAmount', IntegerType::class, [
+                ->add('pointsAmount', NumberType::class, [
+                    'scale' => 2,
                     'required' => true,
                     'constraints' => [new NotBlank()],
                 ]);
@@ -108,11 +136,27 @@ class CreateEarningRuleFormType extends AbstractType
                     'required' => true,
                     'constraints' => [new NotBlank()],
                 ])
-                ->add('pointsAmount', IntegerType::class, [
+                ->add('pointsAmount', NumberType::class, [
+                    'scale' => 2,
                     'required' => true,
                     'constraints' => [new NotBlank()],
                 ])
                 ->add('limit', EarningRuleLimitFormType::class);
+        } elseif ($type == EarningRule::TYPE_REFERRAL) {
+            $form
+                ->add('eventName', TextType::class, [
+                    'required' => true,
+                    'constraints' => [new NotBlank()],
+                ])
+                ->add('rewardType', TextType::class, [
+                    'required' => true,
+                    'constraints' => [new NotBlank()],
+                ])
+                ->add('pointsAmount', NumberType::class, [
+                    'scale' => 2,
+                    'required' => true,
+                    'constraints' => [new NotBlank()],
+                ]);
         } elseif ($type == EarningRule::TYPE_PRODUCT_PURCHASE) {
             $form
                 ->add('skuIds', CollectionType::class, [
@@ -122,7 +166,8 @@ class CreateEarningRuleFormType extends AbstractType
                     'error_bubbling' => false,
                     'constraints' => [new Count(['min' => 1])],
                 ])
-                ->add('pointsAmount', IntegerType::class, [
+                ->add('pointsAmount', NumberType::class, [
+                    'scale' => 2,
                     'required' => true,
                     'constraints' => [new NotBlank()],
                 ]);
@@ -135,10 +180,21 @@ class CreateEarningRuleFormType extends AbstractType
                 ])
                 ->add('multiplier', NumberType::class, [
                     'required' => true,
+                    'scale' => 2,
                     'constraints' => [new NotBlank()],
                 ])
                 ->add('labels', LabelsFormType::class);
         }
+        if (!isset($data['target'])) {
+            return;
+        }
+        $target = $data['target'];
+        if ($target == 'level') {
+            $data['segments'] = [];
+        } elseif ($target == 'segment') {
+            $data['levels'] = [];
+        }
+        $event->setData($data);
     }
 
     public function configureOptions(OptionsResolver $resolver)

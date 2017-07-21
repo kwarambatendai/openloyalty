@@ -53,7 +53,7 @@ class Campaign
     protected $active = false;
 
     /**
-     * @var int
+     * @var float
      */
     protected $costInPoints = 0; // 0 (free) or greater
 
@@ -281,11 +281,11 @@ class Campaign
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getCostInPoints()
     {
-        return $this->costInPoints;
+        return round((float) $this->costInPoints, 2);
     }
 
     /**
@@ -305,7 +305,7 @@ class Campaign
     }
 
     /**
-     * @param int $costInPoints
+     * @param float $costInPoints
      */
     public function setCostInPoints($costInPoints)
     {

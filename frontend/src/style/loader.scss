@@ -22,10 +22,6 @@
 }
 
 .loader-relative {
-  button {
-    margin-top: 0 !important;
-    display: inline-block;
-  }
   .inline {
     display: inline-block;
     vertical-align: middle;
@@ -312,6 +308,13 @@ box-loader {
       min-height:calc(100vh - 65px);
     }
   }
+  &.client{
+    .box-loader {
+      &.cover {
+        top: 0 !important;
+      }
+    }
+  }
 }
 .full {
   .box-loader {
@@ -352,6 +355,7 @@ box-loader {
       }
     }
   }
+
   .box-loader-wrapper {
     position: absolute;
     top: 0;
@@ -371,9 +375,16 @@ box-loader {
       margin: 0 auto;
     }
   }
+
 }
 
 #loading-bar .bar {
   background: #bb343b !important;
   height: 5px !important;
+}
+
+body[class^="ng-scope seller_"] {
+    .box-loader.cover {
+      top: 0;
+    }
 }

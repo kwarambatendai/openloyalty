@@ -374,3 +374,14 @@ canvas.chart {
 .ng-table-counts {
   display:none!important;
 }
+
+.vars {
+  & > span {
+    padding: 3px 6px;
+    margin-right: 5px;
+    background-color: #eee;
+    font-family: 'Courier', sans-serif;
+    color: #aaa;
+    font-size: 0.8em;
+  }
+}

@@ -27,7 +27,7 @@ class CustomerWasAssignedToTransaction extends TransactionEvent
     public function serialize()
     {
         return array_merge(parent::serialize(), [
-            'customerId' => $this->customerId,
+            'customerId' => $this->customerId->__toString(),
         ]);
     }
 
@@ -38,7 +38,7 @@ class CustomerWasAssignedToTransaction extends TransactionEvent
      */
     public static function deserialize(array $data)
     {
-        return new self($data['transactionId'], $data['customerId']);
+        return new self(new TransactionId($data['transactionId']), new CustomerId($data['customerId']));
     }
 
     /**

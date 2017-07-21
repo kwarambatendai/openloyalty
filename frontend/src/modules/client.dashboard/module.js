@@ -1,4 +1,5 @@
 import CustomerDashboardController from './CustomerDashboardController';
+import InvitationService from './InvitationService';
 
 const MODULE_NAME = 'client.dashboard';
 
@@ -42,7 +43,9 @@ angular.module(MODULE_NAME, [])
             )
             .catch(catchErrorTemplate);
     })
-    .controller('CustomerDashboardController', CustomerDashboardController);
+    .controller('CustomerDashboardController', CustomerDashboardController)
+    .service('InvitationService', InvitationService);
+
 
 try {
     window.OpenLoyaltyConfig.modules.push(MODULE_NAME);

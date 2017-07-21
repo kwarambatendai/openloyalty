@@ -26,6 +26,26 @@ angular.module(MODULE_NAME, [])
                     }
                 }
             })
+            .state('customer.panel.registration_from_invitation', {
+                url: "/customer/registration/:invitationToken",
+                views: {
+                    'extendTop@': {
+                        templateUrl: './templates/customer-registration-extend-top.html',
+                        controller: 'CustomerRegistrationController',
+                        controllerAs: 'CustomerRegistrationCtrl'
+                    },
+                    'main@': {
+                        templateUrl: './templates/customer-registration.html',
+                        controller: 'CustomerRegistrationController',
+                        controllerAs: 'CustomerRegistrationCtrl'
+                    },
+                    'extendBottom@': {
+                        templateUrl: './templates/customer-registration-extend-bottom.html',
+                        controller: 'CustomerRegistrationController',
+                        controllerAs: 'CustomerRegistrationCtrl'
+                    }
+                }
+            })
             .state('customer.panel.registration_success', {
                 url: "/customer/registration-success",
                 views: {
@@ -116,7 +136,7 @@ angular.module(MODULE_NAME, [])
         $templateCache.put('./templates/customer-registration-extend-bottom.html', '');
 
         $templateCache.put('./templates/customer-registration-success-extend-top.html', '');
-        $templateCache.put('./templates/customer-registration-success-bottom.html', '');
+        $templateCache.put('./templates/customer-registration-success-extend-bottom.html', '');
 
         $templateCache.put('./templates/customer-registration-activate-extend-top.html', '');
         $templateCache.put('./templates/customer-registration-activate-extend-bottom.html', '');

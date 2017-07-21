@@ -12,7 +12,6 @@ use OpenLoyalty\Domain\Customer\CustomerRepository;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerActivatedSystemEvent;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerAgreementsUpdatedSystemEvent;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerDeactivatedSystemEvent;
-use OpenLoyalty\Domain\Customer\SystemEvent\CustomerReferralSystemEvent;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerRegisteredSystemEvent;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerSystemEvents;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerUpdatedSystemEvent;
@@ -235,14 +234,6 @@ class CustomerCommandHandler extends CommandHandler
         $this->eventDispatcher->dispatch(
             CustomerSystemEvents::CUSTOMER_ACTIVATED,
             [new CustomerActivatedSystemEvent($customerId)]
-        );
-    }
-
-    public function handleCustomerReferral(CustomerReferral $command)
-    {
-        $this->eventDispatcher->dispatch(
-            CustomerSystemEvents::CUSTOMER_REFERRAL,
-            [new CustomerReferralSystemEvent($command->getCustomerId(), $command->getReferralCustomerId())]
         );
     }
 

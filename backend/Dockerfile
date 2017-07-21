@@ -15,10 +15,13 @@ RUN usermod --non-unique --uid 1000 www-data
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 ADD https://www.phing.info/get/phing-latest.phar /usr/local/bin/phing
+COPY docker/mpm-prefork-module.conf /etc/apache2/conf-available/mpm-prefork-module.conf
 COPY docker/vhost.conf /etc/apache2/sites-enabled/000-default.conf
 COPY docker/php.ini /usr/local/etc/php/php.ini
 
 RUN a2enmod rewrite headers
+RUN a2enconf mpm-prefork-module
+
 RUN chmod +x /usr/local/bin/phing
 
 RUN mkdir -p /var/www/ol/backend
@@ -42,4 +45,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer
 
-CMD composer install && bin/console assets:install --symlink && chown -R www-data:www-data /var/www/ol/backend/var && chown -R www-data:www-data /var/www/ol/backend/app/uploads && apache2-foreground
+CMD composer install -o --prefer-dist && bin/console assets:install --symlink && chown -R www-data:www-data /var/www/ol/backend/var && chown -R www-data:www-data /var/www/ol/backend/app/uploads && apache2-foreground

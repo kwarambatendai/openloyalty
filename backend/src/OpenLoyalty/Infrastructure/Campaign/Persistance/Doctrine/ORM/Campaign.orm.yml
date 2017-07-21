@@ -28,7 +28,9 @@ OpenLoyalty\Domain\Campaign\Campaign:
       options:
         default: 0
     costInPoints:
-      type: integer
+      type: decimal
+      scale: 2
+      precision: 14
       column: cost_in_points
     levels:
       type: campaign_levels_json_array

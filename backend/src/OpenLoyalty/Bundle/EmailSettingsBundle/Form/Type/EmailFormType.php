@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * Class EmailFormType.
@@ -54,6 +55,26 @@ class EmailFormType extends AbstractType
                 TextareaType::class,
                 [
                     'constraints' => [new NotBlank()],
+                ]
+            )
+        );
+
+        $builder->add(
+            $builder->create(
+                'sender_name',
+                TextareaType::class,
+                [
+                    'constraints' => [new NotBlank()],
+                ]
+            )
+        );
+
+        $builder->add(
+            $builder->create(
+                'sender_email',
+                TextareaType::class,
+                [
+                    'constraints' => [new NotBlank(), new Email()],
                 ]
             )
         );

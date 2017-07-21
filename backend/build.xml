@@ -23,7 +23,7 @@
         <exec command="bin/console doctrine:schema:update --force" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:drop -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:init -n" checkreturn="true" passthru="true"/>
-        <exec command="bin/console doctrine:fixtures:load -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:fixtures:load -n -vvv" checkreturn="true" passthru="true"/>
         <exec command="bin/console oloy:segment:recreate -vv" checkreturn="true" passthru="true"/>
     </target>
     <target name="test" description="Setup everything and run tests">
@@ -39,6 +39,9 @@
         <exec command="bin/console broadway:event-store:schema:init -n --env=test" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:fixtures:load -n --env=test" checkreturn="true" passthru="true"/>
         <exec command="vendor/phpunit/phpunit/phpunit --stop-on-failure --testsuite Security" checkreturn="true" passthru="true"/>
+    </target>
+    <target name="test-domain" description="Setup everything and run tests">
+        <exec command="vendor/phpunit/phpunit/phpunit --stop-on-failure --testsuite Domain" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="demo" description="Setup for demo purposes" depends="generate-jwt-keys">

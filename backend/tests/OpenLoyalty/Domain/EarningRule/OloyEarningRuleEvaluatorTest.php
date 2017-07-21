@@ -5,6 +5,8 @@ namespace OpenLoyalty\Domain\EarningRule;
 
 use OpenLoyalty\Domain\Account\SystemEvent\AccountSystemEvents;
 use OpenLoyalty\Domain\Account\TransactionId;
+use OpenLoyalty\Domain\Customer\CustomerId;
+use OpenLoyalty\Domain\Customer\ReadModel\InvitationDetailsRepository;
 use OpenLoyalty\Domain\EarningRule\Algorithm\EarningRuleAlgorithmFactoryInterface;
 use OpenLoyalty\Domain\EarningRule\Algorithm\MultiplyPointsForProductRuleAlgorithm;
 use OpenLoyalty\Domain\EarningRule\Algorithm\PointsEarningRuleAlgorithm;
@@ -14,6 +16,8 @@ use OpenLoyalty\Domain\Model\SKU;
 use OpenLoyalty\Domain\Transaction\Model\Item;
 use OpenLoyalty\Domain\Transaction\ReadModel\TransactionDetails;
 use OpenLoyalty\Domain\Transaction\ReadModel\TransactionDetailsRepository;
+use OpenLoyalty\Domain\Segment\ReadModel\SegmentedCustomersRepository;
+use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetailsRepository;
 
 
 /**
@@ -21,6 +25,8 @@ use OpenLoyalty\Domain\Transaction\ReadModel\TransactionDetailsRepository;
  */
 class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 {
+
+    const USER_ID = '00000000-0000-0000-0000-000000000000';
 
     /**
      * @test
@@ -33,7 +39,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(608, $points);
     }
 
@@ -49,7 +55,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(208, $points);
     }
 
@@ -65,7 +71,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(560, $points);
     }
 
@@ -81,7 +87,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(400, $points);
     }
 
@@ -98,7 +104,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$purchaseEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(200, $points);
     }
 
@@ -117,7 +123,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule, $pointsEarningRule2]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(2128, $points);
     }
 
@@ -138,7 +144,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$purchaseEarningRule, $pointsEarningRule2]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(708, $points);
     }
 
@@ -152,8 +158,8 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
         $eventEarningRule->setPointsAmount(200);
 
         $evaluator = $this->getEarningRuleEvaluator([$eventEarningRule]);
-
-        $points = $evaluator->evaluateEvent(AccountSystemEvents::ACCOUNT_CREATED);
+        $customerId = 11;
+        $points = $evaluator->evaluateEvent(AccountSystemEvents::ACCOUNT_CREATED, $customerId);
         $this->assertEquals(200, $points);
     }
 
@@ -169,7 +175,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(560, $points);
     }
 
@@ -185,7 +191,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(208, $points);
     }
 
@@ -206,7 +212,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule, $multiplyPointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(704, $points);
     }
 
@@ -227,7 +233,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule, $multiplyPointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(704, $points);
     }
 
@@ -243,7 +249,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(608, $points);
     }
 
@@ -259,7 +265,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
 
         $evaluator = $this->getEarningRuleEvaluator([$pointsEarningRule]);
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(0, $points);
     }
 
@@ -298,7 +304,7 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
             [$pointsEarningRule, $pointsEarningRule2, $multiplyPointsEarningRule, $multiplyPointsEarningRule2, $purchaseEarningRule]
         );
 
-        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'));
+        $points = $evaluator->evaluateTransaction(new TransactionId('00000000-0000-0000-0000-000000000000'), new CustomerId(static::USER_ID));
         $this->assertEquals(8264, $points);
     }
 
@@ -311,7 +317,10 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
         return new OloyEarningRuleEvaluator(
             $this->getEarningRuleRepository($rules),
             $this->getTransactionDetailsRepository(),
-            $this->getEarningRuleAlgorithmFactory()
+            $this->getEarningRuleAlgorithmFactory(),
+            $this->getInvitationDetailsRepository(),
+            $this->getSegmentedCustomersRepository(),
+            $this->getCustomerDetailsRepository()
         );
     }
 
@@ -373,6 +382,18 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return InvitationDetailsRepository
+     */
+    protected function getInvitationDetailsRepository()
+    {
+        $mock = $this->createMock(InvitationDetailsRepository::class);
+        $mock->method('find')->with($this->isType('string'))
+            ->willReturn([]);
+
+        return $mock;
+    }
+
+    /**
      * @param array $earningRules
      * @return EarningRuleRepository
      */
@@ -399,5 +420,36 @@ class OloyEarningRuleEvaluatorTest extends \PHPUnit_Framework_TestCase
             ->willReturn($earningRules);
 
         return $mock;
+    }
+
+    protected function getSegmentedCustomersRepository()
+    {
+        $mock = $this->createMock(SegmentedCustomersRepository::class);
+
+        $dataToReturn = [];
+
+        $mock->method('findByParameters')
+            ->with(
+                $this->isType('array'),
+                $this->isType('bool')
+            )->willReturn($dataToReturn);
+
+        return $mock;
+    }
+
+    protected function getCustomerDetailsRepository()
+    {
+        $mock = $this->createMock(CustomerDetailsRepository::class);
+
+        $dataToReturn = [];
+
+        $mock->method('findOneByCriteria')
+            ->with(
+                $this->isType('array'),
+                $this->isType('int')
+            )->willReturn($dataToReturn);
+
+        return $mock;
+
     }
 }

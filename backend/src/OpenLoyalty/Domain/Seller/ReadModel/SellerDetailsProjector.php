@@ -43,7 +43,7 @@ class SellerDetailsProjector extends Projector
     protected function applySellerWasRegistered(SellerWasRegistered $event)
     {
         $data = $event->getSellerData();
-        if (!$data['posId'] instanceof PosId) {
+        if (isset($data['posId']) && !$data['posId'] instanceof PosId) {
             $data['posId'] = new PosId($data['posId']);
         }
         $readModel = $this->getReadModel($event->getSellerId());
@@ -51,7 +51,9 @@ class SellerDetailsProjector extends Projector
         $readModel->setLastName($data['lastName']);
         $readModel->setEmail($data['email']);
         $readModel->setPhone($data['phone']);
-        $readModel->setPosId($data['posId']);
+        if (isset($data['posId'])) {
+            $readModel->setPosId($data['posId']);
+        }
         if ($readModel->getPosId()) {
             /** @var Pos $pos */
             $pos = $this->posRepository->byId(new \OpenLoyalty\Domain\Pos\PosId($readModel->getPosId()->__toString()));
@@ -60,6 +62,7 @@ class SellerDetailsProjector extends Projector
                 $readModel->setPosCity($pos->getLocation() ? $pos->getLocation()->getCity() : null);
             }
         }
+
         if (isset($data['active'])) {
             $readModel->setActive($data['active']);
         }

@@ -4,8 +4,11 @@ export default class CustomerRegistrationService {
         this.EditableMap = EditableMap;
     }
 
-    postCustomer(newCustomer) {
+    postCustomer(newCustomer, invitationToken) {
         newCustomer = this.EditableMap.customer(newCustomer);
+        if (invitationToken) {
+            newCustomer.invitationToken = invitationToken;
+        }
 
         return this.Restangular.one('customer').one('self_register').customPOST({customer:newCustomer})
     }

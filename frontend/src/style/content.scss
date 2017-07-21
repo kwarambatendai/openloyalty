@@ -150,7 +150,13 @@ checkbox {
     }
   }
 }
-
+.fieldset-in{
+  color: black;
+  label{
+    line-height: 2.5em;
+    color: black !important;
+  }
+}
 form {
   margin-top: 15px;
   fieldset.fieldset {
@@ -164,6 +170,7 @@ form {
       border: 0;
       padding: 0;
       margin: 0;
+
     }
     label {
       color: $form-label-color;
@@ -444,6 +451,7 @@ table th {
 }
 
 .client-section {
+  position: relative;
   h1 {
     font-size: 32px;
     text-align: center;

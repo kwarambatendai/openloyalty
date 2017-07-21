@@ -1,4 +1,4 @@
-export default class FromValidationDirective {
+export default class FormValidationDirective {
     constructor() {
         this.restrict = 'A';
         this.scope = {formValidation: "=?"};
@@ -8,4 +8,4 @@ export default class FromValidationDirective {
     }
 }
 
-FromValidationDirective.$inject = [];
+FormValidationDirective.$inject = [];

@@ -19,6 +19,9 @@
         <testsuite name="Security">
             <directory>tests/OpenLoyalty/Bundle/*Bundle/Security</directory>
         </testsuite>
+        <testsuite name="Domain">
+            <directory>tests/OpenLoyalty/Domain</directory>
+        </testsuite>
     </testsuites>
 
     <filter>

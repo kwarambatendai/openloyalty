@@ -5,6 +5,8 @@
  */
 namespace OpenLoyalty\Domain\Audit;
 
+use OpenLoyalty\Domain\Audit\Model\AuditLogSearchCriteria;
+
 /**
  * Interface AuditLogRepository.
  */
@@ -18,7 +20,7 @@ interface AuditLogRepository
 
     public function remove(AuditLog $auditLog);
 
-    public function countTotal($eventType, $entityId);
+    public function countTotal(AuditLogSearchCriteria $criteria);
 
-    public function findAllPaginated($eventType, $entityId, $page = 1, $perPage = 10, $sortField = null, $direction = 'ASC');
+    public function findAllPaginated(AuditLogSearchCriteria $criteria, $page = 1, $perPage = 10, $sortField = null, $direction = 'ASC');
 }

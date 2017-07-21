@@ -1,0 +1,16 @@
+OpenLoyalty\Domain\Customer\ReadModel\InvitationDetails:
+  properties:
+    referrerId:
+      exclude: true
+    recipientId:
+      exclude: true
+    invitationId:
+      expose: true
+      inline: true
+  virtual_properties:
+    referrerIdAsString:
+      serialized_name: referrerId
+      type: string
+    recipientIdAsString:
+      serialized_name: recipientId
+      type: string

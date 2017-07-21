@@ -18,7 +18,7 @@ class CustomEventEarningRule extends EarningRule
     protected $eventName;
 
     /**
-     * @var int
+     * @var float
      */
     protected $pointsAmount;
 
@@ -60,15 +60,15 @@ class CustomEventEarningRule extends EarningRule
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getPointsAmount()
     {
-        return $this->pointsAmount;
+        return (float) $this->pointsAmount;
     }
 
     /**
-     * @param int $pointsAmount
+     * @param float $pointsAmount
      */
     public function setPointsAmount($pointsAmount)
     {

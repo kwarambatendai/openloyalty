@@ -18,6 +18,10 @@ export default class CampaignController {
         this.$q = $q;
         this.Validation = Validation;
         this.$filter = $filter;
+        this.loaderVisible = {
+            campaigns: true,
+            singleCampaign: true
+        }
     }
 
     getData() {
@@ -31,13 +35,15 @@ export default class CampaignController {
                     .then(
                         res => {
                             self.$scope.campaigns = res;
+                            self.loaderVisible.campaigns = false;
                             params.total(res.total);
-                            dfd.resolve(res)
+                            dfd.resolve(res);
                         },
                         () => {
                             let message = self.$filter('translate')('xhr.get_campaigns.error');
                             self.Flash.create('danger', message);
                             dfd.reject();
+                            self.loaderVisible.campaigns = false;
                         }
                     );
 
@@ -61,7 +67,7 @@ export default class CampaignController {
                             for (let i in levels) {
                                 let level = _.find(self.levels, {id: levels[i]});
                             }
-
+                            self.loaderVisible.singleCampaign = false;
                         }
                         if (self.$scope.editableFields.segments && self.$scope.editableFields.segments.length) {
                             let segments = self.$scope.editableFields.segments;
@@ -69,7 +75,7 @@ export default class CampaignController {
                             for (let i in segments) {
                                 let segment = _.find(self.segments, {id: segments[i]});
                             }
-
+                            self.loaderVisible.singleCampaign = false;
                         }
                     },
                     () => {

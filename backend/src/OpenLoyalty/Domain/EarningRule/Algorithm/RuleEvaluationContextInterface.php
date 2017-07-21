@@ -33,7 +33,7 @@ interface RuleEvaluationContextInterface
 
     /**
      * @param string $sku
-     * @param int    $points
+     * @param float  $points
      */
     public function addProductPoints($sku, $points);
 

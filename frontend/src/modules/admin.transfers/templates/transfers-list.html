@@ -117,7 +117,7 @@
                     <label>{{ "transfer.points_to_add" | translate }} <span class="required">*</span></label>
                 </div>
                 <div class="columns medium-8" form-validation="validate.points.errors">
-                    <input type="number" min="1" step="1" ng-model="newTransfer.points"/>
+                    <input type="number" min="1" step="0.5" ng-model="newTransfer.points"/>
                 </div>
             </div>
             <div class="row">

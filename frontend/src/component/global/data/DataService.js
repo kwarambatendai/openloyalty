@@ -7,6 +7,8 @@ export default class DataService {
         this.availableTimezones = null;
         this.availableCountries = null;
         this.availablePromotedEvents = null;
+        this._availableReferralEvents = null;
+        this._availableReferralTypes = null;
         this.availableFrontendTranslations = null;
         this._availableEarningRuleLimitPeriods = null;
         this.availableCurrencies = [
@@ -38,6 +40,10 @@ export default class DataService {
         return this.Restangular.one('admin').one('analytics').one('customers').get()
     }
 
+    getReferralStats() {
+        return this.Restangular.one('admin').one('analytics').one('referrals').get()
+    }
+
     getConfig() {
         return this.config;
     }
@@ -51,10 +57,12 @@ export default class DataService {
         let timezones = self.Restangular.one('settings').one('choices').one('timezone').get();
         let countries = self.Restangular.one('settings').one('choices').one('country').get();
         let events = self.Restangular.one('settings').one('choices').one('promotedEvents').get();
+        let referralEvents = self.Restangular.one('settings').one('choices').one('referralEvents').get();
+        let referralTypes = self.Restangular.one('settings').one('choices').one('referralTypes').get();
 
         let dfd = self.$q.defer();
 
-        self.$q.all([languages, timezones, countries, events, availableFrontendTranslations, availableEarningRuleLimitPeriods])
+        self.$q.all([languages, timezones, countries, events, availableFrontendTranslations, availableEarningRuleLimitPeriods, referralEvents, referralTypes])
             .then(
                 function (res) {
                     if (res[0].choices) {
@@ -154,6 +162,42 @@ export default class DataService {
 
                         self._availableEarningRuleLimitPeriods = events;
                     }
+                    if (res[6].choices) {
+                        let events = [];
+                        let index = 0;
+
+                        for (let i in res[6].choices) {
+                            if(!res[6].choices.hasOwnProperty(i)) {
+                                continue;
+                            }
+                            events.push({
+                                _id: index,
+                                name: self.$filter('translate')('earning_rule.referral_events.'+i),
+                                code: res[6].choices[i]
+                            });
+                            ++index;
+                        }
+
+                        self._availableReferralEvents = events;
+                    }
+                    if (res[7].choices) {
+                        let events = [];
+                        let index = 0;
+
+                        for (let i in res[7].choices) {
+                            if(!res[7].choices.hasOwnProperty(i)) {
+                                continue;
+                            }
+                            events.push({
+                                _id: index,
+                                name: self.$filter('translate')('earning_rule.referral_types.'+i),
+                                code: res[7].choices[i]
+                            });
+                            ++index;
+                        }
+
+                        self._availableReferralTypes = events;
+                    }
 
                     dfd.resolve()
                 },
@@ -219,6 +263,22 @@ export default class DataService {
 
     setAvailableEarningRuleLimitPeriods(value) {
         this._availableEarningRuleLimitPeriods = value;
+    }
+
+    getAvailableReferralEvents() {
+        return this._availableReferralEvents;
+    }
+
+    setAvailableReferralEvents(value) {
+        this._availableReferralEvents = value;
+    }
+
+    getAvailableReferralTypes() {
+        return this._availableReferralTypes;
+    }
+
+    setAvailableReferralTypes(value) {
+        this._availableReferralTypes = value;
     }
 }
 

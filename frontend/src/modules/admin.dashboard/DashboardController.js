@@ -67,7 +67,13 @@ export default class DashboardController extends LevelController {
             self.$scope.dailyRegistrations = res;
             self.$scope.charts.registration = self._prepareChart(res.plain(), [self.$filter('translate')('admin.dashboard.registrations_label')])
         })
-        self.$q.all([promise1, promise2, promise3, promise4])
+
+        let promise5 = this.DataService.getReferralStats().then(res => {
+            self.$scope.stats.referral = res;
+            console.log(self.$scope.stats.referral);
+        });
+
+        self.$q.all([promise1, promise2, promise3, promise4, promise5])
             .then(
                 res => {
                     self.loaderStates.dashboardDetails = false;

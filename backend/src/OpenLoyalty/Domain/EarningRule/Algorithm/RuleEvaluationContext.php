@@ -48,7 +48,7 @@ class RuleEvaluationContext implements RuleEvaluationContextInterface
             return 0;
         }
 
-        return $this->products[$sku];
+        return round($this->products[$sku], 2);
     }
 
     /**

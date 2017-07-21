@@ -14,6 +14,7 @@ use OpenLoyalty\Bundle\SettingsBundle\Form\Type\TranslationsFormType;
 use OpenLoyalty\Bundle\SettingsBundle\Model\TranslationsEntry;
 use OpenLoyalty\Domain\Account\SystemEvent\AccountSystemEvents;
 use OpenLoyalty\Domain\Customer\SystemEvent\CustomerSystemEvents;
+use OpenLoyalty\Domain\EarningRule\ReferralEarningRule;
 use OpenLoyalty\Domain\Transaction\SystemEvent\TransactionSystemEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -254,7 +255,6 @@ class SettingsController extends FOSRestController
                 'Customer logged in' => CustomerSystemEvents::CUSTOMER_LOGGED_IN,
                 'First purchase' => TransactionSystemEvents::CUSTOMER_FIRST_TRANSACTION,
                 'Account created' => AccountSystemEvents::ACCOUNT_CREATED,
-                'Customer referral' => CustomerSystemEvents::CUSTOMER_REFERRAL,
                 'Newsletter subscription' => CustomerSystemEvents::NEWSLETTER_SUBSCRIPTION,
             ]], 200);
         }
@@ -290,6 +290,18 @@ class SettingsController extends FOSRestController
                 '1 day' => EarningRuleLimit::PERIOD_DAY,
                 '1 week' => EarningRuleLimit::PERIOD_WEEK,
                 '1 month' => EarningRuleLimit::PERIOD_MONTH,
+            ]], 200);
+        } elseif ($type == 'referralEvents') {
+            return $this->view(['choices' => [
+                ReferralEarningRule::EVENT_REGISTER => ReferralEarningRule::EVENT_REGISTER,
+                ReferralEarningRule::EVENT_FIRST_PURCHASE => ReferralEarningRule::EVENT_FIRST_PURCHASE,
+                ReferralEarningRule::EVENT_EVERY_PURCHASE => ReferralEarningRule::EVENT_EVERY_PURCHASE,
+            ]], 200);
+        } elseif ($type == 'referralTypes') {
+            return $this->view(['choices' => [
+                ReferralEarningRule::TYPE_REFERRED => ReferralEarningRule::TYPE_REFERRED,
+                ReferralEarningRule::TYPE_REFERRER => ReferralEarningRule::TYPE_REFERRER,
+                ReferralEarningRule::TYPE_BOTH => ReferralEarningRule::TYPE_BOTH,
             ]], 200);
         } else {
             throw $this->createNotFoundException();

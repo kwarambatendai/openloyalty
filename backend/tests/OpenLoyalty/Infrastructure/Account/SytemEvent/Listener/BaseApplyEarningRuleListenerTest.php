@@ -57,6 +57,7 @@ abstract class BaseApplyEarningRuleListenerTest extends \PHPUnit_Framework_TestC
             $this->equalTo(CustomerSystemEvents::CUSTOMER_REFERRAL),
             $this->equalTo(CustomerSystemEvents::NEWSLETTER_SUBSCRIPTION)
         ))->willReturn($returnValue);
+        $mock->method('evaluateReferralEvent')->willReturn([]);
 
         return $mock;
     }

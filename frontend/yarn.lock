@@ -52,6 +52,14 @@ accepts@~1.2.12, accepts@~1.2.13:
     mime-types "~2.1.6"
     negotiator "0.5.3"
 
+ace-angular@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ace-angular/-/ace-angular-0.1.1.tgz#d11496093fbf10456fd36ac6ffeeea5121855a9e"
+
+ace-builds@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.2.6.tgz#a9233c27c37b8494f20af84917ee1619489af429"
+
 acorn-jsx@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"

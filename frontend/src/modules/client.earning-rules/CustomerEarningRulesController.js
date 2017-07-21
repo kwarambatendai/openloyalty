@@ -9,6 +9,7 @@ export default class CustomerEarningRulesController {
         this.Flash = Flash;
         this.ParamsMap = ParamsMap;
         this.EditableMap = EditableMap;
+        this.$scope.loader = true;
     }
 
     getRules() {
@@ -16,6 +17,7 @@ export default class CustomerEarningRulesController {
 
         this.CustomerEarningRulesService.getRules().then(
             res => {
+                self.$scope.loader = false;
                 self.$scope.rules = res.earningRules;
                 self.$scope.currency = res.currency;
             }

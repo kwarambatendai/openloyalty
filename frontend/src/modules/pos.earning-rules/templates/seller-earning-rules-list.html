@@ -1,5 +1,6 @@
-<section class="pos-section" ng-init="SellerEarningRulesCtrl.getData()">
+<box-loader loading="SellerEarningRulesCtrl.loaderVisible" cover="1" class="cover" delay="1000"></box-loader>
 
+<section class="pos-section" ng-init="SellerEarningRulesCtrl.getData()">
     <h1>{{ "seller.dashboard.title.earning_rules" | translate }}</h1>
 
     <div class="row">
@@ -23,7 +24,7 @@
                         <td data-title="'earning_rule.start_at'|translate" sortable="'startAt'">
                             <span ng-bind="row.startAt|date: 'yyyy-MM-dd HH:mm'"></span>
                         </td>
-                        <td data-title="'earning_rule.end_at'|translate" sortable="'EndAt'">
+                        <td data-title="'earning_rule.end_at'|translate" sortable="to tato'EndAt'">
                             <span ng-bind="row.endAt|date: 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                         <td data-title="'earning_rule.all_time_active'|translate" sortable="'allTimeActive'">

@@ -41,6 +41,7 @@ if (!window.OpenLoyaltyConfig.debug) {
 
 angular.module('OpenLoyalty', [
     'ui.router',
+    'ace.angular',
     'angular-jwt',
     'restangular',
     'ngFlash',
@@ -70,7 +71,9 @@ angular.module('OpenLoyalty', [
     'admin.transactions',
     'admin.transfers',
     'admin.translations',
-    'admin.users'
+    'admin.users',
+    'admin.emails',
+    'admin.logs'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider, $translateProvider, $locationProvider, cfpLoadingBarProvider) {
         let config = window.OpenLoyaltyConfig;
@@ -103,6 +106,7 @@ angular.module('OpenLoyalty', [
                 let keys = Object.keys(data);
                 extractedData = data[keys[0]];
                 extractedData.total = data.total;
+                extractedData.additional = data.additional;
             }
 
             return extractedData;

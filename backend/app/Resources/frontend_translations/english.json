@@ -18,9 +18,12 @@
     "menu": "Menu",
     "and": "AND",
     "or": "OR",
+    "logs": "System logs",
     "confirm": "Yes",
     "active": "Active",
     "inactive": "Inactive",
+    "translations": "Translations",
+    "emails": "Emails",
     "account": "Account",
     "unlimited": "Unlimited",
     "search": "Search",
@@ -56,6 +59,7 @@
     "edit_heading": "Edit user"
   },
   "nav": {
+    "referred_customer": "Referred customers",
     "home": "Home",
     "customers": "Customers",
     "all_customers": "All customers",
@@ -110,6 +114,37 @@
       "updated_at": "Updated at",
       "content_error": "JSON not valid"
     },
+    "emails": {
+      "actions": "Actions",
+      "key": "Key",
+      "subject": "Subject",
+      "content": "Content",
+      "sender_name": "Sender name",
+      "sender_email": "Sender email",
+      "variables": "Variables",
+      "heading": "Emails",
+      "edit_heading": "Edit email",
+      "list": "Emails list",
+      "prompt": "",
+      "preview": "Preview",
+      "updated_at": "Updated at",
+      "edit": "Edit"
+    },
+    "logs": {
+      "heading": "Logs",
+      "list": "Emails list",
+      "created_at": "Created at",
+      "entity_type": "Entity type",
+      "event_type": "Event type",
+      "username": "Username",
+      "entity_id": "Entity ID",
+      "audit_log_id": "Audit log ID",
+      "export_to_csv": "Export to CSV",
+      "choose_dates": "Choose date range",
+      "search_by_date": "Search from time period:",
+      "from": "From",
+      "to": "To"
+    },
     "heading": "Dashboard",
     "first_name": "First name",
     "last_name": "Last name",
@@ -131,6 +166,26 @@
     "heading": "Dashboard"
   },
   "customer": {
+    "referred": {
+      "referred_registered": "Number of conversions",
+      "referred_total": "Number of referrals",
+      "referred_completed": "Number of completed references",
+      "heading": "Referred customers list",
+      "list": "Referred customers",
+      "referrer_id": "Referrer Id",
+      "referrer_name": "Referrer Name",
+      "recipient_name": "Recipient Name",
+      "recipient_id": "Recipient Id",
+      "recipient_email": "Recipient Email",
+      "status": "Status",
+      "statuses": {
+        "made_purchase": "Made purchase",
+        "invited": "Invited",
+        "registered": "Registered",
+        "all": "All"
+      }
+
+    },
     "change_password": {
       "current": "Current password",
       "new_first": "New password",
@@ -325,10 +380,19 @@
     "min_order": "Min order value"
   },
   "earning_rule": {
+    "reward": "Reward",
+    "reward_type": "Reward",
+    "reward_prompt": "",
     "add": "Add earning points rule",
     "heading": "Earning points rules",
     "edit_heading": "Edit points rules",
     "add_heading": "Add earning points rule",
+    "levels": "Levels",
+    "segments": "Segments",
+    "segments_prompt": "",
+    "levels_prompt": "",
+    "target_type": "Target type",
+    "type_prompt": "",
     "description_prompt": "",
     "active_prompt": "",
     "type_prompt": "",
@@ -400,7 +464,18 @@
       "event": "Event rule",
       "custom_event": "Custom event rule",
       "product_purchase": "Product purchase",
-      "multiply_for_product": "Multiply earned points"
+      "multiply_for_product": "Multiply earned points",
+      "referral": "Customer Referral"
+    },
+    "referral_events": {
+      "first_purchase": "First purchase",
+      "every_purchase": "Every purchase",
+      "register": "Register"
+    },
+    "referral_types": {
+      "both": "both",
+      "referred": "referred",
+      "referrer": "referrer"
     },
     "promoted_events": {
       "oloy.account.created": "Account created",
@@ -1168,7 +1243,6 @@
     "at_least_one": "Fill at least one field",
     "not_blank_or_documentNumber": "You have to enter document number"
   },
-
   "customer_profile": {
     "profile_details": "Details",
     "agreements": "Agreements",
@@ -1342,6 +1416,12 @@
     "rewards": "Redeeme new rewards, you can use <br /><b>{{points}}</b> active points. <a href=\"#\" ui-sref=\"customer.panel.campaign-list\">Get rewards</a> or <a href=\"#\" ui-sref=\"customer.panel.bought-campaign-list\">See rewards</a> you have already redeemed.",
     "earning_rules_title": "Earn points",
     "earning_rules": "Learn <a href=\"#\" ui-sref=\"customer.panel.earning_rules\">how to earn new points</a>.",
+    "invite": {
+      "title": "Invite friend",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis.",
+      "input_placeholder": "Email",
+      "button_name": "Invite"
+    },
     "my_benefits": {
       "title": "My benefits",
       "button_name": "Check level",
@@ -1414,155 +1494,155 @@
     "segment": "Segment",
     "start_typing_an_email": "enter email to search",
     "loading": "loading",
-    "home": "Home"
-  },
-  "static_content": {
-    "benefits": {
-      "title": "My benefits",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    },
-    "connect_online_stores": {
-      "title": "Match witch eCommerce",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    },
-    "contact": {
-      "title": "Contact",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    },
-    "faq": {
-      "title": "FAQ",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    },
-    "how_to_earn": {
-      "title": "How to earn points?",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    },
-    "rules": {
-      "title": "Terms and conditions",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    },
-    "visit_offline": {
-      "title": "Visit offline stores",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    },
-    "match_with_ecommerce": {
-      "title": "Match with eCommerce",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
-    }
-  },
-  "customer_earning_rules": {
-    "custom_event": "Custom event",
-    "points": "Each {{pointsValue}}{{currency}} = 1 point",
-    "product_purchase": "Additional points for purchase of {{sku}}",
-    "title": "How to earn points?",
-    "table": {
-      "name": "How?",
-      "type": "Type",
-      "description": "Description",
-      "points": "Points",
-      "start_at": "Start at",
-      "end_at": "End at"
-    }
-  },
-  "customer_nav": {
-    "logo1": "Loyalty",
-    "logo2": "Program",
-    "copyrights": "",
     "home": "Home",
-    "my_rewards": "My rewards",
-    "earning_points": "My points",
-    "my_transactions": "My transactions",
-    "match_with_ecommerce": "Match with eCommerce",
-    "my_profile": "My profile"
-  },
-  "customer_campaign": {
-    "coupon_used": "This coupon has been used",
-    "not_enough_points": "Not enough points",
-    "will_be_active_dates": "This reward campaign will be active from {{from}} to {{to}}",
-    "will_be_active_all_time": "This campaign will be active all time",
-    "will_be_active_soon": "Not active yet",
-    "list": "My rewards",
-    "bought_list": "My redeemed rewards",
-    "points": "Points",
-    "redeem": "Redeem reward",
-    "footer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis.",
-    "no_rewards": "There are no available rewards",
-    "no_bought_rewards": "There are no redeemed rewards",
-    "all_time_Active": "All time active",
-    "see_bought": "See rewards you have already redeemed",
-    "reward_congratulations": "Congratulations!",
-    "reward_ready": "Your reward is ready to receive.",
-    "reward_code": "CODE OF REWARD",
-    "active_points": "Redeem new rewards, you can use <b>{{points}}</b> active points",
-    "reward_footer": "Instruction for reward, lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis.",
-    "no_desc": "Reward description is not set",
-    "no_name": "No name of reward campaign",
-    "used_confirmation": "Confirm reward usage",
-    "used_confirmation_description": "Please confirm reward usage",
-    "singleCoupon_prompt": "To redeem customers will be able to use the same coupon"
-  },
-  "customer_transaction": {
-    "customer_loyalty_card_number": "Loyalty card number",
-    "customer_phone_number": "Phone number",
-    "empty_transactions": "There is no transactions to display",
-    "list": "Transactions list",
-    "id": "Transaction ID",
-    "document_number": "Document number",
-    "document_type": "Document type",
-    "revised_document": "Revised document",
-    "purchase_date": "Purchase date",
-    "purchase_place": "POS",
-    "actions": "Actions",
-    "details": "Transaction details",
-    "customer_name": "Customer name",
-    "phone": "Phone",
-    "email": "E-mail",
-    "loyaltyCardNumber": "Loyalty card number",
-    "city": "City",
-    "state": "State",
-    "street": "Street",
-    "building_name": "Building name",
-    "unit_name": "Flat/Unit name",
-    "postal_code": "Postal code",
-    "country": "Country",
-    "item_details": "Item details",
-    "name": "Name",
-    "quantity": "Quantity",
-    "sku": "SKU",
-    "category": "Category",
-    "gross": "Gross value",
-    "labels": "Labels",
-    "maker": "Brand",
-    "link_modal": "Match customer with transaction",
-    "customer_email": "E-mail",
-    "customer_id": "Customer ID",
-    "transaction_document_number": "Document number",
-    "customer_email_prompt": "Find customer by e-mail",
-    "transaction_document_number_prompt": "Find transaction by document number",
-    "customer_id_prompt": "Put customer unique ID",
-    "link": "Match with customer",
-    "heading": "Transactions",
-    "transaction_id": "Transaction id",
-    "points_earned": "Points earned",
-    "pos_name": "POS name",
-    "sum": "SUM",
-    "amount": "Amount",
-    "document_types": {
-      "return": "Return",
-      "sell": "Sell",
-      "both": "Both"
+    "emails": "Transaction emails",
+    "static_content": {
+      "benefits": {
+        "title": "My benefits",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      },
+      "connect_online_stores": {
+        "title": "Match witch eCommerce",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      },
+      "faq": {
+        "title": "FAQ",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      },
+      "how_to_earn": {
+        "title": "How to earn points?",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      },
+      "rules": {
+        "title": "Terms and conditions",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      },
+      "visit_offline": {
+        "title": "Visit offline stores",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      },
+      "match_with_ecommerce": {
+        "title": "Match with eCommerce",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis."
+      }
     }
   },
-
-  "Your password must be at least 8 characters long.": "Your password must be at least 8 characters long",
-  "Your password must include both upper and lower case letters.": "Your password must include both upper and lower case letters",
-  "Your password must include at least one number.": "Your password must include at least one number",
-  "Your password must contain at least one special character.": "Your password must contain at least one special character",
-  "Your password must include at least one letter.": "Your password must include at least one letter",
-  "Ta wartość nie powinna być pusta.": "This value should not be empty",
-  "Plik nie mógł zostać odnaleziony.": "File could not be found",
-  "Ten plik nie jest obrazem.": "This file is not image",
-  "customer with such phone already exists": "Customer with such phone already exists",
-  "customer with such loyalty card number already exists": "Customer with such loyalty card number already exists",
-  "Bad credentials": "Bad credentials"
-}
+    "customer_earning_rules": {
+      "custom_event": "Custom event",
+      "points": "Each {{pointsValue}}{{currency}} = 1 point",
+      "product_purchase": "Additional points for purchase of {{sku}}",
+      "title": "How to earn points?",
+      "table": {
+        "name": "How?",
+        "type": "Type",
+        "description": "Description",
+        "points": "Points",
+        "start_at": "Start at",
+        "end_at": "End at"
+      }
+    },
+    "customer_nav": {
+      "logo1": "Loyalty",
+      "logo2": "Program",
+      "copyrights": "",
+      "home": "Home",
+      "my_rewards": "My rewards",
+      "earning_points": "My points",
+      "my_transactions": "My transactions",
+      "match_with_ecommerce": "Match with eCommerce",
+      "my_profile": "My profile"
+    },
+    "customer_campaign": {
+      "coupon_used": "This coupon has been used",
+      "not_enough_points": "Not enough points",
+      "will_be_active_dates": "This reward campaign will be active from {{from}} to {{to}}",
+      "will_be_active_all_time": "This campaign will be active all time",
+      "will_be_active_soon": "Not active yet",
+      "list": "My rewards",
+      "bought_list": "My redeemed rewards",
+      "points": "Points",
+      "redeem": "Redeem reward",
+      "footer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis.",
+      "no_rewards": "There are no available rewards",
+      "no_bought_rewards": "There are no redeemed rewards",
+      "all_time_Active": "All time active",
+      "see_bought": "See rewards you have already redeemed",
+      "reward_congratulations": "Congratulations!",
+      "reward_ready": "Your reward is ready to receive.",
+      "reward_code": "CODE OF REWARD",
+      "active_points": "Redeem new rewards, you can use <b>{{points}}</b> active points",
+      "reward_footer": "Instruction for reward, lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tincidunt est. Sed fringilla dapibus venenatis.",
+      "no_desc": "Reward description is not set",
+      "no_name": "No name of reward campaign",
+      "used_confirmation": "Confirm reward usage",
+      "used_confirmation_description": "Please confirm reward usage",
+      "singleCoupon_prompt": "To redeem customers will be able to use the same coupon"
+    },
+    "customer_transaction": {
+      "customer_loyalty_card_number": "Loyalty card number",
+      "customer_phone_number": "Phone number",
+      "empty_transactions": "There is no transactions to display",
+      "list": "Transactions list",
+      "id": "Transaction ID",
+      "document_number": "Document number",
+      "document_type": "Document type",
+      "revised_document": "Revised document",
+      "purchase_date": "Purchase date",
+      "purchase_place": "POS",
+      "actions": "Actions",
+      "details": "Transaction details",
+      "customer_name": "Customer name",
+      "phone": "Phone",
+      "email": "E-mail",
+      "loyaltyCardNumber": "Loyalty card number",
+      "city": "City",
+      "state": "State",
+      "street": "Street",
+      "building_name": "Building name",
+      "unit_name": "Flat/Unit name",
+      "postal_code": "Postal code",
+      "country": "Country",
+      "item_details": "Item details",
+      "name": "Name",
+      "quantity": "Quantity",
+      "sku": "SKU",
+      "category": "Category",
+      "gross": "Gross value",
+      "labels": "Labels",
+      "maker": "Brand",
+      "link_modal": "Match customer with transaction",
+      "customer_email": "E-mail",
+      "customer_id": "Customer ID",
+      "transaction_document_number": "Document number",
+      "customer_email_prompt": "Find customer by e-mail",
+      "transaction_document_number_prompt": "Find transaction by document number",
+      "customer_id_prompt": "Put customer unique ID",
+      "link": "Match with customer",
+      "heading": "Transactions",
+      "transaction_id": "Transaction id",
+      "points_earned": "Points earned",
+      "pos_name": "POS name",
+      "sum": "SUM",
+      "amount": "Amount",
+      "document_types": {
+        "return": "Return",
+        "sell": "Sell",
+        "both": "Both"
+      }
+    },
+    "Your password must be at least 8 characters long.": "Your password must be at least 8 characters long",
+    "Your password must include both upper and lower case letters.": "Your password must include both upper and lower case letters",
+    "Your password must include at least one number.": "Your password must include at least one number",
+    "Your password must contain at least one special character.": "Your password must contain at least one special character",
+    "Your password must include at least one letter.": "Your password must include at least one letter",
+    "Ta wartość nie powinna być pusta.": "This value should not be empty",
+    "Plik nie mógł zostać odnaleziony.": "File could not be found",
+    "Ten plik nie jest obrazem.": "This file is not image",
+    "customer with such phone already exists": "Customer with such phone already exists",
+    "customer with such loyalty card number already exists": "Customer with such loyalty card number already exists",
+    "Bad credentials": "Bad credentials"
+  }

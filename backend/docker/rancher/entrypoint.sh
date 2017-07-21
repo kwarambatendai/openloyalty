@@ -2,7 +2,7 @@
 
 cd /var/www/ol/backend
 rm -r vendor
-composer install
+composer install -o
 bin/console cache:clear --env=prod
 bin/console cache:warmup --env=prod
 bin/console assets:install --symlink

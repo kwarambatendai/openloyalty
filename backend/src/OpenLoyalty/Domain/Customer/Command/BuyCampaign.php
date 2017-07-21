@@ -25,7 +25,7 @@ class BuyCampaign extends CustomerCommand
     protected $campaignName;
 
     /**
-     * @var int
+     * @var float
      */
     protected $costInPoints;
 
@@ -52,7 +52,7 @@ class BuyCampaign extends CustomerCommand
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getCostInPoints()
     {

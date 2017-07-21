@@ -2,6 +2,8 @@ frontend/node_modules
 frontend/dist/*
 !frontend/dist/node_modules
 .idea
+.vagrant
+.php_cs.cache
 cs_fixer*
 /frontend/npm-debug.log
 

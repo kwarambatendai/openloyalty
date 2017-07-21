@@ -14,6 +14,8 @@ use OpenLoyalty\Domain\EarningRule\EarningRule;
 use OpenLoyalty\Domain\EarningRule\EarningRuleId;
 use OpenLoyalty\Domain\Model\SKU;
 use Symfony\Bridge\Doctrine\Tests\Fixtures\ContainerAwareFixture;
+use OpenLoyalty\Bundle\LevelBundle\DataFixtures\ORM\LoadLevelData;
+use OpenLoyalty\Domain\EarningRule\LevelId;
 
 /**
  * Class LoadEarningRuleData.
@@ -24,7 +26,6 @@ class LoadEarningRuleData extends ContainerAwareFixture implements FixtureInterf
     const POINT_RULE_ID = '00000000-0000-474c-b092-b0dd880c07e4';
     const PURCHASE_RULE_ID = '00000000-0000-474c-b092-b0dd880c07e2';
     const MULTIPLY_RULE_ID = '00000000-0000-474c-b092-b0dd880c0723';
-    const REFERRAL_RULE_ID = '00000000-0000-474c-b092-b0dd880c0724';
     const NEWSLETTER_SUBSCRIPTION_RULE_ID = '00000000-0000-474c-b092-b0dd880c0725';
     const FACEBOOK_LIKE_RULE_ID = '00000000-0000-474c-b092-b0dd880c0121';
 
@@ -71,21 +72,12 @@ class LoadEarningRuleData extends ContainerAwareFixture implements FixtureInterf
             );
 
         $ruleData = array_merge($this->getMainData(), [
-            'eventName' => CustomerSystemEvents::CUSTOMER_REFERRAL,
-            'pointsAmount' => 75,
-        ]);
-        $ruleData['name'] = 'Customer referral test rule';
-
-        $this->container->get('broadway.command_handling.command_bus')
-            ->dispatch(
-                new CreateEarningRule(new EarningRuleId(self::REFERRAL_RULE_ID), EarningRule::TYPE_EVENT, $ruleData)
-            );
-
-        $ruleData = array_merge($this->getMainData(), [
             'eventName' => CustomerSystemEvents::NEWSLETTER_SUBSCRIPTION,
             'pointsAmount' => 85,
         ]);
         $ruleData['name'] = 'Newsletter subscription test rule';
+
+        $ruleData['levels'] = [new LevelId(LoadLevelData::LEVEL3_ID)];
 
         $this->container->get('broadway.command_handling.command_bus')
             ->dispatch(
@@ -113,6 +105,7 @@ class LoadEarningRuleData extends ContainerAwareFixture implements FixtureInterf
             'endAt' => (new \DateTime('+1 month'))->getTimestamp(),
             'active' => true,
             'allTimeActive' => false,
+            'levels' => ([new LevelId(LoadLevelData::LEVEL3_ID)]),
         ];
     }
 

@@ -18,7 +18,7 @@ class ProductPurchaseEarningRule extends EarningRule
     protected $skuIds = [];
 
     /**
-     * @var int
+     * @var float
      */
     protected $pointsAmount;
 
@@ -51,15 +51,15 @@ class ProductPurchaseEarningRule extends EarningRule
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getPointsAmount()
     {
-        return $this->pointsAmount;
+        return (float) $this->pointsAmount;
     }
 
     /**
-     * @param int $pointsAmount
+     * @param float $pointsAmount
      */
     public function setPointsAmount($pointsAmount)
     {

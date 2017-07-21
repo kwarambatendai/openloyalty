@@ -161,6 +161,7 @@ export default class EditableMap {
                 delete res.pointsAmount;
                 delete res.multiplier;
                 delete res.limit;
+                delete res.rewardType;
                 break;
             case 'event' :
                 delete res.excludedSKUs;
@@ -171,6 +172,7 @@ export default class EditableMap {
                 delete res.skuIds;
                 delete res.multiplier;
                 delete res.limit;
+                delete res.rewardType;
                 break;
             case 'custom_event' :
                 delete res.excludedSKUs;
@@ -180,10 +182,22 @@ export default class EditableMap {
                 delete res.minOrderValue;
                 delete res.skuIds;
                 delete res.multiplier;
+                delete res.rewardType;
                 if (res.limit && !res.limit.active) {
                     delete res.limit.period;
                     delete res.limit.limit;
                 }
+                break;
+            case 'referral' :
+                delete res.excludedSKUs;
+                delete res.pointValue;
+                delete res.excludedLabels;
+                delete res.excludeDeliveryCost;
+                delete res.minOrderValue;
+                delete res.skuIds;
+                delete res.multiplier;
+                delete res.limit;
+                delete res.limit;
                 break;
             case 'product_purchase' :
                 delete res.excludedSKUs;
@@ -194,6 +208,7 @@ export default class EditableMap {
                 delete res.eventName;
                 delete res.multiplier;
                 delete res.limit;
+                delete res.rewardType;
                 break;
             case 'multiply_for_product' :
                 delete res.excludedSKUs;
@@ -204,6 +219,7 @@ export default class EditableMap {
                 delete res.eventName;
                 delete res.pointsAmount;
                 delete res.limit;
+                delete res.rewardType;
                 break;
             default:
                 break;
@@ -247,12 +263,24 @@ export default class EditableMap {
             }
             res.excludedLabels = labels;
         }
+        if (res.labels) {
+            let labels = '';
+            for (let label in res.labels) {
+                labels += res.labels[label].key + ':' + res.labels[label].value + ';';
+            }
+            if (labels.charAt(labels.length - 1) == ';') {
+                labels = labels.substring(0, labels.length - 1)
+            }
+            res.labels = labels;
+        }
 
         delete res.earningRuleId;
         delete res.fromServer;
         delete res.restangularized;
         delete res.route;
         delete res.usages;
+        delete res.levelNames;
+        delete res.segmentNames;
         if (deleteType) {
             delete res.type;
         }
@@ -274,6 +302,14 @@ export default class EditableMap {
         }
         if (data.endAt) {
             data.endAt = moment(data.endAt).format(self.config.dateTimeFormat)
+        }
+
+        if (data.levels && data.levels.length) {
+            data.target = 'level'
+        }
+
+        if (data.segments && data.segments.length) {
+            data.target = 'segment'
         }
 
         data.excludedLabels = _.pickBy(data.excludedLabels);
@@ -562,7 +598,7 @@ export default class EditableMap {
             campaign.target = 'level'
         }
 
-        if (campaign.levels && campaign.segments.length) {
+        if (campaign.segments && campaign.segments.length) {
             campaign.target = 'segment'
         }
 

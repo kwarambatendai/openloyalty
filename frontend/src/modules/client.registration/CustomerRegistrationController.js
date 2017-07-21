@@ -10,6 +10,8 @@ export default class CustomerRegistrationController {
         this.country = DataService.getCountries();
         this.Validation = Validation;
         this.$stateParams = $stateParams;
+        this.invitationToken = $stateParams.invitationToken;
+
         this.$scope.addressValidation = {
             street: '@assert:not_blank',
             address1: '@assert:not_blank',
@@ -80,7 +82,7 @@ export default class CustomerRegistrationController {
         let frontValidation = self.Validation.frontValidation(newCustomer, validateFields);
 
         if (_.isEmpty(frontValidation)) {
-            self.CustomerRegistrationService.postCustomer(newCustomer)
+            self.CustomerRegistrationService.postCustomer(newCustomer, this.invitationToken)
                 .then(
                     res => {
                         self.$state.go('customer.panel.registration_success');

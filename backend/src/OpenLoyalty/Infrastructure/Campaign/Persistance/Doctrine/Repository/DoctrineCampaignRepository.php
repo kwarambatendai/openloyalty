@@ -11,7 +11,7 @@ use OpenLoyalty\Domain\Campaign\CampaignId;
 use OpenLoyalty\Domain\Campaign\CampaignRepository;
 use OpenLoyalty\Domain\Campaign\LevelId;
 use OpenLoyalty\Domain\Campaign\SegmentId;
-use OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Functions\Cast;
+use OpenLoyalty\Infrastructure\General\Persistance\Doctrine\Functions\Cast;
 
 /**
  * Class DoctrineCampaignRepository.

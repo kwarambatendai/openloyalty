@@ -8,6 +8,21 @@ services:
     lazy: true
     tags:
       - { name: command_handler }
+  oloy.user.invitation.sha_token_generator:
+    class: OpenLoyalty\Domain\Customer\Service\ShaInvitationTokenGenerator
+    public: false
+
+  oloy.user.invitation.token_generator: '@oloy.user.invitation.sha_token_generator'
+
+  oloy.user.invitation.command_handler:
+    class: OpenLoyalty\Domain\Customer\Command\InvitationCommandHandler
+    arguments:
+      - '@oloy.user.invitation.repository'
+      - '@oloy.user.invitation.token_generator'
+      - '@broadway.event_dispatcher'
+    lazy: true
+    tags:
+      - { name: command_handler }
   oloy.user.seller.command_handler:
     class: OpenLoyalty\Domain\Seller\Command\SellerCommandHandler
     arguments:
@@ -26,6 +41,12 @@ services:
       - '@oloy.user.read_model.repository.seller_details'
   oloy.user.customer.repository:
     class: OpenLoyalty\Domain\Customer\CustomerRepository
+    arguments:
+      - '@broadway.event_store'
+      - '@broadway.event_handling.event_bus'
+      - ['@broadway.metadata_enriching_event_stream_decorator']
+  oloy.user.invitation.repository:
+    class: OpenLoyalty\Domain\Customer\InvitationRepository
     arguments:
       - '@broadway.event_store'
       - '@broadway.event_handling.event_bus'
@@ -49,6 +70,13 @@ services:
       - 'oloy.customer_details'
       - 'OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails'
       - 'OpenLoyalty\Domain\Repository\Customer\CustomerDetailsElasticsearchRepository'
+  oloy.user.read_model.repository.invitation_details:
+    class: 'Broadway\ReadModel\ReadModel'
+    factory: ['@oloy.user.read_model.repository_factory', create]
+    arguments:
+      - 'oloy.invitation_details'
+      - 'OpenLoyalty\Domain\Customer\ReadModel\InvitationDetails'
+      - 'OpenLoyalty\Domain\Repository\Customer\InvitationDetailsElasticsearchRepository'
   oloy.user.read_model.repository.seller_details:
     class: 'Broadway\ReadModel\ReadModel'
     factory: ['@oloy.user.read_model.repository_factory', create]
@@ -63,6 +91,13 @@ services:
     arguments:
       - '@oloy.user.read_model.repository.customer_details'
       - '@oloy.transaction.read_model.repository.transaction_details'
+  oloy.user.customer.read_model.projector.invitation_details:
+    class: 'OpenLoyalty\Domain\Customer\ReadModel\InvitationDetailsProjector'
+    tags:
+      - { name: broadway.domain.event_listener }
+    arguments:
+      - '@oloy.user.read_model.repository.customer_details'
+      - '@oloy.user.read_model.repository.invitation_details'
   oloy.user.customer.read_model.projector.seller_details:
     class: 'OpenLoyalty\Domain\Seller\ReadModel\SellerDetailsProjector'
     tags:

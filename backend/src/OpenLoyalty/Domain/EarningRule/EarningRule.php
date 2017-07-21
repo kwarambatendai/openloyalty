@@ -17,6 +17,7 @@ abstract class EarningRule
     const TYPE_CUSTOM_EVENT = 'custom_event';
     const TYPE_PRODUCT_PURCHASE = 'product_purchase';
     const TYPE_MULTIPLY_FOR_PRODUCT = 'multiply_for_product';
+    const TYPE_REFERRAL = 'referral';
 
     const TYPE_MAP = [
         self::TYPE_EVENT => EventEarningRule::class,
@@ -24,6 +25,7 @@ abstract class EarningRule
         self::TYPE_POINTS => PointsEarningRule::class,
         self::TYPE_PRODUCT_PURCHASE => ProductPurchaseEarningRule::class,
         self::TYPE_MULTIPLY_FOR_PRODUCT => MultiplyPointsForProductEarningRule::class,
+        self::TYPE_REFERRAL => ReferralEarningRule::class,
     ];
 
     /**
@@ -40,6 +42,16 @@ abstract class EarningRule
      * @var string
      */
     protected $description;
+
+    /**
+     * @var LevelId[]
+     */
+    protected $levels = [];
+
+    /**
+     * @var SegmentId[]
+     */
+    protected $segments = [];
 
     /**
      * @var bool
@@ -85,6 +97,12 @@ abstract class EarningRule
         }
         if (isset($earningRuleData['description'])) {
             $this->description = $earningRuleData['description'];
+        }
+        if (isset($earningRuleData['levels'])) {
+            $this->levels = $earningRuleData['levels'];
+        }
+        if (isset($earningRuleData['segments'])) {
+            $this->segments = $earningRuleData['segments'];
         }
         if (isset($earningRuleData['active'])) {
             $this->active = $earningRuleData['active'];
@@ -150,6 +168,38 @@ abstract class EarningRule
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return LevelId[]
+     */
+    public function getLevels()
+    {
+        return $this->levels;
+    }
+
+    /**
+     * @param LevelId[] $levels
+     */
+    public function setLevels($levels)
+    {
+        $this->levels = $levels;
+    }
+
+    /**
+     * @return SegmentId[]
+     */
+    public function getSegments()
+    {
+        return $this->segments;
+    }
+
+    /**
+     * @param SegmentId[] $segments
+     */
+    public function setSegments($segments)
+    {
+        $this->segments = $segments;
     }
 
     /**
@@ -251,5 +301,19 @@ abstract class EarningRule
     public function setUsages($usages)
     {
         $this->usages = $usages;
+    }
+
+    public function getFlatLevels()
+    {
+        return array_map(function (LevelId $levelId) {
+            return $levelId->__toString();
+        }, $this->levels);
+    }
+
+    public function getFlatSegments()
+    {
+        return array_map(function (SegmentId $segmentId) {
+            return $segmentId->__toString();
+        }, $this->segments);
     }
 }

@@ -32,6 +32,11 @@ class EarningRule extends BaseEarningRule implements GroupSequenceProviderInterf
     protected $eventName;
 
     /**
+     * @var string
+     */
+    protected $rewardType;
+
+    /**
      * @var int
      */
     protected $pointsAmount;
@@ -125,6 +130,8 @@ class EarningRule extends BaseEarningRule implements GroupSequenceProviderInterf
         $data = [
             'name' => $this->getName(),
             'description' => $this->getDescription(),
+            'levels' => $this->levels,
+            'segments' => $this->segments,
             'active' => $this->isActive(),
             'startAt' => $this->startAt ? $this->startAt->getTimestamp() : null,
             'endAt' => $this->endAt ? $this->endAt->getTimestamp() : null,
@@ -139,6 +146,7 @@ class EarningRule extends BaseEarningRule implements GroupSequenceProviderInterf
             'skuIds' => $this->getSkuIds(),
             'multiplier' => $this->multiplier,
             'labels' => $labels,
+            'rewardType' => $this->rewardType,
         ];
         if ($this->limit && $this->type == self::TYPE_CUSTOM_EVENT) {
             $data['limit'] = [
@@ -378,6 +386,22 @@ class EarningRule extends BaseEarningRule implements GroupSequenceProviderInterf
     }
 
     /**
+     * @return string
+     */
+    public function getRewardType()
+    {
+        return $this->rewardType;
+    }
+
+    /**
+     * @param string $rewardType
+     */
+    public function setRewardType($rewardType)
+    {
+        $this->rewardType = $rewardType;
+    }
+
+    /**
      * @return EarningRuleLimit
      */
     public function getLimit()
@@ -391,5 +415,18 @@ class EarningRule extends BaseEarningRule implements GroupSequenceProviderInterf
     public function setLimit($limit)
     {
         $this->limit = $limit;
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     * @Assert\Callback()
+     */
+    public function validateSegmentsAndLevels(ExecutionContextInterface $context)
+    {
+        if (count($this->levels) == 0 && count($this->segments) == 0) {
+            $message = 'This collection should contain 1 element or more.';
+            $context->buildViolation($message)->atPath('levels')->addViolation();
+            $context->buildViolation($message)->atPath('segments')->addViolation();
+        }
     }
 }

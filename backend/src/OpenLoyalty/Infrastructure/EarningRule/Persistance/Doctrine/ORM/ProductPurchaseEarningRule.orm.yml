@@ -5,5 +5,7 @@ OpenLoyalty\Domain\EarningRule\ProductPurchaseEarningRule:
       type: json_array
       column: sku_ids
     pointsAmount:
-      type: integer
+      type: decimal
+      scale: 2
+      precision: 14
       column: points_amount

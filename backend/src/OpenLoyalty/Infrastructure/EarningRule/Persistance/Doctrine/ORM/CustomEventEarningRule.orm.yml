@@ -5,7 +5,9 @@ OpenLoyalty\Domain\EarningRule\CustomEventEarningRule:
       type: string
       column: event_name
     pointsAmount:
-      type: integer
+      type: decimal
+      scale: 2
+      precision: 14
       column: points_amount
   embedded:
     limit:

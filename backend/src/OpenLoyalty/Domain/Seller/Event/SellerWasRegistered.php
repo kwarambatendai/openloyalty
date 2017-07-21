@@ -5,6 +5,7 @@
  */
 namespace OpenLoyalty\Domain\Seller\Event;
 
+use OpenLoyalty\Domain\Seller\PosId;
 use OpenLoyalty\Domain\Seller\SellerId;
 
 /**
@@ -23,6 +24,10 @@ class SellerWasRegistered extends SellerEvent
             $tmp->setTimestamp($data['createdAt']);
             $data['createdAt'] = $tmp;
         }
+        if (isset($data['posId']) && !$data['posId'] instanceof PosId) {
+            $data['posId'] = new PosId($data['posId']);
+        }
+
         $this->sellerData = $data;
     }
 
@@ -32,6 +37,10 @@ class SellerWasRegistered extends SellerEvent
 
         if (isset($data['createdAt']) && $data['createdAt'] instanceof \DateTime) {
             $data['createdAt'] = $data['createdAt']->getTimestamp();
+        }
+
+        if ($data['posId'] instanceof PosId) {
+            $data['posId'] = (string) $data['posId'];
         }
 
         return array_merge(parent::serialize(), array(
@@ -49,7 +58,7 @@ class SellerWasRegistered extends SellerEvent
 
         return new self(
             new SellerId($data['sellerId']),
-            $data
+            $data['customerData']
         );
     }
 

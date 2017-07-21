@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: pl_PL
+    locale: en
     storage_suffix: "_%kernel.environment%"
     jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
 framework:
@@ -61,6 +61,8 @@ doctrine:
           earning_rule_id: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleIdDoctrineType
           earning_rule_usage_id: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleUsageIdDoctrineType
           earning_rule_usage_subject: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleUsageSubjectDoctrineType
+          earning_rule_levels_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleLevelsJsonArrayDoctrineType
+          earning_rule_segments_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleSegmentsJsonArrayDoctrineType
           pos_id: OpenLoyalty\Infrastructure\Pos\Persistance\Doctrine\Type\PosIdDoctrineType
           labels_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\LabelsJsonArrayDoctrineType
           skus_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\SKUsJsonArrayDoctrineType

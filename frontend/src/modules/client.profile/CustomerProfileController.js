@@ -46,6 +46,7 @@ export default class CustomerProfileController {
             sortField: 'name',
             maxItems: 1,
         };
+        this.$scope.loaderVisible = true;
     }
 
     changePassword(password) {
@@ -78,6 +79,7 @@ export default class CustomerProfileController {
         self.CustomerProfileService.getCustomer(self.id)
             .then(
                 res => {
+                    self.$scope.loaderVisible = false;
                     self.$scope.customer = res;
                     self.$scope.editableFields = self.EditableMap.humanizeCustomer(res);
                     self.$scope.showAddress = !_.isEmpty(_.omitBy(self.$scope.editableFields.address, _.isEmpty));

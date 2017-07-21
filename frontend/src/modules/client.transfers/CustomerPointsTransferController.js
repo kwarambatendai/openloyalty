@@ -16,6 +16,7 @@ export default class CustomerPointsTransferController {
         this.$q = $q;
         this.$filter = $filter;
         this.config = DataService.getConfig();
+        this.$scope.loader = true;
     }
 
     getStatus() {
@@ -45,6 +46,7 @@ export default class CustomerPointsTransferController {
                 self.CustomerPointsTransferService.getTransfers(self.ParamsMap.params(params.url()))
                     .then(
                         res => {
+                            self.$scope.loader = false;
                             self.$scope.transfers = res;
                             params.total(res.total);
                             dfd.resolve(res);

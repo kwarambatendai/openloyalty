@@ -18,6 +18,8 @@ import AuthService from './component/global/auth/AuthService';
 import RootController from './component/global/root/RootController';
 import StaticPagesController from './component/global/pages/StaticPagesController';
 import StaticPagesDirective from './component/global/pages/StaticPagesDirective';
+import BoxLoaderDirective from './component/global/boxLoader/BoxLoaderDirective';
+
 
 import Filters from './component/global/filters/Filters';
 
@@ -41,6 +43,7 @@ angular.module('OpenLoyalty', [
     'ngTable',
     'ui.select',
     'ngSanitize',
+    'angular-loading-bar',
     'ng-sortable',
     'pascalprecht.translate',
     'selectize',
@@ -55,9 +58,10 @@ angular.module('OpenLoyalty', [
     'client.transfers',
 ])
 
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider, $translateProvider, $locationProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider, $translateProvider, $locationProvider, cfpLoadingBarProvider) {
         let config = window.OpenLoyaltyConfig;
 
+        cfpLoadingBarProvider.includeSpinner = false;
         $locationProvider.hashPrefix('!');
         $translateProvider.useLoader('TranslationLoader');
         $translateProvider.preferredLanguage('en');
@@ -201,6 +205,8 @@ angular.module('OpenLoyalty', [
     .directive('csvUpload', () => new CsvUploadDirective())
     .directive('checkbox', () => new CheckboxDirective())
     .directive('staticPage', () => new StaticPagesDirective())
+    .directive('boxLoader', BoxLoaderDirective.create)
+
 
     .service('Validation', Validation)
     .service('EditableMap', EditableMap)

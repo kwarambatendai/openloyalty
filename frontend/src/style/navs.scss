@@ -21,6 +21,12 @@ nav {
 
 .top-navigation {
   &.admin {
+    .js-dropdown-active.settings {
+      right: 10px !important;
+    }
+    .js-dropdown-active {
+      z-index: 10000 !important;
+    }
     .menu:not(.submenu) > li > a {
       padding: 17px !important;
     }
@@ -67,7 +73,7 @@ nav {
           }
           li.is-dropdown-submenu-parent.is-active {
             .arrow-up {
-              z-index: 10;
+              z-index: 10000;
               display: block;
               width: 0;
               height: 0;
@@ -95,6 +101,7 @@ nav {
               border-top: 1px solid rgb(226, 226, 226);
             }
           }
+
           ul.menu.submenu.is-dropdown-submenu::after {
             position: absolute;
             top: 0px;

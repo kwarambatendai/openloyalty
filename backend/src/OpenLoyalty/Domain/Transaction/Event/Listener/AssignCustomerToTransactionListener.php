@@ -94,7 +94,8 @@ class AssignCustomerToTransactionListener implements EventListenerInterface
                     new CustomerId($customerId),
                     $transaction->getGrossValue(),
                     $transaction->getGrossValueWithoutDeliveryCosts(),
-                    $transaction->getAmountExcludedForLevel()
+                    $transaction->getAmountExcludedForLevel(),
+                    $transactionsCount
                 )]
             );
 

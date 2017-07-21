@@ -26,7 +26,7 @@ services:
       - { name: form.type }
   oloy.earning_rule.listener:
     class: OpenLoyalty\Bundle\EarningRuleBundle\Event\Listener\EarningRuleSerializationListener
-    arguments: ['@router']
+    arguments: ['@router', '@oloy.segment.repository', '@oloy.level.repository']
     tags:
       - { name: jms_serializer.event_subscriber }
   oloy.earning_rule.algorithm_factory:

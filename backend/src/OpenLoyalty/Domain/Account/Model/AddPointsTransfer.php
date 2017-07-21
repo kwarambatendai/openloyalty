@@ -15,7 +15,7 @@ use OpenLoyalty\Domain\Account\TransactionId;
 class AddPointsTransfer extends PointsTransfer
 {
     /**
-     * @var int
+     * @var float
      */
     protected $availableAmount;
 
@@ -61,7 +61,7 @@ class AddPointsTransfer extends PointsTransfer
         }
         $transfer = new self(new PointsTransferId($data['id']), $data['value'], $createdAt, $data['canceled']);
         if (isset($data['availableAmount'])) {
-            Assert::integer($data['availableAmount']);
+            Assert::numeric($data['availableAmount']);
             Assert::min($data['availableAmount'], 0);
             $transfer->availableAmount = $data['availableAmount'];
         }
@@ -99,7 +99,7 @@ class AddPointsTransfer extends PointsTransfer
     public function updateAvailableAmount($value)
     {
         Assert::notBlank($value);
-        Assert::integer($value);
+        Assert::numeric($value);
         Assert::max($value, $this->value);
         $this->availableAmount = $value;
 
@@ -121,7 +121,7 @@ class AddPointsTransfer extends PointsTransfer
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getAvailableAmount()
     {
@@ -129,7 +129,7 @@ class AddPointsTransfer extends PointsTransfer
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getUsedAmount()
     {

@@ -21,3 +21,7 @@ services:
     class: OpenLoyalty\Bundle\UserBundle\Security\Voter\AdminVoter
     tags:
       - { name: security.voter }
+  oloy.user.voters.invitation:
+    class: OpenLoyalty\Bundle\UserBundle\Security\Voter\InvitationVoter
+    tags:
+      - { name: security.voter }

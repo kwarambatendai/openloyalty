@@ -1,7 +1,6 @@
 export default class RootController {
     constructor($rootScope, AuthService, $state, $timeout, $translate, $sce, $stateParams, $interval) {
         let self = this;
-
         this.$state = $state;
         this.$stateParams = $stateParams;
         this.$rootScope = $rootScope;
@@ -70,6 +69,7 @@ export default class RootController {
             let excludedStates = [
                 'customer.panel.registration',
                 'customer.panel.registration_confirm',
+                'customer.panel.registration_from_invitation',
                 'customer.panel.registration_success'
             ];
 
@@ -174,7 +174,8 @@ export default class RootController {
             this.$state.current.name !== 'customer-login' &&
             this.$state.current.name !== 'seller-login' &&
             this.$state.current.name !== 'customer.panel.registration_success' &&
-            this.$state.current.name !== 'customer.panel.registration';
+            this.$state.current.name !== 'customer.panel.registration' &&
+            this.$state.current.name !== 'customer.panel.registration_from_invitation';
     }
 
     setLoading(loading) {
@@ -218,7 +219,8 @@ export default class RootController {
             'forgot-password-reset-customer',
             'customer.panel.registration_confirm',
             'customer.panel.registration_success',
-            'customer.panel.registration'
+            'customer.panel.registration',
+            'customer.panel.registration_from_invitation'
         ];
 
         return (self.$state.includes('customer') && !_.includes(customerCustomStates, self.$state.current.name))

@@ -9,7 +9,7 @@ use Broadway\ReadModel\RepositoryInterface;
 use OpenLoyalty\Domain\Customer\ReadModel\CustomerDetails;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -50,8 +50,9 @@ class AddPointsFormType extends AbstractType
             'choices' => $customerChoices,
         ]);
 
-        $builder->add('points', IntegerType::class, [
+        $builder->add('points', NumberType::class, [
             'attr' => ['min' => 1],
+            'scale' => 2,
             'constraints' => [
                 new NotBlank(),
                 new Range(['min' => 1]),

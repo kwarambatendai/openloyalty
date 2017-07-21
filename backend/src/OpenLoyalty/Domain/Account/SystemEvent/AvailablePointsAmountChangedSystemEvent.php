@@ -16,7 +16,7 @@ class AvailablePointsAmountChangedSystemEvent extends AccountSystemEvent
     const OPERATION_TYPE_ADD = 'add';
     const OPERATION_TYPE_SUBTRACT = 'subtract';
     /**
-     * @var int
+     * @var float
      */
     protected $currentAmount;
 
@@ -36,7 +36,7 @@ class AvailablePointsAmountChangedSystemEvent extends AccountSystemEvent
      *
      * @param AccountId  $accountId
      * @param CustomerId $customerId
-     * @param int        $currentAmount
+     * @param float      $currentAmount
      * @param int        $amountChange
      * @param string     $operationType
      */
