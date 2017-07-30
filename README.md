@@ -70,10 +70,12 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ## Url access
 After starting Open Loyalty it's exposes services under followig URLs:
 
-http://localhost:8182 - the administration panel,
-http://localhost:8183 - the customer panel,
-http://localhost:8184 - the merchant panel,
-http://localhost:8181 - RESTful API port
+ * http://localhost:8182 - the administration panel,
+ * http://localhost:8183 - the customer panel,
+ * http://localhost:8184 - the merchant panel,
+ * http://localhost:8181 - RESTful API port
+ * http://localhost:8181/doc - swagger-like API doc
+
 
 
 ## Generate JWT keys
