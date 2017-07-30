@@ -35,6 +35,18 @@ Then use Phing to setup database, elastcsearch and load some demo data
 
 (if you are using docker, remember to run those `command inside container <./run_command_inside_docker.rst>`_)
 
+Ports and URLS
+==============
+After starting Open Loyalty it's exposes services under followig URLs:
+
+* http://localhost:8182 - the administration panel,
+* http://localhost:8183 - the customer panel,
+* http://localhost:8184 - the merchant panel,
+* http://localhost:8181 - RESTful API port
+
+
+
+
 Architecture
 ============
 This project is based on CQRS, DDD and event sourcing, whole code is split into components and bundles. More info about each component and bundle can be found in `Architecture <./architecture/index.rst>`_.
