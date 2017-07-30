@@ -36,7 +36,7 @@ Then use Phing to setup database, elastcsearch and load some demo data
 (if you are using docker, remember to run those `command inside container <./run_command_inside_docker.rst>`_)
 
 Ports and URLS
-==============
+--------------
 After starting Open Loyalty it's exposes services under followig URLs:
 
 * http://localhost:8182 - the administration panel,
