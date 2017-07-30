@@ -67,6 +67,15 @@ If you are developer and want to attach source code then:
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```
 
+## Url access
+After starting Open Loyalty it's exposes services under followig URLs:
+
+http://localhost:8182 - the administration panel,
+http://localhost:8183 - the customer panel,
+http://localhost:8184 - the merchant panel,
+http://localhost:8181 - RESTful API port
+
+
 ## Generate JWT keys
 
 Running `phing setup` will generate the JWT public/private keys for you, but in case you would like to generate them "manually" use `phing generate-jwt-keys`.
