@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4deeb8f40df02c2c4a8425e9494fcaa",
+    "content-hash": "12bfd00345fe50b503611a39a0c32136",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -242,6 +242,114 @@
             ],
             "description": "UUID generator for broadway/broadway.",
             "time": "2014-09-12T14:14:07+00:00"
+        },
+        {
+            "name": "divante-ltd/open-loyalty-framework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DivanteLtd/open-loyalty-framework.git",
+                "reference": "659f469d6f4001126bebee2e7e594594f2f8155a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DivanteLtd/open-loyalty-framework/zipball/659f469d6f4001126bebee2e7e594594f2f8155a",
+                "reference": "659f469d6f4001126bebee2e7e594594f2f8155a",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/doctrineextensions": "^1.0",
+                "broadway/broadway": "^0.9.0",
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/doctrine-cache-bundle": "^1.2",
+                "doctrine/doctrine-fixtures-bundle": "^2.3",
+                "doctrine/orm": "^2.5",
+                "elasticsearch/elasticsearch": "^2.2",
+                "friendsofsymfony/rest-bundle": "^2.0",
+                "fzaninotto/faker": "^1.6",
+                "gesdinet/jwt-refresh-token-bundle": "^0.1.7",
+                "incenteev/composer-parameter-handler": "^2.0",
+                "jms-serializer/serializer-bundle": "^1.1",
+                "knplabs/knp-gaufrette-bundle": "^0.3.0",
+                "lexik/jwt-authentication-bundle": "^1.6",
+                "nelmio/api-doc-bundle": "^2.13",
+                "nelmio/cors-bundle": "^1.4",
+                "ocramius/proxy-manager": "^1.0",
+                "php": ">=5.5.9",
+                "pixers/salesmanago-api": "1.1.1",
+                "sensio/distribution-bundle": "^5.0",
+                "sensio/framework-extra-bundle": "^3.0.2",
+                "sensio/generator-bundle": "^3.0",
+                "symfony/monolog-bundle": "^2.8",
+                "symfony/polyfill-apcu": "^1.0",
+                "symfony/swiftmailer-bundle": "^2.3",
+                "symfony/symfony": "3.2.*"
+            },
+            "replace": {
+                "divante-ltd/open-loyalty-account": "self.version",
+                "divante-ltd/open-loyalty-analytics-bundle": "self.version",
+                "divante-ltd/open-loyalty-audit": "self.version",
+                "divante-ltd/open-loyalty-audit-bundle": "self.version",
+                "divante-ltd/open-loyalty-campaign": "self.version",
+                "divante-ltd/open-loyalty-campaign-bundle": "self.version",
+                "divante-ltd/open-loyalty-core": "self.version",
+                "divante-ltd/open-loyalty-core-bundle": "self.version",
+                "divante-ltd/open-loyalty-customer": "self.version",
+                "divante-ltd/open-loyalty-demo-bundle": "self.version",
+                "divante-ltd/open-loyalty-earning-rule": "self.version",
+                "divante-ltd/open-loyalty-earning-rule-bundle": "self.version",
+                "divante-ltd/open-loyalty-email": "self.version",
+                "divante-ltd/open-loyalty-email-bundle": "self.version",
+                "divante-ltd/open-loyalty-email-settings-bundle": "self.version",
+                "divante-ltd/open-loyalty-level": "self.version",
+                "divante-ltd/open-loyalty-level-bundle": "self.version",
+                "divante-ltd/open-loyalty-pagination-bundle": "self.version",
+                "divante-ltd/open-loyalty-plugin-bundle": "self.version",
+                "divante-ltd/open-loyalty-points-bundle": "self.version",
+                "divante-ltd/open-loyalty-pos": "self.version",
+                "divante-ltd/open-loyalty-pos-bundle": "self.version",
+                "divante-ltd/open-loyalty-segment": "self.version",
+                "divante-ltd/open-loyalty-segment-bundle": "self.version",
+                "divante-ltd/open-loyalty-seller": "self.version",
+                "divante-ltd/open-loyalty-settings-bundle": "self.version",
+                "divante-ltd/open-loyalty-transaction": "self.version",
+                "divante-ltd/open-loyalty-transaction-bundle": "self.version",
+                "divante-ltd/open-loyalty-user-bundle": "self.version",
+                "divante-ltd/open-loyalty-utility-bundle": "self.version"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7",
+                "symfony/phpunit-bridge": "^3.0"
+            },
+            "type": "project",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                },
+                "symfony-app-dir": "app",
+                "symfony-bin-dir": "bin",
+                "symfony-var-dir": "var",
+                "symfony-web-dir": "web",
+                "symfony-tests-dir": "tests",
+                "symfony-assets-install": "relative",
+                "incenteev-parameters": {
+                    "file": "app/config/parameters.yml"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                },
+                "classmap": [
+                    "app/AppKernel.php",
+                    "app/AppCache.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "time": "2017-09-08T11:42:12+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -5521,8 +5629,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "divante-ltd/open-loyalty-framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

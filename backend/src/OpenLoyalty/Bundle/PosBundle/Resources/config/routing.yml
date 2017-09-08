@@ -1,3 +1,0 @@
-pos:
-  resource: '@OpenLoyaltyPosBundle/Controller/Api/PosController.php'
-  type: annotation

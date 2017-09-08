@@ -1,3 +1,0 @@
-settings:
-    resource: '@OpenLoyaltySettingsBundle/Controller/Api/SettingsController.php'
-    type: annotation

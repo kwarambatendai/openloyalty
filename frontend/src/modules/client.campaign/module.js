@@ -55,7 +55,7 @@ angular.module(MODULE_NAME, [])
         $templateCache.put('./templates/customer-campaign-extend-top.html', '');
         $templateCache.put('./templates/customer-campaign-extend-bottom.html', '');
 
-        $templateCache.put('./templates/customer-campaign-bought-extend-top', '');
+        $templateCache.put('./templates/customer-campaign-bought-extend-top.html', '');
         $templateCache.put('./templates/customer-campaign-bought-extend-bottom.html', '');
 
         $http.get(`./build/${MODULE_NAME}/templates/customer-campaign-bought.html`)

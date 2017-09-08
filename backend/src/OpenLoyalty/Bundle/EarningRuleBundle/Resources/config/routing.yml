@@ -1,6 +1,0 @@
-earning_rule:
-    resource: '@OpenLoyaltyEarningRuleBundle/Controller/Api/EarningRuleController.php'
-    type: annotation
-customer_earning_rule:
-    resource: '@OpenLoyaltyEarningRuleBundle/Controller/Api/CustomerEarningRuleController.php'
-    type: annotation

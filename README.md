@@ -85,3 +85,9 @@ Running `phing setup` will generate the JWT public/private keys for you, but in 
 ## Documentation
 
 Technical documentation is located [here](backend/doc/index.rst).
+
+## Looking for a demo?
+If you need to see a demo of Open Loyalty, drop us a line via the form at the official landing page http://www.openloyalty.io/. 
+
+## CONTRIBUTING
+If you wish to contribute to Open Loyalty, please read the CONTRIBUTING.md file.

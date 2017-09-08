@@ -1,6 +1,0 @@
-points_transfer:
-    resource: '@OpenLoyaltyPointsBundle/Controller/Api/PointsTransferController.php'
-    type: annotation
-customer_points_transfer:
-    resource: '@OpenLoyaltyPointsBundle/Controller/Api/CustomerPointsTransferController.php'
-    type: annotation

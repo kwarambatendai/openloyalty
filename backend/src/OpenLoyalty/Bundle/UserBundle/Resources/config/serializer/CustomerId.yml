@@ -1,6 +1,0 @@
-OpenLoyalty\Domain\Customer\CustomerId:
-  exlusion_policy: ALL
-  properties:
-    customerId:
-      expose: true
-      serialized_name: customerId

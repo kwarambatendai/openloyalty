@@ -1,5 +1,0 @@
-services:
-  oloy.segment.voters.segment:
-    class: OpenLoyalty\Bundle\SegmentBundle\Security\Voter\SegmentVoter
-    tags:
-      - { name: security.voter }

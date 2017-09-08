@@ -1,8 +1,0 @@
-services:
-  oloy.swiftmailer:
-    class: OpenLoyalty\Bundle\EmailBundle\Mailer\OloySwiftmailerMailer
-    arguments: ['@templating', '@swiftmailer.mailer']
-  oloy.mailer:
-    alias: oloy.swiftmailer
-  oloy.email.message_factory:
-    class: OpenLoyalty\Bundle\EmailBundle\Service\MessageFactory

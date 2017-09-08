@@ -1,7 +1,0 @@
-OpenLoyalty\Domain\Campaign\Model\CampaignVisibility:
-  exlusion_policy: ALL
-  properties:
-    visibleFrom:
-      access_type: public_method
-    visibleTo:
-      access_type: public_method

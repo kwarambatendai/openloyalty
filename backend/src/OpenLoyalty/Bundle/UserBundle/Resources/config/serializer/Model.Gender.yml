@@ -1,6 +1,0 @@
-OpenLoyalty\Domain\Customer\Model\Gender:
-  exlusion_policy: ALL
-  properties:
-    type:
-      expose: true
-      serialized_name: gender

@@ -1,9 +1,0 @@
-OpenLoyalty\Domain\EarningRule\EarningRuleLimit:
-  exlusion_policy: ALL
-  properties:
-    earningRule:
-      exclude: true
-    limit:
-      expose: true
-    period:
-      expose: true

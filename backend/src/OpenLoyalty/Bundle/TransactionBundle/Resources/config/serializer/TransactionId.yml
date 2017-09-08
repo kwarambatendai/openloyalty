@@ -1,6 +1,0 @@
-OpenLoyalty\Domain\Transaction\TransactionId:
-  exlusion_policy: ALL
-  properties:
-    transactionId:
-      expose: true
-      serialized_name: transactionId

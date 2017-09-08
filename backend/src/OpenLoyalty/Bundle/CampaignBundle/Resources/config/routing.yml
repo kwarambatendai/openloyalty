@@ -1,6 +1,0 @@
-campaign:
-    resource: '@OpenLoyaltyCampaignBundle/Controller/Api/CampaignController.php'
-    type: annotation
-customer_campaign:
-    resource: '@OpenLoyaltyCampaignBundle/Controller/Api/CustomerCampaignsController.php'
-    type: annotation

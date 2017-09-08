@@ -1,4 +1,6 @@
 imports:
+    - { resource: "@OpenLoyaltyCoreBundle/Resources/config/config.yml"}
+
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
@@ -9,6 +11,7 @@ parameters:
     locale: en
     storage_suffix: "_%kernel.environment%"
     jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -32,12 +35,14 @@ framework:
     fragments:       ~
     http_method_override: true
     assets: ~
+
 swiftmailer:
     transport: '%mailer_transport%'
     host:      '%mailer_host%'
     username:  '%mailer_user%'
     password:  '%mailer_password%'
     port:      '%mailer_port%'
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
@@ -55,76 +60,11 @@ doctrine:
                 user:     "%database_user%"
                 password: "%database_password%"
                 charset:  UTF8
-        types:
-          level_id: OpenLoyalty\Infrastructure\Level\Persistance\Doctrine\Type\LevelIdDoctrineType
-          special_reward_id: OpenLoyalty\Infrastructure\Level\Persistance\Doctrine\Type\SpecialRewardIdDoctrineType
-          earning_rule_id: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleIdDoctrineType
-          earning_rule_usage_id: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleUsageIdDoctrineType
-          earning_rule_usage_subject: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleUsageSubjectDoctrineType
-          earning_rule_levels_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleLevelsJsonArrayDoctrineType
-          earning_rule_segments_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\EarningRuleSegmentsJsonArrayDoctrineType
-          pos_id: OpenLoyalty\Infrastructure\Pos\Persistance\Doctrine\Type\PosIdDoctrineType
-          labels_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\LabelsJsonArrayDoctrineType
-          skus_json_array: OpenLoyalty\Infrastructure\EarningRule\Persistance\Doctrine\Type\SKUsJsonArrayDoctrineType
-          sku: OpenLoyalty\Infrastructure\Model\Persistance\Doctrine\Type\SKUDoctrineType
-          ol_geo_point: OpenLoyalty\Infrastructure\Pos\Persistance\Doctrine\Type\GeoPointDoctrineType
-          segment_id: OpenLoyalty\Infrastructure\Segment\Persistance\Doctrine\Type\SegmentIdDoctrineType
-          segment_part_id: OpenLoyalty\Infrastructure\Segment\Persistance\Doctrine\Type\SegmentPartIdDoctrineType
-          criterion_id: OpenLoyalty\Infrastructure\Segment\Persistance\Doctrine\Type\CriterionIdDoctrineType
-          campaign_id: OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Type\CampaignIdDoctrineType
-          campaign_levels_json_array: OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Type\CampaignLevelsJsonArrayDoctrineType
-          campaign_segments_json_array: OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Type\CampaignSegmentsJsonArrayDoctrineType
-          campaign_coupons_json_array: OpenLoyalty\Infrastructure\Campaign\Persistance\Doctrine\Type\CampaignCouponsJsonArrayDoctrineType
-          audit_log_id: OpenLoyalty\Infrastructure\Audit\Persistance\Doctrine\Type\AuditLogIdDoctrineType
-          email_id: OpenLoyalty\Infrastructure\Email\Persistance\Doctrine\Type\EmailIdDoctrineType
+
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        mappings:
-          OpenLoyaltyUserBundle: ~
-          OpenLoyalty\Infrastructure\Level\Peristance\Doctrine\ORM:
-            type: yml
-            dir: '%kernel.root_dir%/../src/OpenLoyalty/Infrastructure/Level/Persistance/Doctrine/ORM'
-            alias: OpenLoyaltyDomainLevel
-            prefix: OpenLoyalty\Domain\Level
-            is_bundle: false
-          OpenLoyalty\Infrastructure\EarningRule\Peristance\Doctrine\ORM:
-            type: yml
-            dir: '%kernel.root_dir%/../src/OpenLoyalty/Infrastructure/EarningRule/Persistance/Doctrine/ORM'
-            alias: OpenLoyaltyDomainEarningRule
-            prefix: OpenLoyalty\Domain\EarningRule
-            is_bundle: false
-          OpenLoyalty\Infrastructure\Pos\Peristance\Doctrine\ORM:
-            type: yml
-            dir: '%kernel.root_dir%/../src/OpenLoyalty/Infrastructure/Pos/Persistance/Doctrine/ORM'
-            alias: OpenLoyaltyDomainPos
-            prefix: OpenLoyalty\Domain\Pos
-            is_bundle: false
-          OpenLoyalty\Infrastructure\Segment\Peristance\Doctrine\ORM:
-            type: yml
-            dir: '%kernel.root_dir%/../src/OpenLoyalty/Infrastructure/Segment/Persistance/Doctrine/ORM'
-            alias: OpenLoyaltyDomainSegment
-            prefix: OpenLoyalty\Domain\Segment
-            is_bundle: false
-          OpenLoyalty\Infrastructure\Campaign\Peristance\Doctrine\ORM:
-            type: yml
-            dir: '%kernel.root_dir%/../src/OpenLoyalty/Infrastructure/Campaign/Persistance/Doctrine/ORM'
-            alias: OpenLoyaltyDomainCampaign
-            prefix: OpenLoyalty\Domain\Campaign
-            is_bundle: false
-          OpenLoyalty\Infrastructure\Email\Peristance\Doctrine\ORM:
-            type: yml
-            dir: '%kernel.root_dir%/../src/OpenLoyalty/Infrastructure/Email/Persistance/Doctrine/ORM'
-            alias: OpenLoyaltyDomainEmail
-            prefix: OpenLoyalty\Domain\Email
-            is_bundle: false
-          OpenLoyalty\Infrastructure\Audit\Peristance\Doctrine\ORM:
-            type: yml
-            dir: '%kernel.root_dir%/../src/OpenLoyalty/Infrastructure/Audit/Persistance/Doctrine/ORM'
-            alias: OpenLoyaltyDomainAudit
-            prefix: OpenLoyalty\Domain\Audit
-            is_bundle: false
 
 broadway:
     read_model:
@@ -146,43 +86,7 @@ jms_serializer:
     metadata:
       auto_detection: true
       debug: true
-      directories:
-        Account:
-          namespace_prefix: "OpenLoyalty\\Domain\\Account"
-          path: "@OpenLoyaltyPointsBundle/Resources/config/serializer"
-        Customer:
-          namespace_prefix: "OpenLoyalty\\Domain\\Customer"
-          path: "@OpenLoyaltyUserBundle/Resources/config/serializer"
-        Seller:
-          namespace_prefix: "OpenLoyalty\\Domain\\Seller"
-          path: "@OpenLoyaltyUserBundle/Resources/config/serializer/Seller"
-        Level:
-          namespace_prefix: "OpenLoyalty\\Domain\\Level"
-          path: "@OpenLoyaltyLevelBundle/Resources/config/serializer"
-        EarningRule:
-          namespace_prefix: "OpenLoyalty\\Domain\\EarningRule"
-          path: "@OpenLoyaltyEarningRuleBundle/Resources/config/serializer"
-        Pos:
-          namespace_prefix: "OpenLoyalty\\Domain\\Pos"
-          path: "@OpenLoyaltyPosBundle/Resources/config/serializer"
-        Transaction:
-          namespace_prefix: "OpenLoyalty\\Domain\\Transaction"
-          path: "@OpenLoyaltyTransactionBundle/Resources/config/serializer"
-        Segment:
-          namespace_prefix: "OpenLoyalty\\Domain\\Segment"
-          path: "@OpenLoyaltySegmentBundle/Resources/config/serializer"
-        Campaign:
-          namespace_prefix: "OpenLoyalty\\Domain\\Campaign"
-          path: "@OpenLoyaltyCampaignBundle/Resources/config/serializer"
-        Audit:
-          namespace_prefix: "OpenLoyalty\\Domain\\Audit"
-          path: "@OpenLoyaltyAuditBundle/Resources/config/serializer"
-        Email:
-          namespace_prefix: "OpenLoyalty\\Domain\\Email"
-          path: "@OpenLoyaltyEmailSettingsBundle/Resources/config/serializer"
-        Domain:
-          namespace_prefix: "OpenLoyalty\\Domain\\"
-          path: "%kernel.root_dir/serializer"
+
 fos_rest:
     versioning: true
     routing_loader:
@@ -200,11 +104,13 @@ fos_rest:
         view_response_listener: 'force'
         formats:
             json: true
+
 lexik_jwt_authentication:
     private_key_path: "%jwt_private_key_path%"
     public_key_path:  "%jwt_public_key_path%"
     pass_phrase:      "%jwt_key_pass_phrase%"
     token_ttl:        "%jwt_token_ttl%"
+
 nelmio_cors:
     paths:
       '^/api/':
@@ -212,19 +118,10 @@ nelmio_cors:
           allow_headers: ['*']
           allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
           max_age: 3600
+
 gesdinet_jwt_refresh_token:
     ttl_update: true
     user_provider: oloy.user.all_users_provider
-
-open_loyalty_user:
-  customer_search_max_results: %customer_search_max_results%
-
-open_loyalty_pagination:
-    page_field_name: page
-    per_page_field_name: perPage
-    sort_field_name: sort
-    sort_direction_field_name: direction
-    per_page_default: 10
 
 monolog:
     handlers:
@@ -235,27 +132,3 @@ monolog:
             # log *all* messages (debug is lowest level)
             level: debug
             channels: [plugins]
-
-knp_gaufrette:
-  adapters:
-    frontend_translations:
-      local:
-        directory: "%kernel.root_dir%/Resources/frontend_translations"
-        create:     true
-    campaign_photos_local:
-      local:
-        directory: "%kernel.root_dir%/uploads/"
-        create:     true
-  filesystems:
-    frontend_translations:
-      adapter: frontend_translations
-      alias: frontend_translations_filesystem
-    campaign_photos:
-      adapter: "%oloy.campaign.photos_adapter%"
-      alias: campaign_photos_filesystem
-
-open_loyalty_campaign:
-  photos_adapter: "%campaign_photos_adapter%"
-  photos_adapter_env: "%campaign_photos_adapter_env%"
-  photos_min_width: 600
-  photos_min_height: 600

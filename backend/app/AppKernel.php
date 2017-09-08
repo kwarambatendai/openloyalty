@@ -27,7 +27,7 @@ class AppKernel extends Kernel
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle(),
-            new \OpenLoyalty\Bundle\UserBundle\OpenLoyaltyUserBundle(),
+            new OpenLoyalty\Bundle\UserBundle\OpenLoyaltyUserBundle(),
             new OpenLoyalty\Bundle\LevelBundle\OpenLoyaltyLevelBundle(),
             new OpenLoyalty\Bundle\PointsBundle\OpenLoyaltyPointsBundle(),
             new OpenLoyalty\Bundle\SettingsBundle\OpenLoyaltySettingsBundle(),
@@ -40,32 +40,13 @@ class AppKernel extends Kernel
             new OpenLoyalty\Bundle\CampaignBundle\OpenLoyaltyCampaignBundle(),
             new OpenLoyalty\Bundle\AnalyticsBundle\OpenLoyaltyAnalyticsBundle(),
             new OpenLoyalty\Bundle\UtilityBundle\OpenLoyaltyUtilityBundle(),
-            new \OpenLoyalty\Bundle\PluginBundle\OpenLoyaltyPluginBundle(),
-            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new OpenLoyalty\Bundle\PluginBundle\OpenLoyaltyPluginBundle(),
             new OpenLoyalty\Bundle\AuditBundle\OpenLoyaltyAuditBundle(),
             new OpenLoyalty\Bundle\EmailSettingsBundle\OpenLoyaltyEmailSettingsBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new OpenLoyalty\Bundle\CoreBundle\OpenLoyaltyCoreBundle(),
+            new OpenLoyaltyPlugin\SalesManagoBundle\SalesManagoBundle(),
         ];
-        $searchPath = dirname(__DIR__).'/src/OpenLoyaltyPlugin';
-        $finder     = new \Symfony\Component\Finder\Finder();
-        $finder->files()
-            ->followLinks()
-            ->depth('1')
-            ->in($searchPath)
-            ->name('*Bundle.php');
-        foreach ($finder as $file) {
-            $dirname  = basename($file->getRelativePath());
-            $filename = substr($file->getFilename(), 0, -4);
-
-            $class = '\\OpenLoyaltyPlugin'.'\\'.$dirname.'\\'.$filename;
-
-            if (class_exists($class)) {
-                $plugin = new $class();
-                if ($plugin instanceof \Symfony\Component\HttpKernel\Bundle\Bundle) {
-                    $bundles[] = $plugin;
-                }
-                unset($plugin);
-            }
-        }
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
@@ -84,16 +65,16 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
+        return dirname(__DIR__) . '/var/cache/' . $this->getEnvironment();
     }
 
     public function getLogDir()
     {
-        return dirname(__DIR__).'/var/logs';
+        return dirname(__DIR__) . '/var/logs';
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load($this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.yml');
     }
 }

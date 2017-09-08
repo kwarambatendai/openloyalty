@@ -1,6 +1,0 @@
-OpenLoyalty\Domain\Account\AccountId:
-  exlusion_policy: ALL
-  properties:
-    accountId:
-      expose: true
-      serialized_name: accountId

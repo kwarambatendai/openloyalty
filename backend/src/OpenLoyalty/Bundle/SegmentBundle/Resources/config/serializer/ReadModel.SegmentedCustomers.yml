@@ -1,9 +1,0 @@
-OpenLoyalty\Domain\Segment\ReadModel\SegmentedCustomers:
-  exlusion_policy: ALL
-  properties:
-    segmentId:
-      expose: true
-      inline: true
-    customerId:
-      expose: true
-      inline: true

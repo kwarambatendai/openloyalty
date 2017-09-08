@@ -1,5 +1,0 @@
-services:
-  oloy.account.voters.points_transfer:
-    class: OpenLoyalty\Bundle\PointsBundle\Security\Voter\PointsTransferVoter
-    tags:
-      - { name: security.voter }

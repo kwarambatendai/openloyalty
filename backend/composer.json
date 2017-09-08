@@ -1,5 +1,5 @@
 {
-    "name": "open-loyalty/open-loyalty",
+    "name": "divante-ltd/open-loyalty",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -42,7 +42,8 @@
         "pixers/salesmanago-api": "1.1.1",
         "knplabs/knp-gaufrette-bundle": "^0.3.0",
         "beberlei/DoctrineExtensions": "^1.0",
-        "sensio/generator-bundle": "^3.0"
+        "sensio/generator-bundle": "^3.0",
+        "divante-ltd/open-loyalty-framework": "1.2.*@dev"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0",
@@ -72,7 +73,7 @@
         },
         "bin-dir": "var/bin"
     },
-
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",

@@ -49,7 +49,7 @@
         <exec command="bin/console doctrine:schema:update --force" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:drop -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:init -n" checkreturn="true" passthru="true"/>
-        <exec command="bin/console doctrine:fixtures:load --fixtures src/OpenLoyalty/Bundle/DemoBundle/_DataFixtures/ORM/ -n" checkreturn="true" passthru="true"/>
+        <exec command="bin/console doctrine:fixtures:load --fixtures vendor/divante-ltd/open-loyalty-framework/src/OpenLoyalty/Bundle/DemoBundle/_DataFixtures/ORM/ -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console oloy:segment:recreate -vv" checkreturn="true" passthru="true"/>
     </target>
 

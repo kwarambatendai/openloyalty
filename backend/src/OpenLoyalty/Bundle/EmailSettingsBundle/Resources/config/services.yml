@@ -1,9 +1,0 @@
-services:
-    oloy.email.settings:
-        class: OpenLoyalty\Bundle\EmailSettingsBundle\Service\EmailSettings
-        arguments: ['%oloy.email.emails%', '@twig.loader.filesystem', '@twig']
-
-    oloy.email.form_type.email:
-        class: OpenLoyalty\Bundle\EmailSettingsBundle\Form\Type\EmailFormType
-        tags:
-          - { name: form.type }

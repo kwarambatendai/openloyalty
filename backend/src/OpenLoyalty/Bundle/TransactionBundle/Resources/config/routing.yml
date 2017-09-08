@@ -1,3 +1,0 @@
-transaction_api:
-  resource: '@OpenLoyaltyTransactionBundle/Controller/Api/TransactionController.php'
-  type: annotation

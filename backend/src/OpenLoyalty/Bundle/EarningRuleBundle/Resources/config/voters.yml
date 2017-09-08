@@ -1,5 +1,0 @@
-services:
-  oloy.earning_rule.voters.earning_rule:
-    class: OpenLoyalty\Bundle\EarningRuleBundle\Security\Voter\EarningRuleVoter
-    tags:
-      - { name: security.voter }

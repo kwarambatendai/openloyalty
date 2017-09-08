@@ -1,5 +1,0 @@
-services:
-  oloy.analytics.voter.analytivs:
-    class: OpenLoyalty\Bundle\AnalyticsBundle\Security\Voter\AnalyticsVoter
-    tags:
-      - { name: security.voter }

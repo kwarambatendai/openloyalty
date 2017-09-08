@@ -1,8 +1,0 @@
-OpenLoyalty\Domain\EarningRule\PointsEarningRule:
-  exlusion_policy: ALL
-  properties:
-    earningRuleId:
-      expose: true
-      inline: true
-    excludedSKUs:
-      exclude: true

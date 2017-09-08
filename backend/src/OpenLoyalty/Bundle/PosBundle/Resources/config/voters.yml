@@ -1,5 +1,0 @@
-services:
-  oloy.pos.voters.pos:
-    class: OpenLoyalty\Bundle\PosBundle\Security\Voter\PosVoter
-    tags:
-      - { name: security.voter }
