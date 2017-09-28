@@ -249,12 +249,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DivanteLtd/open-loyalty-framework.git",
-                "reference": "659f469d6f4001126bebee2e7e594594f2f8155a"
+                "reference": "ad8f972fad6403055a4d3ea3aa78955dddedd4fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DivanteLtd/open-loyalty-framework/zipball/659f469d6f4001126bebee2e7e594594f2f8155a",
-                "reference": "659f469d6f4001126bebee2e7e594594f2f8155a",
+                "url": "https://api.github.com/repos/DivanteLtd/open-loyalty-framework/zipball/ad8f972fad6403055a4d3ea3aa78955dddedd4fc",
+                "reference": "ad8f972fad6403055a4d3ea3aa78955dddedd4fc",
                 "shasum": ""
             },
             "require": {
@@ -275,7 +275,7 @@
                 "nelmio/api-doc-bundle": "^2.13",
                 "nelmio/cors-bundle": "^1.4",
                 "ocramius/proxy-manager": "^1.0",
-                "php": ">=5.5.9",
+                "php": ">=5.6",
                 "pixers/salesmanago-api": "1.1.1",
                 "sensio/distribution-bundle": "^5.0",
                 "sensio/framework-extra-bundle": "^3.0.2",
@@ -349,7 +349,7 @@
             "license": [
                 "proprietary"
             ],
-            "time": "2017-09-08T11:42:12+00:00"
+            "time": "2017-09-28T08:15:08+00:00"
         },
         {
             "name": "doctrine/annotations",
