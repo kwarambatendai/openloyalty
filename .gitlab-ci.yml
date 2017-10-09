@@ -11,7 +11,7 @@ php-7.0:
   stage: test
   services:
     - elasticsearch:2.2
-    - postgres:latest
+    - postgres:9
   script:
     - echo "memory_limit = 512M" > /usr/local/etc/php/conf.d/memory.ini
     - cd backend

@@ -1,5 +1,5 @@
 export default class CustomerController {
-    constructor($scope, $state, $stateParams, AuthService, CustomerService, Flash, EditableMap, NgTableParams, ParamsMap, $q, LevelService, Validation, $filter, DataService, PosService, TransferService) {
+    constructor($scope, $state, $stateParams, AuthService, CustomerService, Flash, EditableMap, NgTableParams, ParamsMap, $q, LevelService, Validation, $filter, DataService, PosService, TransferService, SellerService) {
         if (!AuthService.isGranted('ROLE_ADMIN')) {
             $state.go('admin-login')
         }
@@ -32,6 +32,7 @@ export default class CustomerController {
         this.posList = null;
         this.$state = $state;
         this.AuthService = AuthService;
+        this.SellerService = SellerService;
         this.CustomerService = CustomerService;
         this.Flash = Flash;
         this.EditableMap = EditableMap;
@@ -66,6 +67,13 @@ export default class CustomerController {
             sortField: 'name',
             maxItems: 1,
         };
+        this.sellerConfig = {
+            valueField: 'sellerId',
+            labelField: 'name',
+            create: false,
+            sortField: 'name',
+            maxItems: 1,
+        };
         if (this.customerId && this.$state.current.name === 'admin.single-customer') {
             let self = this;
 
@@ -81,6 +89,9 @@ export default class CustomerController {
                     self.getAvailablePos();
                 } else {
                     self.getAvailablePos();
+                }
+                if ($scope.customer && $scope.customer.sellerId) {
+                    self.getAssignedSeller($scope.customer.sellerId);
                 }
             }, true)
         }
@@ -570,6 +581,26 @@ export default class CustomerController {
             )
     }
 
+    getAvailableSellers() {
+        let self = this;
+
+        self.loaderStates.customerSeller = true;
+
+        self.SellerService.getSellers()
+            .then(
+                res => {
+                    self.$scope.availableSellers = res;
+                    self.sellersList = res;
+                    self.loaderStates.customerSeller = false;
+                },
+                () => {
+                    let message = self.$filter('translate')('xhr.get_seller_list.error');
+                    self.Flash.create('danger', message);
+                    self.loaderStates.customerSeller = false;
+                }
+            )
+    }
+
     getAssignedPos(posId) {
         let self = this;
 
@@ -585,6 +616,24 @@ export default class CustomerController {
                     let message = self.$filter('translate')('xhr.get_pos_list.error');
                     self.Flash.create('danger', message);
                     self.loaderStates.customerPOS = false;
+                }
+            )
+    }
+    getAssignedSeller(sellerId) {
+        let self = this;
+
+        self.loaderStates.customerSeller = true;
+
+        self.SellerService.getSeller(sellerId)
+            .then(
+                res => {
+                    self.$scope.assignedSeller = res;
+                    self.loaderStates.customerSeller = false;
+                },
+                () => {
+                    let message = self.$filter('translate')('xhr.get_seller_list.error');
+                    self.Flash.create('danger', message);
+                    self.loaderStates.customerSeller = false;
                 }
             )
     }
@@ -683,4 +732,4 @@ export default class CustomerController {
     }
 
 }
-CustomerController.$inject = ['$scope', '$state', '$stateParams', 'AuthService', 'CustomerService', 'Flash', 'EditableMap', 'NgTableParams', 'ParamsMap', '$q', 'LevelService', 'Validation', '$filter', 'DataService', 'PosService', 'TransferService'];
+CustomerController.$inject = ['$scope', '$state', '$stateParams', 'AuthService', 'CustomerService', 'Flash', 'EditableMap', 'NgTableParams', 'ParamsMap', '$q', 'LevelService', 'Validation', '$filter', 'DataService', 'PosService', 'TransferService', 'SellerService'];

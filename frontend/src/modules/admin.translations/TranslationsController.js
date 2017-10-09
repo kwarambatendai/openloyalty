@@ -120,7 +120,8 @@ export default class TranslationsController {
                 res => {
                     let message = self.$filter('translate')('xhr.put_translations.success');
                     self.Flash.create('success', message);
-                    self.$state.go('admin.translations')
+                    self.$state.go('admin.translations');
+                    this.DataService.getAvailableData();
                 },
                 res => {
                     self.$scope.validate = self.Validation.mapSymfonyValidation(res.data);
@@ -138,7 +139,8 @@ export default class TranslationsController {
                 res => {
                     let message = self.$filter('translate')('xhr.post_translations.success');
                     self.Flash.create('success', message);
-                    self.$state.go('admin.translations')
+                    self.$state.go('admin.translations');
+                    this.DataService.getAvailableData();
                 },
                 res => {
                     self.$scope.validate = self.Validation.mapSymfonyValidation(res.data);

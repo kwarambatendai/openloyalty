@@ -39,7 +39,7 @@ export default class SellerCustomerService {
     putCustomer(editedCustomer) {
         let self = this;
 
-        return editedCustomer.customPUT({customer: self.EditableMap.customer(editedCustomer)});
+        return editedCustomer.customPUT({customer: self.EditableMap.customer(editedCustomer, true)});
     }
 
     postLevel(editedCustomer, levelId) {

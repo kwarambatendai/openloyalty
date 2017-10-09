@@ -150,7 +150,7 @@
             </tr>
             <tr>
                 <td><b>{{ "transaction.document_type" | translate }}:</b></td>
-                <td><span>{{'transaction.document_types.'+row.documentType|translate}}</span></td>
+                <td><span>{{'transaction.document_types.'+transaction.documentType|translate}}</span></td>
             </tr>
             </tbody>
         </table>
@@ -175,7 +175,7 @@
                 <td><span ng-bind="item.sku.code"></span></td>
                 <td><span ng-bind="item.category"></span></td>
                 <td><span ng-bind="item.grossValue"></span></td>
-                <td><span class="label label-default"
+                <td><span class="label label-default label-wrap"
                           ng-repeat="label in item.labels">{{label.key}}:{{label.value}} </span></td>
                 <td><span ng-bind="item.maker"></span></td>
             </tr>

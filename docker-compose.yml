@@ -21,7 +21,7 @@ elk:
   image: elasticsearch:2.2
 db:
   container_name: open_loyalty_postgresql
-  image: postgres
+  image: postgres:9
   environment:
     - POSTGRES_DB=openloyalty
     - POSTGRES_USER=openloyalty

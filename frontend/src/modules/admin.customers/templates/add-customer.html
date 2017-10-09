@@ -1,6 +1,6 @@
 <box-loader loading="false" cover="1" class="cover" delay="3000"></box-loader>
 
-<div class="heading" ng-init="CustomerCtrl.getAvailablePos();CustomerCtrl.getAvailableLevels();">
+<div class="heading" ng-init="CustomerCtrl.getAvailablePos();CustomerCtrl.getAvailableLevels();CustomerCtrl.getAvailableSellers();">
     <h1>{{ "customer.add_heading" | translate }}</h1>
 </div>
 
@@ -111,6 +111,23 @@
                             </selectize>
                             <div class="text-left font-small color-red" ng-if="!availablePos.total">
                                 {{ "pos.no_pos"|translate }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-2 small-3 columns">
+                            <label>{{ "seller.select_seller"|translate }}</label>
+                        </div>
+                        <div class="medium-10 small-9 columns" form-validation="validate.sellerId.errors">
+                            <selectize
+                                    ng-model="newCustomer.sellerId"
+                                    ng-if="availableSellers.total"
+                                    config="CustomerCtrl.sellerConfig"
+                                    options="CustomerCtrl.sellersList"
+                            >
+                            </selectize>
+                            <div class="text-left font-small color-red" ng-if="!availableSellers.total">
+                                {{ "seller.no_seller"|translate }}
                             </div>
                         </div>
                     </div>
@@ -247,7 +264,7 @@
                     </div>
                     <div class="row">
                         <div class="medium-2 small-3 columns">
-                            <label>{{ "customer.agreement1" | translate }}</label>
+                            <label>{{ "customer.agreement2" | translate }}</label>
                         </div>
                         <div class="medium-10 small-9 columns" form-validation="validate.agreement2.errors">
                             <checkbox ng-model="newCustomer.agreement2"></checkbox>

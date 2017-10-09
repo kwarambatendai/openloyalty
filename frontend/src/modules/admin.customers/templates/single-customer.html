@@ -214,6 +214,34 @@
                 </table>
             </div>
         </div>
+        <div class="box no-margin">
+            <div class="box-title">
+                <h1>
+                    {{ "customer.assigned_seller"|translate }}
+                </h1>
+            </div>
+            <div class="box-content">
+                <div ng-if="!customer.sellerId" class="text-left" style="margin-bottom:15px;">
+                    <span class="empty-content">{{ "seller.no_seller"|translate }}</span>
+                </div>
+                <table class="simple" ng-if="customer.sellerId">
+                    <tbody>
+                    <tr>
+                        <td><b>{{ "seller.name"|translate }}:</b></td>
+                        <td><span ng-bind="assignedSeller.firstName"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ "seller.surname"|translate }}:</b></td>
+                        <td><span ng-bind="assignedSeller.lastName"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ "seller.email"|translate }}:</b></td>
+                        <td><span ng-bind="assignedSeller.email"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="columns small-12 medium-12 large-9">
         <div class="row">

@@ -5,7 +5,7 @@ export default class EditableMap {
         this.DataService = DataService;
     }
 
-    customer(data) {
+    customer(data, ignoreSellerId) {
         let self = this;
 
         if (!data.company) {
@@ -44,7 +44,7 @@ export default class EditableMap {
                 agreement3: data.agreement3
             }
         } else {
-            return {
+            let res = {
                 address: {
                     address1: data.address.address1,
                     address2: data.address.address2,
@@ -70,7 +70,14 @@ export default class EditableMap {
                 agreement1: data.agreement1,
                 agreement2: data.agreement2,
                 agreement3: data.agreement3
+            };
+
+            if (!ignoreSellerId) {
+                res.sellerId = data.sellerId;
+
             }
+
+            return res;
         }
     }
 
