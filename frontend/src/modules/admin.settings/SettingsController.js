@@ -1,5 +1,6 @@
 export default class SettingsController {
     constructor($scope, SettingsService, Flash, DataService, $filter, Validation, $translate, TranslationService) {
+        let self = this;
         this.$scope = $scope;
         this.Flash = Flash;
         this.SettingsService = SettingsService;
@@ -9,6 +10,7 @@ export default class SettingsController {
         this.Validation = Validation;
         this.$translate = $translate;
 
+        this.$scope.refresh = false;
         this.$scope.languages = this.DataService.getLanguages();
         this.$scope.availableFrontendTranslations = this.DataService.getAvailableFrontendTranslations();
         this.$scope.timezones = this.DataService.getTimezones();
@@ -46,6 +48,15 @@ export default class SettingsController {
             sortField: 'name',
             searchField: 'name',
             maxItems: 1,
+            onChange: function (value) {
+                if (!this.defaultFrontendTranslationValue) {
+                    this.defaultFrontendTranslationValue = value;
+                }
+                if (this.defaultFrontendTranslationValue != value) {
+                    self.$scope.refresh = true;
+                }
+                this.defaultFrontendTranslationValue = value;
+            }
         };
         this.timezoneConfig = {
             valueField: 'value',
@@ -174,6 +185,10 @@ export default class SettingsController {
                     self.TranslationService.removeStoredTranslations();
                     self.$translate.refresh();
                     self.$scope.settingsOld = angular.copy(self.$scope.settings);
+
+                    if (self.$scope.refresh) {
+                        window.location.reload(true);
+                    }
                 },
                 (res) => {
                     self.$scope.validate = self.Validation.mapSymfonyValidation(res.data);

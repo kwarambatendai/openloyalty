@@ -1,9 +1,11 @@
 export default class TranslationsController {
-    constructor($scope, $state, AuthService, TranslationsService, DataService, Flash, NgTableParams, $q, ParamsMap, $stateParams, EditableMap, Validation, $filter) {
+    constructor($scope, $state, AuthService, TranslationsService, DataService, Flash, NgTableParams, $q, ParamsMap, $stateParams, EditableMap, Validation, $filter, $translate, TranslationService) {
         if (!AuthService.isGranted('ROLE_ADMIN')) {
             AuthService.logout();
         }
         this.TranslationsService = TranslationsService;
+        this.TranslationService = TranslationService;
+        this.$translate = $translate;
         this.$scope = $scope;
         this.$state = $state;
         this.Flash = Flash;
@@ -122,6 +124,10 @@ export default class TranslationsController {
                     self.Flash.create('success', message);
                     self.$state.go('admin.translations');
                     this.DataService.getAvailableData();
+
+                    self.TranslationService.removeStoredTranslations();
+                    self.$translate.refresh();
+                    window.location.reload(true);
                 },
                 res => {
                     self.$scope.validate = self.Validation.mapSymfonyValidation(res.data);
@@ -152,4 +158,4 @@ export default class TranslationsController {
     }
 }
 
-TranslationsController.$inject = ['$scope', '$state', 'AuthService', 'TranslationsService', 'DataService', 'Flash', 'NgTableParams', '$q', 'ParamsMap', '$stateParams', 'EditableMap', 'Validation', '$filter'];
+TranslationsController.$inject = ['$scope', '$state', 'AuthService', 'TranslationsService', 'DataService', 'Flash', 'NgTableParams', '$q', 'ParamsMap', '$stateParams', 'EditableMap', 'Validation', '$filter', '$translate', 'TranslationService'];
