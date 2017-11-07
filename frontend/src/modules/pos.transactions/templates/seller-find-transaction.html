@@ -138,11 +138,11 @@
             </tr>
             <tr>
                 <td><b>{{ "transaction.transaction_id" | translate }}:</b></td>
-                <td><span ng-bind="transaction.transactionId"></span></td>
+                <td><span ng-bind="transaction.documentNumber"></span></td>
             </tr>
             <tr>
                 <td><b>{{ "transaction.points_earned" | translate }}:</b></td>
-                <td><span ng-bind="transaction.pointsEarned"></span></td>
+                <td><span ng-bind="transaction.pointsEarned || '0'"></span></td>
             </tr>
             <tr>
                 <td><b>{{ "transaction.pos_name" | translate }}:</b></td>
@@ -174,7 +174,7 @@
                 <td><span ng-bind="item.quantity"></span></td>
                 <td><span ng-bind="item.sku.code"></span></td>
                 <td><span ng-bind="item.category"></span></td>
-                <td><span ng-bind="item.grossValue"></span></td>
+                <td><span style="text-transform: uppercase" ng-bind="item.grossValue+transaction.currency"></span></td>
                 <td><span class="label label-default label-wrap"
                           ng-repeat="label in item.labels">{{label.key}}:{{label.value}} </span></td>
                 <td><span ng-bind="item.maker"></span></td>

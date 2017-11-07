@@ -203,7 +203,7 @@ export default class EarningRuleController {
     }
 
     eventTypeChanged(type) {
-        if ((type == 'event' || type == 'custom_event') && this.$scope.newEarningRule) {
+        if ((type == 'event' || type == 'custom_event' || type == 'referral') && this.$scope.newEarningRule) {
             this.$scope.newEarningRule.eventName = null;
         }
     }

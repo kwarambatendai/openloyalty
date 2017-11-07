@@ -116,11 +116,11 @@
         </tr>
         <tr>
             <td><b>{{ "transaction.transaction_id" | translate }}:</b></td>
-            <td><span ng-bind="transaction.transactionId"></span></td>
+            <td><span ng-bind="transaction.documentNumber"></span></td>
         </tr>
         <tr>
             <td><b>{{ "transaction.points_earned" | translate }}:</b></td>
-            <td><span ng-bind="transaction.pointsEarned"></span></td>
+            <td><span ng-bind="transaction.pointsEarned || '0'"></span></td>
         </tr>
         <tr>
             <td><b>{{ "transaction.pos_name" | translate }}:</b></td>

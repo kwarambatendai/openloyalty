@@ -78,7 +78,7 @@
                     </tr>
                     <tr>
                         <td><b>{{ "customer_transaction.points_earned" | translate }}:</b></td>
-                        <td><span ng-bind="transaction.pointsEarned"></span></td>
+                        <td><span ng-bind="transaction.pointsEarned || '0'"></span></td>
                     </tr>
                     </tbody>
                 </table>

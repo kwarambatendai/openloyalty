@@ -6,6 +6,7 @@ export default class SellerCustomerController {
         this.$scope.newLevel = {};
         this.$scope.newPos = {};
         this.$scope.validate = {};
+        this.$scope.dateNow = new Date();
         this.$state = $state;
         this.SellerCustomerService = SellerCustomerService;
         this.Flash = Flash;
