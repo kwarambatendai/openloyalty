@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/transaction",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/seller-transactions-extend-top.html',
+                        templateUrl: 'templates/seller-transactions-extend-top.html',
                         controller: 'SellerTransactionController',
                         controllerAs: 'SellerTransactionCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/seller-transactions.html',
+                        templateUrl: require('./templates/seller-transactions.html'),
                         controller: 'SellerTransactionController',
                         controllerAs: 'SellerTransactionCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/seller-transactions-extend-bottom.html',
+                        templateUrl: 'templates/seller-transactions-extend-bottom.html',
                         controller: 'SellerTransactionController',
                         controllerAs: 'SellerTransactionCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/transaction/find",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/seller-find-transaction-extend-top.html',
+                        templateUrl: 'templates/seller-find-transaction-extend-top.html',
                         controller: 'SellerTransactionController',
                         controllerAs: 'SellerTransactionCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/seller-find-transaction.html',
+                        templateUrl: require('./templates/seller-find-transaction.html'),
                         controller: 'SellerTransactionController',
                         controllerAs: 'SellerTransactionCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/seller-find-transaction-extend-bottom.html',
+                        templateUrl: 'templates/seller-find-transaction-extend-bottom.html',
                         controller: 'SellerTransactionController',
                         controllerAs: 'SellerTransactionCtrl'
                     }
@@ -52,24 +52,24 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/seller-transactions-extend-top.html', '');
-        $templateCache.put('./templates/seller-transactions-extend-bottom.html', '');
+        $templateCache.put('templates/seller-transactions-extend-top.html', '');
+        $templateCache.put('templates/seller-transactions-extend-bottom.html', '');
 
-        $templateCache.put('./templates/seller-find-transaction-extend-top.html', '');
-        $templateCache.put('./templates/seller-find-transaction-extend-bottom.html', '');
+        $templateCache.put('templates/seller-find-transaction-extend-top.html', '');
+        $templateCache.put('templates/seller-find-transaction-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/seller-find-transaction.html`)
+        $http.get(`templates/seller-find-transaction.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/seller-find-transaction.html', response.data);
+                    $templateCache.put('templates/seller-find-transaction.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/seller-transactions.html`)
+        $http.get(`templates/seller-transactions.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/seller-transactions.html', response.data);
+                    $templateCache.put('templates/seller-transactions.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

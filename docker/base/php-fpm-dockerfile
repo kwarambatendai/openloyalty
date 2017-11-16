@@ -1,0 +1,10 @@
+FROM php:7.1-fpm
+
+COPY ["scripts/php-configure.sh", "/opt/bin/"]
+RUN /bin/bash /opt/bin/php-configure.sh
+
+RUN usermod --non-unique --uid 1000 www-data
+RUN rm -rf /var/www/html/*
+RUN usermod -s /bin/bash www-data
+
+COPY php.ini /usr/local/etc/php/php.ini

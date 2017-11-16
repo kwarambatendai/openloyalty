@@ -9,7 +9,7 @@ angular.module(MODULE_NAME, [])
                 url: "/admin",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/dashboard-extend-top.html',
+                        templateUrl: 'templates/dashboard-extend-top.html',
                         controller: 'DashboardController',
                         controllerAs: 'DashboardCtrl',
                         resolve: {
@@ -19,7 +19,7 @@ angular.module(MODULE_NAME, [])
                         }
                     },
                     'main@': {
-                        templateUrl: './templates/dashboard.html',
+                        templateUrl: require('./templates/dashboard.html'),
                         controller: 'DashboardController',
                         controllerAs: 'DashboardCtrl',
                         resolve: {
@@ -29,7 +29,7 @@ angular.module(MODULE_NAME, [])
                         }
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/dashboard-extend-bottom.html',
+                        templateUrl: 'templates/dashboard-extend-bottom.html',
                         controller: 'DashboardController',
                         controllerAs: 'DashboardCtrl',
                         resolve: {
@@ -46,13 +46,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/dashboard-extend-top.html', '');
-        $templateCache.put('./templates/dashboard-extend-bottom.html', '');
+        $templateCache.put('templates/dashboard-extend-top.html', '');
+        $templateCache.put('templates/dashboard-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/dashboard.html`)
+        $http.get(`templates/dashboard.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/dashboard.html', response.data);
+                    $templateCache.put('templates/dashboard.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

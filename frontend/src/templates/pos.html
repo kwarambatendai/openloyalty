@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        document.write('<base href="' + document.location.origin + document.location.pathname + '" />');
+    </script>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Open Loyalty</title>
+
+    <!--@todo: MOVE TO ASSETS-->
+    <link href='https://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&subset=latin-ext"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="assets/styles/commons.bundle.css" type="text/css">
+</head>
+
+<body ng-app="OpenLoyalty" ng-controller="RootController as RootCtrl" ng-class="RootCtrl.getViewClass()" ng-cloak>
+
+<!--RootCtrl.loading-->
+<section class="loader" ng-class="{'show': RootCtrl.loading }">
+    <div class="loader-wrapper">
+        <div class="logo">
+            <div ng-bind-html="RootCtrl.logo"></div>
+        </div>
+
+        <div class="loader-icon">
+        </div>
+    </div>
+</section>
+
+<script type="text/ng-template" id="templatePagination.html">
+    <div class="row pagination">
+        <div class="columns medium-3 showing" ng-show="params.total()">
+            Showing <b>{{((params.page() - 1) * params.count()) + 1}}</b> up to <b>{{params.count() * params.page() >
+            params.total() ? params.total() : params.count() * params.page()}}</b> from <b>{{params.total()}}</b>
+            entries.
+        </div>
+        <div class="columns medium-6">
+
+            <div ng-include="'ng-table/pager.html'"></div>
+        </div>
+        <div class="columns medium-3"></div>
+        <div class="columns medium-3">
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="templatePaginationCustomer.html">
+    <div class="row pagination">
+        <div class="columns medium-12 text-center customer-pagination">
+            <div ng-include="'ng-table/pager.html'"></div>
+        </div>
+    </div>
+</script>
+
+<section class="">
+    <ng-include src="'./templates/pos-top-nav.html'"
+                ng-if="RootCtrl.loggedIn() && RootCtrl.isPosPanel()">
+    </ng-include>
+
+    <div ui-view="extendTop"></div>
+    <div ui-view="main"></div>
+    <div ui-view></div>
+    <div ui-view="extendBottom"></div>
+</section>
+
+<div class="flash-msg">
+    <flash-message
+            duration="5000"
+            show-close="true"
+    ></flash-message>
+</div>
+
+<div id="contentLoadedTest">{{ 'global.contentLoadedTest'|translate }}</div>
+
+<script src="config.js"></script>
+<script src="assets/js/commons.js"></script>
+<script src="pos.app.js"></script>
+</body>
+</html>

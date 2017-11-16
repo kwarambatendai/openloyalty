@@ -34,3 +34,32 @@ php-7.0:
     - bin/console doctrine:schema:validate --env=test --skip-sync
     - vendor/phpunit/phpunit/phpunit
     - bin/php-cs-fixer fix --dry-run --diff src
+
+php-7.1:
+  image: tetraweb/php:7.1
+  stage: test
+  services:
+    - elasticsearch:2.2
+    - postgres:9
+  script:
+    - echo "memory_limit = 512M" > /usr/local/etc/php/conf.d/memory.ini
+    - cd backend
+    - mkdir app/var
+    - mkdir app/var/jwt
+    - openssl genrsa -out app/var/jwt/private.pem 4096
+    - openssl rsa -pubout -in app/var/jwt/private.pem -out app/var/jwt/public.pem
+    - docker-php-ext-enable zip pdo pgsql pdo_pgsql mbstring intl bcmath
+    - "sed -i 's/database_host: .*/database_host: postgres/g'  app/config/parameters.yml.dist"
+    - "sed -i 's/elastica_host: .*/elastica_host: elasticsearch/g' app/config/parameters.yml.dist"
+    - composer self-update
+    - composer install
+    - bin/console oloy:user:projections:index:create --drop-old
+    - bin/console doctrine:schema:update --env=test -n --force
+    - bin/console broadway:event-store:schema:drop
+    - bin/console broadway:event-store:schema:init
+    - bin/console doctrine:fixtures:load --env=test -n
+    - bin/console assets:install --env=test
+    - bin/console security:check
+    - bin/console doctrine:schema:validate --env=test --skip-sync
+    - vendor/phpunit/phpunit/phpunit
+    - bin/php-cs-fixer fix --dry-run --diff src

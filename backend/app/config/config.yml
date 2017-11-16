@@ -53,6 +53,7 @@ doctrine:
         default_connection: default
         connections:
             default:
+                server_version: "%database_version%"
                 driver:   "%database_driver%"
                 host:     "%database_host%"
                 port:     "%database_port%"

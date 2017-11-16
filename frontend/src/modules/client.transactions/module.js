@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/transactions",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-transactions-list-extend-top.html',
+                        templateUrl: 'templates/customer-transactions-list-extend-top.html',
                         controller: 'CustomerTransactionController',
                         controllerAs: 'CustomerTransactionCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-transactions-list.html',
+                        templateUrl: require('./templates/customer-transactions-list.html'),
                         controller: 'CustomerTransactionController',
                         controllerAs: 'CustomerTransactionCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-transactions-list-extend-bottom.html',
+                        templateUrl: 'templates/customer-transactions-list-extend-bottom.html',
                         controller: 'CustomerTransactionController',
                         controllerAs: 'CustomerTransactionCtrl'
                     }
@@ -32,13 +32,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/customer-transactions-list-extend-top.html', '');
-        $templateCache.put('./templates/customer-transactions-list-extend-bottom.html', '');
+        $templateCache.put('templates/customer-transactions-list-extend-top.html', '');
+        $templateCache.put('templates/customer-transactions-list-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-transactions-list.html`)
+        $http.get(`templates/customer-transactions-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-transactions-list.html', response.data);
+                    $templateCache.put('templates/customer-transactions-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

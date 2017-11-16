@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/earning-rules",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/seller-earning-rules-list-extend-top.html',
+                        templateUrl: 'templates/seller-earning-rules-list-extend-top.html',
                         controller: 'SellerEarningRulesController',
                         controllerAs: 'SellerEarningRulesCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/seller-earning-rules-list.html',
+                        templateUrl: require('./templates/seller-earning-rules-list.html'),
                         controller: 'SellerEarningRulesController',
                         controllerAs: 'SellerEarningRulesCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/seller-earning-rules-list-extend-bottom.html',
+                        templateUrl: 'templates/seller-earning-rules-list-extend-bottom.html',
                         controller: 'SellerEarningRulesController',
                         controllerAs: 'SellerEarningRulesCtrl'
                     }
@@ -32,13 +32,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/seller-earning-rules-list-extend-top.html', '');
-        $templateCache.put('./templates/seller-earning-rules-list-extend-bottom.html', '');
+        $templateCache.put('templates/seller-earning-rules-list-extend-top.html', '');
+        $templateCache.put('templates/seller-earning-rules-list-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/seller-earning-rules-list.html`)
+        $http.get(`templates/seller-earning-rules-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/seller-earning-rules-list.html', response.data);
+                    $templateCache.put('templates/seller-earning-rules-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

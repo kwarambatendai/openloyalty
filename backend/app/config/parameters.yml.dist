@@ -8,6 +8,7 @@ parameters:
     database_user:     openloyalty
     database_password: openloyalty
     database_driver:   pdo_pgsql
+    database_version:  9
     elastica_host:     elk
     elastica_port:     9200
     # You should uncomment this if you want use pdo_sqlite

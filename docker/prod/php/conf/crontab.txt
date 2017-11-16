@@ -1,0 +1,3 @@
+* * * * * /usr/local/bin/php /var/www/openloyalty/bin/console oloy:segment:recreate > /var/log/cron_ol_segment_recreate.log 2>&1
+
+* * * * * /usr/local/bin/php /var/www/openloyalty/bin/console ol:points:transfers:expire > /var/log/cron_ol_points_expire.log 2>&1

@@ -1,3 +1,4 @@
+import Avatar from './../../img/avatar.jpg';
 import CustomerProfileController from './CustomerProfileController';
 import CustomerProfileService from './CustomerProfileService';
 
@@ -11,17 +12,17 @@ angular.module(MODULE_NAME, [])
                 url: "/profile",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-profile-extend-top.html',
+                        templateUrl: 'templates/customer-profile-extend-top.html',
                         controller: 'CustomerProfileController',
                         controllerAs: 'CustomerProfileCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-profile.html',
+                        templateUrl: require('./templates/customer-profile.html'),
                         controller: 'CustomerProfileController',
                         controllerAs: 'CustomerProfileCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-profile-extend-bottom.html',
+                        templateUrl: 'templates/customer-profile-extend-bottom.html',
                         controller: 'CustomerProfileController',
                         controllerAs: 'CustomerProfileCtrl'
                     }
@@ -31,17 +32,17 @@ angular.module(MODULE_NAME, [])
                 url: "/profile/edit",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-profile-edit-extend-top.html',
+                        templateUrl: 'templates/customer-profile-edit-extend-top.html',
                         controller: 'CustomerProfileController',
                         controllerAs: 'CustomerProfileCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-profile-edit.html',
+                        templateUrl: require('./templates/customer-profile-edit.html'),
                         controller: 'CustomerProfileController',
                         controllerAs: 'CustomerProfileCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-profile-edit-extend-bottom.html',
+                        templateUrl: 'templates/customer-profile-edit-extend-bottom.html',
                         controller: 'CustomerProfileController',
                         controllerAs: 'CustomerProfileCtrl'
                     }
@@ -53,24 +54,24 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/customer-profile-extend-top.html', '');
-        $templateCache.put('./templates/customer-profile-extend-bottom.html', '');
+        $templateCache.put('templates/customer-profile-extend-top.html', '');
+        $templateCache.put('templates/customer-profile-extend-bottom.html', '');
 
-        $templateCache.put('./templates/customer-profile-edit-extend-top.html', '');
-        $templateCache.put('./templates/customer-profile-edit-extend-bottom.html', '');
+        $templateCache.put('templates/customer-profile-edit-extend-top.html', '');
+        $templateCache.put('templates/customer-profile-edit-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-profile.html`)
+        $http.get(`templates/customer-profile.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-profile.html', response.data);
+                    $templateCache.put('templates/customer-profile.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-profile-edit.html`)
+        $http.get(`templates/customer-profile-edit.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-profile-edit.html', response.data);
+                    $templateCache.put('templates/customer-profile-edit.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

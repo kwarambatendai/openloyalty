@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/seller-list/",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/sellers-list-extend-top.html',
+                        templateUrl: 'templates/sellers-list-extend-top.html',
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/sellers-list.html',
+                        templateUrl: require('./templates/sellers-list.html'),
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/sellers-list-extend-top.html',
+                        templateUrl: 'templates/sellers-list-extend-top.html',
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/edit-seller/:sellerId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-seller-extend-top.html',
+                        templateUrl: 'templates/edit-seller-extend-top.html',
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-seller.html',
+                        templateUrl: require('./templates/edit-seller.html'),
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-seller-extend-top.html',
+                        templateUrl: 'templates/edit-seller-extend-top.html',
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     }
@@ -50,17 +50,17 @@ angular.module(MODULE_NAME, [])
                 url: "/add-seller",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/add-seller-extend-top.html',
+                        templateUrl: 'templates/add-seller-extend-top.html',
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/add-seller.html',
+                        templateUrl: require('./templates/add-seller.html'),
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/add-seller-extend-top.html',
+                        templateUrl: 'templates/add-seller-extend-top.html',
                         controller: 'SellerController',
                         controllerAs: 'SellerCtrl'
                     }
@@ -72,35 +72,35 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/sellers-list-extend-top.html', '');
-        $templateCache.put('./templates/sellers-list-extend-bottom.html', '');
+        $templateCache.put('templates/sellers-list-extend-top.html', '');
+        $templateCache.put('templates/sellers-list-extend-bottom.html', '');
 
-        $templateCache.put('./templates/edit-seller-extend-top.html', '');
-        $templateCache.put('./templates/edit-seller-extend-bottom.html', '');
+        $templateCache.put('templates/edit-seller-extend-top.html', '');
+        $templateCache.put('templates/edit-seller-extend-bottom.html', '');
 
-        $templateCache.put('./templates/add-seller-extend-top.html', '');
-        $templateCache.put('./templates/add-seller-extend-bottom.html', '');
+        $templateCache.put('templates/add-seller-extend-top.html', '');
+        $templateCache.put('templates/add-seller-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/sellers-list.html`)
+        $http.get(`templates/sellers-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/sellers-list.html', response.data);
+                    $templateCache.put('templates/sellers-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/edit-seller.html`)
+        $http.get(`templates/edit-seller.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/edit-seller.html', response.data);
+                    $templateCache.put('templates/edit-seller.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/add-seller.html`)
+        $http.get(`templates/add-seller.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/add-seller.html', response.data);
+                    $templateCache.put('templates/add-seller.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

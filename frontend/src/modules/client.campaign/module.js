@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/campaign",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-campaign-extend-top.html',
+                        templateUrl: 'templates/customer-campaign-extend-top.html',
                         controller: 'CustomerCampaignController',
                         controllerAs: 'CustomerCampaignCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-campaign.html',
+                        templateUrl: require('./templates/customer-campaign.html'),
                         controller: 'CustomerCampaignController',
                         controllerAs: 'CustomerCampaignCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-campaign-extend-bottom.html',
+                        templateUrl: 'templates/customer-campaign-extend-bottom.html',
                         controller: 'CustomerCampaignController',
                         controllerAs: 'CustomerCampaignCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/bought",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-campaign-bought-extend-top.html',
+                        templateUrl: 'templates/customer-campaign-bought-extend-top.html',
                         controller: 'CustomerCampaignController',
                         controllerAs: 'CustomerCampaignCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-campaign-bought.html',
+                        templateUrl: require('./templates/customer-campaign-bought.html'),
                         controller: 'CustomerCampaignController',
                         controllerAs: 'CustomerCampaignCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-campaign-bought-extend-bottom.html',
+                        templateUrl: 'templates/customer-campaign-bought-extend-bottom.html',
                         controller: 'CustomerCampaignController',
                         controllerAs: 'CustomerCampaignCtrl'
                     }
@@ -52,24 +52,24 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/customer-campaign-extend-top.html', '');
-        $templateCache.put('./templates/customer-campaign-extend-bottom.html', '');
+        $templateCache.put('templates/customer-campaign-extend-top.html', '');
+        $templateCache.put('templates/customer-campaign-extend-bottom.html', '');
 
-        $templateCache.put('./templates/customer-campaign-bought-extend-top.html', '');
-        $templateCache.put('./templates/customer-campaign-bought-extend-bottom.html', '');
+        $templateCache.put('templates/customer-campaign-bought-extend-top.html', '');
+        $templateCache.put('templates/customer-campaign-bought-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-campaign-bought.html`)
+        $http.get(`templates/customer-campaign-bought.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-campaign-bought.html', response.data);
+                    $templateCache.put('templates/customer-campaign-bought.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-campaign.html`)
+        $http.get(`templates/customer-campaign.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-campaign.html', response.data);
+                    $templateCache.put('templates/customer-campaign.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/logs",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/list-logs-extend-top.html',
+                        templateUrl: 'templates/list-logs-extend-top.html',
                         controller: 'LogsController',
                         controllerAs: 'LogsCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/list-logs.html',
+                        templateUrl: require('./templates/list-logs.html'),
                         controller: 'LogsController',
                         controllerAs: 'LogsCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/list-logs-extend-bottom.html',
+                        templateUrl: 'templates/list-logs-extend-bottom.html',
                         controller: 'LogsController',
                         controllerAs: 'LogsCtrl'
                     }
@@ -32,13 +32,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/list-logs-extend-top.html', '');
-        $templateCache.put('./templates/list-logs-extend-bottom.html', '');
+        $templateCache.put('templates/list-logs-extend-top.html', '');
+        $templateCache.put('templates/list-logs-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/list-logs.html`)
+        $http.get(`templates/list-logs.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/list-logs.html', response.data);
+                    $templateCache.put('templates/list-logs.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

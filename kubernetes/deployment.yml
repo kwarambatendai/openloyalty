@@ -1,0 +1,343 @@
+##########
+# Database
+##########
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: db
+  namespace: openloyalty
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_DB
+          value: openloyalty
+        - name: POSTGRES_PASSWORD
+          value: openloyalty
+        - name: POSTGRES_USER
+          value: openloyalty
+        image: postgres:9
+        name: db
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: database
+      restartPolicy: Always
+      volumes:
+      - name: database
+        persistentVolumeClaim:
+          claimName: database
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: openloyalty
+  labels:
+    app: db
+spec:
+  ports:
+  - port: 5432
+    targetPort: 5432
+  selector:
+    app: db
+---
+#####
+# WEB
+#####
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  namespace: openloyalty
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      imagePullSecrets:
+      - name: registry
+      containers:
+      - image: divante/open-loyalty-web:latest
+        name: openloyalty-web
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: /var/www/openloyalty/front/config.js
+            name: config
+            subPath: config.js
+      restartPolicy: Always
+      volumes:
+        - name: config
+          configMap:
+            name: front
+            items:
+              - key: config.js
+                path: config.js
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: openloyalty
+  labels:
+    app: web
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 8081
+    targetPort: 80
+  externalIPs:
+  - {KUBERNETES_IP_OR_HOST_ADDRESS}
+  selector:
+    app: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-admin
+  namespace: openloyalty
+  labels:
+    app: web-admin
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 3001
+    targetPort: 3001
+  externalIPs:
+    - {KUBERNETES_IP_OR_HOST_ADDRESS}
+  selector:
+    app: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-client
+  namespace: openloyalty
+  labels:
+    app: web-client
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 3002
+    targetPort: 3002
+  externalIPs:
+    - {KUBERNETES_IP_OR_HOST_ADDRESS}
+  selector:
+    app: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-pos
+  namespace: openloyalty
+  labels:
+    app: web-pos
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 3003
+    targetPort: 3003
+  externalIPs:
+    - {KUBERNETES_IP_OR_HOST_ADDRESS}
+  selector:
+    app: web
+---
+########
+# PHPFPM
+########
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: php
+  name: php
+  namespace: openloyalty
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      imagePullSecrets:
+      - name: registry
+      containers:
+      - image: divante/open-loyalty:latest
+        name: php
+        env:
+        - name: APP_DB_HOST
+          value: db
+        - name: APP_DB_PORT
+          value: "5432"
+        - name: APP_DB_USER
+          value: openloyalty
+        - name: APP_DB_PASSWORD
+          value: openloyalty
+        - name: APP_DB_NAME
+          value: openloyalty
+        - name: ELK_HOST
+          value: elk
+        ports:
+        - containerPort: 9000
+        volumeMounts:
+        - mountPath: /var/www/openloyalty/var/cache
+          name: cache
+        - mountPath: /var/www/openloyalty/var/logs
+          name: logs
+        - mountPath: /var/www/openloyalty/app/var/jwt
+          name: jwt
+      restartPolicy: Always
+      volumes:
+      - name: cache
+        persistentVolumeClaim:
+          claimName: cache
+      - name: logs
+        persistentVolumeClaim:
+          claimName: logs
+      - name: jwt
+        persistentVolumeClaim:
+          claimName: jwt
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php
+  namespace: openloyalty
+  labels:
+    app: php
+spec:
+  ports:
+  - port: 9000
+    targetPort: 9000
+  selector:
+    app: php
+
+---
+#########
+# ELASTIC
+#########
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: openloyalty
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+      - name: init-sysctl
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ["sysctl", "-w", "vm.max_map_count=262144"]
+        securityContext:
+          privileged: true
+      - name: volume-mount-hack
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data"]
+        volumeMounts:
+        - name: elasticsearch
+          mountPath: /usr/share/elasticsearch/data
+      containers:
+      - image: elasticsearch:2.2
+        name: elasticsearch
+        securityContext:
+          privileged: false
+        ports:
+        - containerPort: 9200
+        resources:
+          limits:
+            memory: 2Gi
+        volumeMounts:
+        - mountPath: /usr/share/elasticsearch/data
+          name: elasticsearch
+      restartPolicy: Always
+      volumes:
+        - name: elasticsearch
+          persistentVolumeClaim:
+            claimName: elasticsearch
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elk
+  namespace: openloyalty
+  labels:
+    app: elasticsearch
+spec:
+  ports:
+  - port: 9200
+    targetPort: 9200
+  selector:
+    app: elasticsearch
+
+---
+########
+# mail
+########
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: mail
+  name: mail
+  namespace: openloyalty
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mail
+    spec:
+      containers:
+      - image: mailhog/mailhog
+        name: mail
+        ports:
+        - containerPort: 1025
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mail
+  namespace: openloyalty
+  labels:
+    app: mail
+spec:
+  ports:
+  - port: 1025
+    targetPort: 1025
+  selector:
+    app: mail
+
+---

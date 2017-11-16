@@ -1,0 +1,41 @@
+version: "2"
+
+services:
+  php:
+    container_name: open_loyalty_backend
+    build:
+      context: '../'
+      dockerfile: './docker/prod/php/fpm-dockerfile'
+    links:
+      - db
+      - elk
+      - mail
+    depends_on:
+      - db
+    env_file:
+        - .env
+  nginx:
+    container_name: open_loyalty_frontend
+    build:
+      context: '../'
+      dockerfile: './docker/prod/web/app-dockerfile'
+    links:
+      - php
+    ports:
+      - "80:80"
+      - "8182:3001"
+      - "8183:3002"
+      - "8184:3003"
+  elk:
+    container_name: open_loyalty_elk
+    image: elasticsearch:2.2
+  db:
+    container_name: open_loyalty_db
+    image: postgres:9
+    env_file:
+        - .env
+  mail:
+    container_name: open_loyalty_mail
+    image: mailhog/mailhog
+    ports:
+      - "8186:8025"

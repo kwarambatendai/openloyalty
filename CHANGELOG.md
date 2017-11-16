@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2017-11-016
+### Added
+- Kubernetes support
+### Changed
+- Docker files
+- Frontend migration from Gulp to the Webpack
+- Migration from Nodejs server to the Nginx
+
+## [1.4.0] - 2017-11-07
+### Added
+- CLI command to restore read model using event store
+### Fixed
+- AC/POSC fixed transaction id
+- AC/POSC show points for each transaction
+- AC clear fields after changing event type
+- POSC fixed missing days from last order
+- CC fixed cancel button
+
 ## [1.3.1] - 2017-10-23
 ### Added
 - Added change log file

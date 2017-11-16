@@ -10,7 +10,7 @@ export default class SegmentPartDirective {
             validate: '='
 
         };
-        this.templateUrl = './templates/partials/segment-part.html';
+        this.templateUrl = require('./templates/partials/segment-part.html');
         this.replace = true;
         this.controller = ['$scope', '$filter', ($scope, $filter) => {
             $scope.types = [
@@ -70,7 +70,8 @@ export default class SegmentPartDirective {
 
             $scope.getTemplateUrl = () => {
                 if ($scope.segmentModel && $scope.segmentModel.type) {
-                    return './templates/partials/' + $scope.segmentModel.type + '.html'
+                    require('./templates/partials/' + $scope.segmentModel.type + '.html');
+                    return './templates/' + $scope.segmentModel.type + '.html';
                 } else {
                     return ''
                 }

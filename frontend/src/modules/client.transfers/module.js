@@ -11,17 +11,17 @@ angular.module(MODULE_NAME, [])
                 url: "/points/transfer",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-transfers-list-extend-top.html',
+                        templateUrl: 'templates/customer-transfers-list-extend-top.html',
                         controller: 'CustomerPointsTransferController',
                         controllerAs: 'CustomerPointsTransferCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-transfers-list.html',
+                        templateUrl: require('./templates/customer-transfers-list.html'),
                         controller: 'CustomerPointsTransferController',
                         controllerAs: 'CustomerPointsTransferCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-transfers-list-extend-bottom.html',
+                        templateUrl: 'templates/customer-transfers-list-extend-bottom.html',
                         controller: 'CustomerPointsTransferController',
                         controllerAs: 'CustomerPointsTransferCtrl'
                     }
@@ -33,13 +33,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/customer-transfers-list-extend-top.html', '');
-        $templateCache.put('./templates/customer-transfers-list-extend-bottom.html', '');
+        $templateCache.put('templates/customer-transfers-list-extend-top.html', '');
+        $templateCache.put('templates/customer-transfers-list-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-transfers-list.html`)
+        $http.get(`templates/customer-transfers-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-transfers-list.html', response.data);
+                    $templateCache.put('templates/customer-transfers-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

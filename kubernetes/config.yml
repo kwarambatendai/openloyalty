@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: front
+  namespace: openloyalty
+data:
+  config.js: |-
+          const config = {
+              "apiUrl": "http://{KUBERNETES_IP_OR_HOST_ADDRESS}/api",
+              "dateFormat": "YYYY-MM-DD",
+              "dateTimeFormat": "YYYY-MM-DD HH:mm",
+              "perPage": 20,
+              "debug": false,
+              "modules": []
+          };
+          window.OpenLoyaltyConfig = {
+              "apiUrl": "http://{KUBERNETES_IP_OR_HOST_ADDRESS}/api",
+              "dateFormat": "YYYY-MM-DD",
+              "dateTimeFormat": "YYYY-MM-DD HH:mm",
+              "perPage": 20,
+              "debug": false,
+              "modules": []
+          };

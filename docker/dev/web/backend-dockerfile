@@ -1,0 +1,6 @@
+FROM divante/open-loyalty-base-nginx as www
+
+RUN usermod -u 1000 www-data
+
+COPY ./docker/dev/web/backend.conf /etc/nginx/conf.d/backend.conf
+COPY ./backend/web/ /var/www/openloyalty/web

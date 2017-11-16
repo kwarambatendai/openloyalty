@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default class EditableMap {
     constructor($filter, DataService) {
         this.config = window.OpenLoyaltyConfig;

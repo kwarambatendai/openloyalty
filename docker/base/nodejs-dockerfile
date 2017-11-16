@@ -1,0 +1,6 @@
+FROM node:5
+
+RUN apt-get update \
+    && apt-get install -y ruby-full rubygems \
+    && gem instal sass
+RUN npm install -g gulp node-sass yarn

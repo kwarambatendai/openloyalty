@@ -1,3 +1,6 @@
+import angular from 'angular';
+import moment from 'moment';
+
 export default class Filters {
     static CommaToDecimal() {
         return function (value) {
@@ -56,6 +59,6 @@ export default class Filters {
             }
 
             return input;
-        }
+        };
     }
 }

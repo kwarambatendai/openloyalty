@@ -36,7 +36,7 @@ export default class ModalDirective {
                 element.find('.modal').get(0).style.minWidth = scope.minWidth;
             }
         };
-        this.templateUrl = './templates/modal.html';
+        this.templateUrl = require('./templates/modal.html');
     }
 }
 

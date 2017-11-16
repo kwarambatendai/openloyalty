@@ -8,7 +8,8 @@ export default class StaticPagesDirective {
         this.controller = ['$scope', '$stateParams', ($scope, $stateParams) => {
             $scope.getTemplateUrl = () => {
                 if ($stateParams.pageName) {
-                    return './templates/static/'+$stateParams.pageName+'.html';
+                    require('./templates/static/'+$stateParams.pageName+'.html');
+                    return './templates/'+$stateParams.pageName+'.html';
                 }
             };
         }];

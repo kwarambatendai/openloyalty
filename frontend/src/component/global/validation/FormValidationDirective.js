@@ -4,7 +4,7 @@ export default class FormValidationDirective {
         this.scope = {formValidation: "=?"};
         this.replace = true;
         this.transclude = true;
-        this.templateUrl = './templates/formFieldError.html';
+        this.templateUrl = require('./templates/formFieldError.html');
     }
 }
 

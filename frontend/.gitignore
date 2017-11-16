@@ -1,0 +1,6 @@
+dist/
+node_modules/
+.idea/
+dev/reports/
+npm-debug.log
+docs/sass

@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/campaign-list/",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/campaign-list-extend-top.html',
+                        templateUrl: 'templates/campaign-list-extend-top.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/campaign-list.html',
+                        templateUrl: require('./templates/campaign-list.html'),
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/campaign-list-extend-bottom.html',
+                        templateUrl: 'templates/campaign-list-extend-bottom.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/edit-campaign/:campaignId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-campaign-extend-top.html',
+                        templateUrl: 'templates/edit-campaign-extend-top.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-campaign.html',
+                        templateUrl: require('./templates/edit-campaign.html'),
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-campaign-extend-bottom.html',
+                        templateUrl: 'templates/edit-campaign-extend-bottom.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     }
@@ -50,17 +50,17 @@ angular.module(MODULE_NAME, [])
                 url: "/campaign-customers/:campaignId/:campaignName",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/campaign-customers-extend-top.html',
+                        templateUrl: 'templates/campaign-customers-extend-top.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/campaign-customers.html',
+                        templateUrl: require('./templates/campaign-customers.html'),
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/campaign-customers-extend-bottom.html',
+                        templateUrl: 'templates/campaign-customers-extend-bottom.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     }
@@ -70,17 +70,17 @@ angular.module(MODULE_NAME, [])
                 url: "/single-campaign/:campaignId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/single-campaign-extend-top.html',
+                        templateUrl: 'templates/single-campaign-extend-top.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/single-campaign.html',
+                        templateUrl: require('./templates/single-campaign.html'),
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/single-campaign-extend-bottom.html',
+                        templateUrl: 'templates/single-campaign-extend-bottom.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     }
@@ -90,17 +90,17 @@ angular.module(MODULE_NAME, [])
                 url: "/add-campaign",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/add-campaign-extend-top.html',
+                        templateUrl: 'templates/add-campaign-extend-top.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/add-campaign.html',
+                        templateUrl: require('./templates/add-campaign.html'),
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/add-campaign-extend-bottom.html',
+                        templateUrl: 'templates/add-campaign-extend-bottom.html',
                         controller: 'CampaignController',
                         controllerAs: 'CampaignCtrl'
                     }
@@ -113,49 +113,49 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/campaign-list-extend-top.html', '');
-        $templateCache.put('./templates/campaign-list-extend-bottom.html', '');
+        $templateCache.put('templates/campaign-list-extend-top.html', '');
+        $templateCache.put('templates/campaign-list-extend-bottom.html', '');
 
-        $templateCache.put('./templates/edit-campaign-extend-top.html', '');
-        $templateCache.put('./templates/edit-campaign-extend-bottom.html', '');
+        $templateCache.put('templates/edit-campaign-extend-top.html', '');
+        $templateCache.put('templates/edit-campaign-extend-bottom.html', '');
 
-        $templateCache.put('./templates/campaign-customers-extend-top.html', '');
-        $templateCache.put('./templates/campaign-customers-extend-bottom.html', '');
+        $templateCache.put('templates/campaign-customers-extend-top.html', '');
+        $templateCache.put('templates/campaign-customers-extend-bottom.html', '');
 
-        $templateCache.put('./templates/add-campaign-extend-top.html', '');
-        $templateCache.put('./templates/add-campaign-extend-bottom.html', '');
+        $templateCache.put('templates/add-campaign-extend-top.html', '');
+        $templateCache.put('templates/add-campaign-extend-bottom.html', '');
 
-        $templateCache.put('./templates/single-campaign-extend-top.html', '');
-        $templateCache.put('./templates/single-campaign-extend-bottom.html', '');
+        $templateCache.put('templates/single-campaign-extend-top.html', '');
+        $templateCache.put('templates/single-campaign-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/add-campaign.html`)
+        $http.get(`templates/add-campaign.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/add-campaign.html', response.data);
+                    $templateCache.put('templates/add-campaign.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/campaign-customers.html`)
+        $http.get(`templates/campaign-customers.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/campaign-customers.html', response.data);
+                    $templateCache.put('templates/campaign-customers.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/campaign-list.html`)
+        $http.get(`templates/campaign-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/campaign-list.html', response.data);
+                    $templateCache.put('templates/campaign-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/single-campaign.html`)
+        $http.get(`templates/single-campaign.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/single-campaign.html', response.data);
+                    $templateCache.put('templates/single-campaign.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

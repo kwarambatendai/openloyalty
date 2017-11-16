@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/levels-list",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/levels-list-extend-top.html',
+                        templateUrl: 'templates/levels-list-extend-top.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/levels-list.html',
+                        templateUrl: require('./templates/levels-list.html'),
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/levels-list-extend-bottom.html',
+                        templateUrl: 'templates/levels-list-extend-bottom.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/level/:levelId/users/:levelName",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/level-users-extend-top.html',
+                        templateUrl: 'templates/level-users-extend-top.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/level-users.html',
+                        templateUrl: require('./templates/level-users.html'),
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/level-users-extend-bottom.html',
+                        templateUrl: 'templates/level-users-extend-bottom.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     }
@@ -50,17 +50,17 @@ angular.module(MODULE_NAME, [])
                 url: "/add-level",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/add-level-extend-top.html',
+                        templateUrl: 'templates/add-level-extend-top.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/add-level.html',
+                        templateUrl: require('./templates/add-level.html'),
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/add-level-extend-bottom.html',
+                        templateUrl: 'templates/add-level-extend-bottom.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     }
@@ -70,17 +70,17 @@ angular.module(MODULE_NAME, [])
                 url: "/edit-level/:levelId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-level-extend-top.html',
+                        templateUrl: 'templates/edit-level-extend-top.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-level.html',
+                        templateUrl: require('./templates/edit-level.html'),
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-level-extend-bottom.html',
+                        templateUrl: 'templates/edit-level-extend-bottom.html',
                         controller: 'LevelController',
                         controllerAs: 'LevelCtrl'
                     }
@@ -92,46 +92,46 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/edit-level-extend-bottom.html', '');
-        $templateCache.put('./templates/edit-level-extend-top.html', '');
+        $templateCache.put('templates/edit-level-extend-bottom.html', '');
+        $templateCache.put('templates/edit-level-extend-top.html', '');
 
-        $templateCache.put('./templates/add-level-extend-bottom.html', '');
-        $templateCache.put('./templates/add-level-extend-top.html', '');
+        $templateCache.put('templates/add-level-extend-bottom.html', '');
+        $templateCache.put('templates/add-level-extend-top.html', '');
 
-        $templateCache.put('./templates/levels-list-extend-bottom.html', '');
-        $templateCache.put('./templates/levels-list-extend-top.html', '');
+        $templateCache.put('templates/levels-list-extend-bottom.html', '');
+        $templateCache.put('templates/levels-list-extend-top.html', '');
 
-        $templateCache.put('./templates/level-users-extend-bottom.html', '');
-        $templateCache.put('./templates/level-users-extend-top.html', '');
+        $templateCache.put('templates/level-users-extend-bottom.html', '');
+        $templateCache.put('templates/level-users-extend-top.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/level-users.html`)
+        $http.get(`templates/level-users.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/level-users.html', response.data);
+                    $templateCache.put('templates/level-users.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/levels-list.html`)
+        $http.get(`templates/levels-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/levels-list.html', response.data);
+                    $templateCache.put('templates/levels-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/add-level.html`)
+        $http.get(`templates/add-level.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/add-level.html', response.data);
+                    $templateCache.put('templates/add-level.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/edit-level.html`)
+        $http.get(`templates/edit-level.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/edit-level.tml', response.data);
+                    $templateCache.put('templates/edit-level.tml', response.data);
                 }
             )
             .catch(catchErrorTemplate);

@@ -1,43 +1,12 @@
 const MODULE_NAME = 'admin.partials';
 
 angular.module(MODULE_NAME, [])
-    .run(($templateCache, $http) => {
-        let catchErrorTemplate = () => {
-            throw `${MODULE_NAME} has missing template`
-        };
-
-        $http.get(`./build/${MODULE_NAME}/templates/footer.html`)
-            .then(
-                response => {
-                    $templateCache.put('./templates/footer.html', response.data);
-                }
-            )
-            .catch(catchErrorTemplate);
-
-        $http.get(`./build/${MODULE_NAME}/templates/left-nav.html`)
-            .then(
-                response => {
-                    $templateCache.put('./templates/left-nav.html', response.data);
-                }
-            )
-            .catch(catchErrorTemplate);
-
-        $http.get(`./build/${MODULE_NAME}/templates/right-nav.html`)
-            .then(
-                response => {
-                    $templateCache.put('./templates/right-nav.html', response.data);
-                }
-            )
-            .catch(catchErrorTemplate);
-
-        $http.get(`./build/${MODULE_NAME}/templates/top-nav.html`)
-            .then(
-                response => {
-                    $templateCache.put('./templates/top-nav.html', response.data);
-                }
-            )
-            .catch(catchErrorTemplate);
-    })
+    .run(($templateCache) => {
+        $templateCache.put('templates/footer.html', require('./templates/footer.html'));
+        $templateCache.put('templates/left-nav.html', require('./templates/left-nav.html'));
+        $templateCache.put('templates/right-nav.html', require('./templates/right-nav.html'));
+        $templateCache.put('templates/top-nav.html', require('./templates/top-nav.html'));
+    });
 
 try {
     window.OpenLoyaltyConfig.modules.push(MODULE_NAME);

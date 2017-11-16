@@ -1,0 +1,29 @@
+<nav class="top-navigation client pos-client">
+    <div class="top-logo">
+        <div class="container">
+            <div class="row qf-menu-padding">
+                <div class="columns medium-2">
+                    <div class="left-buttons">
+                        <button class="home-button" ui-sref="seller.panel.dashboard">
+                            <i class="fi flaticon-compass-with-white-needles"></i><br/>
+                            {{"global.home"|translate}}
+                        </button>
+                    </div>
+                </div>
+                <div class="columns medium-8 medium-offset-2">
+                    <div class="logo" ui-sref="seller.panel.dashboard">
+                        <span class="logo-part-1">Open Loyalty</span>
+                    </div>
+                </div>
+                <div class="columns medium-2">
+                    <div class="right-buttons">
+                        <button class="client-logout-button" ng-click="RootCtrl.logout()">
+                            <i class="fi flaticon-unlocked-padlock"></i><br/>
+                            {{"global.logout"|translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

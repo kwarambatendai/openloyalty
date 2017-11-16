@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/pos-list/",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/pos-list-extend-top.html',
+                        templateUrl: 'templates/pos-list-extend-top.html',
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/pos-list.html',
+                        templateUrl: require('./templates/pos-list.html'),
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/pos-list-extend-bottom.html',
+                        templateUrl: 'templates/pos-list-extend-bottom.html',
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/edit-pos/:posId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-pos-extend-top.html',
+                        templateUrl: 'templates/edit-pos-extend-top.html',
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-pos.html',
+                        templateUrl: require('./templates/edit-pos.html'),
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-pos-extend-bottom.html',
+                        templateUrl: 'templates/edit-pos-extend-bottom.html',
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     }
@@ -50,17 +50,17 @@ angular.module(MODULE_NAME, [])
                 url: "/add-pos",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/add-pos-extend-top.html',
+                        templateUrl: 'templates/add-pos-extend-top.html',
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/add-pos.html',
+                        templateUrl: require('./templates/add-pos.html'),
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/add-pos-extend-bottom.html',
+                        templateUrl: 'templates/add-pos-extend-bottom.html',
                         controller: 'PosController',
                         controllerAs: 'PosCtrl'
                     }
@@ -72,35 +72,35 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/edit-pos-extend-top.html', '');
-        $templateCache.put('./templates/edit-pos-extend-bottom.html', '');
+        $templateCache.put('templates/edit-pos-extend-top.html', '');
+        $templateCache.put('templates/edit-pos-extend-bottom.html', '');
 
-        $templateCache.put('./templates/add-pos-extend-top.html', '');
-        $templateCache.put('./templates/add-pos-extend-bottom.html', '');
+        $templateCache.put('templates/add-pos-extend-top.html', '');
+        $templateCache.put('templates/add-pos-extend-bottom.html', '');
 
-        $templateCache.put('./templates/pos-list-extend-top.html', '');
-        $templateCache.put('./templates/pos-list-extend-bottom.html', '');
+        $templateCache.put('templates/pos-list-extend-top.html', '');
+        $templateCache.put('templates/pos-list-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/pos-list.html`)
+        $http.get(`templates/pos-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/pos-list.html', response.data);
+                    $templateCache.put('templates/pos-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/edit-pos.html`)
+        $http.get(`templates/edit-pos.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/edit-pos.html', response.data);
+                    $templateCache.put('templates/edit-pos.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/add-pos.html`)
+        $http.get(`templates/add-pos.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/add-pos.html', response.data);
+                    $templateCache.put('templates/add-pos.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

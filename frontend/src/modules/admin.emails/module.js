@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/emails",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/list-emails-extend-top.html',
+                        templateUrl: 'templates/list-emails-extend-top.html',
                         controller: 'EmailsController',
                         controllerAs: 'EmailsCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/list-emails.html',
+                        templateUrl: require('./templates/list-emails.html'),
                         controller: 'EmailsController',
                         controllerAs: 'EmailsCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/list-emails-extend-bottom.html',
+                        templateUrl: 'templates/list-emails-extend-bottom.html',
                         controller: 'EmailsController',
                         controllerAs: 'EmailsCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/emails/:emailId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-email-extend-top.html',
+                        templateUrl: 'templates/edit-email-extend-top.html',
                         controller: 'EmailsController',
                         controllerAs: 'EmailsCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-email.html',
+                        templateUrl: require('./templates/edit-email.html'),
                         controller: 'EmailsController',
                         controllerAs: 'EmailsCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-email-extend-bottom.html',
+                        templateUrl: 'templates/edit-email-extend-bottom.html',
                         controller: 'EmailsController',
                         controllerAs: 'EmailsCtrl'
                     }
@@ -52,24 +52,24 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/list-emails-extend-top.html', '');
-        $templateCache.put('./templates/list-emails-extend-bottom.html', '');
+        $templateCache.put('templates/list-emails-extend-top.html', '');
+        $templateCache.put('templates/list-emails-extend-bottom.html', '');
 
-        $templateCache.put('./templates/edit-email-extend-top.html', '');
-        $templateCache.put('./templates/edit-email-extend-bottom.html', '');
+        $templateCache.put('templates/edit-email-extend-top.html', '');
+        $templateCache.put('templates/edit-email-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/edit-email.html`)
+        $http.get(`templates/edit-email.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/edit-email.html', response.data);
+                    $templateCache.put('templates/edit-email.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/list-emails.html`)
+        $http.get(`templates/list-emails.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/list-emails.html', response.data);
+                    $templateCache.put('templates/list-emails.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

@@ -15,7 +15,7 @@ export default class BoxLoaderDirective {
             delay: '=?',
             cover: '=?'
         };
-        this.templateUrl = './templates/box-loader.html';
+        this.templateUrl = require('./templates/box-loader.html');
         this.link = (scope, element) => {
             element.parent().addClass('loader-relative');
 

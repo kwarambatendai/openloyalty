@@ -1,0 +1,66 @@
+<nav class="top-navigation client">
+
+    <div class="top-logo">
+        <div class="container">
+            <div class="row qf-menu-padding">
+                <div class="columns medium-8 medium-offset-2">
+                    <div class="logo" ui-sref="customer.panel.dashboard">
+                        <span class="logo-part-1">{{"customer_nav.logo1"|translate}}</span>
+                        <span class="logo-part-2">{{"customer_nav.logo2"|translate}}</span>
+                        <br/>
+                        <span class="copyrights" ng-bind-html="'customer_nav.copyrights'|translate"></span>
+                    </div>
+                </div>
+                <div class="columns medium-2">
+                    <div class="right-buttons">
+                        <button class="client-logout-button" ng-click="RootCtrl.logout()">
+                            <i class="fi flaticon-unlocked-padlock"></i><br/>
+                            {{"customer_global.logout"|translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top-bar">
+        <ul class="menu">
+            <li>
+                <a href="#" ui-sref="customer.panel.dashboard">
+                    <i class="fi flaticon-compass-with-white-needles" aria-hidden="true"></i>
+                    {{"customer_nav.home"|translate}}
+                </a>
+            </li>
+            <li>
+                <a href="#" ui-sref="customer.panel.campaign-list">
+                    <i class="fi2 flaticon-medal-2" aria-hidden="true"></i>
+                    {{"customer_nav.my_rewards"|translate}}
+                </a>
+            </li>
+
+            <li>
+                <a href="#" ui-sref="customer.panel.transfers-list">
+                    <i class="fi2 flaticon-line-chart" aria-hidden="true"></i>
+                     {{"customer_nav.earning_points"|translate}}
+                </a>
+            </li>
+            <li>
+                <a href="#" ui-sref="customer.panel.transactions-list">
+                    <i class="fi2 flaticon-shopping-cart" aria-hidden="true"></i>
+                     {{"customer_nav.my_transactions"|translate}}
+                </a>
+            </li>
+            <li>
+                <a href="#" ui-sref="customer.panel.profile-show">
+                    <i class="fi flaticon-user-shape" aria-hidden="true"></i>
+                     {{"customer_nav.my_profile"|translate}}
+                </a>
+            </li>
+            <li>
+                <a href="#" ui-sref="customer.static({pageName: 'match-with-ecommerce'})">
+                    <i class="fi2 flaticon-scheme-1" aria-hidden="true"></i>
+                    {{"customer_nav.match_with_ecommerce"|translate}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

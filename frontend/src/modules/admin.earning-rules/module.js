@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/earning-rules-list",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/earning-rules-list-extend-top.html',
+                        templateUrl: 'templates/earning-rules-list-extend-top.html',
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/earning-rules-list.html',
+                        templateUrl: require('./templates/earning-rules-list.html'),
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/earning-rules-list-extend-bottom.html',
+                        templateUrl: 'templates/earning-rules-list-extend-bottom.html',
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/admin/add-earning-rule",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/add-earning-rule-extend-top.html',
+                        templateUrl: 'templates/add-earning-rule-extend-top.html',
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/add-earning-rule.html',
+                        templateUrl: require('./templates/add-earning-rule.html'),
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/add-earning-rule-extend-bottom.html',
+                        templateUrl: 'templates/add-earning-rule-extend-bottom.html',
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     }
@@ -50,17 +50,17 @@ angular.module(MODULE_NAME, [])
                 url: "/edit-earning-rule/:earningRuleId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-earning-rule-extend-top.html',
+                        templateUrl: 'templates/edit-earning-rule-extend-top.html',
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-earning-rule.html',
+                        templateUrl: require('./templates/edit-earning-rule.html'),
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-earning-rule-extend-bottom.html',
+                        templateUrl: 'templates/edit-earning-rule-extend-bottom.html',
                         controller: 'EarningRuleController',
                         controllerAs: 'EarningRuleCtrl'
                     }
@@ -72,35 +72,35 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/edit-earning-rule-extend-top.html', '');
-        $templateCache.put('./templates/edit-earning-rule-extend-bottom.html', '');
+        $templateCache.put('templates/edit-earning-rule-extend-top.html', '');
+        $templateCache.put('templates/edit-earning-rule-extend-bottom.html', '');
 
-        $templateCache.put('./templates/add-earning-rule-extend-top.html', '');
-        $templateCache.put('./templates/add-earning-rule-extend-bottom.html', '');
+        $templateCache.put('templates/add-earning-rule-extend-top.html', '');
+        $templateCache.put('templates/add-earning-rule-extend-bottom.html', '');
 
-        $templateCache.put('./templates/earning-rules-list-extend-top.html', '');
-        $templateCache.put('./templates/earning-rules-list-extend-bottom.html', '');
+        $templateCache.put('templates/earning-rules-list-extend-top.html', '');
+        $templateCache.put('templates/earning-rules-list-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/earning-rules-list.html`)
+        $http.get(`templates/earning-rules-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/earning-rules-list.html', response.data);
+                    $templateCache.put('templates/earning-rules-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/add-earning-rule.html`)
+        $http.get(`templates/add-earning-rule.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/add-earning-rule.html', response.data);
+                    $templateCache.put('templates/add-earning-rule.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/edit-earning-rule.html`)
+        $http.get(`templates/edit-earning-rule.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/edit-earning-rule.html', response.data);
+                    $templateCache.put('templates/edit-earning-rule.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

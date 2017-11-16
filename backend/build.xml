@@ -13,9 +13,9 @@
         <exec command="bin/console broadway:event-store:schema:init -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:fixtures:load --env=test -n" checkreturn="true" passthru="true"/>
         <exec command="bin/console oloy:segment:recreate -vv" checkreturn="true" passthru="true"/>
-        <exec command="bin/console security:check" checkreturn="true" passthru="true"/>
+        <exec command="bin/console --env=dev security:check" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:schema:validate --env=test --skip-sync" checkreturn="true" passthru="true"/>
-        <exec command="vendor/phpunit/phpunit/phpunit" checkreturn="true" passthru="true"/>
+        <exec command="vendor/phpunit/phpunit/phpunit vendor/divante-ltd/open-loyalty-framework/" checkreturn="true" passthru="true"/>
         <exec command="bin/php-cs-fixer fix --dry-run --diff src" checkreturn="true" passthru="true"/>
     </target>
     <target name="setup" description="Setup everything" depends="generate-jwt-keys">
@@ -31,17 +31,17 @@
         <exec command="bin/console broadway:event-store:schema:drop -n --env=test" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:init -n --env=test" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:fixtures:load -n --env=test" checkreturn="true" passthru="true"/>
-        <exec command="vendor/phpunit/phpunit/phpunit" checkreturn="true" passthru="true"/>
+        <exec command="vendor/phpunit/phpunit/phpunit vendor/divante-ltd/open-loyalty-framework/" checkreturn="true" passthru="true"/>
     </target>
     <target name="test-security" description="Setup everything and run tests">
         <exec command="bin/console oloy:user:projections:index:create --drop-old -n --env=test" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:drop -n --env=test" checkreturn="true" passthru="true"/>
         <exec command="bin/console broadway:event-store:schema:init -n --env=test" checkreturn="true" passthru="true"/>
         <exec command="bin/console doctrine:fixtures:load -n --env=test" checkreturn="true" passthru="true"/>
-        <exec command="vendor/phpunit/phpunit/phpunit --stop-on-failure --testsuite Security" checkreturn="true" passthru="true"/>
+        <exec command="vendor/phpunit/phpunit/phpunit --stop-on-failure --testsuite Security vendor/divante-ltd/open-loyalty-framework/" checkreturn="true" passthru="true"/>
     </target>
     <target name="test-domain" description="Setup everything and run tests">
-        <exec command="vendor/phpunit/phpunit/phpunit --stop-on-failure --testsuite Domain" checkreturn="true" passthru="true"/>
+        <exec command="vendor/phpunit/phpunit/phpunit --stop-on-failure --testsuite Domain vendor/divante-ltd/open-loyalty-framework/" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="demo" description="Setup for demo purposes" depends="generate-jwt-keys">

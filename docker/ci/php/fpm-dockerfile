@@ -1,0 +1,16 @@
+FROM composer/composer:1.1-alpine AS composer
+FROM divante/open-loyalty-base-php-fpm AS base
+
+ENV SYMFONY_ENV="prod"
+
+ADD https://www.phing.info/get/phing-latest.phar /usr/local/bin/phing
+RUN chmod a+x /usr/local/bin/phing
+RUN chown www-data:www-data /usr/local/bin/phing
+
+COPY ./backend /var/www/openloyalty
+COPY --from=composer /usr/local/bin/composer /usr/local/bin/composer
+
+RUN mkdir /var/www/openloyalty/var/cache && chmod 755 /var/www/openloyalty/var && chmod 755 /var/www/openloyalty/var/cache && chmod 755 /var/www/openloyalty/var/logs
+
+WORKDIR /var/www/openloyalty
+RUN composer install && bin/console assets:install && chown -R www-data:www-data /var/www/openloyalty/var

@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/users-list",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/users-list-extend-top.html',
+                        templateUrl: 'templates/users-list-extend-top.html',
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/users-list.html',
+                        templateUrl: require('./templates/users-list.html'),
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/users-list-extend-bottom.html',
+                        templateUrl: 'templates/users-list-extend-bottom.html',
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/edit-user/:userId",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-user-extend-top.html',
+                        templateUrl: 'templates/edit-user-extend-top.html',
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-user.html',
+                        templateUrl: require('./templates/edit-user.html'),
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-user-extend-bottom.html',
+                        templateUrl: 'templates/edit-user-extend-bottom.html',
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     }
@@ -50,17 +50,17 @@ angular.module(MODULE_NAME, [])
                 url: "/add-user",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/create-user-extend-top.html',
+                        templateUrl: 'templates/create-user-extend-top.html',
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/create-user.html',
+                        templateUrl: require('./templates/create-user.html'),
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/create-user-extend-bottom.html',
+                        templateUrl: 'templates/create-user-extend-bottom.html',
                         controller: 'UserController',
                         controllerAs: 'UserCtrl'
                     }
@@ -72,35 +72,35 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/create-user-extend-top.html', '');
-        $templateCache.put('./templates/create-user-extend-bottom.html', '');
+        $templateCache.put('templates/create-user-extend-top.html', '');
+        $templateCache.put('templates/create-user-extend-bottom.html', '');
 
-        $templateCache.put('./templates/edit-user-extend-top.html', '');
-        $templateCache.put('./templates/edit-user-extend-bottom.html', '');
+        $templateCache.put('templates/edit-user-extend-top.html', '');
+        $templateCache.put('templates/edit-user-extend-bottom.html', '');
 
-        $templateCache.put('./templates/users-list-extend-top.html', '');
-        $templateCache.put('./templates/users-list-extend-bottom.html', '');
+        $templateCache.put('templates/users-list-extend-top.html', '');
+        $templateCache.put('templates/users-list-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/create-user.html`)
+        $http.get(`templates/create-user.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/create-user.html', response.data);
+                    $templateCache.put('templates/create-user.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/edit-user.html`)
+        $http.get(`templates/edit-user.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/edit-user.html', response.data);
+                    $templateCache.put('templates/edit-user.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/users-list.html`)
+        $http.get(`templates/users-list.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/users-list.html', response.data);
+                    $templateCache.put('templates/users-list.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  php:
+    build:
+      context: '../'
+      dockerfile: './docker/ci/php/fpm-dockerfile'
+    command: bash -c "phing ci-setup-test"

@@ -9,17 +9,17 @@ angular.module(MODULE_NAME, [])
                 url: "/",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-login-extend-top.html',
+                        templateUrl: 'templates/customer-login-extend-top.html',
                         controller: 'CustomerLoginController',
                         controllerAs: 'CustomerLoginCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-login.html',
+                        templateUrl: require('./templates/customer-login.html'),
                         controller: 'CustomerLoginController',
                         controllerAs: 'CustomerLoginCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-login-extend-bottom.html',
+                        templateUrl: 'templates/customer-login-extend-bottom.html',
                         controller: 'CustomerLoginController',
                         controllerAs: 'CustomerLoginCtrl'
                     }
@@ -31,13 +31,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/customer-login-extend-top.html', '');
-        $templateCache.put('./templates/customer-login-extend-bottom.html', '');
+        $templateCache.put('templates/customer-login-extend-top.html', '');
+        $templateCache.put('templates/customer-login-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-login.html`)
+        $http.get(`templates/customer-login.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-login.html', response.data);
+                    $templateCache.put('templates/customer-login.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

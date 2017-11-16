@@ -4,7 +4,7 @@ export default class CsvUploadDirective {
         this.scope = {ngModel: "=?"};
         this.replace = true;
         this.transclude = true;
-        this.templateUrl = './templates/csv-upload.html';
+        this.templateUrl = require('./templates/csv-upload.html');
         this.controller = ['$scope', '$element', ($scope, $element) => {
             $scope.fileName = '';
             $scope.chosenFile = '';

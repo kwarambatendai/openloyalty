@@ -1,4 +1,48 @@
+require('./templates/admin.html');
+
 var _ = require('lodash');
+
+// import jquery
+import 'jquery';
+import 'foundation-sites/dist/foundation';
+import 'jquery-datetimepicker';
+import 'chart.js/src/chart';
+import 'select2';
+import angular from 'angular';
+import 'sortablejs/Sortable';
+import 'microplugin';
+import 'sifter';
+import 'angular-legacy-sortablejs-maintained';
+import 'angular-translate';
+import 'angular-sanitize';
+import 'ng-table';
+import 'angular-moment';
+import 'angular-ui-router';
+import 'restangular';
+import 'angular-jwt/';
+import 'ui-select';
+import 'pickadate/lib/picker';
+import 'angular-flash-alert';
+window.Selectize = require('selectize');
+import 'angular-selectize2/dist/selectize';
+import 'angular-chart.js/angular-chart';
+window.JSONEditor = require('jsoneditor');
+import 'ng-jsoneditor';
+require ('brace/mode/json');
+import 'brace';
+import 'angular-animate';
+import 'angular-loading-bar';
+import 'ace-angular';
+
+// global styles
+import 'pickadate/lib/themes/classic.css';
+import 'pickadate/lib/themes/classic.date.css';
+import 'angular-flash-alert/dist/angular-flash.min.css';
+import 'ui-select/dist/select.min.css';
+import 'selectize/dist/css/selectize.css';
+import 'jquery-datetimepicker/jquery.datetimepicker.css';
+import 'jsoneditor/dist/jsoneditor.min.css';
+import 'angular-loading-bar/build/loading-bar.css';
 
 import EditableMap from './component/global/map/EditableMap';
 import ParamsMap from './component/global/map/ParamsMap';
@@ -30,6 +74,32 @@ import DebugController from './component/global/debug/DebugController';
 
 import Filters from './component/global/filters/Filters';
 
+// global scss
+import './style/main.scss';
+
+// global js
+import './scripts/main';
+
+// open loyalty modules
+require('./modules/admin.campaign/module.js');
+require('./modules/admin.customers/module.js');
+require('./modules/admin.dashboard/module.js');
+require('./modules/admin.data/module.js');
+require('./modules/admin.earning-rules/module.js');
+require('./modules/admin.levels/module.js');
+require('./modules/admin.login/module.js');
+require('./modules/admin.partials/module.js');
+require('./modules/admin.pos/module.js');
+require('./modules/admin.segment/module.js');
+require('./modules/admin.seller/module.js');
+require('./modules/admin.settings/module.js');
+require('./modules/admin.transactions/module.js');
+require('./modules/admin.transfers/module.js');
+require('./modules/admin.translations/module.js');
+require('./modules/admin.users/module.js');
+require('./modules/admin.emails/module.js');
+require('./modules/admin.logs/module.js');
+
 if (!window.OpenLoyaltyConfig.debug) {
     if (!window.console) window.console = {};
     var methods = ["log", "debug", "warn", "info"];
@@ -40,40 +110,40 @@ if (!window.OpenLoyaltyConfig.debug) {
 }
 
 angular.module('OpenLoyalty', [
-    'ui.router',
-    'ace.angular',
-    'angular-jwt',
-    'restangular',
-    'ngFlash',
-    'angularMoment',
-    'ngTable',
-    'ui.select',
-    'ngSanitize',
-    'ng-sortable',
-    'pascalprecht.translate',
-    'selectize',
-    'chart.js',
-    'ng.jsoneditor',
-    'angular-loading-bar',
-    'ngAnimate',
-    'admin.campaign',
-    'admin.customers',
-    'admin.dashboard',
-    'admin.data',
-    'admin.earning-rules',
-    'admin.levels',
-    'admin.login',
-    'admin.partials',
-    'admin.pos',
-    'admin.segment',
-    'admin.seller',
-    'admin.settings',
-    'admin.transactions',
-    'admin.transfers',
-    'admin.translations',
-    'admin.users',
-    'admin.emails',
-    'admin.logs'
+     'ui.router',
+     'angular-jwt',
+     'restangular',
+     'ngFlash',
+     'angularMoment',
+     'ngTable',
+     'ui.select',
+     'ngSanitize',
+     'ng-sortable',
+     'pascalprecht.translate',
+     'selectize',
+     'chart.js',
+     'ng.jsoneditor',
+     'ace.angular',
+     'angular-loading-bar',
+     'ngAnimate',
+     'admin.campaign',
+     'admin.customers',
+     'admin.dashboard',
+     'admin.data',
+     'admin.earning-rules',
+     'admin.levels',
+     'admin.login',
+     'admin.partials',
+     'admin.pos',
+     'admin.segment',
+     'admin.seller',
+     'admin.settings',
+     'admin.transactions',
+     'admin.transfers',
+     'admin.translations',
+     'admin.users',
+     'admin.emails',
+     'admin.logs'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider, $translateProvider, $locationProvider, cfpLoadingBarProvider) {
         let config = window.OpenLoyaltyConfig;
@@ -149,19 +219,19 @@ angular.module('OpenLoyalty', [
         $stateProvider
             .state('admin-login', {
                 url: "/",
-                templateUrl: './templates/login.html',
+                templateUrl: require('./modules/admin.login/templates/login.html'),
                 controller: 'LoginController',
                 controllerAs: 'LoginCtrl'
             })
             .state('forgot-password-request-admin', {
                 url: "/admin/password/request",
-                templateUrl: './templates/password-request.html',
+                templateUrl: require('./modules/admin.login/templates/password-request.html'),
                 controller: 'SecurityController',
                 controllerAs: 'SecurityCtrl'
             })
             .state('forgot-password-reset-admin', {
                 url: "/password/reset/:token",
-                templateUrl: './templates/password-reset.html',
+                templateUrl: require('./modules/admin.login/templates/password-reset.html'),
                 controller: 'SecurityController',
                 controllerAs: 'SecurityCtrl'
             })
@@ -169,7 +239,7 @@ angular.module('OpenLoyalty', [
                 url: "/page/:pageName",
                 views: {
                     '@': {
-                        templateUrl: './templates/static-pages.html',
+                        templateUrl: require('./component/global/pages/templates/static-pages.html'),
                         controller: 'StaticPagesController',
                         controllerAs: 'StaticPagesCtrl'
                     }
@@ -181,7 +251,7 @@ angular.module('OpenLoyalty', [
                 url: "/debug",
                 views: {
                     '@': {
-                        templateUrl: './templates/debug.html',
+                        templateUrl: require('./component/global/debug/templates/debug.html'),
                         controller: 'DebugController',
                         controllerAs: 'DebugCtrl'
                     }

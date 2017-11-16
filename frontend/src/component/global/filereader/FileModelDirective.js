@@ -9,7 +9,7 @@ export default class FileModelDirective {
         this.restrict = 'A';
         this.replace = true;
         this.transclude = true;
-        this.templateUrl = './templates/file-upload.html';
+        this.templateUrl = require('./templates/file-upload.html');
         this.link = (scope, element, attrs) => {
             let model = $parse(attrs.fileModel);
             let modelSetter = model.assign;

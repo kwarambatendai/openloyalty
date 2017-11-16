@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/settings",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/admin-settings-extend-top.html',
+                        templateUrl: 'templates/admin-settings-extend-top.html',
                         controller: 'SettingsController',
                         controllerAs: 'SettingsCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/admin-settings.html',
+                        templateUrl: require('./templates/admin-settings.html'),
                         controller: 'SettingsController',
                         controllerAs: 'SettingsCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/admin-settings-extend-bottom.html',
+                        templateUrl: 'templates/admin-settings-extend-bottom.html',
                         controller: 'SettingsController',
                         controllerAs: 'SettingsCtrl'
                     }
@@ -32,13 +32,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/admin-settings-extend-top.html', '');
-        $templateCache.put('./templates/admin-settings-extend-bottom.html', '');
+        $templateCache.put('templates/admin-settings-extend-top.html', '');
+        $templateCache.put('templates/admin-settings-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/admin-settings.html`)
+        $http.get(`templates/admin-settings.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/admin-settings.html', response.data);
+                    $templateCache.put('templates/admin-settings.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

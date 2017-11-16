@@ -14,7 +14,7 @@ export default class SpinnerLoaderDirective {
             loading: '=?',
             delay: '=?'
         };
-        this.templateUrl = './templates/spinner-loader.html';
+        this.templateUrl = require('./templates/spinner-loader.html');
         this.link = (scope, element) => {
             element.parent().addClass('loader-relative');
 

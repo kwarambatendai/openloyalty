@@ -1,0 +1,17 @@
+FROM divante/open-loyalty-base-nodejs AS front
+
+COPY ./frontend /var/www/frontend
+WORKDIR /var/www/frontend
+RUN npm rebuild node-sass && yarn install && npm run-script build
+
+FROM divante/open-loyalty-base-nginx as www
+
+RUN usermod -u 1000 www-data
+COPY ./docker/prod/web/bin/init.sh init.sh
+RUN chmod a+x init.sh
+COPY ./docker/prod/web/backend.conf /etc/nginx/conf.d/backend.conf
+COPY ./backend/web/ /var/www/openloyalty/web
+COPY ./docker/prod/web/frontend.conf /etc/nginx/conf.d/front.conf
+COPY --from=front /var/www/frontend/dist /var/www/openloyalty/front
+COPY --from=front /var/www/frontend/rancher/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh

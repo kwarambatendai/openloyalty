@@ -1,0 +1,26 @@
+FROM composer/composer:1.1-alpine AS composer
+FROM divante/open-loyalty-base-php-fpm AS base
+
+ENV SYMFONY_ENV="prod"
+
+RUN easy_install supervisor
+RUN easy_install supervisor-stdout
+COPY ./docker/prod/php/conf/supervisord/ /etc/supervisord/
+COPY ./docker/prod/php/conf/crontab.txt /var/crontab.txt
+RUN crontab /var/crontab.txt
+RUN chmod 600 /etc/crontab
+
+ADD https://www.phing.info/get/phing-latest.phar /usr/local/bin/phing
+RUN chmod a+x /usr/local/bin/phing
+RUN chown www-data:www-data /usr/local/bin/phing
+
+COPY ./backend /var/www/openloyalty
+COPY --from=composer /usr/local/bin/composer /usr/local/bin/composer
+
+RUN mkdir /var/www/openloyalty/var/cache && chmod 755 /var/www/openloyalty/var && chmod 755 /var/www/openloyalty/var/cache && chmod 755 /var/www/openloyalty/var/logs
+
+WORKDIR /var/www/openloyalty
+COPY ./docker/prod/php/bin/init.sh init.sh
+RUN chmod a+x init.sh && rm web/app_dev.php && composer install --no-dev -o --prefer-dist && bin/console assets:install && rm web/config.php && chown -R www-data:www-data /var/www/openloyalty/var
+
+CMD ["./init.sh"]

@@ -9,17 +9,17 @@ angular.module(MODULE_NAME, [])
                 url: "/dashboard",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/seller-dashboard-extend-top.html',
+                        templateUrl: 'templates/seller-dashboard-extend-top.html',
                         controller: 'SellerDashboardController',
                         controllerAs: 'SellerDashboardCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/seller-dashboard.html',
+                        templateUrl: require('./templates/seller-dashboard.html'),
                         controller: 'SellerDashboardController',
                         controllerAs: 'SellerDashboardCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/seller-dashboard-extend-bottom.html',
+                        templateUrl: 'templates/seller-dashboard-extend-bottom.html',
                         controller: 'SellerDashboardController',
                         controllerAs: 'SellerDashboardCtrl'
                     }
@@ -31,13 +31,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/seller-dashboard-extend-top.html', '');
-        $templateCache.put('./templates/seller-dashboard-extend-bottom.html', '');
+        $templateCache.put('templates/seller-dashboard-extend-top.html', '');
+        $templateCache.put('templates/seller-dashboard-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/seller-dashboard.html`)
+        $http.get(`templates/seller-dashboard.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/seller-dashboard.html', response.data);
+                    $templateCache.put('templates/seller-dashboard.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

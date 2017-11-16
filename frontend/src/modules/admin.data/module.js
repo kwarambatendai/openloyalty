@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/admin-data",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/edit-admin-data-extend-top.html',
+                        templateUrl: 'templates/edit-admin-data-extend-top.html',
                         controller: 'AdminDataController',
                         controllerAs: 'AdminDataCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/edit-admin-data.html',
+                        templateUrl: require('./templates/edit-admin-data.html'),
                         controller: 'AdminDataController',
                         controllerAs: 'AdminDataCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/edit-admin-data-extend-bottom.html',
+                        templateUrl: 'templates/edit-admin-data-extend-bottom.html',
                         controller: 'AdminDataController',
                         controllerAs: 'AdminDataCtrl'
                     },
@@ -32,13 +32,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/edit-admin-data-extend-top.html', '');
-        $templateCache.put('./templates/edit-admin-data-extend-bottom.html', '');
+        $templateCache.put('templates/edit-admin-data-extend-top.html', '');
+        $templateCache.put('templates/edit-admin-data-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/edit-admin-data.html`)
+        $http.get(`templates/edit-admin-data.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/edit-admin-data.html', response.data);
+                    $templateCache.put('templates/edit-admin-data.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

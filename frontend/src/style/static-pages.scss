@@ -127,10 +127,10 @@
   border: 1px solid #ddd;
   width: 100%;
   display: block;
-  height: 190px;
+  max-height: 190px;
   background: #fafafa;
 }
 
 .dashboard-placeholder-big{
-  height: 400px;
+  max-height: 400px;
 }

@@ -1,0 +1,75 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: database-volume
+  namespace: openloyalty
+  labels:
+      storage-tier: database
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/media/openloyalty/db"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: elasticsearch-volume
+  namespace: openloyalty
+  labels:
+      storage-tier: elasticsearch
+spec:
+  capacity:
+    storage: 25Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/media/openloyalty/elasticsearch"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: cache-volume
+  namespace: openloyalty
+  labels:
+      storage-tier: cache
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/media/openloyalty/cache"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: logs-volume
+  namespace: openloyalty
+  labels:
+      storage-tier: logs
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/media/openloyalty/logs"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: jwt-volume
+  namespace: openloyalty
+  labels:
+      storage-tier: jwt
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/media/openloyalty/jwt"
+---

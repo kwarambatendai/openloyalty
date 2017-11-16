@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/customer/registration",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-registration-extend-top.html',
+                        templateUrl: 'templates/customer-registration-extend-top.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-registration.html',
+                        templateUrl: require('./templates/customer-registration.html'),
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-registration-extend-bottom.html',
+                        templateUrl: 'templates/customer-registration-extend-bottom.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     }
@@ -30,17 +30,17 @@ angular.module(MODULE_NAME, [])
                 url: "/customer/registration/:invitationToken",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-registration-extend-top.html',
+                        templateUrl: 'templates/customer-registration-extend-top.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-registration.html',
+                        templateUrl: require('./templates/customer-registration.html'),
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-registration-extend-bottom.html',
+                        templateUrl: 'templates/customer-registration-extend-bottom.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     }
@@ -50,17 +50,17 @@ angular.module(MODULE_NAME, [])
                 url: "/customer/registration-success",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-registration-success-extend-top.html',
+                        templateUrl: 'templates/customer-registration-success-extend-top.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-registration-success.html',
+                        templateUrl: require('./templates/customer-registration-success.html'),
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-registration-success-extend-bottom.html',
+                        templateUrl: 'templates/customer-registration-success-extend-bottom.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     }
@@ -70,17 +70,17 @@ angular.module(MODULE_NAME, [])
                 url: "/customer/registration/activate/:token",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-registration-activate-extend-top.html',
+                        templateUrl: 'templates/customer-registration-activate-extend-top.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-registration-activate.html',
+                        templateUrl: require('./templates/customer-registration-activate.html'),
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-registration-activate-extend-bottom.html',
+                        templateUrl: 'templates/customer-registration-activate-extend-bottom.html',
                         controller: 'CustomerRegistrationController',
                         controllerAs: 'CustomerRegistrationCtrl'
                     }
@@ -90,17 +90,17 @@ angular.module(MODULE_NAME, [])
                 url: "/customer/password/request",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-password-request-extend-top.html',
+                        templateUrl: 'templates/customer-password-request-extend-top.html',
                         controller: 'SecurityController',
                         controllerAs: 'SecurityCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-password-request.html',
+                        templateUrl: require('./templates/customer-password-request.html'),
                         controller: 'SecurityController',
                         controllerAs: 'SecurityCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-password-request-extend-bottom.html',
+                        templateUrl: 'templates/customer-password-request-extend-bottom.html',
                         controller: 'SecurityController',
                         controllerAs: 'SecurityCtrl'
                     }
@@ -110,17 +110,17 @@ angular.module(MODULE_NAME, [])
                 url: "/password/reset/:token",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-password-reset-extend-top.html',
+                        templateUrl: 'templates/customer-password-reset-extend-top.html',
                         controller: 'SecurityController',
                         controllerAs: 'SecurityCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-password-reset.html',
+                        templateUrl: require('./templates/customer-password-reset.html'),
                         controller: 'SecurityController',
                         controllerAs: 'SecurityCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-password-reset-extend-bottom.html',
+                        templateUrl: 'templates/customer-password-reset-extend-bottom.html',
                         controller: 'SecurityController',
                         controllerAs: 'SecurityCtrl'
                     }
@@ -132,57 +132,57 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/customer-registration-extend-top.html', '');
-        $templateCache.put('./templates/customer-registration-extend-bottom.html', '');
+        $templateCache.put('templates/customer-registration-extend-top.html', '');
+        $templateCache.put('templates/customer-registration-extend-bottom.html', '');
 
-        $templateCache.put('./templates/customer-registration-success-extend-top.html', '');
-        $templateCache.put('./templates/customer-registration-success-extend-bottom.html', '');
+        $templateCache.put('templates/customer-registration-success-extend-top.html', '');
+        $templateCache.put('templates/customer-registration-success-extend-bottom.html', '');
 
-        $templateCache.put('./templates/customer-registration-activate-extend-top.html', '');
-        $templateCache.put('./templates/customer-registration-activate-extend-bottom.html', '');
+        $templateCache.put('templates/customer-registration-activate-extend-top.html', '');
+        $templateCache.put('templates/customer-registration-activate-extend-bottom.html', '');
 
-        $templateCache.put('./templates/customer-password-request-extend-top.html', '');
-        $templateCache.put('./templates/customer-password-request-extend-bottom.html', '');
+        $templateCache.put('templates/customer-password-request-extend-top.html', '');
+        $templateCache.put('templates/customer-password-request-extend-bottom.html', '');
 
-        $templateCache.put('./templates/customer-password-reset-extend-top.html', '');
-        $templateCache.put('./templates/customer-password-reset-extend-bottom.html', '');
+        $templateCache.put('templates/customer-password-reset-extend-top.html', '');
+        $templateCache.put('templates/customer-password-reset-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-registration.html`)
+        $http.get(`templates/customer-registration.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-registration.html', response.data);
+                    $templateCache.put('templates/customer-registration.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-registration-success.html`)
+        $http.get(`templates/customer-registration-success.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-registration-success.html', response.data);
+                    $templateCache.put('templates/customer-registration-success.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-registration-activate.html`)
+        $http.get(`templates/customer-registration-activate.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-registration-activate.html', response.data);
+                    $templateCache.put('templates/customer-registration-activate.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-password-reset.html`)
+        $http.get(`templates/customer-password-reset.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-password-reset.html', response.data);
+                    $templateCache.put('templates/customer-password-reset.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-password-request.html`)
+        $http.get(`templates/customer-password-request.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-password-request.html', response.data);
+                    $templateCache.put('templates/customer-password-request.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);

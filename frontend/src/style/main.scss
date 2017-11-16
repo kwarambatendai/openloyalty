@@ -1,9 +1,9 @@
 
-@import "../node_modules/foundation-sites/scss/foundation";
+@import "../../node_modules/foundation-sites/scss/foundation";
 
 @include foundation-everything;
 
-@import "../node_modules/motion-ui/src/motion-ui.scss";
+@import "../../node_modules/motion-ui/src/motion-ui.scss";
 
 @import "vars";
 @import "mixins";

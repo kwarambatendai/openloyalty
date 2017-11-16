@@ -2,7 +2,7 @@ export default class CheckboxDirective {
     constructor() {
         this.restrict = 'E';
         this.require = '?ngModel';
-        this.templateUrl = './templates/checkbox.html';
+        this.templateUrl = require('./templates/checkbox.html');
         this.scope = {
             value: '=ngModel'
         };

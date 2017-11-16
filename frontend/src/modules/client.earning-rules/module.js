@@ -10,17 +10,17 @@ angular.module(MODULE_NAME, [])
                 url: "/earningRules",
                 views: {
                     'extendTop@': {
-                        templateUrl: './templates/customer-earning-rules-extend-top.html',
+                        templateUrl: 'templates/customer-earning-rules-extend-top.html',
                         controller: 'CustomerEarningRulesController',
                         controllerAs: 'CustomerEarningRulesCtrl'
                     },
                     'main@': {
-                        templateUrl: './templates/customer-earning-rules.html',
+                        templateUrl: require('./templates/customer-earning-rules.html'),
                         controller: 'CustomerEarningRulesController',
                         controllerAs: 'CustomerEarningRulesCtrl'
                     },
                     'extendBottom@': {
-                        templateUrl: './templates/customer-earning-rules-extend-bottom.html',
+                        templateUrl: 'templates/customer-earning-rules-extend-bottom.html',
                         controller: 'CustomerEarningRulesController',
                         controllerAs: 'CustomerEarningRulesCtrl'
                     }
@@ -32,13 +32,13 @@ angular.module(MODULE_NAME, [])
             throw `${MODULE_NAME} has missing template`
         };
 
-        $templateCache.put('./templates/customer-earning-rules-extend-top.html', '');
-        $templateCache.put('./templates/customer-earning-rules-extend-bottom.html', '');
+        $templateCache.put('templates/customer-earning-rules-extend-top.html', '');
+        $templateCache.put('templates/customer-earning-rules-extend-bottom.html', '');
 
-        $http.get(`./build/${MODULE_NAME}/templates/customer-earning-rules.html`)
+        $http.get(`templates/customer-earning-rules.html`)
             .then(
                 response => {
-                    $templateCache.put('./templates/customer-earning-rules.html', response.data);
+                    $templateCache.put('templates/customer-earning-rules.html', response.data);
                 }
             )
             .catch(catchErrorTemplate);
