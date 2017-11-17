@@ -1,7 +1,10 @@
 sudo: required
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.9.0
+  global:
+  - DOCKER_COMPOSE_VERSION: 1.9.0
+  - secure: "F821RSMdn/1kstmC0eNPgYMIpCUm3UluN6vj0LfptmBA2oYC1+dj4OaHqWW1X0RprT4vUBmY482+0fsELmY2AKEakryk8aAEQ/kHulDr6wu4k6fsepbzJmkj/35PltECu8FcCsNillMvWWAXqfdI63uqLZPupixS7HfXBzloZ9aQjqt+gtCfdZWZWM/pWvJuLS+ZQvhxtdrlrnetxxZcEfimQC2slsQaiuDLSo0qq96gzxXaFulrxjkV/KKCpU7M7USsvz8a26vHKiuHVkNy7EgU3hhYfljFEDrmkZEoPqwB8XrPd1FNJVTkW7UJhbz0ykazpPtoI4/FpBTGVDmaWqso1gmPS1jxQXrRUusa96zuoh5wCla4YlimijsGOzsc+HJpuA9bA6TDYM4PgX0fF3zanPlkspqjKRGq7if2oxBg442dTK+OlqTAe7yldFTNug/lqnUxGK1gKVTumN1ZyKzLgAqjDBjZqX6tcn59rkYFb0Q2lE7LX+OIc89DJy/TUzJalS3RXhpw6kD+uzCfYAXytaU24LHbgAZvF5VYrWLHLjOw1M5+lpwaMl/iH5al8Rcp3ypOvZq2FBFKP4H4fBY5IN7eOJvuzrx2OODMTmD4LzbNJ8WpQLb3qmxgf/WnXNo/lCaEt3Seok8ZdWk8b7REsm6YN+JkDtoXGFIqmkw="
+  - secure: "sV2ppBPTcWnl91pbV8Q0Fa7dnd+8mNWeuaWiqATpDCyCZTdKRFIqF9/GMJyCTp+d5m+mpMLXycAEQk4JpXY9XNG8zVqDzeQkutue7nrTr1eFr1yuHoPwdHUR4SM85F98T30Vl5gDfq5qOR+piHkQ0yxXI9vAhM6ZDgXTxWnYX2pPBIVo6to/nYThNeCGAJjEI1VJPxYkRTnGZHj9LIJB1aCCBA50o3zRv86IJkwX1VtFHVlsbqu2YpfXLKqAnzPsjCF0kXnUSAIkESRIDwtRzgFS2VQo/PIbwD8iNfHVJZ5MtEqC0ph/SVnSjCTHF/eAPv49tH1puhRTwAkgBkx2osBe7vY61HEK4GvyHtEODS6nSZycrlwzRde7gG0uIxaF1kuZj5LqNTd1DLWFSVTbYqoBfW76tveINaPgv3GGh5QphKFyBlLmzh7KDrAW69A5yGfLuO7gCf4NXWGDAzoSYNq9OoQugFh+b3KcEJCztMeMSDcfvIVixevAseBiWa/Bs5mPAcFK9OkbctKhygdjEpE+2EFh2HWl7uGJbonF66SX606+s+ulDl8BGWLpgKxuylqNZWb85gP3HcYNR+GtUq3kt9oL83nfogTgAD5+EYID9LhoORPOWW/1hIzb6xTTPsJkx/IQLMHsxBep31RhI1mzteLtxOI9priOSHjqSH8="
 
 services:
   - docker
@@ -15,4 +18,20 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 script:
-  - cd docker && docker-compose -f docker-compose.yml -f docker-compose.test.yml run php
+  - cd docker && docker-compose -f docker-compose.yml -f docker-compose.test.yml run php && cd ..
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u "$DOCKER_USER" -p "$DOCKER_PASS";
+    docker build -t divante/open-loyalty:latest -f ./docker/prod/web/app-dockerfile .;
+    docker build -t divante/open-loyalty-web:latest -f ./docker/prod/php/fpm-dockerfile .;
+    docker push divante/open-loyalty:latest;
+    docker push divante/open-loyalty-web:latest;
+    fi
+  - if [ -n "$TRAVIS_TAG" ]; then
+    docker login -u "$DOCKER_USER" -p "$DOCKER_PASS";
+    docker build -t divante/open-loyalty:$TRAVIS_TAG -f ./docker/prod/web/app-dockerfile .;
+    docker build -t divante/open-loyalty-web:$TRAVIS_TAG -f ./docker/prod/php/fpm-dockerfile .;
+    docker push divante/open-loyalty:$TRAVIS_TAG;
+    docker push divante/open-loyalty-web:$TRAVIS_TAG;
+    fi

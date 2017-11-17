@@ -14,6 +14,5 @@ hosts
 tools/deployment/deploy.retry
 /esdata/
 /postgres_data/
-frontend/src/config.js
 frontend/yarn-error.log
 /backend/app/uploads/
